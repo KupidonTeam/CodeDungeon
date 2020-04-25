@@ -1,4 +1,4 @@
-package KupidonTeam.characters.classes;
+package KupidonTeam.items;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,11 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Weapon {
-    private long id;
-    private String name;
-    private double price;
+public class Weapon extends Item {
     private int damageMin;
-    private double weight;
     private int damageMax;
 }
