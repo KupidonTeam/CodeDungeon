@@ -1,10 +1,14 @@
 package KupidonTeam.locations;
 
 import KupidonTeam.enums.Direction;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.LinkedList;
 import java.util.List;
 
+@Getter
+@Setter
 public abstract class Room {
     private int roomId;
     private List<Direction> availableDirections;
