@@ -1,5 +1,6 @@
 package KupidonTeam.characters.classes.enemies;
 
+import KupidonTeam.items.Item;
 import lombok.Getter;
 import lombok.Setter;
 
