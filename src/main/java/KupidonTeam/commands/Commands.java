@@ -1,6 +1,8 @@
 package KupidonTeam.commands;
 
+import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.enums.Direction;
+import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
 
 import java.util.List;
@@ -61,9 +63,30 @@ public class Commands {
             wrongCommandInput();
             return;
         }
+        if (player.getLocation() instanceof Dungeon) {
+            if (enemyToAttackCheck((Dungeon) player.getLocation())&&skillCheck()){
+
+            }
+        } else {
+            notDungeonWarning();
+        }
 
     }
 
+    private boolean enemyToAttackCheck(Dungeon dungeon) {
+        for (Enemy enemy : dungeon.getEnemies()) {
+            if (enemy.getName().equalsIgnoreCase(currentCommand[1])) {
+                return true;
+            }
+        }
+        noSuchEnemy();
+        return false;
+    }
+
+    private boolean skillCheck(){
+        //TODO
+        return false;
+    }
 
     private boolean directionInputCheck(String direction) {
         for (Direction dir : Direction.values()) {
@@ -95,5 +118,12 @@ public class Commands {
         System.out.println("Not enough arguments! \nType /help to get list of available commands");
     }
 
+    private void notDungeonWarning() {
+        System.out.println("You are not able to attack in peaceful territories");
+    }
+
+    private void noSuchEnemy(){
+        System.out.println("No such enemy");
+    }
 
 }

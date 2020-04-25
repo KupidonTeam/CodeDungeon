@@ -8,4 +8,5 @@ import lombok.Setter;
 @Setter
 public abstract class Enemy extends Entity {
     private long enemyId;
+    private String name;
 }
