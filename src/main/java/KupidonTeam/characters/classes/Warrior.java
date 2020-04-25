@@ -5,7 +5,6 @@ import KupidonTeam.enums.Direction;
 import java.util.Map;
 
 public class Warrior extends Entity {
-   // private Map<String,Ылш> skills;
     public Warrior() {
         setHp(100);
         setStrength(10);
