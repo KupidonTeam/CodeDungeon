@@ -10,7 +10,7 @@ import KupidonTeam.player.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class App {
+public class Game {
     public static void main( String[] args )
     {
         Player player = new Player();
@@ -25,6 +25,6 @@ public class App {
         List<Enemy> enemies = new ArrayList<>();
         enemies.add(new Orc());
 
-        Room room = new Dungeon(1, directions, "some descr", enemies);
+        //Room room = new Dungeon(1, directions, "some descr", enemies);
     }
 }
