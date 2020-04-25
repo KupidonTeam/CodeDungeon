@@ -25,6 +25,7 @@ public class Player extends Entity implements CommandsListener {
     private String name;
     private int raceId;
     private int equipmentId;
+    private Inventory playerInventory;
     private int lvl;
     private Room location;
     private int experience;
