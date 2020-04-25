@@ -1,7 +1,7 @@
 package KupidonTeam.characters.classes.enemies;
 
 import KupidonTeam.characters.classes.Warrior;
-import KupidonTeam.locations.Direction;
+import KupidonTeam.enums.Direction;
 
 public class Orc extends Enemy {
     private Warrior mobClass;

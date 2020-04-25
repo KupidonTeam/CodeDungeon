@@ -1,6 +1,6 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.locations.Direction;
+import KupidonTeam.enums.Direction;
 
 import java.util.List;
 

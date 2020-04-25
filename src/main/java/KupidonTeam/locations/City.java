@@ -1,14 +1,16 @@
 package KupidonTeam.locations;
 
-import lombok.Getter;
-import lombok.Setter;
+import KupidonTeam.enums.Direction;
 
 import java.util.List;
 
-@Getter
-@Setter
 public class City extends Room {
+    public City() {
+        super();
+    }
+
     public City(int roomId, List<Direction> availableDirections, String roomDescription) {
         super(roomId, availableDirections, roomDescription);
     }
 }
+

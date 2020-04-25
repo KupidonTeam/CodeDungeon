@@ -1,4 +1,4 @@
-package KupidonTeam.locations;
+package KupidonTeam.enums;
 
 public enum Direction {
     N,

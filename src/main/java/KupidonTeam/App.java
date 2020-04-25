@@ -1,6 +1,6 @@
 package KupidonTeam;
 
-import KupidonTeam.locations.Direction;
+import KupidonTeam.enums.Direction;
 import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.characters.classes.enemies.Orc;
 import KupidonTeam.locations.Dungeon;

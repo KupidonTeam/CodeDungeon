@@ -1,6 +1,6 @@
 package KupidonTeam.characters.classes;
 
-import KupidonTeam.locations.Direction;
+import KupidonTeam.enums.Direction;
 
 public class Warrior extends Entity {
     public Warrior(){
