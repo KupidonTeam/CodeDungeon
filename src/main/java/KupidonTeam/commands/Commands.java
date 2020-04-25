@@ -6,7 +6,7 @@ import KupidonTeam.player.Player;
 import java.util.Optional;
 
 // TODO
-//класс обертка для команд, не доделан, не трогай :)
+// Класс-обертка для команд, не доделан, не трогай :)
 public class Commands {
     private Player player;
     private String[] currentCommand;

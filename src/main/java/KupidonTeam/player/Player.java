@@ -2,7 +2,7 @@ package KupidonTeam.player;
 
 import KupidonTeam.characters.classes.Entity;
 import KupidonTeam.characters.classes.Warrior;
-import KupidonTeam.controllers.CommandsListener;
+import KupidonTeam.commands.CommandsListener;
 import KupidonTeam.enums.Direction;
 import KupidonTeam.items.Item;
 import KupidonTeam.locations.Dungeon;
