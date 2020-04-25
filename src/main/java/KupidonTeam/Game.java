@@ -22,6 +22,5 @@ public class Game {
         List<Enemy> enemies = new ArrayList<>();
         enemies.add(new Orc());
 
-        //Room room = new Dungeon(1, directions, "some descr", enemies);
     }
 }
