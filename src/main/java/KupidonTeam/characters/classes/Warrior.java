@@ -3,7 +3,7 @@ package KupidonTeam.characters.classes;
 import KupidonTeam.enums.Direction;
 
 public class Warrior extends Entity {
-    public Warrior(){
+    public Warrior() {
         setHp(100);
         setStrength(10);
         setArmorClass(5);
@@ -16,7 +16,8 @@ public class Warrior extends Entity {
         setWisdom(10);
     }
 
-    public Warrior(int hp,int strength, int armorClass, int chance, int charisma, int constitution,  int dexterity, int intelligence, int speed, int wisdom){
+    public Warrior(int hp, int strength, int armorClass, int chance, int charisma, int constitution, int dexterity,
+                   int intelligence, int speed, int wisdom) {
         setHp(hp);
         setStrength(strength);
         setArmorClass(armorClass);

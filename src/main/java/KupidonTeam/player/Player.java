@@ -2,6 +2,7 @@ package KupidonTeam.player;
 
 import KupidonTeam.characters.classes.Entity;
 import KupidonTeam.characters.classes.Warrior;
+import KupidonTeam.commands.Commands;
 import KupidonTeam.commands.CommandsListener;
 import KupidonTeam.enums.Direction;
 import KupidonTeam.items.Item;
@@ -21,7 +22,7 @@ import java.util.Scanner;
 @AllArgsConstructor
 public class Player extends Entity implements CommandsListener {
     private long id;
-    private Entity playerClass;
+    private Entity playerClass;  // TODO Рационально заменить на класс Stats, т.к это х-р игрока которые должны изменяться
     private String name;
     private int raceId;
     private int equipmentId;
@@ -29,6 +30,7 @@ public class Player extends Entity implements CommandsListener {
     private int lvl;
     private Room location;
     private int experience;
+    private Commands commandExecutor;
 
     private Scanner input = new Scanner(System.in);
 
@@ -36,6 +38,7 @@ public class Player extends Entity implements CommandsListener {
         playerClass = new Warrior();
         playerInventory = new Inventory();
         location = new Dungeon();
+        commandExecutor = new Commands(this);
     }
 
     public Player(long id, Entity playerClass, String name, Room location) {
@@ -43,6 +46,7 @@ public class Player extends Entity implements CommandsListener {
         this.playerClass = playerClass;
         this.name = name;
         this.location = location;
+        commandExecutor = new Commands(this);
     }
 
     @Override
@@ -50,35 +54,48 @@ public class Player extends Entity implements CommandsListener {
         String string = input.next();
 
         // TODO
-        //создать интерфейс маркер для всех метолов которые может вып пользователь
-        Map<String,CommandsListener> commandList = new HashMap<>();
+        // Создать интерфейс маркер для всех метолов которые может вып пользователь
+        Map<String, CommandsListener> commandList = new HashMap<>();
 
-        if(commandList.containsKey(input)){
+        if (commandList.containsKey(input)) {
             commandList.get(input);
+            String buffer = input.nextLine();
+
+            System.out.println("buffer = " + buffer);
+
+            // Если первый символ не '/' , то посылае сообщение в чат
+            if (buffer.charAt(0) != '/') {
+                chat(buffer);
+            }
+            // Иначе разбиваем и отсылаем команду в обработчик
+            else {
+                String[] command = new String[3];
+                command = buffer.split(" ");
+                commandExecutor.executeCommand(command);
+            }
         }
     }
 
-    public void playerDefeat(){
+    @Override
+    public void chat(String message) {
+
+    }
+
+    public void playerDefeat() {
         // TODO
     }
 
     @Override
-    public void chat() {
-
-    }
-
-    @Override
-    public String myStats() {
+    public String getStats() {
         return name + "\n" + playerClass.toString();
     }
 
     @Override
     public void move(Direction direction) {
-        if(getAvailableDirections().contains(direction)){
+        if (getAvailableDirections().contains(direction)) {
             // TODO
             //переместиться
-        }
-        else{
+        } else {
             System.out.println("Sorry, no such direction");
         }
     }
@@ -88,15 +105,20 @@ public class Player extends Entity implements CommandsListener {
     }
 
     public boolean isAlive() {
-        return playerClass.getHp() > 0 ? true : false;
+        return playerClass.getHp() > 0;
     }
 
-    public void playerRewards(List<Item> rewards){
+    public void playerRewards(List<Item> rewards) {
         // TODO
     }
 
     @Override
     public List<Direction> getAvailableDirections() {
         return location.getAvailableDirections();
+    }
+
+    @Override
+    public void noSuchCommand() {
+
     }
 }

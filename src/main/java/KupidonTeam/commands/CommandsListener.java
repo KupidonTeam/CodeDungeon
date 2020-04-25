@@ -6,6 +6,6 @@ public interface CommandsListener extends BaseCommands {
 
     @Override
     default void chat(String message) {
-        System.out.println("Your simple message : "+message);
+        System.out.println("Your simple message : " + message);
     }
 }

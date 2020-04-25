@@ -1,18 +1,15 @@
 package KupidonTeam;
 
-import KupidonTeam.enums.Direction;
 import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.characters.classes.enemies.Orc;
-import KupidonTeam.locations.Dungeon;
-import KupidonTeam.locations.Room;
+import KupidonTeam.enums.Direction;
 import KupidonTeam.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    public static void main( String[] args )
-    {
+    public static void main(String[] args) {
         Player player = new Player();
         player.setId(100);
         player.setName("Player");

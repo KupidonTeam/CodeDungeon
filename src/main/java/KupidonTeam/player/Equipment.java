@@ -1,7 +1,7 @@
 package KupidonTeam.player;
 
-import KupidonTeam.items.Weapon;
 import KupidonTeam.items.Armor;
+import KupidonTeam.items.Weapon;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

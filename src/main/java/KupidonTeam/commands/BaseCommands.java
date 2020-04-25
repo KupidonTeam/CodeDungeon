@@ -13,7 +13,7 @@ public interface BaseCommands {
 
     List<Direction> getAvailableDirections();
 
-    default void noSuchCommand(){
+    default void noSuchCommand() {
         System.out.println("No such command!");
     }
 }

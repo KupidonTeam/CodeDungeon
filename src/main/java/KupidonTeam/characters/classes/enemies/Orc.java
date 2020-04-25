@@ -5,7 +5,8 @@ import KupidonTeam.enums.Direction;
 
 public class Orc extends Enemy {
     private Warrior mobClass;
-    public Orc(){
+
+    public Orc() {
         mobClass = new Warrior();
     }
 

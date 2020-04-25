@@ -14,7 +14,7 @@ public abstract class Room {
     private List<Direction> availableDirections;
     private String roomDescription;
 
-    public Room(){
+    public Room() {
         roomId = 0;
         availableDirections = new LinkedList<>();
         roomDescription = "Start city";
