@@ -21,6 +21,5 @@ public class Game {
 
         List<Enemy> enemies = new ArrayList<>();
         enemies.add(new Orc());
-
     }
 }
