@@ -10,7 +10,7 @@ public class Orc extends Enemy {
         mobClass = new Warrior();
     }
 
-    @Override
+
     public void move(Direction direction) {
         // TODO
     }

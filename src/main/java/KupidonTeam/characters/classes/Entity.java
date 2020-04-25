@@ -1,12 +1,11 @@
 package KupidonTeam.characters.classes;
 
-import KupidonTeam.controllers.Action;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-public abstract class Entity implements Action {
+public abstract class Entity {
     private int hp;
     private int armorClass;
     private double speed;

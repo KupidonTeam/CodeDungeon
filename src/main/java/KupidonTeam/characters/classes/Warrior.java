@@ -30,8 +30,6 @@ public class Warrior extends Entity {
         setWisdom(wisdom);
     }
 
-    @Override
-    public void move(Direction direction) {
-        // TODO
-    }
+
+
 }

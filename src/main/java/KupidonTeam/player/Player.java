@@ -3,8 +3,6 @@ package KupidonTeam.player;
 import KupidonTeam.characters.classes.Entity;
 import KupidonTeam.characters.classes.Warrior;
 import KupidonTeam.commands.Commands;
-import KupidonTeam.commands.CommandsListener;
-import KupidonTeam.enums.Direction;
 import KupidonTeam.items.Item;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.locations.Room;
@@ -12,15 +10,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class Player extends Entity implements CommandsListener {
+public class Player extends Entity {
     private long id;
     private Entity playerClass;  // TODO Рационально заменить на класс Stats, т.к это х-р игрока которые должны изменяться
     private String name;
@@ -49,34 +45,32 @@ public class Player extends Entity implements CommandsListener {
         commandExecutor = new Commands(this);
     }
 
-    @Override
+
     public void userInput() {
-        String string = input.next();
+        System.out.println("user inp");
+        String buffer = input.nextLine();
 
         // TODO
         // Создать интерфейс маркер для всех метолов которые может вып пользователь
-        Map<String, CommandsListener> commandList = new HashMap<>();
 
-        if (commandList.containsKey(input)) {
-            commandList.get(input);
-            String buffer = input.nextLine();
+        System.out.println("buffer = " + buffer);
 
-            System.out.println("buffer = " + buffer);
-
-            // Если первый символ не '/' , то посылае сообщение в чат
-            if (buffer.charAt(0) != '/') {
-                chat(buffer);
-            }
-            // Иначе разбиваем и отсылаем команду в обработчик
-            else {
-                String[] command = new String[3];
-                command = buffer.split(" ");
-                commandExecutor.executeCommand(command);
-            }
+        // Если первый символ не '/' , то посылае сообщение в чат
+        if (buffer.charAt(0) != '/') {
+            chat(buffer);
         }
+        // Иначе разбиваем и отсылаем команду в обработчик
+        else {
+            String[] command = new String[3];
+            command[0] = null;
+            command[1] = null;
+            command[2] = null;
+            command = buffer.split(" ");
+            commandExecutor.executeCommand(command);
+        }
+
     }
 
-    @Override
     public void chat(String message) {
 
     }
@@ -84,24 +78,9 @@ public class Player extends Entity implements CommandsListener {
     public void playerDefeat() {
         // TODO
     }
-
-    @Override
-    public String getStats() {
-        return name + "\n" + playerClass.toString();
-    }
-
-    @Override
-    public void move(Direction direction) {
-        if (getAvailableDirections().contains(direction)) {
-            // TODO
-            //переместиться
-        } else {
-            System.out.println("Sorry, no such direction");
-        }
-    }
-
     public void playerTurn() {
-        userInput();
+        // TODO
+        //userInput();
     }
 
     public boolean isAlive() {
@@ -112,13 +91,7 @@ public class Player extends Entity implements CommandsListener {
         // TODO
     }
 
-    @Override
-    public List<Direction> getAvailableDirections() {
-        return location.getAvailableDirections();
-    }
 
-    @Override
     public void noSuchCommand() {
-
     }
 }
