@@ -1,5 +1,7 @@
 package KupidonTeam.server;
 
+import KupidonTeam.exceptions.PropertiesException;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,16 +12,17 @@ import java.util.Scanner;
 public class Connection {
     private Socket clientSocket;
     private Properties properties;
-    String data;
 
 
-    private void connection() {
+    private void connection() throws PropertiesException {
         try {
             properties.load(new FileInputStream("src/main/resources/connection.properties"));
         } catch (IOException e) {
-            System.out.println("Could not load connection property file");
-            e.printStackTrace();
+            throw new PropertiesException("CantFindPropetiesFile");
         }
+        String host = properties.getProperty("host");
+        String port = properties.getProperty("port");
+
     }
 
 }
