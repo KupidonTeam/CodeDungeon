@@ -61,12 +61,7 @@ public class Player extends Entity {
         }
         // Иначе разбиваем и отсылаем команду в обработчик
         else {
-            String[] command = new String[3];
-            command[0] = null;
-            command[1] = null;
-            command[2] = null;
-            command = buffer.split(" ");
-            commandExecutor.executeCommand(command);
+            commandExecutor.executeCommand(buffer);
         }
 
     }

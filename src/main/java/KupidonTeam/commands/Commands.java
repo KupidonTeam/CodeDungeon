@@ -17,8 +17,8 @@ public class Commands {
         this.player = player;
     }
 
-    public void executeCommand(String... command) {
-        currentCommand = command;
+    public void executeCommand(String command) {
+        currentCommand = command.split(" ");
 
         switch (currentCommand[0]) {
             case "/stats":
