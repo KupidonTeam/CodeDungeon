@@ -1,7 +1,7 @@
 package KupidonTeam.controllers;
 
 import KupidonTeam.characters.classes.enemies.Enemy;
-import KupidonTeam.characters.classes.enemies.EnemyLogic;
+import KupidonTeam.characters.classes.enemies.EnemyContainer;
 import KupidonTeam.enums.Battlestate;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
@@ -13,11 +13,11 @@ import java.util.*;
 public class BattleController {
     private Battlestate battlestate;
     private Player mainPlayer;
-    private EnemyLogic enemies;     // Класс-обертка над обычными врагами
+    private EnemyContainer enemies;     // Класс-обертка над обычными врагами
 
     public BattleController(Player mainPlayer) {
         this.mainPlayer = mainPlayer;
-        this.enemies = ((Dungeon) mainPlayer.getLocation()).getEnemies();
+        //this.enemies = ((Dungeon) mainPlayer.getLocation()).getEnemies();
         battleMode();
     }
 
@@ -69,7 +69,7 @@ public class BattleController {
     }
 
     // Метод вычисления инициативы, чтобы понять кто ходит первый
-    private Battlestate calculateInitiative(Player player, EnemyLogic enemies) {
+    private Battlestate calculateInitiative(Player player, EnemyContainer enemies) {
         Map<Long, Integer> initiative = new HashMap<>();
 
         initiative.put(player.getId(), player.getIntelligence());

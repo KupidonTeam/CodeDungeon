@@ -25,7 +25,6 @@ public class Commands {
                 getStats();
                 break;
             case "/move":
-                System.out.println("i am here");
                 move();
                 break;
             case "/attack":
@@ -41,13 +40,12 @@ public class Commands {
     }
 
     private void move() {
-        System.out.println("i am in move");
+        System.out.println("move method");
         if (currentCommand.length < 2) {
             argumentMistake();
             return;
         }
-        String direction = currentCommand[1];
-
+        String direction = currentCommand[1].toUpperCase();
         if (directionInputCheck(direction)) {
             Direction dir = Direction.valueOf(direction);
             if (isAvailableDirection(dir)) {
@@ -74,7 +72,7 @@ public class Commands {
     }
 
     private boolean enemyToAttackCheck(Dungeon dungeon) {
-        for (Enemy enemy : dungeon.getEnemies()) {
+        for (Enemy enemy : dungeon.getEnemyContainer().getEnemies()) {
             if (enemy.getName().equalsIgnoreCase(currentCommand[1])) {
                 return true;
             }

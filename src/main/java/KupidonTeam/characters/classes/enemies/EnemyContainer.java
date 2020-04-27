@@ -12,18 +12,18 @@ import java.util.List;
 
 @Getter
 @Setter
-public class EnemyLogic {
+public class EnemyContainer {
     private List<Enemy> enemies = new LinkedList<>();
     private List<Item> rewards = new LinkedList<>();
 
-    public EnemyLogic() {
+    public EnemyContainer() {
     }
 
-    public EnemyLogic(Enemy... enemies) {
+    public EnemyContainer(Enemy... enemies) {
         this.enemies.addAll(Arrays.asList(enemies));
     }
 
-    public EnemyLogic(Enemy[] enemies, Item... rewards) {
+    public EnemyContainer(Enemy[] enemies, Item... rewards) {
         this.enemies.addAll(Arrays.asList(enemies));
         this.rewards.addAll(Arrays.asList(rewards));
     }

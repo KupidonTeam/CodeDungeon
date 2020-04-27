@@ -5,14 +5,20 @@ import KupidonTeam.characters.classes.enemies.Orc;
 import KupidonTeam.controllers.GameStateController;
 import KupidonTeam.enums.Direction;
 import KupidonTeam.player.Player;
+import KupidonTeam.server.Connection;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        new GameStateController().stateSwitcher();
+        Scanner in = new Scanner(System.in);
+        //new GameStateController().stateSwitcher();
+        Connection connection = new Connection();
+
 
 //        Player player = new Player();
 //        player.setId(100);
