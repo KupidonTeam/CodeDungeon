@@ -10,12 +10,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.sql.ResultSet;
 import java.util.Properties;
 import java.util.Scanner;
 
 public class Connection {
     private Socket clientSocket;
-    private Properties properties;
     private String host;
     private int port;
     private Scanner inMessage;
@@ -26,6 +26,7 @@ public class Connection {
 
     public Connection(){
         setup();
+
     }
 
     private void setup(){
@@ -40,10 +41,10 @@ public class Connection {
             System.err.println("Socket fail ");
             e.printStackTrace();
         }
-        database = new DBConnection();
+        //database = new DBConnection();
         serverListener(clientSocket);
-        singIn = new SingIn(this); //для локальных тестов, для коннекта нуже new SingIn(Connection con)
-
+//        singIn = new SingIn(this); //для локальных тестов, для коннекта нуже new SingIn(Connection con)
+        sendMessageToServer("lolololololol");
     }
 
     private void connection() throws IOException {
@@ -56,6 +57,7 @@ public class Connection {
         } catch (FiledToConnectException ex) {
             System.err.println("can not connect to server");
             clientSocket.close();
+            System.exit(-1);
         }
         System.out.println("connected successful");
     }
@@ -109,17 +111,22 @@ public class Connection {
     }
 
     private void setProperties() throws PropertiesException {
+        Properties properties;
         try {
             properties = new Properties();
             properties.load(new FileInputStream("src/main/resources/connection.properties"));
+            host = properties.getProperty("host");
+            port = Integer.parseInt(properties.getProperty("port"));
         } catch (IOException e) {
             throw new PropertiesException("CantFindPropertiesFile");
         }
-         host = properties.getProperty("host");
-         port = Integer.parseInt(properties.getProperty("port"));
+
 
     }
 
+    public ResultSet DBselect(String sql){
+       return database.select(sql);
+    }
 
 }
 

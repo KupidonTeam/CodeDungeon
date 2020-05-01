@@ -1,5 +1,6 @@
 package KupidonTeam;
 
+import KupidonTeam.login.SingIn;
 import KupidonTeam.server.Connection;
 
 import java.io.IOException;
@@ -9,8 +10,8 @@ public class Game {
 
 //        Scanner in = new Scanner(System.in);
         //new GameStateController().stateSwitcher();
-        Connection connection = new Connection();
-
+//        Connection connection = new Connection();
+        new SingIn();
 //        DBConnection dbConnection = new DBConnection();
 //        dbConnection.connection();
 
