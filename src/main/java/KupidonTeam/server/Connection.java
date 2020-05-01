@@ -19,7 +19,7 @@ public class Connection {
     private String host;
     private int port;
     private Scanner inMessage;
-    private PrintWriter outMessage;
+    private static PrintWriter outMessage;
     private DBConnection database;
     private SingIn singIn;
 
@@ -60,7 +60,7 @@ public class Connection {
         System.out.println("connected successful");
     }
 
-    public void sendMessageToServer() {
+    public static void sendMessageToServer() {
         Scanner input = new Scanner(System.in);
         while (true) {
             String buff = input.next();
@@ -71,7 +71,7 @@ public class Connection {
         }
     }
 
-    public void sendMessageToServer(String msg) {
+    public static void sendMessageToServer(String msg) {
 
         if (!msg.isEmpty()) {
             outMessage.println(msg);

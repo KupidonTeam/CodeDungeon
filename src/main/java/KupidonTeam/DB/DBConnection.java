@@ -1,6 +1,5 @@
 package KupidonTeam.DB;
 
-import KupidonTeam.exceptions.FailedBDConnection;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
