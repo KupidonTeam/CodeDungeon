@@ -1,10 +1,10 @@
 package KupidonTeam.server;
 
+import KupidonTeam.DB.DBConnection;
 import KupidonTeam.exceptions.FiledToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
-import org.zeromq.SocketType;
-import org.zeromq.ZContext;
-import org.zeromq.ZMQ;
+import KupidonTeam.login.SingIn;
+import lombok.SneakyThrows;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,72 +14,113 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class Connection {
-    private ZMQ.Socket clientSocket;
+    private Socket clientSocket;
     private Properties properties;
+    private String host;
+    private int port;
     private Scanner inMessage;
     private PrintWriter outMessage;
+    private DBConnection database;
+    private SingIn singIn;
 
-    public Connection() throws IOException {
-        try {
-            connection();
-        } catch (PropertiesException | FiledToConnectException e) {
-            e.printStackTrace();
-        }
 
+    public Connection(){
+        setup();
     }
 
-    private void conn2() {
+    private void setup(){
+        try {
+            setProperties();
+        }catch (PropertiesException e){
+            e.printStackTrace();
+        }
+        try {
+            connection();
+        }catch (IOException e){
+            System.err.println("Socket fail ");
+            e.printStackTrace();
+        }
+        database = new DBConnection();
+        serverListener(clientSocket);
+        singIn = new SingIn(this); //для локальных тестов, для коннекта нуже new SingIn(Connection con)
 
     }
 
     private void connection() throws IOException {
-        //пытаемся загрузть файл настроек
         System.out.println("Try to connect");
+        //пытаемся подключиться к серверу
+        try {
+            clientSocket = new Socket(host, port);
+            inMessage = new Scanner(clientSocket.getInputStream());
+            outMessage = new PrintWriter(clientSocket.getOutputStream());
+        } catch (FiledToConnectException ex) {
+            System.err.println("can not connect to server");
+            clientSocket.close();
+        }
+        System.out.println("connected successful");
+    }
+
+    public void sendMessageToServer() {
+        Scanner input = new Scanner(System.in);
+        while (true) {
+            String buff = input.next();
+            if (!buff.isEmpty()) {
+                outMessage.println(buff);
+                outMessage.flush();
+            }
+        }
+    }
+
+    public void sendMessageToServer(String msg) {
+
+        if (!msg.isEmpty()) {
+            outMessage.println(msg);
+            outMessage.flush();
+        }
+    }
+
+
+    private void serverListener(Socket clientSocket) {
+        new Thread(new Runnable() {
+            @SneakyThrows
+            @Override
+            public void run() {
+                try {
+                    // бесконечный цикл
+                    while (true) {
+                        // если есть входящее сообщение
+                        if (inMessage.hasNext()) {
+                            // считываем его
+                            String inMes = new String(inMessage.nextLine());
+                            // выводим сообщение
+                            System.out.println(inMes);
+                        }
+                    }
+                } catch (Exception e) {
+                    clientSocket.close();
+                }
+            }
+        }).start();
+    }
+
+
+    private void analyzeServer(String msg) {
+
+    }
+
+    private void setProperties() throws PropertiesException {
         try {
             properties = new Properties();
             properties.load(new FileInputStream("src/main/resources/connection.properties"));
         } catch (IOException e) {
             throw new PropertiesException("CantFindPropertiesFile");
         }
-        String host = properties.getProperty("host");
-        int port = Integer.parseInt(properties.getProperty("port"));
-        //пытаемся подключиться к серверу
-//        ZContext context = new ZContext();
-//        clientSocket = context.createSocket(SocketType.REQ);
-//        clientSocket.connect("tcp://178.132.156.98:1308");
-        sendMessageToServer();
-    }
+         host = properties.getProperty("host");
+         port = Integer.parseInt(properties.getProperty("port"));
 
-    public void sendMessageToServer() {
-        Scanner input = new Scanner(System.in);
-        try (ZContext context = new ZContext()) {
-            //  Socket to talk to server
-            System.out.println("Connecting to hello world server");
-            ZMQ.Socket socket = context.createSocket(SocketType.REQ);
-            socket.connect("tcp://178.132.156.98:1308");
-            //serverListener(socket);
-            while (true) {
-                String request = input.nextLine();
-                System.out.println("Sending Message ");
-                socket.send(request.getBytes(ZMQ.CHARSET), 0);
-//                byte[] reply = socket.recv(0);
-//                System.out.println(
-//                        "Received " + new String(reply, ZMQ.CHARSET) + " ");
-            }
-        }
     }
 
 
-    private void serverListener(ZMQ.Socket socket) {
-        while (true) {
-            try (ZContext context = new ZContext()) {
-                //TODO добавить обработчик сообщений
-                byte[] reply = socket.recv(0);
-                System.out.println(
-                        "Received " + new String(reply, ZMQ.CHARSET) + " ");
-            }
-        }
-    }
 }
 
 

@@ -1,5 +1,17 @@
 package KupidonTeam.login;
 
+import java.util.Scanner;
+
 public class Login {
-    //login parol class nickname race
+    private String login;
+    private String password;
+    private Scanner input;
+
+    public Login(){
+
+    }
+
+
+
+
 }

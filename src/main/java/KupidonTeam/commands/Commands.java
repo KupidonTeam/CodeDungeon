@@ -4,6 +4,7 @@ import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.enums.Direction;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
+import KupidonTeam.server.Connection;
 
 import java.util.List;
 
@@ -12,9 +13,11 @@ import java.util.List;
 public class Commands {
     private Player player;
     private String[] currentCommand;
+    private Connection server;
 
     public Commands(Player player) {
         this.player = player;
+
     }
 
     public void executeCommand(String command) {
