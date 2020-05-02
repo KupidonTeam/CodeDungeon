@@ -1,6 +1,7 @@
 package KupidonTeam.login;
 
 import KupidonTeam.DB.DBConnection;
+import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
 import KupidonTeam.utils.Timer;
@@ -18,18 +19,19 @@ public class SingIn {
     private Connection server;
     private DBConnection database;
     private Boolean responseFlag;
+    private Player player;
 
-    public SingIn() {
-
-        input = new Scanner(System.in);
-        database = new DBConnection();
-        registration();
-    }
+//    public SingIn() {
+//
+//        input = new Scanner(System.in);
+//        database = new DBConnection();
+//        registration();
+//    }
 
     public SingIn(Connection server) {
         this.server = server;
         input = new Scanner(System.in);
-        database = new DBConnection();
+        database = DBConnection.getDbConnection();
         responseFlag = false;
         singInUp();
     }
@@ -87,7 +89,6 @@ public class SingIn {
     private int checkUserName(String name) {
         try {
             ResultSet result = database.select(
-                    // ResultSet result = server.DBselect(
                     String.format(
                             "(SELECT player_name FROM `Players` WHERE player_name = '%s');", name));
 
@@ -133,6 +134,12 @@ public class SingIn {
         //подтверждаем ответ
         responseFlag = true;
         System.out.println(msg);
+
+    }
+
+    //принимает json от сервера и десериализует
+    private Player createPLayer(String json) {
+        return null;
 
     }
 

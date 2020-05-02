@@ -5,6 +5,7 @@ import KupidonTeam.enums.Direction;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
+import KupidonTeam.utils.JSON;
 
 import java.util.List;
 
@@ -17,25 +18,40 @@ public class Commands {
 
     public Commands(Player player) {
         this.player = player;
-
+        server = Connection.getConnection();
     }
 
     public void executeCommand(String command) {
         currentCommand = command.split(" ");
+        if (command.charAt(0) != '/') {
+            sendMessageToChat(command);
+        } else {
+            switch (currentCommand[0]) {
+                case "/stats":
+                    getStats();
+                    break;
+                case "/move":
+                    move();
+                    break;
+                case "/attack":
 
-        switch (currentCommand[0]) {
-            case "/stats":
-                getStats();
-                break;
-            case "/move":
-                move();
-                break;
-            case "/attack":
-
-            default:
-                System.out.println("No such command");
+                default:
+                    System.out.println("No such command");
+            }
         }
 
+    }
+
+    private void sendMessageToChat(String msg) {
+        msg = String.format("{\n" +
+                "    \"action\": \"sendMessage\",\n" +
+                "    \"data\":{\n" +
+                "        \"player_id\": \"%d\",\n" +
+                "        \"message\": \"%s\"\n" +
+                "    }\n" +
+                "}\n", player.getId(), msg);
+        msg = JSON.normalize(msg);
+        server.sendMessageToServer(msg);
     }
 
     private void getStats() {
@@ -65,7 +81,7 @@ public class Commands {
             return;
         }
         if (player.getLocation() instanceof Dungeon) {
-            if (enemyToAttackCheck((Dungeon) player.getLocation())&&skillCheck()){
+            if (enemyToAttackCheck((Dungeon) player.getLocation()) && skillCheck()) {
 
             }
         } else {
@@ -84,7 +100,7 @@ public class Commands {
         return false;
     }
 
-    private boolean skillCheck(){
+    private boolean skillCheck() {
         //TODO
         return false;
     }
@@ -123,7 +139,7 @@ public class Commands {
         System.out.println("You are not able to attack in peaceful territories");
     }
 
-    private void noSuchEnemy(){
+    private void noSuchEnemy() {
         System.out.println("No such enemy");
     }
 

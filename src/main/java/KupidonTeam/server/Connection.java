@@ -3,8 +3,6 @@ package KupidonTeam.server;
 import KupidonTeam.exceptions.FiledToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
 import KupidonTeam.login.SingIn;
-import KupidonTeam.utils.Logger;
-import KupidonTeam.utils.Timer;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
 
@@ -12,11 +10,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.sql.Time;
 import java.util.Properties;
 import java.util.Scanner;
 
+//Singleton
 public class Connection {
+    private static Connection connection;
     private Socket clientSocket;
     private String host;
     private int port;
@@ -26,8 +25,15 @@ public class Connection {
     private String serverResponse; //переменная отправленя ответа в другие методы
 
 
-    public Connection() {
+    private Connection() {
         setup();
+    }
+
+    public static Connection getConnection() {
+        if (connection == null) {
+            connection = new Connection();
+        }
+        return connection;
     }
 
     private void setup() {

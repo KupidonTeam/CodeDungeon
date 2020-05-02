@@ -1,5 +1,6 @@
 package KupidonTeam.DB;
 
+import KupidonTeam.exceptions.FailedBDConnection;
 import KupidonTeam.exceptions.PropertiesException;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
@@ -10,7 +11,9 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 
+//Использован паттерн SingleTone для избежания создания множественных экземпляров
 public class DBConnection {
+    private static DBConnection dbConnection;
     private Connection con;
     private int lport;
     private String rhost;
@@ -25,10 +28,11 @@ public class DBConnection {
     private String dbPassword;
 
 
-    public DBConnection() {
+    private DBConnection() throws FailedBDConnection {
         try {
             setUp();
         } catch (SQLException e) {
+            throw new FailedBDConnection();
         }
     }
 
@@ -105,5 +109,17 @@ public class DBConnection {
         } catch (IOException e) {
             throw new PropertiesException("CantLoadProperties");
         }
+    }
+
+    public static DBConnection getDbConnection() {
+        if (dbConnection == null) {
+            try {
+                dbConnection = new DBConnection();
+            } catch (FailedBDConnection failedBDConnection) {
+                System.err.println("DB connection FAILED");
+                failedBDConnection.printStackTrace();
+            }
+        }
+        return dbConnection;
     }
 }
