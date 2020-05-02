@@ -70,6 +70,7 @@ public class DBConnection {
     }
 
     public ResultSet select(String sql) {
+
         try {
             Statement st = con.createStatement();
             //String sql = "UPDATE Players SET race_id = 3 WHERE player_name = 'test'";

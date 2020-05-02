@@ -1,16 +1,18 @@
 package KupidonTeam.server;
 
-import KupidonTeam.DB.DBConnection;
 import KupidonTeam.exceptions.FiledToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
 import KupidonTeam.login.SingIn;
+import KupidonTeam.utils.Logger;
+import KupidonTeam.utils.Timer;
 import lombok.SneakyThrows;
+import org.json.JSONObject;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.sql.ResultSet;
+import java.sql.Time;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -19,32 +21,30 @@ public class Connection {
     private String host;
     private int port;
     private Scanner inMessage;
-    private static PrintWriter outMessage;
-    private DBConnection database;
+    private PrintWriter outMessage;
     private SingIn singIn;
+    private String serverResponse; //переменная отправленя ответа в другие методы
 
 
-    public Connection(){
+    public Connection() {
         setup();
-
     }
 
-    private void setup(){
+    private void setup() {
         try {
             setProperties();
-        }catch (PropertiesException e){
+        } catch (PropertiesException e) {
             e.printStackTrace();
         }
         try {
             connection();
-        }catch (IOException e){
-            System.err.println("Socket fail ");
-            e.printStackTrace();
+//            sendMessageToServer("lolololololol");
+            serverListener(clientSocket);
+            singIn = new SingIn(this);
+        } catch (IOException e) {
+            System.err.println("Socket connection failed ");
         }
-        //database = new DBConnection();
-        serverListener(clientSocket);
-//        singIn = new SingIn(this); //для локальных тестов, для коннекта нуже new SingIn(Connection con)
-        sendMessageToServer("lolololololol");
+
     }
 
     private void connection() throws IOException {
@@ -54,6 +54,7 @@ public class Connection {
             clientSocket = new Socket(host, port);
             inMessage = new Scanner(clientSocket.getInputStream());
             outMessage = new PrintWriter(clientSocket.getOutputStream());
+
         } catch (FiledToConnectException ex) {
             System.err.println("can not connect to server");
             clientSocket.close();
@@ -62,7 +63,7 @@ public class Connection {
         System.out.println("connected successful");
     }
 
-    public static void sendMessageToServer() {
+    public void sendMessageToServer() {
         Scanner input = new Scanner(System.in);
         while (true) {
             String buff = input.next();
@@ -73,7 +74,7 @@ public class Connection {
         }
     }
 
-    public static void sendMessageToServer(String msg) {
+    public void sendMessageToServer(String msg) {
 
         if (!msg.isEmpty()) {
             outMessage.println(msg);
@@ -93,8 +94,9 @@ public class Connection {
                         // если есть входящее сообщение
                         if (inMessage.hasNext()) {
                             // считываем его
-                            String inMes = new String(inMessage.nextLine());
+                            String inMes = inMessage.nextLine();
                             // выводим сообщение
+                            responseAnalyzer(inMes);
                             System.out.println(inMes);
                         }
                     }
@@ -106,13 +108,22 @@ public class Connection {
     }
 
 
-    private void analyzeServer(String msg) {
-
+    //Анализируем ответ сервера и запускаем соответствующие методы
+    private void responseAnalyzer(String msg) {
+        String action = new JSONObject(msg).getString("action");
+        switch (action) {
+            case "authorizationPlayer":
+                singIn.serverResponse(msg);
+                break;
+            default:
+                System.err.println("Wrong server response");
+        }
     }
 
     private void setProperties() throws PropertiesException {
         Properties properties;
         try {
+            String propFile = "src/main/resources/connection.properties";
             properties = new Properties();
             properties.load(new FileInputStream("src/main/resources/connection.properties"));
             host = properties.getProperty("host");
@@ -124,9 +135,6 @@ public class Connection {
 
     }
 
-    public ResultSet DBselect(String sql){
-       return database.select(sql);
-    }
 
 }
 

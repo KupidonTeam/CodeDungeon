@@ -23,10 +23,15 @@ public class JSON {
     }
      */
 
-    public static void deserialize(String json){
+    public static void deserialize(String json) {
         JSONObject jsonObject = new JSONObject(json);
-        System.out.println("hey"+jsonObject);
+        System.out.println("hey" + jsonObject);
         String key = jsonObject.getString("key");
         System.out.println(key);
+    }
+
+    //удаляем перенос на новую строку и пробелы
+    public static String normalize(String json) {
+        return json.replaceAll("\n| ", "");
     }
 }
