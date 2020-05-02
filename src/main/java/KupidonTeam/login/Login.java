@@ -1,9 +1,5 @@
 package KupidonTeam.login;
 
-/**
- *
- * @author alina
- */
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -38,17 +34,20 @@ public class Login extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(250, 218, 94));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("./src/main/resources/images/sword200_3.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon("./src/main/resources/images/sword200_3.png")); // NOI18N
+        jLabel2.setText("");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("./src/main/resources/images/logo_white.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("./src/main/resources/images/logo_white.png")); // NOI18N
         jLabel3.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -112,6 +111,7 @@ public class Login extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -134,6 +134,7 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jPasswordField3.setForeground(new java.awt.Color(51, 51, 51));
+        jPasswordField3.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         jPanel1.add(jPasswordField3);
         jPasswordField3.setBounds(360, 210, 220, 30);
 

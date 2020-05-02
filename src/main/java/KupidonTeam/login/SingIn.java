@@ -49,13 +49,12 @@ public class SingIn {
                     String st = result.getString("player_name");
                     System.out.println(st.isEmpty());
                 }
-            }
-            else{
+            } else {
                 System.out.println("Name is free");
             }
-            } catch(SQLException e){
-                e.printStackTrace();
-                System.err.println("Wrong query");
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Wrong query");
+        }
     }
 }
