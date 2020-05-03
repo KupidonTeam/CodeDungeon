@@ -6,6 +6,7 @@ import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
 import KupidonTeam.utils.Timer;
 
+import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -111,7 +112,7 @@ public class SignLogic {
     //отправляем запрос сереверу на авторизацию
     public void serverAuthorization(String username, String password) {
         String msg = String.format("{\n" +
-                "    \"action\": \"authorizationPlayer\",\n" +
+                "    \"action\": \"playerAuthorization\",\n" +
                 "    \"data\":{\n" +
                 "        \"player_name\": \"%s\",\n" +
                 "        \"player_password\": \"%s\"\n" +
@@ -121,9 +122,14 @@ public class SignLogic {
         server.sendMessageToServer(msg);
 
         //устанавливам таймер в 5 сек, если по истечению их не поступить ответ от сервера, выводим ошибку
-        Timer.timer(5000);
+        Timer.timer(10000);
         if (!responseFlag) {
             System.err.println("Server does not response");
+            JOptionPane.showMessageDialog(null,
+                    "Server does not response!\nPlease restart the application.",
+                    "SERVER ERROR",
+                    JOptionPane.ERROR_MESSAGE);
+            System.exit(-200);
         }
     }
 

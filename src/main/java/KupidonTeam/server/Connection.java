@@ -118,7 +118,7 @@ public class Connection {
     private void responseAnalyzer(String msg) {
         String action = new JSONObject(msg).getString("action");
         switch (action) {
-            case "authorizationPlayer":
+            case "playerAuthorization":
                 signLogic.serverResponse(msg);
                 break;
             default:
