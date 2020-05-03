@@ -2,7 +2,7 @@ package KupidonTeam.server;
 
 import KupidonTeam.exceptions.FiledToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
-import KupidonTeam.login.SingIn;
+import KupidonTeam.login.SignLogic;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
 
@@ -21,7 +21,7 @@ public class Connection {
     private int port;
     private Scanner inMessage;
     private PrintWriter outMessage;
-    private SingIn singIn;
+    private SignLogic signLogic;
     private String serverResponse; //переменная отправленя ответа в другие методы
 
 
@@ -46,7 +46,7 @@ public class Connection {
             connection();
 //            sendMessageToServer("lolololololol");
             serverListener(clientSocket);
-            singIn = new SingIn(this);
+//            singIn = SingIn.getSingIn();
         } catch (IOException e) {
             System.err.println("Socket connection failed ");
         }
@@ -119,7 +119,7 @@ public class Connection {
         String action = new JSONObject(msg).getString("action");
         switch (action) {
             case "authorizationPlayer":
-                singIn.serverResponse(msg);
+                signLogic.serverResponse(msg);
                 break;
             default:
                 System.err.println("Wrong server response");
@@ -139,6 +139,20 @@ public class Connection {
         }
 
 
+    }
+
+    public void closeConnection() {
+        try {
+            clientSocket.close();
+            if (clientSocket.isClosed()) {
+                System.out.println("Server is closed");
+            } else
+                System.err.println("Server isn't closed !!!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            System.exit(-200);
+        }
     }
 
 

@@ -1,19 +1,16 @@
 package KupidonTeam;
 
-import KupidonTeam.login.SingIn;
-import KupidonTeam.server.Connection;
+import KupidonTeam.GUI.Login;
 
-import java.io.IOException;
+import javax.swing.*;
 
 public class Game {
     public static void main(String[] args) {
-
-//        Scanner in = new Scanner(System.in);
-        //new GameStateController().stateSwitcher();
-        Connection connection = new Connection();
-//        new SingIn();
-//        DBConnection dbConnection = new DBConnection();
-//        dbConnection.connection();
+        JFrame mainFrame = new JFrame();
+        //Connection connection = Connection.getConnection();
+        // SingIn singIn = SingIn.getSingIn();
+        mainFrame = new Login();
+        mainFrame.setVisible(true);
 
 
     }

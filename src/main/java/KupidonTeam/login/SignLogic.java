@@ -12,8 +12,9 @@ import java.util.Scanner;
 
 //Авторизация игрока и подключения модуля баз данных
 
-public class SingIn {
-    private String name;
+public class SignLogic {
+    private static SignLogic signLogic;
+    private String username;
     private String password;
     private Scanner input;
     private Connection server;
@@ -23,17 +24,17 @@ public class SingIn {
 
 //    public SingIn() {
 //
-//        input = new Scanner(System.in);
-//        database = new DBConnection();
-//        registration();
+//        //input = new Scanner(System.in);
+//        database = DBConnection.getDbConnection();
+//       // registration();
 //    }
 
-    public SingIn(Connection server) {
-        this.server = server;
-        input = new Scanner(System.in);
+    private SignLogic() {
+        this.server = Connection.getConnection();
+        // input = new Scanner(System.in);
         database = DBConnection.getDbConnection();
         responseFlag = false;
-        singInUp();
+        //singInUp();
     }
 
 
@@ -45,10 +46,10 @@ public class SingIn {
             action = input.nextLine();
             switch (action) {
                 case "/registration":
-                    registration();
+                    // registration();
                     break;
                 case "/authorization":
-                    authorization();
+                    // authorization();
                     break;
                 default:
                     System.out.println("No such option!\nPlease type '/registration' or '/authorization'");
@@ -59,68 +60,64 @@ public class SingIn {
     }
 
     //TODO
-    private void registration() {
-        System.out.println("Input Login : ");
-        name = input.nextLine();
-        if (checkUserName(name) == 0) {
+//    private void registration() {
+//        System.out.println("Input Login : ");
+//        name = input.nextLine();
+//        if (checkUserName(name) == 0) {
+//
+//        }
+//        //server.sendMessageToServer();
+//    }
 
-        }
-        //server.sendMessageToServer();
-    }
 
-
-    private void authorization() {
-        String name;
-        String password;
-        System.out.println("«Authorization»");
-        do {
-            System.out.print("Name : ");
-            name = input.nextLine();
-            System.out.print("\nPassword : ");
-            password = input.nextLine();
-            if (checkUserName(name) != 1) {
-                System.out.println("User with such name does not exist.");
-            }
-        } while (checkUserName(name) == 1);
-        serverAuthorization(name, password);
-    }
+//    private void authorization() {
+//        String name;
+//        String password;
+//        System.out.println("«Authorization»");
+//        do {
+//            System.out.print("Name : ");
+//            name = input.nextLine();
+//            System.out.print("\nPassword : ");
+//            password = input.nextLine();
+//            if (checkUserName(name) != 1) {
+//                System.out.println("User with such name does not exist.");
+//            }
+//        } while (checkUserName(name) == 1);
+//        serverAuthorization(name, password);
+//    }
 
     //Возвращаем 1 = имя есть в БД, 0 = имени нет, -1 = не правильный запрос
-    private int checkUserName(String name) {
+    public boolean checkUserName(String name) {
         try {
+            String query = String.format(
+                    "(SELECT player_name FROM `Players` WHERE player_name = '%s' );", name);
+            System.out.println("My query = " + query);
             ResultSet result = database.select(
-                    String.format(
-                            "(SELECT player_name FROM `Players` WHERE player_name = '%s');", name));
+                    query);
 
             if (result.next()) {
-                while (result.next()) {
-                    String st = result.getString("player_name");
-                    if (st.equalsIgnoreCase(name)) {
-                        return 1;
-                    }
-                }
+                String res = result.getString("player_name");
+                if (res.equalsIgnoreCase(name)) return true;
             } else {
-                System.out.println("Name is free");
-                return 0;
+                System.err.println("Empty query");
             }
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Wrong query");
         }
-        return -1;
+        return false;
     }
 
     //отправляем запрос сереверу на авторизацию
-    private void serverAuthorization(String name, String password) {
+    public void serverAuthorization(String username, String password) {
         String msg = String.format("{\n" +
                 "    \"action\": \"authorizationPlayer\",\n" +
                 "    \"data\":{\n" +
                 "        \"player_name\": \"%s\",\n" +
                 "        \"player_password\": \"%s\"\n" +
                 "    }\n" +
-                "}\n", name, password);
+                "}\n", username, password);
         msg = JSON.normalize(msg);
-
         server.sendMessageToServer(msg);
 
         //устанавливам таймер в 5 сек, если по истечению их не поступить ответ от сервера, выводим ошибку
@@ -128,6 +125,10 @@ public class SingIn {
         if (!responseFlag) {
             System.err.println("Server does not response");
         }
+    }
+
+    public void serverRegistration(String username, String password) {
+
     }
 
     public void serverResponse(String msg) {
@@ -141,6 +142,19 @@ public class SingIn {
     private Player createPLayer(String json) {
         return null;
 
+    }
+
+    public void closeAll() {
+        database.closeConnection();
+        server.closeConnection();
+        System.exit(0);
+    }
+
+    public static SignLogic getSignLogic() {
+        if (signLogic == null) {
+            signLogic = new SignLogic();
+        }
+        return signLogic;
     }
 
 }

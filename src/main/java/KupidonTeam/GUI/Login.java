@@ -1,11 +1,24 @@
-package KupidonTeam.login;
+package KupidonTeam.GUI;
 
+import KupidonTeam.login.SignLogic;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+@SuppressWarnings("unchecked")
 public class Login extends javax.swing.JFrame {
+
+    private SignLogic signLogic;
 
     /**
      * Creates new form Login
      */
     public Login() {
+
+        signLogic = SignLogic.getSignLogic();
         initComponents();
     }
 
@@ -84,6 +97,16 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jLabel1.setPreferredSize(new java.awt.Dimension(33, 33));
 
+        //добавляем закрытие окна
+        jLabel1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                dispose();
+                signLogic.closeAll();
+            }
+        });
+
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -124,7 +147,7 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Username");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(360, 120, 120, 20);
+        jLabel5.setBounds(360, 120, 180, 20);
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -145,6 +168,27 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jLabel8);
         jLabel8.setBounds(360, 410, 220, 20);
 
+        //открывает регистрацию по нажатию
+        jLabel8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new SignUp().setVisible(true);
+                dispose();
+
+            }
+        });
+
+
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -161,6 +205,16 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(420, 360, 100, 40);
 
+        //login button
+        jButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                loginCheck();
+                System.out.println("pressed");
+            }
+        });
+
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,6 +226,8 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
         );
 
+        setSize(new java.awt.Dimension(616, 457));
+        setLocationRelativeTo(null);
         pack();
     }// </editor-fold>
 
@@ -179,39 +235,60 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Login().setVisible(true);
+//            }
+//        });
+//    }
+
+    private void loginCheck() {
+        String username = jTextField1.getText();
+        String password = new String(jPasswordField3.getPassword());
+        System.out.println(username.isEmpty());
+        if (username.isEmpty()) {
+            jLabel5.setText(jLabel5.getText() + " - REQUIRED");
+            jLabel5.setForeground(Color.RED);
+        } else if (password.isEmpty()) {
+            jLabel6.setText(jLabel6.getText() + " - REQUIRED");
+            jLabel6.setForeground(Color.RED);
+        } else {
+            System.out.println(signLogic.checkUserName(username));
+            if (signLogic.checkUserName(username)) {
+                //  System.out.println("I AM HERE");
+                signLogic.serverAuthorization(username, password);
+
+            } else {
+                jLabel5.setText(jLabel5.getText() + " - no such user");
+                jLabel5.setForeground(Color.RED);
             }
-        });
+        }
     }
 
     // Variables declaration - do not modify

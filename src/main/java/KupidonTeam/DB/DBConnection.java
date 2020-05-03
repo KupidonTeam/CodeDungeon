@@ -122,4 +122,19 @@ public class DBConnection {
         }
         return dbConnection;
     }
+
+    public void closeConnection() {
+        try {
+            con.close();
+            if (con.isClosed()) {
+                System.out.println("DB is closed");
+            } else {
+                System.err.println("Can not close DB");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }
