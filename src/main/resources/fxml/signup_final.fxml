@@ -67,13 +67,13 @@
                 </image>
             </ImageView>
             <Label fx:id="loginLink" layoutX="182.0" layoutY="413.0" text="Already a member? Click here to Login"
-                   textFill="#816d64">
+                   textFill="#816d64" style="-fx-cursor: hand;">
                 <font>
                     <Font name="Century" size="14.0"/>
                 </font>
             </Label>
             <ImageView fx:id="closeWindowButton" fitHeight="50.0" fitWidth="50.0" layoutX="542.0" layoutY="22.0"
-                       pickOnBounds="true" preserveRatio="true">
+                       pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                 <image>
                     <Image url="@/KupidonTeam/fxml/assets/GUI_Parts/Gui_parts/button_cancel.png"/>
                 </image>
@@ -84,7 +84,7 @@
                 </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="406.0" layoutY="340.0" prefHeight="40.0" prefWidth="98.0" text="Sign Up"
-                   textAlignment="CENTER" textFill="#816d64">
+                   textAlignment="CENTER" textFill="#816d64" style="">
                 <font>
                     <Font name="Century" size="18.0"/>
                 </font>
@@ -109,7 +109,7 @@
                 </font>
             </PasswordField>
             <Button fx:id="signUpButton" defaultButton="true" layoutX="410.0" layoutY="340.0" mnemonicParsing="false"
-                    prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: none;"/>
+                    prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: none; -fx-cursor: hand;"/>
         </children>
     </Pane>
 </AnchorPane>

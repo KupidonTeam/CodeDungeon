@@ -2,6 +2,7 @@ package KupidonTeam.fxml;
 
 import KupidonTeam.login.SignLogic;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -75,6 +76,8 @@ public class SingUpController {
                 e.printStackTrace();
             }
         });
+
+
     }
 
     private void loginCheck() {
