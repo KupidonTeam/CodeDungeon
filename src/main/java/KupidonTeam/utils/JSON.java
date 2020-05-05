@@ -34,4 +34,5 @@ public class JSON {
     public static String normalize(String json) {
         return json.replaceAll("\n| ", "");
     }
+
 }

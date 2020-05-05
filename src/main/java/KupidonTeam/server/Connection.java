@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -49,6 +50,7 @@ public class Connection {
 //            singIn = SingIn.getSingIn();
         } catch (IOException e) {
             System.err.println("Socket connection failed ");
+            System.exit(-500);
         }
 
     }
@@ -152,6 +154,22 @@ public class Connection {
             e.printStackTrace();
         } finally {
             System.exit(-200);
+        }
+    }
+
+    public void setTimeOut(int timeOut) {
+        try {
+            clientSocket.setSoTimeout(timeOut);
+        } catch (SocketException e) {
+            System.err.println("Failed add timeOut to socket");
+        }
+    }
+
+    public void disableTimeOut() {
+        try {
+            clientSocket.setSoTimeout(0);
+        } catch (SocketException e) {
+            System.err.println("Failed to disable socket timeOut");
         }
     }
 

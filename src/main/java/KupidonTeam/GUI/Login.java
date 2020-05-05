@@ -12,14 +12,22 @@ import java.awt.event.MouseEvent;
 public class Login extends javax.swing.JFrame {
 
     private SignLogic signLogic;
+    private static Login loginFrame;
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    private Login() {
 
         signLogic = SignLogic.getSignLogic();
         initComponents();
+    }
+
+    public static Login getLogin() {
+        if (loginFrame == null) {
+            loginFrame = new Login();
+        }
+        return loginFrame;
     }
 
     /**
