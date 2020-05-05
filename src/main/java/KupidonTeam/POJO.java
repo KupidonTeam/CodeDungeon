@@ -1,23 +1,48 @@
 package KupidonTeam;
 
-public class POJO {
-    String name;
-    String lastName;
-    POJO(){}
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
+import static javafx.application.Application.launch;
+
+public class POJO extends Application {
+
+    public POJO(String a, String[] args) {
+        System.out.println(a);
+        launch(POJO.class, args);
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Hello World!");
+        Button btn = new Button();
+        btn.setText("Say 'Hello World'");
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Hello World!");
+            }
+        });
+
+        StackPane root = new StackPane();
+        root.getChildren().add(btn);
+        primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.show();
     }
 
-    public String getLastName() {
-        return lastName;
-    }
 
-    public String getName() {
-        return name;
-    }
 }

@@ -9,17 +9,17 @@
    <children>
       <ImageView fitHeight="457.0" fitWidth="616.0">
          <image>
-            <Image url="@codeDungeon_Assets/GUI_Parts/Gui_parts/my_background.png" />
+            <Image url="@assets/GUI_Parts/Gui_parts/my_background.png"/>
          </image>
       </ImageView>
       <ImageView fitHeight="265.0" fitWidth="289.0" layoutX="163.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@start_images/kupidon_logo11.png" />
+            <Image url="@assets/start_images/kupidon_logo11.png"/>
          </image>
       </ImageView>
       <ImageView fitHeight="68.0" fitWidth="200.0" layoutX="208.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@start_images/kupodpn_text.png" />
+            <Image url="@assets/start_images/kupodpn_text.png"/>
          </image>
       </ImageView>
    </children>

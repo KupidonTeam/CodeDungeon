@@ -1,10 +1,14 @@
 package KupidonTeam.login;
 
 import KupidonTeam.DB.DBConnection;
+import KupidonTeam.GUI.Login;
+import KupidonTeam.Game;
+import KupidonTeam.fxml.ChatWrapper;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
 import KupidonTeam.utils.Timer;
+import javafx.application.Application;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -120,9 +124,8 @@ public class SignLogic {
                 "}\n", username, password);
         msg = JSON.normalize(msg);
         server.sendMessageToServer(msg);
-
-        //устанавливам таймер в 5 сек, если по истечению их не поступить ответ от сервера, выводим ошибку
-        Timer.timer(10000);
+        System.out.println("------Set socket timeout 5 sec-------");
+        server.setTimeOut(5000);
         if (!responseFlag) {
             System.err.println("Server does not response");
             JOptionPane.showMessageDialog(null,
@@ -141,6 +144,8 @@ public class SignLogic {
         //подтверждаем ответ
         responseFlag = true;
         System.out.println(msg);
+        Login.getLogin().dispose();
+        Application.launch(ChatWrapper.class, Game.argz);
 
     }
 

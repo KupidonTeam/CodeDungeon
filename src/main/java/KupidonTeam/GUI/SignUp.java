@@ -239,7 +239,7 @@ public class SignUp extends javax.swing.JFrame {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                new Login().setVisible(true);
+                Login.getLogin().setVisible(true);
                 dispose();
 
             }
