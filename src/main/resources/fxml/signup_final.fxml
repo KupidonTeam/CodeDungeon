@@ -10,8 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.fxml.SingUpController">
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="KupidonTeam.fxml.SingUpController">
 
 
     <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0"
@@ -66,8 +67,8 @@
                     <Image url="@/KupidonTeam/fxml/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                 </image>
             </ImageView>
-            <Label fx:id="loginLink" layoutX="182.0" layoutY="413.0" text="Already a member? Click here to Login"
-                   textFill="#816d64" style="-fx-cursor: hand;">
+            <Label fx:id="loginLink" layoutX="182.0" layoutY="413.0" style="-fx-cursor: hand;"
+                   text="Already a member? Click here to Login" textFill="#816d64">
                 <font>
                     <Font name="Century" size="14.0"/>
                 </font>
@@ -83,8 +84,8 @@
                     <Image url="@/KupidonTeam/fxml/assets/GUI_Parts/Gui_parts/name_bar2.png"/>
                 </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="406.0" layoutY="340.0" prefHeight="40.0" prefWidth="98.0" text="Sign Up"
-                   textAlignment="CENTER" textFill="#816d64" style="">
+            <Label alignment="CENTER" layoutX="406.0" layoutY="340.0" prefHeight="40.0" prefWidth="98.0" style=""
+                   text="Sign Up" textAlignment="CENTER" textFill="#816d64">
                 <font>
                     <Font name="Century" size="18.0"/>
                 </font>

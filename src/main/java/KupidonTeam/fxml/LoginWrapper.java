@@ -7,17 +7,19 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class Wrapper extends Application {
+public class LoginWrapper extends Application {
     private static Stage currentStage;
+    private static Scene scene;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         currentStage = primaryStage;
-        String path = "/fxml/signup_final.fxml";
+        String path = "/fxml/login.fxml";
         primaryStage.initStyle(StageStyle.UNDECORATED);
         FXMLLoader loader = new FXMLLoader();
         Parent root = loader.load(getClass().getResourceAsStream(path));
-        primaryStage.setScene(new Scene(root));
+        scene = new Scene(root);
+        primaryStage.setScene(scene);
         primaryStage.show();
 
     }
@@ -27,6 +29,14 @@ public class Wrapper extends Application {
     }
 
     public static void setCurrentStage(Stage currentStage) {
-        Wrapper.currentStage = currentStage;
+        LoginWrapper.currentStage = currentStage;
+    }
+
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+
+    public static Scene getScene() {
+        return scene;
     }
 }

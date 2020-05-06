@@ -43,26 +43,26 @@ public class SignLogic {
     }
 
 
-    private void singInUp() {
-//TODO regFlag doesn't change
-        String action;
-        boolean regFlag = false;
-        while (!regFlag) {
-            action = input.nextLine();
-            switch (action) {
-                case "/registration":
-                    // registration();
-                    break;
-                case "/authorization":
-                    // authorization();
-                    break;
-                default:
-                    System.out.println("No such option!\nPlease type '/registration' or '/authorization'");
-                    break;
-            }
-        }
+//    private void singInUp() {
 
-    }
+//        String action;
+//        boolean regFlag = false;
+//        while (!regFlag) {
+//            action = input.nextLine();
+//            switch (action) {
+//                case "/registration":
+//                    // registration();
+//                    break;
+//                case "/authorization":
+//                    // authorization();
+//                    break;
+//                default:
+//                    System.out.println("No such option!\nPlease type '/registration' or '/authorization'");
+//                    break;
+//            }
+//        }
+//
+//    }
 
     //TODO
 //    private void registration() {
@@ -125,7 +125,11 @@ public class SignLogic {
         msg = JSON.normalize(msg);
         server.sendMessageToServer(msg);
         System.out.println("------Set socket timeout 5 sec-------");
-        server.setTimeOut(5000);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (!responseFlag) {
             System.err.println("Server does not response");
             JOptionPane.showMessageDialog(null,

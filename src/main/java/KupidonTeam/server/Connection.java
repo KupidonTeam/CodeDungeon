@@ -123,6 +123,8 @@ public class Connection {
             case "playerAuthorization":
                 signLogic.serverResponse(msg);
                 break;
+            case "receiveMessage":
+                signLogic.serverResponse("connected");
             default:
                 System.err.println("Wrong server response");
         }
@@ -135,6 +137,7 @@ public class Connection {
             properties = new Properties();
             properties.load(new FileInputStream("src/main/resources/connection.properties"));
             host = properties.getProperty("host");
+            System.out.println("Host = " + host);
             port = Integer.parseInt(properties.getProperty("port"));
         } catch (IOException e) {
             throw new PropertiesException("CantFindPropertiesFile");
@@ -161,6 +164,7 @@ public class Connection {
         try {
             clientSocket.setSoTimeout(timeOut);
         } catch (SocketException e) {
+            e.printStackTrace();
             System.err.println("Failed add timeOut to socket");
         }
     }

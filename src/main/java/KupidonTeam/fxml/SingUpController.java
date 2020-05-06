@@ -1,21 +1,31 @@
 package KupidonTeam.fxml;
 
 import KupidonTeam.login.SignLogic;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.EventListener;
 import java.util.ResourceBundle;
 
 public class SingUpController {
+
+    @FXML
+    private javafx.scene.layout.AnchorPane AnchorPane;
 
     @FXML
     private ResourceBundle resources;
@@ -65,11 +75,11 @@ public class SingUpController {
 
         signUpButton.setOnAction((ev) -> {
             loginCheck();
-            signUpButton.setDisable(true);
+
         });
 
         closeWindowButton.setOnMouseClicked(event -> {
-            Wrapper.getCurrentStage().close();
+            LoginWrapper.getCurrentStage().close();
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
@@ -77,6 +87,7 @@ public class SingUpController {
             }
         });
 
+        loginLink.setOnMouseClicked(ev -> loadLogin());
 
     }
 
@@ -107,6 +118,33 @@ public class SingUpController {
             }
         }
     }
+
+    private void loadLogin() {
+        String path = "/fxml/login.fxml";
+        LoginWrapper.getCurrentStage().setScene(SignUpWrapper.getScene());
+        Parent parent;
+        FXMLLoader loader = new FXMLLoader();
+        try {
+            parent = loader.load(getClass().getResourceAsStream(path));
+            Scene newScene = new Scene(parent);
+            LoginWrapper.getCurrentStage().setScene(newScene);
+            LoginWrapper.getCurrentStage().show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+//    private void switchToLogin() {
+//        FadeTransition fadeTransition = new FadeTransition(Duration.millis(300));
+//
+//        fadeTransition.setFromValue(1);
+//        fadeTransition.setToValue(0);
+//        fadeTransition.setOnFinished(ev->loadLogin());
+//        fadeTransition.play();
+//    }
 
 
 }
