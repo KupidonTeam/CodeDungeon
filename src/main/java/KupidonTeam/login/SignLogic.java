@@ -36,10 +36,8 @@ public class SignLogic {
 
     private SignLogic() {
         this.server = Connection.getConnection();
-        // input = new Scanner(System.in);
         database = DBConnection.getDbConnection();
         responseFlag = false;
-        //singInUp();
     }
 
 

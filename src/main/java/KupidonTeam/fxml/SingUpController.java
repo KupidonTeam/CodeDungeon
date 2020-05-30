@@ -1,10 +1,8 @@
 package KupidonTeam.fxml;
 
 import KupidonTeam.login.SignLogic;
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,14 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.EventListener;
 import java.util.ResourceBundle;
 
 public class SingUpController {
@@ -80,11 +74,7 @@ public class SingUpController {
 
         closeWindowButton.setOnMouseClicked(event -> {
             LoginWrapper.getCurrentStage().close();
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            SignLogic.getSignLogic().closeAll();
         });
 
         loginLink.setOnMouseClicked(ev -> loadLogin());

@@ -20,19 +20,19 @@
         <children>
             <ImageView fx:id="stage" fitHeight="457.0" fitWidth="616.0">
                 <image>
-                    <Image url="@/KupidonTeam/fxml/assets/GUI_Parts/Gui_parts/my_background.png"/>
+                    <Image url="@/assets/GUI_Parts/Gui_parts/my_background.png"/>
                 </image>
             </ImageView>
             <ImageView fitHeight="302.0" fitWidth="359.0" layoutX="81.0" layoutY="78.0" pickOnBounds="true"
                        preserveRatio="true">
                 <image>
-                    <Image url="@/KupidonTeam/fxml/assets/signup/woman_and_man.png"/>
+                    <Image url="@/assets/signup/woman_and_man.png"/>
                 </image>
             </ImageView>
             <ImageView fitHeight="79.0" fitWidth="210.0" layoutX="196.0" layoutY="29.0" pickOnBounds="true"
                        preserveRatio="true">
                 <image>
-                    <Image url="@/KupidonTeam/fxml/assets/signup/logo_black_bej.png"/>
+                    <Image url="@/assets/signup/logo_black_bej.png"/>
                 </image>
             </ImageView>
             <Label fx:id="usernameLabel" layoutX="361.0" layoutY="96.0" prefHeight="20.0" prefWidth="100.0"
@@ -54,17 +54,17 @@
             </Label>
             <ImageView fitHeight="40.0" fitWidth="193.0" layoutX="361.0" layoutY="119.0">
                 <image>
-                    <Image url="@/KupidonTeam/fxml/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                    <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                 </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="193.0" layoutX="361.0" layoutY="197.0">
                 <image>
-                    <Image url="@/KupidonTeam/fxml/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                    <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                 </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="193.0" layoutX="361.0" layoutY="273.0">
                 <image>
-                    <Image url="@/KupidonTeam/fxml/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                    <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                 </image>
             </ImageView>
             <Label fx:id="loginLink" layoutX="182.0" layoutY="413.0" style="-fx-cursor: hand;"
@@ -76,12 +76,12 @@
             <ImageView fx:id="closeWindowButton" fitHeight="50.0" fitWidth="50.0" layoutX="542.0" layoutY="22.0"
                        pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                 <image>
-                    <Image url="@/KupidonTeam/fxml/assets/GUI_Parts/Gui_parts/button_cancel.png"/>
+                    <Image url="@/assets/GUI_Parts/Gui_parts/button_cancel.png"/>
                 </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="406.0" layoutY="340.0">
                 <image>
-                    <Image url="@/KupidonTeam/fxml/assets/GUI_Parts/Gui_parts/name_bar2.png"/>
+                    <Image url="@/assets/GUI_Parts/Gui_parts/name_bar2.png"/>
                 </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="406.0" layoutY="340.0" prefHeight="40.0" prefWidth="98.0" style=""

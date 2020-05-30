@@ -1,22 +1,18 @@
 package KupidonTeam.fxml;
 
 import KupidonTeam.login.SignLogic;
-import javafx.animation.*;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.Bloom;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +22,7 @@ public class LoginController {
 
     @FXML
     private AnchorPane MainPane;
-    ;
+
 
     @FXML
     private ResourceBundle resources;
@@ -69,8 +65,15 @@ public class LoginController {
 
         loginButton.setOnMouseClicked(ev -> loginCheck());
         closeButton.setOnMouseClicked(ev -> {
-            LoginWrapper.getCurrentStage().close();
-            SignLogic.getSignLogic().closeAll();
+            try {
+                LoginWrapper.getCurrentStage().close();
+                SignLogic.getSignLogic().closeAll();
+            } catch (Exception ex) {
+                System.err.println("Close problem occurred");
+                ex.printStackTrace();
+            } finally {
+                System.exit(0);
+            }
 
         });
         signUpLink.setOnMouseClicked(ev -> {
@@ -94,7 +97,6 @@ public class LoginController {
             SignLogic signLogic = SignLogic.getSignLogic();
             System.out.println(signLogic.checkUserName(username));
             if (signLogic.checkUserName(username)) {
-                //  System.out.println("I AM HERE");
                 signLogic.serverAuthorization(username, password);
 
             } else {
