@@ -9,8 +9,8 @@ public class City extends Room {
         super();
     }
 
-    public City(int roomId, List<Direction> availableDirections, String roomDescription) {
-        super(roomId, availableDirections, roomDescription);
+    public City(int roomId, List<Direction> availableDirections, String roomName, String roomDescription) {
+        super(roomId, availableDirections, roomName, roomDescription);
     }
 }
 

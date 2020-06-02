@@ -2,13 +2,10 @@ package KupidonTeam.login;
 
 import KupidonTeam.DB.DBConnection;
 import KupidonTeam.GUI.Login;
-import KupidonTeam.Game;
-import KupidonTeam.fxml.ChatWrapper;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
-import KupidonTeam.utils.Timer;
-import javafx.application.Application;
+
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -147,7 +144,9 @@ public class SignLogic {
         responseFlag = true;
         System.out.println(msg);
         Login.getLogin().dispose();
-        Application.launch(ChatWrapper.class, Game.argz);
+
+        //!!!!!!! после успешного логина открываем основную панель
+        //Application.launch(ChatWrapper.class, Game.argz);
 
     }
 

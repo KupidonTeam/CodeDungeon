@@ -12,6 +12,7 @@ import java.util.List;
 public abstract class Room {
     private int roomId;
     private List<Direction> availableDirections;
+    private String roomName;
     private String roomDescription;
 
     public Room() {
@@ -20,9 +21,10 @@ public abstract class Room {
         roomDescription = "Start city";
     }
 
-    public Room(int roomId, List<Direction> availableDirections, String roomDescription) {
+    public Room(int roomId, List<Direction> availableDirections, String roomName, String roomDescription) {
         this.roomId = roomId;
         this.availableDirections = availableDirections;
+        this.roomName = roomName;
         this.roomDescription = roomDescription;
     }
 }

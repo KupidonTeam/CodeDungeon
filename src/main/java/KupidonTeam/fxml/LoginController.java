@@ -86,16 +86,16 @@ public class LoginController {
     private void loginCheck() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        System.out.println(username.isEmpty());
+        //System.out.println(username.isEmpty());
         if (username.isEmpty()) {
-            usernameLabel.setText(usernameLabel.getText() + " - REQUIRED");
+            usernameLabel.setText("Username - REQUIRED");
             usernameLabel.setTextFill(Color.RED);
         } else if (password.isEmpty()) {
-            passwordLabel.setText(passwordLabel.getText() + " - REQUIRED");
+            passwordLabel.setText("Password - REQUIRED");
             passwordLabel.setTextFill(Color.RED);
         } else {
             SignLogic signLogic = SignLogic.getSignLogic();
-            System.out.println(signLogic.checkUserName(username));
+            //System.out.println(signLogic.checkUserName(username));
             if (signLogic.checkUserName(username)) {
                 signLogic.serverAuthorization(username, password);
 

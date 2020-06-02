@@ -132,7 +132,7 @@ public class CharacterCreationController {
                 LoginWrapper.getCurrentStage().close();
                 SignLogic.getSignLogic().closeAll();
             } catch (Exception ex) {
-                System.err.println("Close problem occurred");
+                System.err.println("<!--------Close problem occurred---------!>");
                 ex.printStackTrace();
             } finally {
                 System.exit(0);

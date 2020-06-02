@@ -14,7 +14,7 @@ public class MainPane extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         currentStage = primaryStage;
-        String path = "/fxml/main.fxml";
+        String path = "/fxml/main_v2.fxml";
         primaryStage.initStyle(StageStyle.UNDECORATED);
         FXMLLoader loader = new FXMLLoader();
         Parent root = loader.load(getClass().getResourceAsStream(path));

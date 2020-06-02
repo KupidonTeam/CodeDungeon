@@ -15,12 +15,12 @@ public class Dungeon extends Room {
     private EnemyContainer enemies;
 
 
-    public Dungeon(int roomId, List<Direction> availableDirections, String roomDescription, EnemyContainer enemies) {
-        super(roomId, availableDirections, roomDescription);
+    public Dungeon(int roomId, List<Direction> availableDirections, String roomName, String roomDescription, EnemyContainer enemies) {
+        super(roomId, availableDirections, roomName, roomDescription);
         this.enemies = enemies;
     }
 
-    public EnemyContainer getEnemyContainer(){
+    public EnemyContainer getEnemyContainer() {
         return enemies;
     }
 }
