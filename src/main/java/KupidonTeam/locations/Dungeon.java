@@ -14,7 +14,6 @@ import java.util.List;
 public class Dungeon extends Room {
     private EnemyContainer enemies;
 
-
     public Dungeon(int roomId, List<Direction> availableDirections, String roomName, String roomDescription, EnemyContainer enemies) {
         super(roomId, availableDirections, roomName, roomDescription);
         this.enemies = enemies;

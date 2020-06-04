@@ -2,8 +2,8 @@ package KupidonTeam.exceptions;
 
 import com.jcraft.jsch.JSchException;
 
-public class FailedBDConnection extends JSchException {
-    public FailedBDConnection(){
+public class FailedDBConnection extends JSchException {
+    public FailedDBConnection(){
         super("Failed to connect to DB");
     }
 }

@@ -1,4 +1,4 @@
-package KupidonTeam.fxml;
+package KupidonTeam.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,17 +7,19 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class CharacterCreationWrapper extends Application {
+public class LoginWrapper extends Application {
     private static Stage currentStage;
+    private static Scene scene;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         currentStage = primaryStage;
-        String path = "/fxml/create_charachter.fxml";
+        String path = "/fxml/login.fxml";
         primaryStage.initStyle(StageStyle.UNDECORATED);
         FXMLLoader loader = new FXMLLoader();
         Parent root = loader.load(getClass().getResourceAsStream(path));
-        primaryStage.setScene(new Scene(root));
+        scene = new Scene(root);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
@@ -25,8 +27,15 @@ public class CharacterCreationWrapper extends Application {
         return currentStage;
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void setCurrentStage(Stage currentStage) {
+        LoginWrapper.currentStage = currentStage;
+    }
+
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+
+    public static Scene getScene() {
+        return scene;
     }
 }
-

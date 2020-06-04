@@ -9,7 +9,7 @@ import KupidonTeam.player.Player;
 import java.util.*;
 
 // TODO
-//Класс-контроллер боя
+// Класс-контроллер боя
 public class BattleController {
     private Battlestate battlestate;
     private Player mainPlayer;
@@ -27,6 +27,7 @@ public class BattleController {
         if (mainPlayer.getLocation() instanceof Dungeon) {
             enemies = ((Dungeon) mainPlayer.getLocation()).getEnemies();
         } else {
+
             return;
         }
 

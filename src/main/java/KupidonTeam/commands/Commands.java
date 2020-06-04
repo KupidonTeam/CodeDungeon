@@ -23,6 +23,7 @@ public class Commands {
 
     public void executeCommand(String command) {
         currentCommand = command.split(" ");
+
         if (command.charAt(0) != '/') {
             sendMessageToChat(command);
         } else {
@@ -39,7 +40,6 @@ public class Commands {
                     System.out.println("No such command");
             }
         }
-
     }
 
     private void sendMessageToChat(String msg) {
@@ -60,13 +60,17 @@ public class Commands {
 
     private void move() {
         System.out.println("move method");
+
         if (currentCommand.length < 2) {
             argumentMistake();
             return;
         }
+
         String direction = currentCommand[1].toUpperCase();
+
         if (directionInputCheck(direction)) {
             Direction dir = Direction.valueOf(direction);
+
             if (isAvailableDirection(dir)) {
                 //переход в др локацию
             } else {
@@ -78,40 +82,48 @@ public class Commands {
     private void attack() {
         if (currentCommand.length < 3) {
             wrongCommandInput();
+
             return;
         }
+
         if (player.getLocation() instanceof Dungeon) {
             if (enemyToAttackCheck((Dungeon) player.getLocation()) && skillCheck()) {
-
+                //TODO
             }
         } else {
             notDungeonWarning();
         }
-
     }
 
     private boolean enemyToAttackCheck(Dungeon dungeon) {
         for (Enemy enemy : dungeon.getEnemyContainer().getEnemies()) {
             if (enemy.getName().equalsIgnoreCase(currentCommand[1])) {
+
                 return true;
             }
         }
+
         noSuchEnemy();
+
         return false;
     }
 
     private boolean skillCheck() {
         //TODO
+
         return false;
     }
 
     private boolean directionInputCheck(String direction) {
         for (Direction dir : Direction.values()) {
             if (dir.toString().equals(direction)) {
+
                 return true;
             }
         }
+
         wrongCommandInput();
+
         return false;
     }
 
@@ -142,5 +154,4 @@ public class Commands {
     private void noSuchEnemy() {
         System.out.println("No such enemy");
     }
-
 }

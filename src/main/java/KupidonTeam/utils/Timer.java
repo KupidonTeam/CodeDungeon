@@ -4,6 +4,7 @@ package KupidonTeam.utils;
 public class Timer {
     public static boolean timer(long milliseconds) {
         milliseconds += System.currentTimeMillis();
+
         while (System.currentTimeMillis() < milliseconds) {
         }
         return true;

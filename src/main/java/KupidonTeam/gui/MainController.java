@@ -1,4 +1,4 @@
-package KupidonTeam.fxml;
+package KupidonTeam.gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,8 +7,6 @@ import KupidonTeam.login.SignLogic;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
-import javafx.animation.FadeTransition;
-import javafx.animation.FillTransition;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,10 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.util.Duration;
 
 public class MainController {
 
@@ -118,8 +113,6 @@ public class MainController {
     private Connection server;
     private Player player;
 
-
-
     @FXML
     void initialize() {
         assert carriedPane != null : "fx:id=\"carriedPane\" was not injected: check your FXML file 'main_v2.fxml'.";
@@ -152,6 +145,7 @@ public class MainController {
         assert expBar != null : "fx:id=\"expBar\" was not injected: check your FXML file 'main_v2.fxml'.";
 
         setUp();
+
         //TODO добавить сохранение прогресса перед закрытием
         exitButton.setOnMouseClicked(event -> {
             try {
@@ -175,7 +169,6 @@ public class MainController {
 
         bt1.setOnMouseClicked(event -> initInventory());
         bt2.setOnMouseClicked(event -> defeatDialog());
-
     }
 
     private void setUp() {
@@ -187,7 +180,6 @@ public class MainController {
     private void setUpTextPanes() {
         chatPane.setWrapText(true);
         chatPane.setPrefColumnCount(30);
-
     }
 
     //Примерный тест инвенторя
@@ -213,13 +205,11 @@ public class MainController {
 
         carriedPane.setContent(inventory);
         carriedPane.setStyle("-fx-background-color: red;");
-
     }
 
     private void initEnemies() {
 
     }
-
 
     //я просто проверял работу
     private void defeatDialog() {

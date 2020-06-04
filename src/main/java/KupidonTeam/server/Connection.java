@@ -28,7 +28,6 @@ public class Connection {
 
     private String buffer;
 
-
     private Connection() {
         setup();
     }
@@ -55,7 +54,6 @@ public class Connection {
             System.err.println("Socket connection failed ");
             System.exit(-500);
         }
-
     }
 
     private void connection() throws IOException {
@@ -111,6 +109,7 @@ public class Connection {
     //Анализируем ответ сервера и запускаем соответствующие методы
     private void responseAnalyzer(String msg) {
         String action = new JSONObject(msg).getString("action");
+
         switch (action) {
             case "playerAuthorization":
                 signLogic.serverResponse(msg);
@@ -135,13 +134,12 @@ public class Connection {
         } catch (IOException e) {
             throw new PropertiesException("CantFindPropertiesFile");
         }
-
-
     }
 
     public void closeConnection() {
         try {
             clientSocket.close();
+
             if (clientSocket.isClosed()) {
                 System.out.println("Server is closed");
             } else
@@ -169,7 +167,6 @@ public class Connection {
             System.err.println("Failed to disable socket timeOut");
         }
     }
-
 
     public String inboxMessage() {
         return "NEW msg";

@@ -1,18 +1,15 @@
-package KupidonTeam.fxml;
+package KupidonTeam.gui;
 
 import KupidonTeam.login.SignLogic;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +19,7 @@ public class CharacterCreationController {
 
     @FXML
     private Pane mainPane;
+
     @FXML
     private ResourceBundle resources;
 
@@ -91,10 +89,8 @@ public class CharacterCreationController {
     @FXML
     private Label wizardClass;
 
-
     @FXML
     private ImageView avatarImage;
-
 
     @FXML
     void initialize() {
@@ -126,7 +122,6 @@ public class CharacterCreationController {
                 .filtered(el -> el.getStyleClass().toString().contains("classes"))
                 .forEach(el -> el.setOnMouseClicked(event -> chooseClass(el.getId())));
 
-
         closeButton.setOnMouseClicked(ev -> {
             try {
                 LoginWrapper.getCurrentStage().close();
@@ -137,7 +132,6 @@ public class CharacterCreationController {
             } finally {
                 System.exit(0);
             }
-
         });
 
         avatarImage.setOnMouseClicked(event -> openAvatarWindow());
@@ -147,11 +141,10 @@ public class CharacterCreationController {
         String path = "/fxml/avatarPane.fxml";
         Parent parent;
         FXMLLoader loader = new FXMLLoader();
+
         try {
             parent = loader.load(getClass().getResourceAsStream(path));
             mainPane.getChildren().addAll(parent);
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -170,12 +163,10 @@ public class CharacterCreationController {
     }
 
     private void createCharacter() {
-
+        // TODO
     }
 
     public static void setAvatarImage(String imageName) {
-
+        // TODO
     }
-
-
 }

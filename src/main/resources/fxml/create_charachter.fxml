@@ -12,7 +12,7 @@
 
 
 <AnchorPane fx:id="parentPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="KupidonTeam.fxml.CharacterCreationController">
+            fx:controller="KupidonTeam.gui.CharacterCreationController">
     <children>
         <Pane fx:id="mainPane" prefHeight="457.0" prefWidth="616.0">
             <children>
@@ -281,13 +281,13 @@
                     </image>
                 </ImageView>
                 <RadioButton fx:id="maleRadioButton" layoutX="436.0" layoutY="348.0" mnemonicParsing="false"
-                             stylesheets="@css/radio-button.css" text="Male" textFill="#816d64">
+                             stylesheets="@/assets/css/radio-button.css" text="Male" textFill="#816d64">
                     <font>
                         <Font name="Century" size="14.0"/>
                     </font>
                 </RadioButton>
                 <RadioButton fx:id="femaleRadioButton" layoutX="509.0" layoutY="348.0" mnemonicParsing="false"
-                             stylesheets="@css/radio-button.css" text="Female" textFill="#816d64">
+                             stylesheets="@/assets/css/radio-button.css" text="Female" textFill="#816d64">
                     <font>
                         <Font name="Century" size="14.0"/>
                     </font>

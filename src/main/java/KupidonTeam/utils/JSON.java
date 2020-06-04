@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONObject;
 
 public class JSON {
-
-
     public static void deserialize(String json) {
         JSONObject jsonObject = new JSONObject(json);
         System.out.println("hey" + jsonObject);

@@ -86,7 +86,6 @@ public class Player extends Entity {
         // TODO
     }
 
-
     public void noSuchCommand() {
     }
 }

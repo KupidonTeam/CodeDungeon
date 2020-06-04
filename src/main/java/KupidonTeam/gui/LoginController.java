@@ -1,4 +1,4 @@
-package KupidonTeam.fxml;
+package KupidonTeam.gui;
 
 import KupidonTeam.login.SignLogic;
 import javafx.animation.FadeTransition;
@@ -62,7 +62,6 @@ public class LoginController {
         assert usernameField != null : "fx:id=\"usernameField\" was not injected: check your FXML file 'login.fxml'.";
         assert passwordField != null : "fx:id=\"passwordField\" was not injected: check your FXML file 'login.fxml'.";
 
-
         loginButton.setOnMouseClicked(ev -> loginCheck());
         closeButton.setOnMouseClicked(ev -> {
             try {
@@ -74,8 +73,8 @@ public class LoginController {
             } finally {
                 System.exit(0);
             }
-
         });
+
         signUpLink.setOnMouseClicked(ev -> {
             switchToSignUp();
 
@@ -86,6 +85,7 @@ public class LoginController {
     private void loginCheck() {
         String username = usernameField.getText();
         String password = passwordField.getText();
+
         //System.out.println(username.isEmpty());
         if (username.isEmpty()) {
             usernameLabel.setText("Username - REQUIRED");
@@ -96,6 +96,7 @@ public class LoginController {
         } else {
             SignLogic signLogic = SignLogic.getSignLogic();
             //System.out.println(signLogic.checkUserName(username));
+
             if (signLogic.checkUserName(username)) {
                 signLogic.serverAuthorization(username, password);
 
@@ -111,17 +112,15 @@ public class LoginController {
         LoginWrapper.getCurrentStage().setScene(SignUpWrapper.getScene());
         Parent parent;
         FXMLLoader loader = new FXMLLoader();
+
         try {
             parent = loader.load(getClass().getResourceAsStream(path));
             Scene newScene = new Scene(parent);
             LoginWrapper.getCurrentStage().setScene(newScene);
             LoginWrapper.getCurrentStage().show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private void switchToSignUp() {
@@ -134,6 +133,4 @@ public class LoginController {
         });
         fadeTransition.play();
     }
-
-
 }

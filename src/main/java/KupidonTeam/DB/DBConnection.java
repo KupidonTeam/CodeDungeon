@@ -1,6 +1,6 @@
 package KupidonTeam.DB;
 
-import KupidonTeam.exceptions.FailedBDConnection;
+import KupidonTeam.exceptions.FailedDBConnection;
 import KupidonTeam.exceptions.PropertiesException;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 
-//Использован паттерн SingleTone для избежания создания множественных экземпляров
+// Использован паттерн SingleTone для избежания создания множественных экземпляров
 public class DBConnection {
     private static DBConnection dbConnection;
     private Connection con;
@@ -28,11 +28,11 @@ public class DBConnection {
     private String dbPassword;
 
 
-    private DBConnection() throws FailedBDConnection {
+    private DBConnection() throws FailedDBConnection {
         try {
             setUp();
         } catch (SQLException e) {
-            throw new FailedBDConnection();
+            throw new FailedDBConnection();
         }
     }
 
@@ -58,14 +58,15 @@ public class DBConnection {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
         System.out.println("An example for updating a Row from Mysql Database!");
         con = null;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://" + rhost + ":" + lport + "/";
+
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(url + db, dbUser, dbPassword);
-
         } catch (Exception e) {
             e.printStackTrace();
             con.close();
@@ -74,7 +75,6 @@ public class DBConnection {
     }
 
     public ResultSet select(String sql) {
-
         try {
             Statement st = con.createStatement();
             //String sql = "UPDATE Players SET race_id = 3 WHERE player_name = 'test'";
@@ -87,13 +87,13 @@ public class DBConnection {
             //con.close();
             // System.exit(0);
         }
+
         return null;
     }
 
     private void setProperties() throws PropertiesException {
-        Properties properties;
         try {
-            properties = new Properties();
+            Properties properties = new Properties();
             properties.load(new FileInputStream("src/main/resources/DB.properties"));
             lport = Integer.parseInt(properties.getProperty("lport"));
             rhost = properties.getProperty("rhost");
@@ -115,17 +115,19 @@ public class DBConnection {
         if (dbConnection == null) {
             try {
                 dbConnection = new DBConnection();
-            } catch (FailedBDConnection failedBDConnection) {
+            } catch (FailedDBConnection failedDBConnection) {
                 System.err.println("DB connection FAILED");
-                failedBDConnection.printStackTrace();
+                failedDBConnection.printStackTrace();
             }
         }
+
         return dbConnection;
     }
 
     public void closeConnection() {
         try {
             con.close();
+
             if (con.isClosed()) {
                 System.out.println("DB is closed");
             } else {
@@ -134,7 +136,5 @@ public class DBConnection {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 }

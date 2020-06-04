@@ -1,4 +1,4 @@
-package KupidonTeam.fxml;
+package KupidonTeam.gui;
 
 import KupidonTeam.login.SignLogic;
 import javafx.fxml.FXML;
@@ -78,7 +78,6 @@ public class SingUpController {
         });
 
         loginLink.setOnMouseClicked(ev -> loadLogin());
-
     }
 
     private void loginCheck() {
@@ -87,6 +86,7 @@ public class SingUpController {
         System.out.println("User : " + username);
         System.out.println("Pass : " + password);
         System.out.println(username.isEmpty());
+
         if (username.isEmpty()) {
             usernameLabel.setText(userNameField.getText() + " - REQUIRED");
             usernameLabel.setTextFill(Color.RED);
@@ -99,6 +99,7 @@ public class SingUpController {
             System.out.println("user name = " + username);
             System.out.println("pass = " + password);
             System.out.println(signLogic.checkUserName(username));
+
             if (signLogic.checkUserName(username)) {
                 signLogic.serverAuthorization(username, password);
 
@@ -114,17 +115,15 @@ public class SingUpController {
         LoginWrapper.getCurrentStage().setScene(SignUpWrapper.getScene());
         Parent parent;
         FXMLLoader loader = new FXMLLoader();
+
         try {
             parent = loader.load(getClass().getResourceAsStream(path));
             Scene newScene = new Scene(parent);
             LoginWrapper.getCurrentStage().setScene(newScene);
             LoginWrapper.getCurrentStage().show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 //    private void switchToLogin() {
@@ -135,6 +134,4 @@ public class SingUpController {
 //        fadeTransition.setOnFinished(ev->loadLogin());
 //        fadeTransition.play();
 //    }
-
-
 }

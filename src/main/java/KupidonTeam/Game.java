@@ -1,13 +1,8 @@
 package KupidonTeam;
 
-import KupidonTeam.GUI.Login;
 
-import KupidonTeam.fxml.LoginWrapper;
-import KupidonTeam.login.SignLogic;
-import KupidonTeam.server.Connection;
+import KupidonTeam.gui.LoginWrapper;
 import javafx.application.Application;
-
-import javax.swing.*;
 
 
 //Class starter

@@ -1,7 +1,6 @@
 package KupidonTeam.login;
 
 import KupidonTeam.DB.DBConnection;
-import KupidonTeam.GUI.Login;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
