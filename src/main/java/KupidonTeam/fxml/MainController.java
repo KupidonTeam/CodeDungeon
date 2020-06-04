@@ -7,13 +7,20 @@ import KupidonTeam.login.SignLogic;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
+import javafx.animation.FadeTransition;
+import javafx.animation.FillTransition;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class MainController {
 
@@ -23,8 +30,9 @@ public class MainController {
     @FXML
     private URL location;
 
+
     @FXML
-    private TextArea carriedPane;
+    private ScrollPane carriedPane;
 
     @FXML
     private TextArea wornPane;
@@ -111,6 +119,7 @@ public class MainController {
     private Player player;
 
 
+
     @FXML
     void initialize() {
         assert carriedPane != null : "fx:id=\"carriedPane\" was not injected: check your FXML file 'main_v2.fxml'.";
@@ -164,6 +173,8 @@ public class MainController {
             }
         });
 
+        bt1.setOnMouseClicked(event -> initInventory());
+        bt2.setOnMouseClicked(event -> defeatDialog());
 
     }
 
@@ -176,7 +187,67 @@ public class MainController {
     private void setUpTextPanes() {
         chatPane.setWrapText(true);
         chatPane.setPrefColumnCount(30);
-        carriedPane.setWrapText(true);
-        carriedPane.setPrefColumnCount(30);
+
+    }
+
+    //Примерный тест инвенторя
+    private void initInventory() {
+        VBox inventory = new VBox();
+        HBox weaponLine1 = new HBox();
+        ImageView weapon = new ImageView("/assets/weapons/Export_64/AxeDouble.png");
+        weapon.setFitHeight(32);
+        weapon.setFitWidth(32);
+        Button dropBt = new Button("Drop");
+        weaponLine1.getChildren().addAll(weapon, dropBt);
+        HBox weaponLine2 = new HBox();
+        ImageView weapon2 = new ImageView("/assets/weapons/Export_64/Arrow.png");
+        weapon2.setFitHeight(32);
+        weapon2.setFitWidth(32);
+        Button sellBt = new Button("Sell");
+        weaponLine2.getChildren().addAll(weapon2, sellBt);
+        weaponLine1.setStyle("-fx-background-color: red;");
+        weaponLine2.setStyle("-fx-background-color: red;");
+        inventory.getChildren().addAll(weaponLine1, weaponLine2);
+        inventory.setSpacing(5);
+        inventory.setStyle("-fx-background-color: red;");
+
+        carriedPane.setContent(inventory);
+        carriedPane.setStyle("-fx-background-color: red;");
+
+    }
+
+    private void initEnemies() {
+
+    }
+
+
+    //я просто проверял работу
+    private void defeatDialog() {
+        Text a = new Text("HEllo!");
+        FlowPane win = new FlowPane();
+        Scene scene = new Scene(win);
+        scene.setFill(Color.TRANSPARENT);
+
+        Dialog dialog = new Dialog();
+        dialog.getDialogPane().setStyle("-fx-background-color: transparent;");
+        win.getChildren().add(new Text("Hi"));
+        Button close = new Button("close");
+        close.setOnMouseClicked(event -> {
+            scene.getWindow().hide();
+        });
+        win.getChildren().add(close);
+        win.setAlignment(Pos.CENTER);
+        Stage b = new Stage();
+        b.setScene(scene);
+        b.show();
+    }
+
+    private void serverLisner() {
+        new Thread(() -> {
+            if (!server.getBuffer().isEmpty()) {
+                chatPane.appendText(server.getBuffer() + "\n");
+            }
+        });
+
     }
 }

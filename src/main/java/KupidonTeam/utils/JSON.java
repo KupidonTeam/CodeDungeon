@@ -15,25 +15,25 @@ public class JSON {
 
     //Send a simple message to chat
     public static String message(String msg, String playerName) {
-        return String.format("{\"action\":\"sendChatMessage\"," +
+        return normalize(String.format("{\"action\":\"sendChatMessage\"," +
                 "\"data\":{" +
                 "\"player_name\": \"%s\"," +
-                "\"message\": \"%s\"}}", playerName, msg);
+                "\"message\": \"%s\"}}", playerName, msg));
     }
 
     //TODO в json нет данных для отправки 'from', есть только 'to'
     public static String directMessage(String msg, String from, String to) {
-        return String.format("{\"action\":\"sendPrivateMessage\"," +
+        return normalize(String.format("{\"action\":\"sendPrivateMessage\"," +
                 "\"data\":{" +
                 "\"to\": \"%s\"," +
-                "\"message\": \"%s\"}}", to, msg);
+                "\"message\": \"%s\"}}", to, msg));
     }
 
     public static String login(String username, String password) {
-        return String.format("{\"action\":\"playerAuthorization\"," +
+        return normalize(String.format("{\"action\":\"playerAuthorization\"," +
                 "\"data\":{" +
                 "\"player_name\": \"%s\"," +
-                "\"player_password\": \"%s\"}}\n", username, password);
+                "\"player_password\": \"%s\"}}\n", username, password));
     }
 
     //TODO json еще не полностью готов

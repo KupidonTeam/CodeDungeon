@@ -3,6 +3,7 @@ package KupidonTeam.server;
 import KupidonTeam.exceptions.FiledToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
 import KupidonTeam.login.SignLogic;
+import lombok.Data;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
 
@@ -24,6 +25,8 @@ public class Connection {
     private PrintWriter outMessage;
     private SignLogic signLogic;
     private String serverResponse; //переменная отправленя ответа в другие методы
+
+    private String buffer;
 
 
     private Connection() {
@@ -71,17 +74,6 @@ public class Connection {
         System.out.println("connected successful");
     }
 
-    public void sendMessageToServer() {
-        Scanner input = new Scanner(System.in);
-        while (true) {
-            String buff = input.next();
-            if (!buff.isEmpty()) {
-                outMessage.println(buff);
-                outMessage.flush();
-            }
-        }
-    }
-
     public void sendMessageToServer(String msg) {
 
         if (!msg.isEmpty()) {
@@ -124,7 +116,8 @@ public class Connection {
                 signLogic.serverResponse(msg);
                 break;
             case "receiveMessage":
-                signLogic.serverResponse("connected");
+                signLogic.serverResponse("");
+
             default:
                 System.err.println("Wrong server response");
         }
@@ -178,6 +171,13 @@ public class Connection {
     }
 
 
+    public String inboxMessage() {
+        return "NEW msg";
+    }
+
+    public String getBuffer() {
+        return buffer;
+    }
 }
 
 

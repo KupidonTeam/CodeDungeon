@@ -110,14 +110,7 @@ public class SignLogic {
 
     //отправляем запрос сереверу на авторизацию
     public void serverAuthorization(String username, String password) {
-        String msg = String.format("{\n" +
-                "    \"action\": \"playerAuthorization\",\n" +
-                "    \"data\":{\n" +
-                "        \"player_name\": \"%s\",\n" +
-                "        \"player_password\": \"%s\"\n" +
-                "    }\n" +
-                "}\n", username, password);
-        msg = JSON.normalize(msg);
+        String msg = JSON.login(username, password);
         server.sendMessageToServer(msg);
         System.out.println("------Set socket timeout 5 sec-------");
         try {
@@ -143,9 +136,9 @@ public class SignLogic {
         //подтверждаем ответ
         responseFlag = true;
         System.out.println(msg);
-        Login.getLogin().dispose();
 
-        //!!!!!!! после успешного логина открываем основную панель
+
+        //TODO!!!!!!! после успешного логина открываем основную панель
         //Application.launch(ChatWrapper.class, Game.argz);
 
     }
