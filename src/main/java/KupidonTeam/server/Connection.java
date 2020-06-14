@@ -3,10 +3,13 @@ package KupidonTeam.server;
 import KupidonTeam.exceptions.FiledToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
 import KupidonTeam.login.SignLogic;
+import javafx.application.Platform;
 import lombok.Data;
+import lombok.Getter;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
 
+import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +19,7 @@ import java.util.Properties;
 import java.util.Scanner;
 
 //Singleton
+@Getter
 public class Connection {
     private static Connection connection;
     private Socket clientSocket;
@@ -47,9 +51,7 @@ public class Connection {
         }
         try {
             connection();
-//            sendMessageToServer("lolololololol");
             serverListener(clientSocket);
-//            singIn = SingIn.getSingIn();
         } catch (IOException e) {
             System.err.println("Socket connection failed ");
             System.exit(-500);
@@ -58,7 +60,6 @@ public class Connection {
 
     private void connection() throws IOException {
         System.out.println("Try to connect");
-        //пытаемся подключиться к серверу
         try {
             clientSocket = new Socket(host, port);
             inMessage = new Scanner(clientSocket.getInputStream());
@@ -73,8 +74,9 @@ public class Connection {
     }
 
     public void sendMessageToServer(String msg) {
-
         if (!msg.isEmpty()) {
+            System.out.println("=========send msg to ser method=======");
+            System.out.println("socket = " + clientSocket.toString());
             outMessage.println(msg);
             outMessage.flush();
         }
@@ -82,24 +84,19 @@ public class Connection {
 
 
     private void serverListener(Socket clientSocket) {
-        new Thread(new Runnable() {
-            @SneakyThrows
-            @Override
-            public void run() {
-                try {
-                    // бесконечный цикл
-                    while (true) {
-                        // если есть входящее сообщение
-                        if (inMessage.hasNext()) {
-                            // считываем его
-                            String inMes = inMessage.nextLine();
-                            // выводим сообщение
-                            responseAnalyzer(inMes);
-                            System.out.println(inMes);
-                        }
-                    }
-                } catch (Exception e) {
-                    clientSocket.close();
+        new Thread(() -> {
+            // бесконечный цикл
+            while (true) {
+                String serverMsg = "";
+                // если есть входящее сообщение
+                if (inMessage.hasNext()) {
+                    // считываем его
+                    String inMes = inMessage.nextLine();
+                    // выводим сообщение
+                    System.err.println("===>Server<===");
+                    System.out.println("server answer  = " + inMes);
+                    serverMsg += inMes;
+                    responseAnalyzer(serverMsg);
                 }
             }
         }).start();
@@ -108,15 +105,22 @@ public class Connection {
 
     //Анализируем ответ сервера и запускаем соответствующие методы
     private void responseAnalyzer(String msg) {
-        String action = new JSONObject(msg).getString("action");
-
+        SignLogic logic = SignLogic.getSignLogic();
+        JSONObject serverResponse = new JSONObject(msg);
+        String action = serverResponse.getString("action");
+        System.out.println("action = " + action);
         switch (action) {
             case "playerAuthorization":
-                signLogic.serverResponse(msg);
+                System.out.println("msg = " + msg);
+                logic.serverResponse(msg);
                 break;
             case "receiveMessage":
                 signLogic.serverResponse("");
-
+            case "connectToServer":
+                if (serverResponse.getInt("code") != 100) {
+                    connectionFailedAlert();
+                }
+                break;
             default:
                 System.err.println("Wrong server response");
         }
@@ -174,6 +178,18 @@ public class Connection {
 
     public String getBuffer() {
         return buffer;
+    }
+
+    private void connectionStatus() {
+
+    }
+
+    private void connectionFailedAlert() {
+        JOptionPane.showMessageDialog(null,
+                "Server does not response!\nPlease restart the application.",
+                "SERVER ERROR",
+                JOptionPane.ERROR_MESSAGE);
+        System.exit(-200);
     }
 }
 

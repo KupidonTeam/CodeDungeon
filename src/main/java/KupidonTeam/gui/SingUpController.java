@@ -1,22 +1,31 @@
 package KupidonTeam.gui;
 
 import KupidonTeam.login.SignLogic;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SingUpController {
+
+    private final String loginPath = "/fxml/login.fxml";
+
+    private final String characterCreationPath = "/fxml/create_charachter.fxml";
 
     @FXML
     private javafx.scene.layout.AnchorPane AnchorPane;
@@ -77,22 +86,28 @@ public class SingUpController {
             SignLogic.getSignLogic().closeAll();
         });
 
-        loginLink.setOnMouseClicked(ev -> loadLogin());
+        loginLink.setOnMouseClicked(ev -> switchToLogin());
     }
 
     private void loginCheck() {
         String username = userNameField.getText();
         String password = passwordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
         System.out.println("User : " + username);
         System.out.println("Pass : " + password);
         System.out.println(username.isEmpty());
-
         if (username.isEmpty()) {
-            usernameLabel.setText(userNameField.getText() + " - REQUIRED");
+            usernameLabel.setText("Password - REQUIRED");
             usernameLabel.setTextFill(Color.RED);
         } else if (password.isEmpty()) {
-            passwordLabel.setText(passwordField.getText() + " - REQUIRED");
+            passwordLabel.setText("Password - REQUIRED");
             passwordLabel.setTextFill(Color.RED);
+        } else if (confirmPassword.isEmpty()) {
+            confirmPasswordLabel.setText("Confirm password - REQUIRED");
+            confirmPasswordLabel.setTextFill(Color.RED);
+        } else if (!confirmPassword.equals(password)) {
+            confirmPasswordLabel.setText("Confirm password - NOT EQUAL");
+            confirmPasswordLabel.setTextFill(Color.RED);
         } else {
             SignLogic signLogic = SignLogic.getSignLogic();
             System.out.println("before check");
@@ -100,8 +115,9 @@ public class SingUpController {
             System.out.println("pass = " + password);
             System.out.println(signLogic.checkUserName(username));
 
-            if (signLogic.checkUserName(username)) {
-                signLogic.serverAuthorization(username, password);
+            if (!signLogic.checkUserName(username)) {
+                System.out.println("========== Логин свободен ==============");
+                characterCreation(username);
 
             } else {
                 usernameLabel.setText(usernameLabel.getText() + " - no such user");
@@ -110,8 +126,8 @@ public class SingUpController {
         }
     }
 
-    private void loadLogin() {
-        String path = "/fxml/login.fxml";
+    private void loadFxml(String path) {
+
         LoginWrapper.getCurrentStage().setScene(SignUpWrapper.getScene());
         Parent parent;
         FXMLLoader loader = new FXMLLoader();
@@ -126,12 +142,27 @@ public class SingUpController {
         }
     }
 
-//    private void switchToLogin() {
-//        FadeTransition fadeTransition = new FadeTransition(Duration.millis(300));
-//
-//        fadeTransition.setFromValue(1);
-//        fadeTransition.setToValue(0);
-//        fadeTransition.setOnFinished(ev->loadLogin());
-//        fadeTransition.play();
-//    }
+    private void switchToLogin() {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(300));
+        fadeTransition.setNode(AnchorPane);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.setOnFinished((event) -> {
+            loadFxml(loginPath);
+        });
+        fadeTransition.play();
+    }
+
+    private void characterCreation(String username) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(300));
+        fadeTransition.setNode(AnchorPane);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.setOnFinished((event) -> {
+            loadFxml(characterCreationPath);
+        });
+        fadeTransition.play();
+    }
+
+
 }

@@ -1,8 +1,5 @@
 package KupidonTeam.gui;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
@@ -15,7 +12,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class MainController {
 
@@ -112,6 +114,7 @@ public class MainController {
 
     private Connection server;
     private Player player;
+    private Stage dialogStage;
 
     @FXML
     void initialize() {
@@ -144,8 +147,6 @@ public class MainController {
         assert hpBar != null : "fx:id=\"hpBar\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert expBar != null : "fx:id=\"expBar\" was not injected: check your FXML file 'main_v2.fxml'.";
 
-        setUp();
-
         //TODO добавить сохранение прогресса перед закрытием
         exitButton.setOnMouseClicked(event -> {
             try {
@@ -167,19 +168,26 @@ public class MainController {
             }
         });
 
-        bt1.setOnMouseClicked(event -> initInventory());
-        bt2.setOnMouseClicked(event -> defeatDialog());
+        bt1.setOnMouseClicked(event -> messageDialog("hello"));
+        bt2.setOnMouseClicked(event -> defeatDialog("Connecting to server.\nPlease wait..."));
+
+        setUp();
+        // messageDialog("gello");
     }
 
     private void setUp() {
+        dialogStage = new Stage();
+        dialogStage.initStyle(StageStyle.UNDECORATED);
         //server = Connection.getConnection();
         // nickNameLabel.setText(player.getName());
         setUpTextPanes();
+
     }
 
     private void setUpTextPanes() {
         chatPane.setWrapText(true);
         chatPane.setPrefColumnCount(30);
+//        messageDialog("Hello!");
     }
 
     //Примерный тест инвенторя
@@ -202,7 +210,6 @@ public class MainController {
         inventory.getChildren().addAll(weaponLine1, weaponLine2);
         inventory.setSpacing(5);
         inventory.setStyle("-fx-background-color: red;");
-
         carriedPane.setContent(inventory);
         carriedPane.setStyle("-fx-background-color: red;");
     }
@@ -212,25 +219,52 @@ public class MainController {
     }
 
     //я просто проверял работу
-    private void defeatDialog() {
-        Text a = new Text("HEllo!");
-        FlowPane win = new FlowPane();
-        Scene scene = new Scene(win);
-        scene.setFill(Color.TRANSPARENT);
+    private void defeatDialog(String messageText, String... button) {
+        Text message = new Text(messageText);
+        message.setFill(Color.WHITE);
+        message.setStyle(
+                "-fx-font: 18 arial;" +
+                        "-fx-text-alignment : center;");
 
-        Dialog dialog = new Dialog();
-        dialog.getDialogPane().setStyle("-fx-background-color: transparent;");
-        win.getChildren().add(new Text("Hi"));
-        Button close = new Button("close");
-        close.setOnMouseClicked(event -> {
-            scene.getWindow().hide();
-        });
-        win.getChildren().add(close);
+        VBox win = new VBox();
+        HBox buttons = new HBox();
+        win.setStyle(
+                "-fx-background-image : url(/assets/GUI_Parts/Gui_parts/barmid_ready.png);" +
+                        "-fx-background-size : 600 300;");
+
+        win.setPrefSize(600, 300);
+        win.setSpacing(20);
+        Scene scene = new Scene(win);
+        ImageView closeImage = new ImageView("/assets/GUI_Parts/Gui_parts/button_ready_on.png");
+        closeImage.setFitHeight(40);
+        closeImage.setFitWidth(80);
+        StackPane closeBt = new StackPane();
+        closeBt.getChildren().add(closeImage);
+        Label closeWindow = new Label("Abort");
+        closeWindow.setTextFill(Color.BURLYWOOD);
+        closeBt.getChildren().add(closeWindow);
+
+
+        StackPane ok = new StackPane();
+        ok.getChildren().add(closeImage);
+        Label okWin = new Label("Aborasdasdasdasdasdasdasdt");
+        okWin.setTextFill(Color.BURLYWOOD);
+        ok.getChildren().add(okWin);
+
+        ProgressIndicator progressIndicator = new ProgressIndicator();
+        progressIndicator.setStyle("-fx-progress-color : red;");
+        win.getChildren().add(message);
+        win.getChildren().add(progressIndicator);
+        win.getChildren().add(closeBt);
+        win.getChildren().add(ok);
+//        win.getChildren().add(new Button("lol"));
         win.setAlignment(Pos.CENTER);
         Stage b = new Stage();
+        b.initStyle(StageStyle.UNDECORATED);
         b.setScene(scene);
         b.show();
     }
+
 
     private void serverLisner() {
         new Thread(() -> {
@@ -239,5 +273,56 @@ public class MainController {
             }
         });
 
+    }
+
+    public void messageDialog(String msg) {
+        Text message = new Text(msg);
+        message.setFill(Color.WHITE);
+        message.setStyle(
+                "-fx-font: 18 arial;" +
+                        "-fx-text-alignment : center;");
+        Pane main = new FlowPane();
+        VBox win = new VBox();
+        HBox buttons = new HBox();
+//        ImageView button = new ImageView("/assets/GUI_Parts/Gui_parts/button_ready_on.png");
+
+        //Create buttons
+        ImageView closeImage = new ImageView("/assets/GUI_Parts/Gui_parts/button_ready_on.png");
+        closeImage.setFitHeight(40);
+        closeImage.setFitWidth(80);
+        StackPane okBt = new StackPane();
+        okBt.getChildren().add(closeImage);
+        Label okLabel = new Label("YEAH!");
+        okLabel.setTextFill(Color.BURLYWOOD);
+        okBt.getChildren().add(okLabel);
+        okBt.setAlignment(Pos.CENTER);
+
+//        StackPane cancelBt = new StackPane();
+//        cancelBt.getChildren().add(closeImage);
+//        Label cancelLabel = new Label("No");
+//        cancelLabel.setTextFill(Color.BURLYWOOD);
+//        cancelBt.getChildren().add(cancelLabel);
+//        cancelBt.setAlignment(Pos.CENTER);
+
+        buttons.getChildren().addAll(okBt);
+        buttons.setSpacing(20);
+
+        win.setStyle(
+                "-fx-background-image : url(/assets/GUI_Parts/Gui_parts/barmid_ready.png);" +
+                        "-fx-background-size : 600 300;");
+        win.setPrefSize(600, 300);
+        win.setSpacing(20);
+        ProgressIndicator progressIndicator = new ProgressIndicator();
+        progressIndicator.setStyle("-fx-progress-color : red;");
+        win.getChildren().add(message);
+        win.getChildren().add(buttons);
+        win.setAlignment(Pos.CENTER);
+
+
+        Scene scene = new Scene(win);
+        dialogStage.toFront();
+        dialogStage.setScene(scene);
+        dialogStage.setScene(scene);
+        dialogStage.show();
     }
 }
