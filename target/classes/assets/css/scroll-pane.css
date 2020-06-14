@@ -1,0 +1,26 @@
+
+.scroll-bar > .viewport {
+   -fx-background-color: transparent;
+}
+
+.scroll-bar, .scroll-bar:vertical .track,  .scroll-bar:horizontal .track {
+   -fx-background-color:none;
+}
+
+.scroll-bar:vertical {
+   -fx-background-color:transparent;
+}
+
+.scroll-bar:content, .scroll-bar:vertical *.decrement-arrow, .scroll-bar:vertical *.increment-arrow,
+.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+   -fx-background-color:#816d64;
+}
+
+
+.scroll-pane .corner {
+   -fx-background-color: none;
+}
+
+
+
+
