@@ -20,7 +20,6 @@ public class SignLogic {
     private DBConnection database;
     private Boolean responseFlag;
     private int login;
-    private Player player;
 
     private SignLogic() {
         this.server = Connection.getConnection();
@@ -80,13 +79,15 @@ public class SignLogic {
         System.out.println("Я получил вот такой ответ : " + msg);
         login = loginAnalyze(msg);
         notifyAll();
+
         //TODO!!!!!!! после успешного логина открываем основную панель
 
     }
 
     //принимает json от сервера и десериализует
-    private Player createPLayer(String json) {
-        return null;
+    private void createPLayer(String json) {
+        JSONObject data = new JSONObject(json).getJSONObject("data");
+
 
     }
 
@@ -116,5 +117,6 @@ public class SignLogic {
                 JOptionPane.ERROR_MESSAGE);
         System.exit(-503);
     }
+
 
 }

@@ -1,12 +1,13 @@
 package KupidonTeam.characters.classes.enemies;
 
-import KupidonTeam.characters.classes.Entity;
+import KupidonTeam.characters.classes.Stats;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class Enemy extends Entity {
+public class Enemy {
+    private Stats stats;
     private long enemyId;
     private String name;
 }

@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Weapon extends Item {
+    private String weaponName;
     private int damageMin;
     private int damageMax;
 }

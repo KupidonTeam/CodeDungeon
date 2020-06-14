@@ -5,22 +5,24 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public abstract class Entity {
-    private int hp;
+public class Stats {
+
+    private String race;
     private int armorClass;
+    private int hits;
     private double speed;
     private int strength;
     private int dexterity;
-    private int constitution;
     private int intelligence;
     private int wisdom;
-    private int charisma;
     private int chance;
+    private int constitution;
+
 
     @Override
     public String toString() {
         return "Entity{" +
-                "hp=" + hp +
+                "hits=" + hits +
                 ", armorClass=" + armorClass +
                 ", speed=" + speed +
                 ", strength=" + strength +
@@ -28,7 +30,6 @@ public abstract class Entity {
                 ", constitution=" + constitution +
                 ", intelligence=" + intelligence +
                 ", wisdom=" + wisdom +
-                ", charisma=" + charisma +
                 ", chance=" + chance +
                 '}';
     }

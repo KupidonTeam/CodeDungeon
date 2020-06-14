@@ -9,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class Item {
-    private long id;
     private String name;
     private int weight;
     private double price;
@@ -19,8 +18,7 @@ public abstract class Item {
         price = 0;
     }
 
-    protected Item(long id, String name, int weight, double price) {
-        this.id = id;
+    protected Item(String name, int weight, double price) {
         this.name = name;
         this.weight = weight;
         this.price = price;

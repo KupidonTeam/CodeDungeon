@@ -1,5 +1,6 @@
 package KupidonTeam.animals;
 
+import KupidonTeam.items.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,10 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Animal {
-    private long id;
-    private String name;
-    private double price;
+public class Animal extends Item {
     private double speed;
     private long capacity;
 }

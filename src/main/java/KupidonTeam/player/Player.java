@@ -1,91 +1,73 @@
 package KupidonTeam.player;
 
-import KupidonTeam.characters.classes.Entity;
-import KupidonTeam.characters.classes.Warrior;
-import KupidonTeam.commands.Commands;
+import KupidonTeam.characters.classes.Stats;
+import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.items.Item;
-import KupidonTeam.locations.Dungeon;
+import KupidonTeam.locations.Lobby;
 import KupidonTeam.locations.Room;
-import lombok.AllArgsConstructor;
+
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Scanner;
 
 @Getter
 @Setter
-@AllArgsConstructor
-public class Player extends Entity {
-    private long id;
-    private Entity playerClass;  // TODO Рационально заменить на класс Stats, т.к это х-р игрока которые должны изменяться
+
+public class Player {
+
+    private static Player player;
+
     private String name;
-    private int raceId;
-    private int equipmentId;
-    private Inventory playerInventory;
+    private Stats stats;
+    private String playerClass;
+    private List<Skill> skills;
     private int lvl;
-    private Room location;
     private int experience;
-    private Commands commandExecutor;
+    private Room location;
 
-    private Scanner input = new Scanner(System.in);
 
-    public Player() {
-        playerClass = new Warrior();
-        playerInventory = new Inventory();
-        location = new Dungeon();
-        commandExecutor = new Commands(this);
+    private Player(String name, Stats stats, String playerClass, List<Skill> skills, int lvl, int experience) {
+        setName(name);
+        setStats(stats);
+        setPlayerClass(playerClass);
+        setSkills(skills);
+        setLvl(lvl);
+        setExperience(experience);
+        location = new Lobby();
     }
 
-    public Player(long id, Entity playerClass, String name, Room location) {
-        this.id = id;
-        this.playerClass = playerClass;
-        this.name = name;
-        this.location = location;
-        commandExecutor = new Commands(this);
-    }
-
-
-    public void userInput() {
-        System.out.println("user inp");
-        String buffer = input.nextLine();
-
-        // TODO
-        // Создать интерфейс маркер для всех метолов которые может вып пользователь
-
-        System.out.println("buffer = " + buffer);
-
-        // Если первый символ не '/' , то посылае сообщение в чат
-        if (buffer.charAt(0) != '/') {
-            chat(buffer);
+    public static boolean createPlayer(String name, Stats stats, String playerClass, List<Skill> skills, int lvl, int experience) {
+        if (player == null) {
+            player = new Player(name, stats, playerClass, skills, lvl, experience);
+            return true;
         }
-        // Иначе разбиваем и отсылаем команду в обработчик
-        else {
-            commandExecutor.executeCommand(buffer);
-        }
-
+        System.err.println("Player already exists!");
+        return false;
     }
 
-    public void chat(String message) {
-
+    public static Player getInstance() {
+        if (player != null) return player;
+        System.err.println("Player is not created yet!");
+        return null;
     }
+
 
     public void playerDefeat() {
         // TODO
     }
+
     public void playerTurn() {
         // TODO
         //userInput();
     }
 
     public boolean isAlive() {
-        return playerClass.getHp() > 0;
+        return stats.getHits() > 0;
     }
 
     public void playerRewards(List<Item> rewards) {
         // TODO
     }
 
-    public void noSuchCommand() {
-    }
 }
