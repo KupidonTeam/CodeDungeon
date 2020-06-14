@@ -19,7 +19,7 @@ public class SignLogic {
     private Connection server;
     private DBConnection database;
     private Boolean responseFlag;
-    private int login;
+    private boolean login;
 
     private SignLogic() {
         this.server = Connection.getConnection();
@@ -51,7 +51,7 @@ public class SignLogic {
 
     //отправляем запрос сереверу на авторизацию
     @SneakyThrows
-    public synchronized int serverAuthorization(String username, String password) {
+    public synchronized boolean serverAuthorization(String username, String password) {
         String msg = JSON.login(username, password);
         server.sendMessageToServer(msg);
         System.out.println("Message to server : \n" + msg);
@@ -77,18 +77,24 @@ public class SignLogic {
         //подтверждаем ответ
         responseFlag = true;
         System.out.println("Я получил вот такой ответ : " + msg);
-        login = loginAnalyze(msg);
-        notifyAll();
+
 
         //TODO!!!!!!! после успешного логина открываем основную панель
 
     }
 
-    //принимает json от сервера и десериализует
     private void createPLayer(String json) {
         JSONObject data = new JSONObject(json).getJSONObject("data");
-
-
+        Player.createPlayer(data.getString("player_name"),
+                data.getString("class_name"),
+                data.getInt("level"),
+                data.getInt("experience"),
+                JSON.stats(data),
+                JSON.skills(data),
+                JSON.armor(data),
+                JSON.weapons(data),
+                JSON.animals(data)
+        );
     }
 
     public void closeAll() {
@@ -104,10 +110,15 @@ public class SignLogic {
         return signLogic;
     }
 
-    private int loginAnalyze(String msg) {
+    public synchronized void loginAnalyze(String msg) {
+        responseFlag = true;
         int code = new JSONObject(msg).getInt("code");
-        if (code == 203) return 1;
-        else return -1;
+        if (code == 203) {
+            login = true;
+            createPLayer(msg);
+            System.out.println(Player.getInstance().toString());
+        } else login = false;
+        notifyAll();
     }
 
     private void connectionFailedAlert() {

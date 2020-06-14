@@ -1,22 +1,27 @@
 package KupidonTeam.gui;
 
+import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController {
@@ -42,6 +47,9 @@ public class MainController {
 
     @FXML
     private TextArea chatPane;
+
+    @FXML
+    private TextArea statsTextArea;
 
     @FXML
     private TextField messageInput;
@@ -101,6 +109,9 @@ public class MainController {
     private ImageView skill5;
 
     @FXML
+    private Group skillGroup;
+
+    @FXML
     private ImageView avatarIcon;
 
     @FXML
@@ -109,12 +120,15 @@ public class MainController {
     @FXML
     private ProgressBar hpBar;
 
+
     @FXML
     private ProgressBar expBar;
 
     private Connection server;
     private Player player;
     private Stage dialogStage;
+    private List<ImageView> skillImages;
+    private int peekedSkill;
 
     @FXML
     void initialize() {
@@ -142,10 +156,12 @@ public class MainController {
         assert skill3 != null : "fx:id=\"skill3\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert skill4 != null : "fx:id=\"skill4\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert skill5 != null : "fx:id=\"skill5\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert skillGroup != null : "fx:id=\"skillGroup\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert avatarIcon != null : "fx:id=\"avatarIcon\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert nickNameLabel != null : "fx:id=\"nickNameLabel\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert hpBar != null : "fx:id=\"hpBar\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert expBar != null : "fx:id=\"expBar\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert statsTextArea != null : "fx:id=\"statsTextArea\" was not injected: check your FXML file 'main_v2.fxml'.";
 
         //TODO добавить сохранение прогресса перед закрытием
         exitButton.setOnMouseClicked(event -> {
@@ -160,34 +176,40 @@ public class MainController {
             }
         });
 
+
         sendButton.setOnMouseClicked(event -> {
             if (!messageInput.getText().isEmpty()) {
-                String message = JSON.message(messageInput.getText(), nickNameLabel.getText());
-                server.sendMessageToServer(messageInput.getText());
+                System.out.println(messageInput.getText());
+                String message = JSON.message(messageInput.getText());
+                System.out.println("message = " + message);
+                server.sendMessageToServer(message);
                 messageInput.setText("");
             }
         });
 
-        bt1.setOnMouseClicked(event -> messageDialog("hello"));
         bt2.setOnMouseClicked(event -> defeatDialog("Connecting to server.\nPlease wait..."));
 
         setUp();
+        loadPlayerInformation();
         // messageDialog("gello");
     }
 
     private void setUp() {
+        server = Connection.getConnection();
         dialogStage = new Stage();
         dialogStage.initStyle(StageStyle.UNDECORATED);
-        //server = Connection.getConnection();
-        // nickNameLabel.setText(player.getName());
         setUpTextPanes();
+        server.setChatArea(chatPane);
 
     }
 
     private void setUpTextPanes() {
         chatPane.setWrapText(true);
         chatPane.setPrefColumnCount(30);
-//        messageDialog("Hello!");
+        statsTextArea.setWrapText(true);
+        statsTextArea.setPrefColumnCount(30);
+        statsTextArea.setPadding(new Insets(5));
+
     }
 
     //Примерный тест инвенторя
@@ -266,63 +288,74 @@ public class MainController {
     }
 
 
-    private void serverLisner() {
-        new Thread(() -> {
-            if (!server.getBuffer().isEmpty()) {
-                chatPane.appendText(server.getBuffer() + "\n");
-            }
-        });
+//    private void globalChat() {
+//        new Thread(() -> {
+//            Connection server = Connection.getConnection();
+//            while (true) {
+//                System.out.println("work ?");
+//                if (!server.getBuffer().isEmpty()) {
+//                    System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyy = " + server.getBuffer());
+//                    chatPane.appendText(server.getBuffer() + "\n");
+//                    server.cleanBuffer();
+//                }
+//            }
+//        }).start();
+//
+//    }
+
+    private void loadPlayerInformation() {
+        player = Player.getInstance();
+        nickNameLabel.setText(player.getName());
+        expBar.setProgress(player.getExperience());
+        hpBar.setProgress(player.getStats().getHits());
+        statsTextArea.setText(player.toString());
+        skillsSetup();
 
     }
 
-    public void messageDialog(String msg) {
-        Text message = new Text(msg);
-        message.setFill(Color.WHITE);
-        message.setStyle(
-                "-fx-font: 18 arial;" +
-                        "-fx-text-alignment : center;");
-        Pane main = new FlowPane();
-        VBox win = new VBox();
-        HBox buttons = new HBox();
-//        ImageView button = new ImageView("/assets/GUI_Parts/Gui_parts/button_ready_on.png");
+    private void skillsSetup() {
+        bt1.setTooltip(new Tooltip("adasdasdasdasdasdasd"));
+        skillImages = new LinkedList<>();
+        skillImages.add(skill1);
+        skillImages.add(skill2);
+        skillImages.add(skill3);
+        skillImages.add(skill4);
+        skillImages.add(skill5);
 
-        //Create buttons
-        ImageView closeImage = new ImageView("/assets/GUI_Parts/Gui_parts/button_ready_on.png");
-        closeImage.setFitHeight(40);
-        closeImage.setFitWidth(80);
-        StackPane okBt = new StackPane();
-        okBt.getChildren().add(closeImage);
-        Label okLabel = new Label("YEAH!");
-        okLabel.setTextFill(Color.BURLYWOOD);
-        okBt.getChildren().add(okLabel);
-        okBt.setAlignment(Pos.CENTER);
+        skillGroup.getChildren()
+                .forEach(el -> el.setOnMouseClicked(event -> chooseSkill(el.getId())));
 
-//        StackPane cancelBt = new StackPane();
-//        cancelBt.getChildren().add(closeImage);
-//        Label cancelLabel = new Label("No");
-//        cancelLabel.setTextFill(Color.BURLYWOOD);
-//        cancelBt.getChildren().add(cancelLabel);
-//        cancelBt.setAlignment(Pos.CENTER);
+        for (int i = 0; i < player.getSkills().size(); i++) {
+            Tooltip tooltip = new Tooltip();
+            tooltip.setPrefSize(200, 150);
+            Skill skill = player.getSkills().get(i);
+            skillImages.get(i).setImage(new Image("/assets/skills/" + skill.getName() + ".png"));
+            skillImages.get(i).setOnMouseClicked(event -> {
+                peekedSkill = skill.getId();
+                System.out.println("peeked skill = " + skill.getName());
 
-        buttons.getChildren().addAll(okBt);
-        buttons.setSpacing(20);
-
-        win.setStyle(
-                "-fx-background-image : url(/assets/GUI_Parts/Gui_parts/barmid_ready.png);" +
-                        "-fx-background-size : 600 300;");
-        win.setPrefSize(600, 300);
-        win.setSpacing(20);
-        ProgressIndicator progressIndicator = new ProgressIndicator();
-        progressIndicator.setStyle("-fx-progress-color : red;");
-        win.getChildren().add(message);
-        win.getChildren().add(buttons);
-        win.setAlignment(Pos.CENTER);
+            });
+            tooltip.setText(skill.toString());
+            Tooltip.install(skillImages.get(i), tooltip);
 
 
-        Scene scene = new Scene(win);
-        dialogStage.toFront();
-        dialogStage.setScene(scene);
-        dialogStage.setScene(scene);
-        dialogStage.show();
+        }
     }
+
+    private void chooseSkill(String skillId) {
+        skillGroup.getChildren()
+                .filtered(el -> el.getStyleClass().contains("border"))
+                .forEach(el -> el.setStyle(""));
+
+        skillGroup.getChildren()
+                .filtered(el -> el.getStyleClass().contains("border"))
+                .filtered(el -> el.getId().equalsIgnoreCase(skillId))
+                .forEach(el -> el.setStyle("-fx-border-color:red;  -fx-border-width : 3;"));
+    }
+
+    public void addMessageToChat(String msg) {
+        System.out.println("new MESSSSSSSSSSSSSSSSSSSAGE");
+        chatPane.appendText(msg + "\n");
+    }
+
 }

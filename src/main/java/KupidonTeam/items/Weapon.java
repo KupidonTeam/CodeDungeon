@@ -1,5 +1,6 @@
 package KupidonTeam.items;
 
+import KupidonTeam.exceptions.LessThanZeroException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,19 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Weapon extends Item {
-    private String weaponName;
     private int damageMin;
     private int damageMax;
+
+    public Weapon(int id, String name, double price, int damageMin, int damageMax, double weight) {
+        setId(id);
+        setName(name);
+        setDamageMax(damageMax);
+        setDamageMin(damageMin);
+        try {
+            setPrice(price);
+            setWeight(weight);
+        } catch (LessThanZeroException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

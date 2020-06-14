@@ -2,17 +2,25 @@ package KupidonTeam.server;
 
 import KupidonTeam.exceptions.FiledToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
+import KupidonTeam.gui.MainController;
 import KupidonTeam.login.SignLogic;
+import KupidonTeam.utils.JSON;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.Pane;
 import lombok.Data;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.Properties;
@@ -29,8 +37,9 @@ public class Connection {
     private PrintWriter outMessage;
     private SignLogic signLogic;
     private String serverResponse; //переменная отправленя ответа в другие методы
-
+    private MainController mainController;
     private String buffer;
+    private TextArea chatArea;
 
     private Connection() {
         setup();
@@ -74,11 +83,15 @@ public class Connection {
     }
 
     public void sendMessageToServer(String msg) {
+
         if (!msg.isEmpty()) {
             System.out.println("=========send msg to ser method=======");
             System.out.println("socket = " + clientSocket.toString());
+
             outMessage.println(msg);
             outMessage.flush();
+
+
         }
     }
 
@@ -112,16 +125,20 @@ public class Connection {
         switch (action) {
             case "playerAuthorization":
                 System.out.println("msg = " + msg);
-                logic.serverResponse(msg);
+                logic.loginAnalyze(msg);
+
                 break;
-            case "receiveMessage":
-                signLogic.serverResponse("");
+            case "sendChatMessage":
+                buffer = JSON.inboxMessage(serverResponse.getJSONObject("data"));
+                chatArea.appendText(buffer);
+                break;
             case "connectToServer":
                 if (serverResponse.getInt("code") != 100) {
                     connectionFailedAlert();
                 }
                 break;
             default:
+                System.out.println("Invalid response : " + msg);
                 System.err.println("Wrong server response");
         }
     }
@@ -191,7 +208,17 @@ public class Connection {
                 JOptionPane.ERROR_MESSAGE);
         System.exit(-200);
     }
+
+    public void cleanBuffer() {
+        this.buffer = "";
+    }
+
+    public void setChatArea(TextArea chatArea) {
+        this.chatArea = chatArea;
+    }
+
 }
+
 
 
 

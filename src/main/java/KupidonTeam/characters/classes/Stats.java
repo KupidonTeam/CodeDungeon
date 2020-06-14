@@ -1,10 +1,12 @@
 package KupidonTeam.characters.classes;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
+@AllArgsConstructor
 public class Stats {
 
     private String race;
@@ -21,16 +23,16 @@ public class Stats {
 
     @Override
     public String toString() {
-        return "Entity{" +
-                "hits=" + hits +
-                ", armorClass=" + armorClass +
-                ", speed=" + speed +
-                ", strength=" + strength +
-                ", dexterity=" + dexterity +
-                ", constitution=" + constitution +
-                ", intelligence=" + intelligence +
-                ", wisdom=" + wisdom +
-                ", chance=" + chance +
-                '}';
+        return
+                "Hits = " + hits +
+                        "\nArmor class=" + armorClass +
+                        "\nSpeed =" + speed +
+                        "\nStrength =" + strength +
+                        "\nDexterity =" + dexterity +
+                        "\nConstitution =" + constitution +
+                        "\nIntelligence =" + intelligence +
+                        "\nWisdom =" + wisdom +
+                        "\nChance =" + chance
+                ;
     }
 }

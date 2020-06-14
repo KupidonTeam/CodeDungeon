@@ -1,6 +1,7 @@
 package KupidonTeam.gui;
 
 import KupidonTeam.login.SignLogic;
+import KupidonTeam.player.Player;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -65,6 +66,8 @@ public class LoginController {
     private Paint labelColor;
 
     public Stage dialogStage;
+
+    private Player player;
 
     @FXML
     void initialize() {
@@ -132,8 +135,8 @@ public class LoginController {
         } else {
             SignLogic signLogic = SignLogic.getSignLogic();
             if (signLogic.checkUserName(username)) {
-                int loginStatus = signLogic.serverAuthorization(username, password);
-                if (loginStatus == 1) {
+                boolean loginStatus = signLogic.serverAuthorization(username, password);
+                if (loginStatus) {
                     loadMainPane();
                     dialogStage.close();
 
@@ -190,7 +193,7 @@ public class LoginController {
             LoginWrapper.getCurrentStage().centerOnScreen();
             LoginWrapper.getCurrentStage().show();
             MainController controller = (MainController) loader.getController();
-            controller.messageDialog("Hello Hero!\nLet's start your ADVENTURE!\nAre you ready to kick the monsters?!");
+            //controller.messageDialog("Hello Hero!\nLet's start your ADVENTURE!\nAre you ready to kick the monsters?!");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -210,7 +213,6 @@ public class LoginController {
         message.setStyle(
                 "-fx-font: 18 arial;" +
                         "-fx-text-alignment : center;");
-
         VBox win = new VBox();
         HBox buttons = new HBox();
         win.setStyle(
@@ -235,6 +237,8 @@ public class LoginController {
         loginToServerDialog();
         Platform.runLater(() -> loginCheck());
     }
+
+
 }
 
 

@@ -9,8 +9,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class Item {
+    private int id;
     private String name;
-    private int weight;
+    private double weight;
     private double price;
 
     protected Item() {
@@ -29,7 +30,7 @@ public abstract class Item {
         setPrice(price);
     }
 
-    protected void setWeight(int weight) throws LessThanZeroException {
+    protected void setWeight(double weight) throws LessThanZeroException {
         if (weight < 0) {
             throw new LessThanZeroException(weight);
         }
@@ -43,5 +44,13 @@ public abstract class Item {
         }
 
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "\nname='" + name +
+                        "\nweight=" + weight +
+                        "\nprice=" + price;
     }
 }
