@@ -88,12 +88,17 @@
       <version>11</version>
     </dependency>
 
-
     <!-- https://mvnrepository.com/artifact/org.zeromq/jeromq -->
     <dependency>
       <groupId>org.zeromq</groupId>
       <artifactId>jeromq</artifactId>
       <version>0.5.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>guru.nidi</groupId>
+      <artifactId>graphviz-java</artifactId>
+      <version>0.16.2</version>
     </dependency>
 
     <dependency>

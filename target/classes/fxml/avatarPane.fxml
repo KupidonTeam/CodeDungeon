@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="KupidonTeam.gui.AvatarController">
+    <children>
+        <Pane fx:id="mainPane" prefHeight="339.0" prefWidth="516.0">
+            <children>
+                <ImageView fitHeight="346.0" fitWidth="522.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true"
+                           style="-fx-cursor: hand;">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/my_background.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="wizard" fx:id="wizard" fitHeight="64.0" fitWidth="64.0" layoutX="35.0" layoutY="25.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Wizard.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="wizard" fitHeight="64.0" fitWidth="64.0" layoutX="35.0" layoutY="25.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="witch" fx:id="witch" fitHeight="64.0" fitWidth="64.0" layoutX="115.0" layoutY="25.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Witch.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="witch" fitHeight="64.0" fitWidth="64.0" layoutX="115.0" layoutY="25.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="werwolf" fx:id="werwolf" fitHeight="64.0" fitWidth="64.0" layoutX="194.0" layoutY="25.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Werwolf.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="werwolf" fitHeight="64.0" fitWidth="64.0" layoutX="194.0" layoutY="25.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="warrior3" fx:id="warrior_3" fitHeight="64.0" fitWidth="64.0" layoutX="270.0"
+                           layoutY="25.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;"
+                           styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Warrior_3.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="warrior3" fitHeight="64.0" fitWidth="64.0" layoutX="270.0" layoutY="25.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="warrior2" fx:id="warrior_2" fitHeight="64.0" fitWidth="64.0" layoutX="347.0"
+                           layoutY="25.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;"
+                           styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Warrior_2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="warrior2" fitHeight="64.0" fitWidth="64.0" layoutX="347.0" layoutY="25.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="warrior1" fitHeight="64.0" fitWidth="64.0" layoutX="426.0" layoutY="25.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Warrior_1.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="warrior1" fitHeight="64.0" fitWidth="64.0" layoutX="426.0" layoutY="25.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="troll" fitHeight="64.0" fitWidth="64.0" layoutX="34.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Troll.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="troll" fitHeight="64.0" fitWidth="64.0" layoutX="34.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="spider" fitHeight="64.0" fitWidth="64.0" layoutX="114.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Spider.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="spider" fitHeight="64.0" fitWidth="64.0" layoutX="114.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="shadow2" fitHeight="64.0" fitWidth="64.0" layoutX="193.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Shadow_2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="shadow2" fitHeight="64.0" fitWidth="64.0" layoutX="193.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="scull" fitHeight="64.0" fitWidth="64.0" layoutX="269.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Scull.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="scull" fitHeight="64.0" fitWidth="64.0" layoutX="269.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="samurai" fitHeight="64.0" fitWidth="64.0" layoutX="346.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Samurai.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="samurai" fitHeight="64.0" fitWidth="64.0" layoutX="346.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="ninja" fitHeight="64.0" fitWidth="64.0" layoutX="425.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Ninja.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="ninja" fitHeight="64.0" fitWidth="64.0" layoutX="425.0" layoutY="106.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="monster" fitHeight="64.0" fitWidth="64.0" layoutX="34.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Monster.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="monster" fitHeight="64.0" fitWidth="64.0" layoutX="34.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="mermaid" fitHeight="64.0" fitWidth="64.0" layoutX="114.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Mermaid.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="mermaid" fitHeight="64.0" fitWidth="64.0" layoutX="114.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="man4" fitHeight="64.0" fitWidth="64.0" layoutX="193.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Man_4.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="man4" fitHeight="64.0" fitWidth="64.0" layoutX="193.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="kitsune" fitHeight="64.0" fitWidth="64.0" layoutX="269.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Kitsune.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="kitsune" fitHeight="64.0" fitWidth="64.0" layoutX="269.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="harpy" fitHeight="64.0" fitWidth="64.0" layoutX="346.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Harpy.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="harpy" fitHeight="64.0" fitWidth="64.0" layoutX="346.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="man1" fitHeight="64.0" fitWidth="64.0" layoutX="425.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Man_1.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="man1" fitHeight="64.0" fitWidth="64.0" layoutX="425.0" layoutY="179.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="girl" fitHeight="64.0" fitWidth="64.0" layoutX="34.0" layoutY="252.0" pickOnBounds="true"
+                           preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Girl.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="girl" fitHeight="64.0" fitWidth="64.0" layoutX="34.0" layoutY="252.0" pickOnBounds="true"
+                           preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="elf2" fitHeight="64.0" fitWidth="64.0" layoutX="114.0" layoutY="252.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Elf_2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="elf2" fitHeight="64.0" fitWidth="64.0" layoutX="114.0" layoutY="252.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="elf1" fitHeight="64.0" fitWidth="64.0" layoutX="193.0" layoutY="252.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Elf_1.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="elf1" fitHeight="64.0" fitWidth="64.0" layoutX="193.0" layoutY="252.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="dwarf4" fitHeight="64.0" fitWidth="64.0" layoutX="269.0" layoutY="252.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Dwarf_4.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="dwarf4" fitHeight="64.0" fitWidth="64.0" layoutX="269.0" layoutY="252.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="dwarf3" fitHeight="64.0" fitWidth="64.0" layoutX="346.0" layoutY="252.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Dwarf_3.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="dwarf3" fitHeight="64.0" fitWidth="64.0" layoutX="346.0" layoutY="252.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="dwarf1" fitHeight="64.0" fitWidth="64.0" layoutX="425.0" layoutY="252.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Dwarf_1.png"/>
+                    </image>
+                </ImageView>
+                <ImageView id="dwarf1" fitHeight="64.0" fitWidth="64.0" layoutX="425.0" layoutY="252.0"
+                           pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame2.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
