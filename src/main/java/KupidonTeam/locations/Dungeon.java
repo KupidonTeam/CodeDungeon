@@ -1,6 +1,7 @@
 package KupidonTeam.locations;
 
 
+import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.enums.Direction;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,19 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class Dungeon extends Room {
-    //private EnemyContainer enemies;
+    private List<Enemy> enemies;
 
-    public Dungeon(int roomId, List<Direction> availableDirections, String roomName, String roomDescription) {
+    public Dungeon(int roomId, Integer[] availableDirections, String roomName, String roomDescription, List<Enemy> enemies) {
         super(roomId, availableDirections, roomName, roomDescription);
-        // this.enemies = enemies;
+        this.enemies = enemies;
+    }
+
+    @Override
+    public String toString() {
+        return "Dungeon{" +
+                "enemies=" + enemies.toString() +
+                "\nData : \n" + super.toString() +
+                '}';
     }
 
     //public EnemyContainer getEnemyContainer() {

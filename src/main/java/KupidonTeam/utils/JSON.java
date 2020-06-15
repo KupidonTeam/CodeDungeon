@@ -2,13 +2,17 @@ package KupidonTeam.utils;
 
 import KupidonTeam.animals.Animal;
 import KupidonTeam.characters.classes.Stats;
+import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.items.Armor;
 import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;
+import KupidonTeam.locations.Dungeon;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -141,7 +145,6 @@ public class JSON {
 
     public static Stats stats(JSONObject data) {
         return new Stats(
-                data.getString("race"),
                 data.getInt("armor_class"),
                 data.getInt("hits"),
                 data.getInt("speed"),
@@ -152,6 +155,50 @@ public class JSON {
                 data.getInt("chance"),
                 data.getInt("constitution")
         );
+    }
+
+    public static Enemy mob(JSONObject jsonMob, int id) {
+        return new Enemy(id,
+                jsonMob.getString("name"),
+                jsonMob.getString("desc"),
+                jsonMob.getInt("mob_level"),
+                JSON.stats(jsonMob.getJSONObject("stats"))
+        );
+    }
+
+    public static List<Dungeon> dungeons(JSONObject data) {
+        List<Dungeon> dungeonList = new ArrayList<>();
+
+        JSONArray roomsIndexes = data.getJSONObject("dungeonSkeleton").getJSONArray("rooms");
+        JSONArray routes = data.getJSONObject("dungeonSkeleton").getJSONArray("routes");
+        roomsIndexes.forEach(el -> {
+            List<Integer> availableDir = new LinkedList<>();
+            for (int i = 0; i < routes.length(); i++) {
+                JSONArray temp = (JSONArray) routes.get(i);
+                if (temp.get(0).equals(el)) {
+                    System.out.println("Room : " + el + " Dir = " + temp.get(1));
+
+                    availableDir.add((Integer) temp.get(1));
+                }
+            }
+            List<Enemy> enemies = new LinkedList<>();
+            JSONObject room = data.getJSONObject("dungeonSkeleton")
+                    .getJSONObject("mobs").getJSONObject(String.valueOf((Integer) roomsIndexes.get((Integer) el)));
+
+            room.keySet().forEach(elem ->
+                    enemies.add(mob(room.getJSONObject(elem), Integer.parseInt(elem))
+                    ));
+            Integer[] tempArr = new Integer[availableDir.size()];
+            availableDir.toArray(tempArr);
+            dungeonList.add(new Dungeon((Integer) el,
+                    tempArr,
+                    "unnamed",
+                    "no desc",
+                    enemies
+            ));
+        });
+
+        return dungeonList;
     }
 
     //<--!  Конец   --!>

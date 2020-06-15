@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Stats {
 
-    private String race;
+//    private String race;
     private int armorClass;
     private int hits;
     private double speed;

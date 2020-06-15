@@ -1,149 +1,357 @@
 {
-  "action": "playerAuthorization",
-  "code": 203,
-  "code_desc": "successfully authorized",
+  "action": "getDungeonSkeleton",
+  "code": 201,
+  "code_desc": "dungeon skeleton generated successfully",
   "data": {
-    "race": "Human",
-    "class_name": "Mage",
-    "armor_class": 0,
-    "hits": 0,
-    "speed": 0,
-    "strength": 0,
-    "dexterity": 0,
-    "intelligence": 0,
-    "wisdom": 0,
-    "chance": 0,
-    "constitution": 0,
-    "level": 1,
-    "experience": 0,
-    "player_id": 8,
-    "player_name": "test6",
-    "class_id": 1,
-    "race_id": 1,
-    "food": {
-      "1": {
-        "food_name": "begg food",
-        "food_price": 7.0
-      }
-    },
-    "armor": {
-      "1": {
-        "armor_name": "Improved Leather",
-        "armor_weight": 12,
-        "armor_price": 450.0
-      }
-    },
-    "weapons": {
-      "1": {
-        "weapon_name": "Staff Weapon",
-        "weapon_price": 20.0,
-        "damage_min": 1,
-        "damage_max": 6,
-        "weapon_weight": 4.0
-      }
-    },
-    "animals": {
-      "1": {
-        "animal_name": "Riding Horse",
-        "animal_price": 7500.0,
-        "animal_speed": 60.0,
-        "animal_capacity": 480
-      }
-    },
-    "vulnerabilities": {},
-    "attacks": {
-      "4": {
-        "attack_name": "Thor",
-        "lvl": 1,
-        "type_attack": "Long Range",
-        "count_of_random": 2,
-        "cooldown": 5,
-        "random_diapason": 8,
-        "effect": "embodiment"
+    "dungeonSkeleton": {
+      "mobs": {
+        "0": {
+          "0": {
+            "attacks": {},
+            "desc": "Medium Humanoid",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Philistin",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          }
+        },
+        "1": {
+          "0": {
+            "attacks": {},
+            "desc": "Medium Humanoid",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Black Spider",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          },
+          "1": {
+            "attacks": {},
+            "desc": "Medium Humanoid",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Philistin",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          }
+        },
+        "2": {
+          "0": {
+            "attacks": {},
+            "desc": "Big Beast",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Giant Spider",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          },
+          "1": {
+            "attacks": {},
+            "desc": "Medium Humanoid",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Philistin",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          }
+        },
+        "3": {
+          "0": {
+            "attacks": {},
+            "desc": "Medium Humanoid",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Evil Mage",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          },
+          "1": {
+            "attacks": {},
+            "desc": "Medium Humanoid",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Red-Marked ",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          }
+        },
+        "4": {
+          "0": {
+            "attacks": {},
+            "desc": "Medium Beast",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Wolf",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          },
+          "1": {
+            "attacks": {},
+            "desc": "Medium Aberration",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Spectator",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          }
+        },
+        "5": {
+          "0": {
+            "attacks": {},
+            "desc": "Medium Humanoid",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Black Spider",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          },
+          "1": {
+            "attacks": {},
+            "desc": "Big Slime",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Golden Jelly",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          },
+          "2": {
+            "attacks": {},
+            "desc": "Medium Humanoid",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Red-Marked ",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          }
+        },
+        "6": {
+          "0": {
+            "attacks": {},
+            "desc": "Medium Humanoid",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Evil Mage",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          },
+          "1": {
+            "attacks": {},
+            "desc": "Big Giant",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Ogre",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          },
+          "2": {
+            "attacks": {},
+            "desc": "Medium Human",
+            "inventory": {},
+            "mob_level": 1,
+            "name": "Cultist",
+            "stats": {
+              "armor_class": 2,
+              "chance": 0.0,
+              "constitution": 3.0,
+              "dexterity": 8.0,
+              "hits": 3,
+              "intelligence": 6.0,
+              "speed": 4.0,
+              "strength": 5.0,
+              "wisdom": 9.0
+            },
+            "vulnerabilities": {}
+          }
+        }
       },
-      "7": {
-        "attack_name": "A ray of cold",
-        "lvl": 0,
-        "type_attack": "Long Range",
-        "count_of_random": 1,
-        "cooldown": 5,
-        "random_diapason": 8,
-        "effect": "embodiment"
-      }
-    }
-  }
-}
-
-
-{
-  "data": {
-    "race": "Human",
-    "class_name": "Mage",
-    "armor_class": 1,
-    "hits": 100,
-    "speed": 0.0,
-    "strength": 7.0,
-    "dexterity": 3.0,
-    "intelligence": 4.0,
-    "wisdom": 3.0,
-    "chance": 2.0,
-    "constitution": 2.0,
-    "level": 1,
-    "experience": 0,
-    "player_id": 11,
-    "player_name": "test8",
-    "class_id": 1,
-    "race_id": 1,
-    "food": {
-      "1": {
-        "food_name": "begg food",
-        "food_price": 7.0
-      }
-    },
-    "armor": {
-      "1": {
-        "armor_name": "Improved Leather",
-        "armor_weight": 12,
-        "armor_price": 450.0
-      }
-    },
-    "weapons": {
-      "1": {
-        "weapon_name": "Staff Weapon",
-        "weapon_price": 20.0,
-        "damage_min": 1,
-        "damage_max": 6,
-        "weapon_weight": 4.0
-      }
-    },
-    "animals": {
-      "1": {
-        "animal_name": "Riding Horse",
-        "animal_price": 7500.0,
-        "animal_speed": 60.0,
-        "animal_capacity": 480
-      }
-    },
-    "vulnerabilities": {},
-    "attacks": {
-      "4": {
-        "attack_name": "Thor",
-        "lvl": 1,
-        "type_attack": "Long Range",
-        "count_of_random": 2,
-        "cooldown": 5,
-        "random_diapason": 8,
-        "effect": "embodiment"
-      },
-      "7": {
-        "attack_name": "A ray of cold",
-        "lvl": 0,
-        "type_attack": "Long Range",
-        "count_of_random": 1,
-        "cooldown": 5,
-        "random_diapason": 8,
-        "effect": "embodiment"
-      }
+      "rooms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "routes": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ]
     }
   }
 }
