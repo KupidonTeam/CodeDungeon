@@ -5,6 +5,7 @@ import KupidonTeam.login.SignLogic;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,9 +14,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -177,13 +183,10 @@ public class MainController {
         });
 
 
-        sendButton.setOnMouseClicked(event -> {
-            if (!messageInput.getText().isEmpty()) {
-                System.out.println(messageInput.getText());
-                String message = JSON.message(messageInput.getText());
-                System.out.println("message = " + message);
-                server.sendMessageToServer(message);
-                messageInput.setText("");
+        sendButton.setOnMouseClicked(event -> sendChatMessage());
+        messageInput.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                sendChatMessage();
             }
         });
 
@@ -191,7 +194,7 @@ public class MainController {
 
         setUp();
         loadPlayerInformation();
-        // messageDialog("gello");
+
     }
 
     private void setUp() {
@@ -204,8 +207,10 @@ public class MainController {
     }
 
     private void setUpTextPanes() {
+        chatPane.setText("");
         chatPane.setWrapText(true);
         chatPane.setPrefColumnCount(30);
+        chatPane.setEditable(false);
         statsTextArea.setWrapText(true);
         statsTextArea.setPrefColumnCount(30);
         statsTextArea.setPadding(new Insets(5));
@@ -279,29 +284,12 @@ public class MainController {
         win.getChildren().add(progressIndicator);
         win.getChildren().add(closeBt);
         win.getChildren().add(ok);
-//        win.getChildren().add(new Button("lol"));
         win.setAlignment(Pos.CENTER);
         Stage b = new Stage();
         b.initStyle(StageStyle.UNDECORATED);
         b.setScene(scene);
         b.show();
     }
-
-
-//    private void globalChat() {
-//        new Thread(() -> {
-//            Connection server = Connection.getConnection();
-//            while (true) {
-//                System.out.println("work ?");
-//                if (!server.getBuffer().isEmpty()) {
-//                    System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyy = " + server.getBuffer());
-//                    chatPane.appendText(server.getBuffer() + "\n");
-//                    server.cleanBuffer();
-//                }
-//            }
-//        }).start();
-//
-//    }
 
     private void loadPlayerInformation() {
         player = Player.getInstance();
@@ -353,9 +341,15 @@ public class MainController {
                 .forEach(el -> el.setStyle("-fx-border-color:red;  -fx-border-width : 3;"));
     }
 
-    public void addMessageToChat(String msg) {
-        System.out.println("new MESSSSSSSSSSSSSSSSSSSAGE");
-        chatPane.appendText(msg + "\n");
+
+    private void sendChatMessage() {
+        if (!messageInput.getText().isEmpty()) {
+            System.out.println(messageInput.getText());
+            String message = JSON.message(messageInput.getText());
+            System.out.println("message = " + message);
+            server.sendMessageToServer(message);
+            messageInput.setText("");
+        }
     }
 
 }

@@ -10,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import lombok.Data;
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -38,7 +40,7 @@ public class Connection {
     private SignLogic signLogic;
     private String serverResponse; //переменная отправленя ответа в другие методы
     private MainController mainController;
-    private String buffer;
+
     private TextArea chatArea;
 
     private Connection() {
@@ -129,8 +131,7 @@ public class Connection {
 
                 break;
             case "sendChatMessage":
-                buffer = JSON.inboxMessage(serverResponse.getJSONObject("data"));
-                chatArea.appendText(buffer);
+                addMessageToChat(serverResponse.getJSONObject("data"));
                 break;
             case "connectToServer":
                 if (serverResponse.getInt("code") != 100) {
@@ -193,9 +194,6 @@ public class Connection {
         return "NEW msg";
     }
 
-    public String getBuffer() {
-        return buffer;
-    }
 
     private void connectionStatus() {
 
@@ -209,12 +207,14 @@ public class Connection {
         System.exit(-200);
     }
 
-    public void cleanBuffer() {
-        this.buffer = "";
-    }
 
     public void setChatArea(TextArea chatArea) {
         this.chatArea = chatArea;
+    }
+
+    private void addMessageToChat(JSONObject data) {
+        String buffer = JSON.inboxMessage(data);
+        chatArea.appendText(buffer);
     }
 
 }

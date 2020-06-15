@@ -8,6 +8,7 @@ import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;
 import org.json.JSONObject;
 
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,11 +18,12 @@ public class JSON {
         System.out.println("hey" + jsonObject);
         String key = jsonObject.getString("key");
         System.out.println(key);
+
     }
 
     //Send a simple message to chat
     public static String message(String msg) {
-        return (String.format("{\"action\":\"sendChatMessage\",\"data\":{\"message\": \"%s\"}}", msg));
+        return String.format("{\"action\":\"sendChatMessage\",\"data\":{\"message\": \"%s\"}}", msg);
     }
 
     public static String inboxMessage(JSONObject data) {

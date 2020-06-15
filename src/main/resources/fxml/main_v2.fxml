@@ -569,20 +569,21 @@
                                             </stylesheets>
                                         </TextArea>
                                         <TextField fx:id="messageInput" layoutX="12.0" layoutY="585.0" prefHeight="27.0"
-                                                   prefWidth="200.0" promptText="type your message."
+                                                   prefWidth="188.0" promptText="type your message."
                                                    style="-fx-border-color: #8e7c74; -fx-background-color: #39100f; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;"
-                                                   AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                                                   AnchorPane.rightAnchor="70.0"/>
-                                        <Button fx:id="sendButton" layoutX="215.0" layoutY="578.0" maxHeight="-Infinity"
-                                                minHeight="-Infinity" mnemonicParsing="false" prefHeight="27.0"
+                                                   AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="11.0"
+                                                   AnchorPane.rightAnchor="79.0"/>
+                                        <Button fx:id="sendButton" layoutX="208.0" layoutY="578.0" maxHeight="-Infinity"
+                                                minHeight="-Infinity" mnemonicParsing="false" prefHeight="38.0"
+                                                prefWidth="58.0"
                                                 style="-fx-border-color: #8e7c74; -fx-background-color: #961307; -fx-text-fill: #8e7c74;"
-                                                text="Send" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="215.0"
-                                                AnchorPane.rightAnchor="10.0"/>
+                                                text="Send" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="207.0"
+                                                AnchorPane.rightAnchor="13.0"/>
                                     </children>
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab text="Direct">
+                        <Tab fx:id="directMessageTab" text="Direct">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="300.0"
                                             style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
@@ -594,11 +595,16 @@
                                                   stylesheets="@/assets/css/text-area.css"
                                                   AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0"
                                                   AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0"/>
-                                        <TextField fx:id="directMessageInput" layoutX="11.0" layoutY="585.0"
-                                                   promptText="type your message."
+                                        <TextField fx:id="directMessageInput" layoutX="12.0" layoutY="585.0"
+                                                   prefHeight="27.0" prefWidth="188.0" promptText="type your message."
                                                    style="-fx-border-color: #8e7c74; -fx-background-color: #39100f; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;"
-                                                   AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                                                   AnchorPane.rightAnchor="10.0"/>
+                                                   AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="11.0"
+                                                   AnchorPane.rightAnchor="79.0"/>
+                                        <Button fx:id="sendButton1" layoutX="208.0" layoutY="571.0"
+                                                maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false"
+                                                prefHeight="38.0" prefWidth="58.0"
+                                                style="-fx-border-color: #8e7c74; -fx-background-color: #961307; -fx-text-fill: #8e7c74;"
+                                                text="Send"/>
                                     </children>
                                 </AnchorPane>
                             </content>
