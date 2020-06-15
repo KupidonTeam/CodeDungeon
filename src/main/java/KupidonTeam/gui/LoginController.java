@@ -1,18 +1,28 @@
 package KupidonTeam.gui;
 
 import KupidonTeam.login.SignLogic;
+import KupidonTeam.player.Player;
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +33,8 @@ public class LoginController {
     @FXML
     private AnchorPane MainPane;
 
+    @FXML
+    private Pane pane;
 
     @FXML
     private ResourceBundle resources;
@@ -51,9 +63,16 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+    private Paint labelColor;
+
+    public Stage dialogStage;
+
+    private Player player;
+
     @FXML
     void initialize() {
         assert MainPane != null : "fx:id=\"MainPane\" was not injected: check your FXML file 'login.fxml'.";
+        assert pane != null : "fx:id=\"pane\" was not injected: check your FXML file 'login.fxml'.";
         assert usernameLabel != null : "fx:id=\"usernameLabel\" was not injected: check your FXML file 'login.fxml'.";
         assert passwordLabel != null : "fx:id=\"passwordLabel\" was not injected: check your FXML file 'login.fxml'.";
         assert closeButton != null : "fx:id=\"closeButton\" was not injected: check your FXML file 'login.fxml'.";
@@ -62,7 +81,24 @@ public class LoginController {
         assert usernameField != null : "fx:id=\"usernameField\" was not injected: check your FXML file 'login.fxml'.";
         assert passwordField != null : "fx:id=\"passwordField\" was not injected: check your FXML file 'login.fxml'.";
 
-        loginButton.setOnMouseClicked(ev -> loginCheck());
+        dialogStage = new Stage();
+        dialogStage.initStyle(StageStyle.UNDECORATED);
+        labelColor = usernameLabel.getTextFill();
+
+        loginButton.setOnMouseClicked(ev -> {
+            login();
+        });
+        usernameField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                login();
+            }
+        });
+        passwordField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                login();
+            }
+        });
+
         closeButton.setOnMouseClicked(ev -> {
             try {
                 LoginWrapper.getCurrentStage().close();
@@ -82,7 +118,10 @@ public class LoginController {
     }
 
 
+    @SneakyThrows
     private void loginCheck() {
+
+        updateLabels();
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -95,16 +134,24 @@ public class LoginController {
             passwordLabel.setTextFill(Color.RED);
         } else {
             SignLogic signLogic = SignLogic.getSignLogic();
-            //System.out.println(signLogic.checkUserName(username));
-
             if (signLogic.checkUserName(username)) {
-                signLogic.serverAuthorization(username, password);
+                boolean loginStatus = signLogic.serverAuthorization(username, password);
+                if (loginStatus) {
+                    loadMainPane();
+                    dialogStage.close();
 
+                } else {
+                    passwordLabel.setText("Password - WRONG");
+                    passwordLabel.setTextFill(Color.RED);
+                }
             } else {
-                usernameLabel.setText(usernameLabel.getText() + " - no such user");
+                usernameLabel.setText("Username - no such user");
                 usernameLabel.setTextFill(Color.RED);
             }
+
         }
+        dialogStage.close();
+
     }
 
     private void loadSignUp() {
@@ -112,7 +159,6 @@ public class LoginController {
         LoginWrapper.getCurrentStage().setScene(SignUpWrapper.getScene());
         Parent parent;
         FXMLLoader loader = new FXMLLoader();
-
         try {
             parent = loader.load(getClass().getResourceAsStream(path));
             Scene newScene = new Scene(parent);
@@ -133,4 +179,67 @@ public class LoginController {
         });
         fadeTransition.play();
     }
+
+    public void loadMainPane() {
+        String path = "/fxml/main_v2.fxml";
+        LoginWrapper.getCurrentStage().setScene(SignUpWrapper.getScene());
+        Parent parent;
+        FXMLLoader loader = new FXMLLoader();
+
+        try {
+            parent = loader.load(getClass().getResourceAsStream(path));
+            Scene newScene = new Scene(parent);
+            LoginWrapper.getCurrentStage().setScene(newScene);
+            LoginWrapper.getCurrentStage().centerOnScreen();
+            LoginWrapper.getCurrentStage().show();
+            MainController controller = (MainController) loader.getController();
+            //controller.messageDialog("Hello Hero!\nLet's start your ADVENTURE!\nAre you ready to kick the monsters?!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateLabels() {
+        usernameLabel.setText("Username");
+        usernameLabel.setTextFill(labelColor);
+        passwordLabel.setText("Password");
+        passwordLabel.setTextFill(labelColor);
+
+    }
+
+    private void loginToServerDialog() {
+        Text message = new Text("Connecting to server\nPlease wait...");
+        message.setFill(Color.WHITE);
+        message.setStyle(
+                "-fx-font: 18 arial;" +
+                        "-fx-text-alignment : center;");
+        VBox win = new VBox();
+        HBox buttons = new HBox();
+        win.setStyle(
+                "-fx-background-image : url(/assets/GUI_Parts/Gui_parts/barmid_ready.png);" +
+                        "-fx-background-size : 600 300;");
+
+        win.setPrefSize(600, 300);
+        win.setSpacing(20);
+        Scene scene = new Scene(win);
+        ProgressIndicator progressIndicator = new ProgressIndicator();
+        progressIndicator.setStyle("-fx-progress-color : red;");
+        win.getChildren().add(message);
+        win.getChildren().add(progressIndicator);
+
+        win.setAlignment(Pos.CENTER);
+        dialogStage.setScene(scene);
+        dialogStage.setScene(scene);
+        dialogStage.show();
+    }
+
+    private void login() {
+        loginToServerDialog();
+        Platform.runLater(() -> loginCheck());
+    }
+
+
 }
+
+
+

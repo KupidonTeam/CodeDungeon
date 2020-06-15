@@ -2,8 +2,8 @@ package KupidonTeam;
 
 
 import KupidonTeam.gui.LoginWrapper;
+import KupidonTeam.server.Connection;
 import javafx.application.Application;
-
 
 //Class starter
 public class Game {
@@ -11,13 +11,9 @@ public class Game {
 
     public static void main(String[] args) {
 
-//        JFrame mainFrame = new JFrame();
-//        Connection connection = Connection.getConnection();
+        Connection server = Connection.getConnection();
         Application.launch(LoginWrapper.class, args);
-//         SignLogic singIn = SignLogic.getSignLogic();
-//        mainFrame = Login.getLogin();
-//        mainFrame.setVisible(true);
-        //Application.launch(Wrapper.class, args);
+
 
     }
 }

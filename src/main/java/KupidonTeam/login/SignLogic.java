@@ -4,86 +4,28 @@ import KupidonTeam.DB.DBConnection;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
-
+import lombok.Getter;
+import lombok.SneakyThrows;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 //Авторизация игрока и подключения модуля баз данных
-
+@Getter
 public class SignLogic {
     private static SignLogic signLogic;
-    private String username;
-    private String password;
-    private Scanner input;
     private Connection server;
     private DBConnection database;
     private Boolean responseFlag;
-    private Player player;
-
-//    public SingIn() {
-//
-//        //input = new Scanner(System.in);
-//        database = DBConnection.getDbConnection();
-//       // registration();
-//    }
+    private boolean login;
 
     private SignLogic() {
         this.server = Connection.getConnection();
         database = DBConnection.getDbConnection();
         responseFlag = false;
     }
-
-
-//    private void singInUp() {
-
-//        String action;
-//        boolean regFlag = false;
-//        while (!regFlag) {
-//            action = input.nextLine();
-//            switch (action) {
-//                case "/registration":
-//                    // registration();
-//                    break;
-//                case "/authorization":
-//                    // authorization();
-//                    break;
-//                default:
-//                    System.out.println("No such option!\nPlease type '/registration' or '/authorization'");
-//                    break;
-//            }
-//        }
-//
-//    }
-
-    //TODO
-//    private void registration() {
-//        System.out.println("Input Login : ");
-//        name = input.nextLine();
-//        if (checkUserName(name) == 0) {
-//
-//        }
-//        //server.sendMessageToServer();
-//    }
-
-
-//    private void authorization() {
-//        String name;
-//        String password;
-//        System.out.println("«Authorization»");
-//        do {
-//            System.out.print("Name : ");
-//            name = input.nextLine();
-//            System.out.print("\nPassword : ");
-//            password = input.nextLine();
-//            if (checkUserName(name) != 1) {
-//                System.out.println("User with such name does not exist.");
-//            }
-//        } while (checkUserName(name) == 1);
-//        serverAuthorization(name, password);
-//    }
 
     //Возвращаем 1 = имя есть в БД, 0 = имени нет, -1 = не правильный запрос
     public boolean checkUserName(String name) {
@@ -108,44 +50,51 @@ public class SignLogic {
     }
 
     //отправляем запрос сереверу на авторизацию
-    public void serverAuthorization(String username, String password) {
+    @SneakyThrows
+    public synchronized boolean serverAuthorization(String username, String password) {
         String msg = JSON.login(username, password);
         server.sendMessageToServer(msg);
+        System.out.println("Message to server : \n" + msg);
         System.out.println("------Set socket timeout 5 sec-------");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        wait(3000);
+        System.out.println("after wait");
         if (!responseFlag) {
-            System.err.println("Server does not response");
-            JOptionPane.showMessageDialog(null,
-                    "Server does not response!\nPlease restart the application.",
-                    "SERVER ERROR",
-                    JOptionPane.ERROR_MESSAGE);
+            connectionFailedAlert();
+            closeAll();
             System.exit(-200);
+        } else {
+            System.err.println("=======> response flag = " + responseFlag);
+            System.out.println("login status = " + login);
         }
+        return login;
     }
 
     public void serverRegistration(String username, String password) {
 
     }
 
-    public void serverResponse(String msg) {
+    public synchronized void serverResponse(String msg) {
         //подтверждаем ответ
         responseFlag = true;
-        System.out.println(msg);
+        System.out.println("Я получил вот такой ответ : " + msg);
 
 
         //TODO!!!!!!! после успешного логина открываем основную панель
-        //Application.launch(ChatWrapper.class, Game.argz);
 
     }
 
-    //принимает json от сервера и десериализует
-    private Player createPLayer(String json) {
-        return null;
-
+    private void createPLayer(String json) {
+        JSONObject data = new JSONObject(json).getJSONObject("data");
+        Player.createPlayer(data.getString("player_name"),
+                data.getString("class_name"),
+                data.getInt("level"),
+                data.getInt("experience"),
+                JSON.stats(data),
+                JSON.skills(data),
+                JSON.armor(data),
+                JSON.weapons(data),
+                JSON.animals(data)
+        );
     }
 
     public void closeAll() {
@@ -160,5 +109,25 @@ public class SignLogic {
         }
         return signLogic;
     }
+
+    public synchronized void loginAnalyze(String msg) {
+        responseFlag = true;
+        int code = new JSONObject(msg).getInt("code");
+        if (code == 203) {
+            login = true;
+            createPLayer(msg);
+            System.out.println(Player.getInstance().toString());
+        } else login = false;
+        notifyAll();
+    }
+
+    private void connectionFailedAlert() {
+        JOptionPane.showMessageDialog(null,
+                "Server does not response!\nPlease restart the application.",
+                "SERVER ERROR",
+                JOptionPane.ERROR_MESSAGE);
+        System.exit(-503);
+    }
+
 
 }

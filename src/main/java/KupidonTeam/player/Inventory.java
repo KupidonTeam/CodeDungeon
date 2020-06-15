@@ -16,9 +16,9 @@ public class Inventory {
         capacity = 10;
     }
 
-    public Inventory(Player player) {
-        capacity = player.getStrength() * 15;
-    }
+//    public Inventory(Player player) {
+//        capacity = player.getStrength() * 15;
+//    }
 
     public void addItem(Item item) {
         items.add(item);

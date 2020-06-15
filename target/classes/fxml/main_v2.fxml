@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
@@ -14,431 +15,300 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0"
-            prefWidth="1024.0" style="-fx-border-color: #8e7c74;" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1024.0" style="-fx-border-color: #8e7c74;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.MainController">
     <children>
-        <AnchorPane layoutX="300.0" layoutY="50.0" style="-fx-border-color: #8e7c74; -fx-background-color: #251a1a;"
-                    AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0"
-                    AnchorPane.topAnchor="50.0">
+        <AnchorPane layoutX="300.0" layoutY="50.0" style="-fx-border-color: #8e7c74; -fx-background-color: #251a1a;" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0">
             <children>
-                <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="215.0" prefWidth="190.0"
-                            style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;"
-                            AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="215.0" prefWidth="190.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <children>
-                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="66.0" layoutY="8.0" text="Warrior" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="66.0" layoutY="8.0" text="Warrior" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="18.0"/>
+                                        <Font name="Century" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0"
-                                    style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="80.0"
-                                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                    AnchorPane.topAnchor="60.0">
+                        <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                             <children>
-                                <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="60.0" layoutY="6.0"
-                                           AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="60.0" layoutY="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <image>
-                                        <Image url="@/assets/SIMPLEAvatarsIcons/resized/warrior_resized.png"/>
+                                        <Image url="@/assets/SIMPLEAvatarsIcons/resized/warrior_resized.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="11.0" layoutY="11.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                        <AnchorPane layoutX="11.0" layoutY="11.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                             <children>
-                                <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="28.0" layoutY="1.0"
-                                           AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0"
-                                           AnchorPane.topAnchor="10.0">
+                                <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="28.0" layoutY="1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="10.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/heart.png"/>
+                                        <Image url="@/assets/images_for_main/heart.png" />
                                     </image>
                                 </ImageView>
-                                <Label alignment="CENTER" layoutX="74.0" layoutY="7.0" text="2000" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="74.0" layoutY="7.0" text="2000" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="18.0"/>
+                                        <Font name="Century" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="24.0" layoutY="79.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
+                        <AnchorPane layoutX="24.0" layoutY="79.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="34.0" layoutY="7.0" text="1500" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="34.0" layoutY="7.0" text="1500" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="12.0"/>
+                                        <Font name="Century" size="12.0" />
                                     </font>
                                 </Label>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-75.0" layoutY="-89.0"
-                                           AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0"
-                                           AnchorPane.topAnchor="5.0">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-75.0" layoutY="-89.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/sword_new.png"/>
+                                        <Image url="@/assets/images_for_main/sword_new.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0">
+                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="18.0" layoutY="5.0" text="500" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="18.0" layoutY="5.0" text="500" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="12.0"/>
+                                        <Font name="Century" size="12.0" />
                                     </font>
                                 </Label>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" AnchorPane.bottomAnchor="5.0"
-                                           AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/shield_new.png"/>
+                                        <Image url="@/assets/images_for_main/shield_new.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="50.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0">
+                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <children>
-                                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" text="Some text here"
-                                       textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" text="Some text here" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <padding>
-                                        <Insets left="10.0" top="5.0"/>
+                                        <Insets left="10.0" top="5.0" />
                                     </padding>
                                 </Label>
                             </children>
                         </AnchorPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane layoutX="24.0" layoutY="24.0" prefHeight="215.0" prefWidth="190.0"
-                            style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;"
-                            AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <AnchorPane layoutX="24.0" layoutY="24.0" prefHeight="215.0" prefWidth="190.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <children>
-                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="66.0" layoutY="8.0" text="Warrior" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="66.0" layoutY="8.0" text="Warrior" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="18.0"/>
+                                        <Font name="Century" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0"
-                                    style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="80.0"
-                                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                    AnchorPane.topAnchor="60.0">
+                        <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                             <children>
-                                <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="60.0" layoutY="6.0"
-                                           AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="60.0" layoutY="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <image>
-                                        <Image url="@/assets/SIMPLEAvatarsIcons/resized/warrior_resized.png"/>
+                                        <Image url="@/assets/SIMPLEAvatarsIcons/resized/warrior_resized.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="11.0" layoutY="11.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                        <AnchorPane layoutX="11.0" layoutY="11.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                             <children>
-                                <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="28.0" layoutY="1.0"
-                                           AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0"
-                                           AnchorPane.topAnchor="10.0">
+                                <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="28.0" layoutY="1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="10.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/heart.png"/>
+                                        <Image url="@/assets/images_for_main/heart.png" />
                                     </image>
                                 </ImageView>
-                                <Label alignment="CENTER" layoutX="74.0" layoutY="7.0" text="2000" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="74.0" layoutY="7.0" text="2000" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="18.0"/>
+                                        <Font name="Century" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="24.0" layoutY="79.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
+                        <AnchorPane layoutX="24.0" layoutY="79.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="34.0" layoutY="7.0" text="1500" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="34.0" layoutY="7.0" text="1500" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="12.0"/>
+                                        <Font name="Century" size="12.0" />
                                     </font>
                                 </Label>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-75.0" layoutY="-89.0"
-                                           AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0"
-                                           AnchorPane.topAnchor="5.0">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-75.0" layoutY="-89.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/sword_new.png"/>
+                                        <Image url="@/assets/images_for_main/sword_new.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0">
+                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="18.0" layoutY="5.0" text="500" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="18.0" layoutY="5.0" text="500" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="12.0"/>
+                                        <Font name="Century" size="12.0" />
                                     </font>
                                 </Label>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" AnchorPane.bottomAnchor="5.0"
-                                           AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/shield_new.png"/>
+                                        <Image url="@/assets/images_for_main/shield_new.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="50.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0">
+                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <children>
-                                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" text="Some text here"
-                                       textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" text="Some text here" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <padding>
-                                        <Insets left="10.0" top="5.0"/>
+                                        <Insets left="10.0" top="5.0" />
                                     </padding>
                                 </Label>
                             </children>
                         </AnchorPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane layoutX="24.0" layoutY="24.0" prefHeight="215.0" prefWidth="190.0"
-                            style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;"
-                            AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+                <AnchorPane layoutX="24.0" layoutY="24.0" prefHeight="215.0" prefWidth="190.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
                     <children>
-                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="66.0" layoutY="8.0" text="Warrior" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="66.0" layoutY="8.0" text="Warrior" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="18.0"/>
+                                        <Font name="Century" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0"
-                                    style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="80.0"
-                                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                    AnchorPane.topAnchor="60.0">
+                        <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                             <children>
-                                <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="60.0" layoutY="6.0"
-                                           AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="60.0" layoutY="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <image>
-                                        <Image url="@/assets/SIMPLEAvatarsIcons/resized/warrior_resized.png"/>
+                                        <Image url="@/assets/SIMPLEAvatarsIcons/resized/warrior_resized.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="11.0" layoutY="11.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                        <AnchorPane layoutX="11.0" layoutY="11.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                             <children>
-                                <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="28.0" layoutY="1.0"
-                                           AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0"
-                                           AnchorPane.topAnchor="10.0">
+                                <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="28.0" layoutY="1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="10.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/heart.png"/>
+                                        <Image url="@/assets/images_for_main/heart.png" />
                                     </image>
                                 </ImageView>
-                                <Label alignment="CENTER" layoutX="74.0" layoutY="7.0" text="2000" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="74.0" layoutY="7.0" text="2000" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="18.0"/>
+                                        <Font name="Century" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="24.0" layoutY="79.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
+                        <AnchorPane layoutX="24.0" layoutY="79.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="34.0" layoutY="7.0" text="1500" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="34.0" layoutY="7.0" text="1500" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="12.0"/>
+                                        <Font name="Century" size="12.0" />
                                     </font>
                                 </Label>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-75.0" layoutY="-89.0"
-                                           AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0"
-                                           AnchorPane.topAnchor="5.0">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-75.0" layoutY="-89.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/sword_new.png"/>
+                                        <Image url="@/assets/images_for_main/sword_new.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0">
+                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="18.0" layoutY="5.0" text="500" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="18.0" layoutY="5.0" text="500" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="12.0"/>
+                                        <Font name="Century" size="12.0" />
                                     </font>
                                 </Label>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" AnchorPane.bottomAnchor="5.0"
-                                           AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/shield_new.png"/>
+                                        <Image url="@/assets/images_for_main/shield_new.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="50.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0">
+                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <children>
-                                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" text="Some text here"
-                                       textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" text="Some text here" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <padding>
-                                        <Insets left="10.0" top="5.0"/>
+                                        <Insets left="10.0" top="5.0" />
                                     </padding>
                                 </Label>
                             </children>
                         </AnchorPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane layoutX="34.0" layoutY="34.0" prefHeight="215.0" prefWidth="190.0"
-                            style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;"
-                            AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                <AnchorPane layoutX="34.0" layoutY="34.0" prefHeight="215.0" prefWidth="190.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
                     <children>
-                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="66.0" layoutY="8.0" text="Warrior" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="66.0" layoutY="8.0" text="Warrior" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="18.0"/>
+                                        <Font name="Century" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0"
-                                    style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="80.0"
-                                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                    AnchorPane.topAnchor="60.0">
+                        <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                             <children>
-                                <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="60.0" layoutY="6.0"
-                                           AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="60.0" layoutY="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <image>
-                                        <Image url="@/assets/SIMPLEAvatarsIcons/resized/warrior_resized.png"/>
+                                        <Image url="@/assets/SIMPLEAvatarsIcons/resized/warrior_resized.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="11.0" layoutY="11.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                        <AnchorPane layoutX="11.0" layoutY="11.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                             <children>
-                                <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="28.0" layoutY="1.0"
-                                           AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0"
-                                           AnchorPane.topAnchor="10.0">
+                                <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="28.0" layoutY="1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="10.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/heart.png"/>
+                                        <Image url="@/assets/images_for_main/heart.png" />
                                     </image>
                                 </ImageView>
-                                <Label alignment="CENTER" layoutX="74.0" layoutY="7.0" text="2000" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="74.0" layoutY="7.0" text="2000" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="18.0"/>
+                                        <Font name="Century" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="24.0" layoutY="79.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
+                        <AnchorPane layoutX="24.0" layoutY="79.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="34.0" layoutY="7.0" text="1500" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="34.0" layoutY="7.0" text="1500" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="12.0"/>
+                                        <Font name="Century" size="12.0" />
                                     </font>
                                 </Label>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-75.0" layoutY="-89.0"
-                                           AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0"
-                                           AnchorPane.topAnchor="5.0">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-75.0" layoutY="-89.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/sword_new.png"/>
+                                        <Image url="@/assets/images_for_main/sword_new.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0">
+                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="18.0" layoutY="5.0" text="500" textFill="#816d64"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="CENTER" layoutX="18.0" layoutY="5.0" text="500" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <font>
-                                        <Font name="Century" size="12.0"/>
+                                        <Font name="Century" size="12.0" />
                                     </font>
                                 </Label>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" AnchorPane.bottomAnchor="5.0"
-                                           AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
                                     <image>
-                                        <Image url="@/assets/images_for_main/shield_new.png"/>
+                                        <Image url="@/assets/images_for_main/shield_new.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity"
-                                    prefHeight="50.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;"
-                                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0">
+                        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <children>
-                                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" text="Some text here"
-                                       textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" text="Some text here" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <padding>
-                                        <Insets left="10.0" top="5.0"/>
+                                        <Insets left="10.0" top="5.0" />
                                     </padding>
                                 </Label>
                             </children>
@@ -447,84 +317,63 @@
                 </AnchorPane>
             </children>
         </AnchorPane>
-        <AnchorPane layoutY="6.0" prefHeight="670.0" prefWidth="300.0"
-                    style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="100.0"
-                    AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane layoutY="6.0" prefHeight="670.0" prefWidth="300.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <TabPane layoutX="14.0" layoutY="291.0" prefHeight="351.0" prefWidth="280.0"
-                         style="-fx-background-color: white;" stylesheets="@/assets/css/tabs.css"
-                         tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                         AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="295.0">
+                <TabPane layoutX="14.0" layoutY="291.0" prefHeight="351.0" prefWidth="280.0" style="-fx-background-color: white;" stylesheets="@/assets/css/tabs.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="295.0">
                     <tabs>
                         <Tab text="Carried">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
-                                            style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
-                                        <ScrollPane fx:id="carriedPane" layoutX="14.0" layoutY="14.0" prefHeight="253.0"
-                                                    prefWidth="251.0"
-                                                    style="-fx-background-color: transparent; -fx-text-fill: #8e7c74;"/>
+                                        <ScrollPane fx:id="carriedPane" layoutX="14.0" layoutY="14.0" prefHeight="253.0" prefWidth="251.0" style="-fx-background-color: transparent; -fx-text-fill: #8e7c74;" />
                                     </children>
                                 </AnchorPane>
                             </content>
                         </Tab>
                         <Tab text="Worn">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
-                                            style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
-                                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="109.0" layoutY="30.0"
-                                                   pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="109.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
+                                                <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png" />
                                             </image>
                                         </ImageView>
-                                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="109.0" layoutY="110.0"
-                                                   pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="109.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
+                                                <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png" />
                                             </image>
                                         </ImageView>
-                                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="33.0" layoutY="110.0"
-                                                   pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="33.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
+                                                <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png" />
                                             </image>
                                         </ImageView>
-                                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="189.0" layoutY="110.0"
-                                                   pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="189.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
+                                                <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png" />
                                             </image>
                                         </ImageView>
-                                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="109.0" layoutY="193.0"
-                                                   pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="109.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
+                                                <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png" />
                                             </image>
                                         </ImageView>
-                                        <Label layoutX="32.0" layoutY="76.0" prefHeight="27.0" prefWidth="62.0"
-                                               text="Left hand" textFill="#b77676"/>
-                                        <Label layoutX="188.0" layoutY="76.0" prefHeight="27.0" prefWidth="62.0"
-                                               text="Left hand" textFill="#b77676"/>
-                                        <Label layoutX="116.0" prefHeight="27.0" prefWidth="46.0" text="Body"
-                                               textAlignment="CENTER" textFill="#b77676"/>
+                                        <Label layoutX="32.0" layoutY="76.0" prefHeight="27.0" prefWidth="62.0" text="Left hand" textFill="#b77676" />
+                                        <Label layoutX="188.0" layoutY="76.0" prefHeight="27.0" prefWidth="62.0" text="Left hand" textFill="#b77676" />
+                                        <Label layoutX="116.0" prefHeight="27.0" prefWidth="46.0" text="Body" textAlignment="CENTER" textFill="#b77676" />
                                     </children>
                                 </AnchorPane>
                             </content>
                         </Tab>
                         <Tab text="Near">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
-                                            style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
-                                        <TextArea fx:id="nearPane" prefHeight="200.0" prefWidth="200.0"
-                                                  style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;"
-                                                  AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                                                  AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                        <TextArea fx:id="nearPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                             <stylesheets>
-                                                <URL value="@/assets/css/text-area.css"/>
-                                                <URL value="@/assets/css/scroll-pane.css"/>
+                                                <URL value="@/assets/css/text-area.css" />
+                                                <URL value="@/assets/css/scroll-pane.css" />
                                             </stylesheets>
                                         </TextArea>
                                     </children>
@@ -533,222 +382,175 @@
                         </Tab>
                     </tabs>
                 </TabPane>
-                <ImageView fx:id="mapPane" fitHeight="279.0" fitWidth="280.0" layoutX="14.0" layoutY="14.0"
-                           AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <ImageView fx:id="mapPane" fitHeight="279.0" fitWidth="280.0" layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/bar_ready.png"/>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/bar_ready.png" />
                     </image>
                 </ImageView>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="723.0" layoutY="3.0" prefHeight="670.0" prefWidth="300.0"
-                    style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0"
-                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane layoutX="723.0" layoutY="3.0" prefHeight="670.0" prefWidth="300.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <TabPane layoutX="8.0" layoutY="8.0" prefHeight="653.0" prefWidth="285.0"
-                         style="-fx-background-color: white;" stylesheets="@/assets/css/tabs.css"
-                         tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                         AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <TabPane layoutX="8.0" layoutY="8.0" prefHeight="653.0" prefWidth="285.0" style="-fx-background-color: white;" stylesheets="@/assets/css/tabs.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <tabs>
                         <Tab text="Chat">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="300.0"
-                                            style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
-                                        <TextArea fx:id="chatPane" layoutX="13.0" layoutY="6.0" prefHeight="543.0"
-                                                  prefWidth="252.0" promptText="Your future messages will be here."
-                                                  style="-fx-border-color: #8e7c74; -fx-background-color: #251a1a; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;"
-                                                  text="Some message text is written here"
-                                                  AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0"
-                                                  AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                        <TextArea fx:id="chatPane" layoutX="13.0" layoutY="6.0" prefHeight="543.0" prefWidth="252.0" promptText="Your future messages will be here." style="-fx-border-color: #8e7c74; -fx-background-color: #251a1a; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;" text="Some message text is written here" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                             <stylesheets>
-                                                <URL value="@/assets/css/text-area.css"/>
-                                                <URL value="@/assets/css/scroll-pane.css"/>
+                                                <URL value="@/assets/css/text-area.css" />
+                                                <URL value="@/assets/css/scroll-pane.css" />
                                             </stylesheets>
                                         </TextArea>
-                                        <TextField fx:id="messageInput" layoutX="12.0" layoutY="585.0" prefHeight="27.0"
-                                                   prefWidth="200.0" promptText="type your message."
-                                                   style="-fx-border-color: #8e7c74; -fx-background-color: #39100f; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;"
-                                                   AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                                                   AnchorPane.rightAnchor="70.0"/>
-                                        <Button fx:id="sendButton" layoutX="215.0" layoutY="578.0" maxHeight="-Infinity"
-                                                minHeight="-Infinity" mnemonicParsing="false" prefHeight="27.0"
-                                                style="-fx-border-color: #8e7c74; -fx-background-color: #961307; -fx-text-fill: #8e7c74;"
-                                                text="Send" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="215.0"
-                                                AnchorPane.rightAnchor="10.0"/>
+                                        <TextField fx:id="messageInput" layoutX="12.0" layoutY="585.0" prefHeight="27.0" prefWidth="200.0" promptText="type your message." style="-fx-border-color: #8e7c74; -fx-background-color: #39100f; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="70.0" />
+                                        <Button fx:id="sendButton" layoutX="215.0" layoutY="578.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="27.0" style="-fx-border-color: #8e7c74; -fx-background-color: #961307; -fx-text-fill: #8e7c74;" text="Send" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="10.0" />
                                     </children>
                                 </AnchorPane>
                             </content>
                         </Tab>
                         <Tab text="Direct">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="300.0"
-                                            style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
-                                        <TextArea fx:id="directMessagePane" layoutX="13.0" layoutY="6.0"
-                                                  prefHeight="543.0" prefWidth="252.0"
-                                                  promptText="Your future messages will be here."
-                                                  style="-fx-border-color: #8e7c74; -fx-background-color: #251a1a; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;"
-                                                  stylesheets="@/assets/css/text-area.css"
-                                                  AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0"
-                                                  AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0"/>
-                                        <TextField fx:id="directMessageInput" layoutX="11.0" layoutY="585.0"
-                                                   promptText="type your message."
-                                                   style="-fx-border-color: #8e7c74; -fx-background-color: #39100f; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;"
-                                                   AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                                                   AnchorPane.rightAnchor="10.0"/>
+                                        <TextArea fx:id="directMessagePane" layoutX="13.0" layoutY="6.0" prefHeight="543.0" prefWidth="252.0" promptText="Your future messages will be here." style="-fx-border-color: #8e7c74; -fx-background-color: #251a1a; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;" stylesheets="@/assets/css/text-area.css" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                        <TextField fx:id="directMessageInput" layoutX="11.0" layoutY="585.0" promptText="type your message." style="-fx-border-color: #8e7c74; -fx-background-color: #39100f; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
                                     </children>
                                 </AnchorPane>
                             </content>
                         </Tab>
                         <Tab text="Stats">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
-                                            style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;"/>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
+                           <children>
+                              <TextArea fx:id="statsTextArea" layoutX="9.0" layoutY="14.0" prefHeight="558.0" prefWidth="260.0" promptText="Your future messages will be here." style="-fx-border-color: #8e7c74; -fx-background-color: #251a1a; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;" stylesheets="@/assets/css/text-area.css" />
+                           </children></AnchorPane>
                             </content>
                         </Tab>
                     </tabs>
                 </TabPane>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="1.0" layoutY="669.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0"
-                    prefWidth="1024.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;"
-                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0">
+        <AnchorPane layoutX="1.0" layoutY="669.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="1024.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <Button fx:id="bt1" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0"
-                        prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #961307;"
-                        text="Button" textFill="#816d64" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                        AnchorPane.topAnchor="10.0"/>
-                <Button fx:id="bt2" layoutX="132.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0"
-                        prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #39100f;"
-                        text="Button" textFill="#816d64" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="130.0"
-                        AnchorPane.topAnchor="10.0"/>
-                <Button fx:id="bt3" layoutX="255.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0"
-                        prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #39100f;"
-                        text="Button" textFill="#816d64" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="250.0"
-                        AnchorPane.topAnchor="10.0"/>
-                <Button fx:id="bt4" layoutX="377.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0"
-                        prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #39100f;"
-                        text="Button" textFill="#816d64" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="370.0"
-                        AnchorPane.topAnchor="10.0"/>
-                <Button fx:id="exitButton" layoutX="597.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0"
-                        prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #39100f;"
-                        text="Save &amp; Exit" textFill="#816d64"/>
+                <Button fx:id="bt1" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #961307;" text="Button" textFill="#816d64" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                <Button fx:id="bt2" layoutX="132.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #39100f;" text="Button" textFill="#816d64" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="10.0" />
+                <Button fx:id="bt3" layoutX="255.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #39100f;" text="Button" textFill="#816d64" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="10.0" />
+                <Button fx:id="bt4" layoutX="377.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #39100f;" text="Button" textFill="#816d64" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="10.0" />
+                <Button fx:id="exitButton" layoutX="597.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #39100f;" text="Save &amp; Exit" textFill="#816d64" />
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="301.0" layoutY="3.0" prefHeight="50.0" prefWidth="422.0"
-                    style="-fx-background-color: #39100f; -fx-border-color: #8e7c74;" AnchorPane.leftAnchor="300.0"
-                    AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane layoutX="301.0" layoutY="3.0" prefHeight="50.0" prefWidth="422.0" style="-fx-background-color: #39100f; -fx-border-color: #8e7c74;" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label fx:id="locationName" alignment="CENTER" layoutX="71.0" layoutY="15.0" text="A Room of Death"
-                       textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Label fx:id="locationName" alignment="CENTER" layoutX="71.0" layoutY="15.0" text="A Room of Death" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <font>
-                        <Font name="Century" size="24.0"/>
+                        <Font name="Century" size="24.0" />
                     </font>
                 </Label>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="300.0" layoutY="520.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                    minWidth="-Infinity" prefHeight="60.0" prefWidth="425.0"
-                    style="-fx-border-color: #8e7c74; -fx-background-color: #201b1b;" AnchorPane.bottomAnchor="135.0"
-                    AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
+        <AnchorPane layoutX="300.0" layoutY="520.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="425.0" style="-fx-border-color: #8e7c74; -fx-background-color: #201b1b;" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
             <children>
-                <ImageView fx:id="downArrowButton" layoutX="10.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0"
-                           AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="4.0">
+                <ImageView fx:id="downArrowButton" layoutX="10.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="4.0">
                     <image>
-                        <Image url="@/assets/arrows/down_border.jpg"/>
+                        <Image url="@/assets/arrows/down_border.jpg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="upArrowButton" layoutX="358.0" AnchorPane.bottomAnchor="5.0"
-                           AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="4.0">
+                <ImageView fx:id="upArrowButton" layoutX="358.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="4.0">
                     <image>
-                        <Image url="@/assets/arrows/up_border.jpg"/>
+                        <Image url="@/assets/arrows/up_border.jpg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="leftArrowButton" layoutX="108.0" layoutY="14.0" AnchorPane.bottomAnchor="5.0"
-                           AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="4.0">
+                <ImageView fx:id="leftArrowButton" layoutX="108.0" layoutY="14.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="4.0">
                     <image>
-                        <Image url="@/assets/arrows/left_border.jpg"/>
+                        <Image url="@/assets/arrows/left_border.jpg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="rightArrowButton" layoutX="248.0" layoutY="9.0" AnchorPane.bottomAnchor="5.0"
-                           AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="4.0">
+                <ImageView fx:id="rightArrowButton" layoutX="248.0" layoutY="9.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="4.0">
                     <image>
-                        <Image url="@/assets/arrows/right_border.jpg"/>
+                        <Image url="@/assets/arrows/right_border.jpg" />
                     </image>
                 </ImageView>
             </children>
             <rotationAxis>
-                <Point3D/>
+                <Point3D />
             </rotationAxis>
         </AnchorPane>
-        <Pane layoutX="300.0" layoutY="584.0" prefHeight="85.0" prefWidth="425.0"
-              style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0"
-              AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
+        <Pane layoutX="300.0" layoutY="584.0" prefHeight="85.0" prefWidth="425.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
             <children>
-                <ImageView fx:id="skill1" fitHeight="75.0" fitWidth="75.0" layoutX="8.0" layoutY="5.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsRogue/Icons with borders/SIR_02.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fx:id="skill2" fitHeight="75.0" fitWidth="75.0" layoutX="91.0" layoutY="5.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsRogue/Icons with borders/SIR_02.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fx:id="skill3" fitHeight="75.0" fitWidth="75.0" layoutX="174.0" layoutY="5.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsRogue/Icons with borders/SIR_02.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fx:id="skill4" fitHeight="75.0" fitWidth="75.0" layoutX="257.0" layoutY="5.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsRogue/Icons with borders/SIR_02.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fx:id="skill5" fitHeight="75.0" fitWidth="75.0" layoutX="340.0" layoutY="5.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsRogue/Icons with borders/SIR_02.png"/>
-                    </image>
-                </ImageView>
+            <Group fx:id="skillGroup" layoutX="8.0" layoutY="5.0">
+               <children>
+                  <HBox id="skill1" styleClass="border">
+                     <children>
+                            <ImageView fx:id="skill1" fitHeight="75.0" fitWidth="75.0" styleClass="skillImage">
+                                <image>
+                                    <Image url="@/assets/SkilliconsRogue/Icons with borders/SIR_02.png" />
+                                </image>
+                            </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox id="skill2" layoutX="83.0" styleClass="border">
+                     <children>
+                            <ImageView fx:id="skill2" fitHeight="75.0" fitWidth="75.0" styleClass="skillImage">
+                                <image>
+                                    <Image url="@/assets/SkilliconsRogue/Icons with borders/SIR_02.png" />
+                                </image>
+                            </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox id="skill3" layoutX="166.0" styleClass="border">
+                     <children>
+                            <ImageView fx:id="skill3" fitHeight="75.0" fitWidth="75.0" styleClass="skillImage">
+                                <image>
+                                    <Image url="@/assets/SkilliconsRogue/Icons with borders/SIR_02.png" />
+                                </image>
+                            </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox id="skill4" layoutX="249.0" styleClass="border">
+                     <children>
+                            <ImageView fx:id="skill4" fitHeight="75.0" fitWidth="75.0" styleClass="skillImage">
+                                <image>
+                                    <Image url="@/assets/SkilliconsRogue/Icons with borders/SIR_02.png" />
+                                </image>
+                            </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox id="skill5" layoutX="332.0" styleClass="border">
+                     <children>
+                            <ImageView fx:id="skill5" fitHeight="75.0" fitWidth="75.0" styleClass="skillImage">
+                                <image>
+                                    <Image url="@/assets/SkilliconsRogue/Icons with borders/SIR_02.png" />
+                                </image>
+                            </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </Group>
             </children>
         </Pane>
-        <AnchorPane layoutX="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                    prefHeight="100.0" prefWidth="300.0"
-                    style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="0.0"
-                    AnchorPane.leftAnchor="0.0">
+        <AnchorPane layoutX="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
             <children>
-                <ImageView fx:id="avatarIcon" fitHeight="75.0" fitWidth="75.0" AnchorPane.bottomAnchor="10.0"
-                           AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <ImageView fx:id="avatarIcon" fitHeight="75.0" fitWidth="75.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <image>
-                        <Image url="@/assets/SIMPLEAvatarsIcons/warrior_with_frame.png"/>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/warrior_with_frame.png" />
                     </image>
                 </ImageView>
-                <Label fx:id="nickNameLabel" layoutX="94.0" layoutY="11.0" style="-fx-text-fill: #8e7c74;"
-                       text="Nickname" textFill="#8e7c74" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="10.0">
+                <Label fx:id="nickNameLabel" layoutX="94.0" layoutY="11.0" style="-fx-text-fill: #8e7c74;" text="Nickname" textFill="#8e7c74" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="10.0">
                     <font>
-                        <Font name="Century" size="14.0"/>
+                        <Font name="Century" size="14.0" />
                     </font>
                 </Label>
-                <ProgressBar fx:id="hpBar" layoutX="120.0" layoutY="29.0" prefHeight="10.0" prefWidth="165.0"
-                             progress="0.73" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;"
-                             stylesheets="@/assets/css/progress-bar.css" AnchorPane.rightAnchor="10.0"
-                             AnchorPane.topAnchor="40.0"/>
-                <Label layoutX="96.0" layoutY="39.0" text="XP" textFill="#8e7c74">
+                <ProgressBar fx:id="hpBar" layoutX="120.0" layoutY="29.0" prefHeight="10.0" prefWidth="165.0" progress="0.73" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;" stylesheets="@/assets/css/progress-bar.css" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                <Label layoutX="96.0" layoutY="39.0" text="HP" textFill="#8e7c74">
                     <font>
-                        <Font name="Century" size="10.0"/>
+                        <Font name="Century" size="10.0" />
                     </font>
                 </Label>
-                <ProgressBar fx:id="exBar" layoutX="124.0" layoutY="58.0" prefHeight="10.0" prefWidth="165.0"
-                             progress="0.73" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;"
-                             stylesheets="@/assets/css/progress-bar.css"/>
-                <ProgressBar layoutX="124.0" layoutY="76.0" prefHeight="10.0" prefWidth="165.0" progress="0.73"
-                             style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;"
-                             stylesheets="@/assets/css/progress-bar.css"/>
+                <ProgressBar fx:id="expBar" layoutX="124.0" layoutY="58.0" prefHeight="10.0" prefWidth="165.0" progress="0.73" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;" stylesheets="@/assets/css/progress-bar.css" />
                 <Label layoutX="96.0" layoutY="57.0" text="EXP" textFill="#8e7c74">
                     <font>
-                        <Font name="Century" size="10.0"/>
+                        <Font name="Century" size="10.0" />
                     </font>
                 </Label>
             </children>

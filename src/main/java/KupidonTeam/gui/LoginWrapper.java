@@ -31,10 +31,6 @@ public class LoginWrapper extends Application {
         LoginWrapper.currentStage = currentStage;
     }
 
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
-
     public static Scene getScene() {
         return scene;
     }
