@@ -70,7 +70,7 @@ public class Graph extends Application {
         ScaleTransition scaleTransition = new ScaleTransition();
 
         //Setting the duration for the transition
-        scaleTransition.setDuration(Duration.millis(1000));
+        scaleTransition.setDuration(Duration.millis(60 * 1000));
 
         //Setting the node for the transition
         scaleTransition.setNode(circle);
@@ -110,7 +110,7 @@ public class Graph extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         AnchorPane pane = new AnchorPane();
 
         int[] rooms = {0, 1, 2, 3, 4, 5, 6};
