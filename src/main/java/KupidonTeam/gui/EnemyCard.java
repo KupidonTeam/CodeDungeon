@@ -2,12 +2,14 @@ package KupidonTeam.gui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
 public class EnemyCard {
     private AnchorPane enemyCard;
+    private EnemyCardController enemyCardController;
 
     public EnemyCard() throws IOException {
         String path = "/fxml/EnemyCard.fxml";
@@ -18,15 +20,41 @@ public class EnemyCard {
             enemyCard.setLayoutX(event.getX());
             enemyCard.setLayoutY(event.getY());
         });
-        EnemyCardController enemyCardController = loader.getController();
+        enemyCardController = loader.getController();
     }
 
     public AnchorPane getEnemyCard() {
         return enemyCard;
     }
 
-    public void setHp() {
-
+    public void setEnemyName(String name) {
+        enemyCardController.setEnemyName(name);
     }
+
+    public void setDescription(String description) {
+        enemyCardController.setDescription(description);
+    }
+
+    public void setHp(int hp) {
+        enemyCardController.setHp(hp);
+    }
+
+    public void setDamage(int damage) {
+        enemyCardController.setDamage(damage);
+    }
+
+    public void setArmor(int armor) {
+        enemyCardController.setArmor(armor);
+    }
+
+    public void setImage(ImageView image) {
+        enemyCardController.setImage(image);
+    }
+
+    public void dispose() {
+
+        enemyCard.getChildren().clear();
+    }
+
 
 }

@@ -7,76 +7,104 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="enemyCard" prefHeight="215.0" prefWidth="190.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.EnemyCardController">
-   <children>
-      <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label fx:id="enemyName" alignment="CENTER" layoutX="66.0" layoutY="8.0" text="Warrior" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <font>
-                  <Font name="Century" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
-         <children>
-            <ImageView fx:id="image" fitHeight="73.0" fitWidth="73.0" layoutX="60.0" layoutY="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <image>
-                  <Image url="@/assets/SIMPLEAvatarsIcons/resized/warrior_resized.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="11.0" layoutY="11.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-         <children>
-            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="28.0" layoutY="1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="10.0">
-               <image>
-                  <Image url="@/assets/images_for_main/heart.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="hp" alignment="CENTER" layoutX="74.0" layoutY="7.0" text="2000" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <font>
-                  <Font name="Century" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="24.0" layoutY="79.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
-         <children>
-            <Label fx:id="damage" alignment="CENTER" layoutX="34.0" layoutY="7.0" text="1500" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <font>
-                  <Font name="Century" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-75.0" layoutY="-89.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
-               <image>
-                  <Image url="@/assets/images_for_main/sword_new.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label fx:id="armor" alignment="CENTER" layoutX="18.0" layoutY="5.0" text="500" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <font>
-                  <Font name="Century" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="15.0" fitWidth="15.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
-               <image>
-                  <Image url="@/assets/images_for_main/shield_new.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label fx:id="description" alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" text="Some text here" textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <padding>
-                  <Insets left="10.0" top="5.0" />
-               </padding>
-            </Label>
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane fx:id="enemyCard" prefHeight="215.0" prefWidth="190.0"
+            style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.EnemyCardController">
+    <children>
+        <AnchorPane layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
+                    style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="enemyName" alignment="CENTER" layoutX="66.0" layoutY="8.0" text="Warrior"
+                       textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font name="Century" size="18.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0"
+                    style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+            <children>
+                <ImageView fx:id="image" fitHeight="73.0" fitWidth="73.0" layoutX="60.0" layoutY="6.0"
+                           AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <image>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/resized/warrior_resized.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="11.0" layoutY="11.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
+                    style="-fx-border-color: #8e7c74;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="30.0">
+            <children>
+                <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="28.0" layoutY="1.0" AnchorPane.bottomAnchor="10.0"
+                           AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="10.0">
+                    <image>
+                        <Image url="@/assets/images_for_main/heart.png"/>
+                    </image>
+                </ImageView>
+                <Label fx:id="hp" alignment="CENTER" layoutX="74.0" layoutY="7.0" text="2000" textFill="#816d64"
+                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                       AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font name="Century" size="18.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="24.0" layoutY="79.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
+                    prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0"
+                    AnchorPane.leftAnchor="0.0">
+            <children>
+                <Label fx:id="damage" alignment="CENTER" layoutX="34.0" layoutY="7.0" text="1500" textFill="#816d64"
+                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                       AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font name="Century" size="12.0"/>
+                    </font>
+                </Label>
+                <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="-75.0" layoutY="-89.0"
+                           AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
+                    <image>
+                        <Image url="@/assets/images_for_main/sword_new.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
+                    prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0"
+                    AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label fx:id="armor" alignment="CENTER" layoutX="18.0" layoutY="5.0" text="500" textFill="#816d64"
+                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                       AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font name="Century" size="12.0"/>
+                    </font>
+                </Label>
+                <ImageView fitHeight="15.0" fitWidth="15.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="15.0"
+                           AnchorPane.topAnchor="5.0">
+                    <image>
+                        <Image url="@/assets/images_for_main/shield_new.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="34.0" layoutY="89.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0"
+                    prefWidth="95.0" style="-fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label fx:id="description" alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" text="Some text here"
+                       textFill="#816d64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <padding>
+                        <Insets left="10.0" top="5.0"/>
+                    </padding>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

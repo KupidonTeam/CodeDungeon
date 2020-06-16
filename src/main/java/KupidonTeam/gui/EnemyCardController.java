@@ -10,8 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public class EnemyCardController {
 
     @FXML
@@ -51,6 +50,30 @@ public class EnemyCardController {
         assert armor != null : "fx:id=\"armor\" was not injected: check your FXML file 'EnemyCard.fxml'.";
         assert description != null : "fx:id=\"description\" was not injected: check your FXML file 'EnemyCard.fxml'.";
 
+    }
+
+    public void setEnemyName(String name) {
+        this.enemyName.setText(name);
+    }
+
+    public void setDescription(String description) {
+        this.description.setText(description);
+    }
+
+    public void setHp(int hp) {
+        this.hp.setText("" + hp);
+    }
+
+    public void setDamage(int damage) {
+        this.damage.setText("" + damage);
+    }
+
+    public void setArmor(int armor) {
+        this.armor.setText("" + armor);
+    }
+
+    public void setImage(ImageView image) {
+        this.image = image;
     }
 }
 

@@ -84,18 +84,6 @@ public class MainController {
     private Label locationName;
 
     @FXML
-    private ImageView downArrowButton;
-
-    @FXML
-    private ImageView upArrowButton;
-
-    @FXML
-    private ImageView leftArrowButton;
-
-    @FXML
-    private ImageView rightArrowButton;
-
-    @FXML
     private ImageView skill1;
 
     @FXML
@@ -129,6 +117,10 @@ public class MainController {
     private FlowPane cardTable;
 
     @FXML
+    private AnchorPane attackButton;
+
+
+    @FXML
     private ProgressBar expBar;
 
     private Connection server;
@@ -137,25 +129,24 @@ public class MainController {
     private List<ImageView> skillImages;
     private int peekedSkill;
 
+
     @FXML
     void initialize() {
         loadFxmlData();
-
         //TODO добавить сохранение прогресса перед закрытием
-
-
         setUp();
-        loadPlayerInformation();
+//        loadPlayerInformation();
 
+        bt1.setOnMouseClicked(event -> messageDialog("Start battle ?"));
     }
 
     private void setUp() {
-        server = Connection.getConnection();
+//        server = Connection.getConnection();
         dialogStage = new Stage();
         dialogStage.initStyle(StageStyle.UNDECORATED);
         panesSetUp();
         buttonsSetUp();
-        server.setChatArea(chatPane);
+//        server.setChatArea(chatPane);
 
     }
 
@@ -204,12 +195,9 @@ public class MainController {
         carriedPane.setStyle("-fx-background-color: red;");
     }
 
-    private void initEnemies() {
-
-    }
 
     //я просто проверял работу
-    private void defeatDialog(String messageText, String... button) {
+    private void messageDialog(String messageText) {
         Text message = new Text(messageText);
         message.setFill(Color.WHITE);
         message.setStyle(
@@ -218,6 +206,9 @@ public class MainController {
 
         VBox win = new VBox();
         HBox buttons = new HBox();
+        buttons.setSpacing(20);
+        buttons.setPadding(new Insets(10));
+        buttons.setAlignment(Pos.CENTER);
         win.setStyle(
                 "-fx-background-image : url(/assets/GUI_Parts/Gui_parts/barmid_ready.png);" +
                         "-fx-background-size : 600 300;");
@@ -225,33 +216,40 @@ public class MainController {
         win.setPrefSize(600, 300);
         win.setSpacing(20);
         Scene scene = new Scene(win);
-        ImageView closeImage = new ImageView("/assets/GUI_Parts/Gui_parts/button_ready_on.png");
-        closeImage.setFitHeight(40);
-        closeImage.setFitWidth(80);
-        StackPane closeBt = new StackPane();
-        closeBt.getChildren().add(closeImage);
-        Label closeWindow = new Label("Abort");
-        closeWindow.setTextFill(Color.BURLYWOOD);
-        closeBt.getChildren().add(closeWindow);
+        ImageView okImage = new ImageView("/assets/GUI_Parts/Gui_parts/button2.png");
+        ImageView cancelImage = new ImageView("/assets/GUI_Parts/Gui_parts/button_ready_on.png");
+        okImage.setFitHeight(40);
+        cancelImage.setFitHeight(40);
+        okImage.setFitWidth(80);
+        cancelImage.setFitWidth(80);
 
-
+        StackPane okBt = new StackPane();
+        okBt.getChildren().add(okImage);
         StackPane ok = new StackPane();
-        ok.getChildren().add(closeImage);
-        Label okWin = new Label("Aborasdasdasdasdasdasdasdt");
+        ok.getChildren().add(okImage);
+        Label okWin = new Label("Ok");
         okWin.setTextFill(Color.BURLYWOOD);
         ok.getChildren().add(okWin);
 
-        ProgressIndicator progressIndicator = new ProgressIndicator();
-        progressIndicator.setStyle("-fx-progress-color : red;");
+        StackPane cancelBt = new StackPane();
+        cancelBt.getChildren().add(cancelImage);
+        StackPane cancel = new StackPane();
+        cancel.getChildren().add(cancelImage);
+        Label cancelWin = new Label("Cancel");
+        cancelWin.setTextFill(Color.BURLYWOOD);
+        cancel.getChildren().add(cancelWin);
+
+        buttons.getChildren().add(ok);
+        buttons.getChildren().add(cancel);
+
         win.getChildren().add(message);
-        win.getChildren().add(progressIndicator);
-        win.getChildren().add(closeBt);
-        win.getChildren().add(ok);
+        win.getChildren().add(buttons);
         win.setAlignment(Pos.CENTER);
         Stage b = new Stage();
         b.initStyle(StageStyle.UNDECORATED);
         b.setScene(scene);
         b.show();
+        cancel.setOnMouseClicked(event -> b.close());
     }
 
     private void loadPlayerInformation() {
@@ -266,7 +264,6 @@ public class MainController {
 
     private void skillsSetup() {
 
-        bt1.setTooltip(new Tooltip("adasdasdasdasdasdasd"));
         skillImages = new LinkedList<>();
         skillImages.add(skill1);
         skillImages.add(skill2);
@@ -317,18 +314,16 @@ public class MainController {
         }
     }
 
-    int z = 0;
-
     private void spawnEnemy() {
         try {
             EnemyCard enemyCard = new EnemyCard();
             cardTable.getChildren().addAll(enemyCard.getEnemyCard());
-            System.out.println("add enemy #" + z);
-            z++;
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
+
 
     private void loadFxmlData() {
         assert cardTable != null : "fx:id=\"cardTable\" was not injected: check your FXML file 'main_v2.fxml'.";
@@ -348,10 +343,7 @@ public class MainController {
         assert bt4 != null : "fx:id=\"bt4\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert exitButton != null : "fx:id=\"exitButton\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert locationName != null : "fx:id=\"locationName\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert downArrowButton != null : "fx:id=\"downArrowButton\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert upArrowButton != null : "fx:id=\"upArrowButton\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert leftArrowButton != null : "fx:id=\"leftArrowButton\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert rightArrowButton != null : "fx:id=\"rightArrowButton\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert attackButton != null : "fx:id=\"attackButton\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert skill1 != null : "fx:id=\"skill1\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert skill2 != null : "fx:id=\"skill2\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert skill3 != null : "fx:id=\"skill3\" was not injected: check your FXML file 'main_v2.fxml'.";

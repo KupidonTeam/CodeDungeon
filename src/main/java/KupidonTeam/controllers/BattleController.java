@@ -1,10 +1,11 @@
 //package KupidonTeam.controllers;
 //
 //import KupidonTeam.characters.classes.enemies.Enemy;
-//import KupidonTeam.characters.classes.enemies.EnemyContainer;
 //import KupidonTeam.enums.Battlestate;
 //import KupidonTeam.locations.Dungeon;
 //import KupidonTeam.player.Player;
+//import KupidonTeam.server.Connection;
+//import lombok.SneakyThrows;
 //
 //import java.util.*;
 //
@@ -13,36 +14,43 @@
 //public class BattleController {
 //    private Battlestate battlestate;
 //    private Player mainPlayer;
+//    private List<Dungeon> dungeonList;
+//    private Dungeon currentRoom;
+//    private int[] passedRooms;
+//    private String enemyTurn;
+//    private Connection server;
 //    //private EnemyContainer enemies;     // Класс-обертка над обычными врагами
 //
-//    public BattleController(Player mainPlayer) {
+//    public BattleController(Player mainPlayer,List<Dungeon> dungeonsList) {
 //        this.mainPlayer = mainPlayer;
-//        //this.enemies = ((Dungeon) mainPlayer.getLocation()).getEnemies();
+//        this.dungeonList = dungeonsList;
+//        currentRoom = dungeonsList.get(0);
+//        server = Connection.getConnection();
 //        battleMode();
 //    }
 //
-//    public void battleMode() {
+//    public void battle(){
+//        int killedEnemies = 0;
+//
+//    }
+//
+//    @SneakyThrows
+//    public synchronized void battleMode() {
 //        boolean exitFlag = false;
-//
-//        if (mainPlayer.getLocation() instanceof Dungeon) {
-//           // enemies = ((Dungeon) mainPlayer.getLocation()).getEnemies();
-//        } else {
-//
-//            return;
-//        }
-//
-//        battlestate = calculateInitiative(mainPlayer, enemies);
-//
-//        while (!exitFlag) {
+//        server.
+//        int killedEnemies = 0;
+//        while (killedEnemies<currentRoom.getEnemies().size()) {
 //            switch (battlestate) {
 //                case PLAYERTURN:
-//                    mainPlayer.playerTurn();
-//                    if (mainPlayer.isAlive()) {
-//                        battlestate = Battlestate.ENEMYTURN;
-//                    } else {
+//                    if(mainPlayer.getStats().getHits()<0){
 //                        battlestate = Battlestate.LOSE;
+//                        break;
 //                    }
+//                    playerTurn();
 //
+//                    wait();
+//
+//                    notify();
 //                    break;
 //                case ENEMYTURN:
 //                    enemies.enemyTurn();
@@ -69,23 +77,13 @@
 //        battlestate = Battlestate.FREE;
 //    }
 //
-//    // Метод вычисления инициативы, чтобы понять кто ходит первый
-//    private Battlestate calculateInitiative(Player player, EnemyContainer enemies) {
-//        Map<Long, Integer> initiative = new HashMap<>();
+//    public synchronized void enemyTurn(String enemyTurn){
 //
-//        initiative.put(player.getId(), player.getIntelligence());
-//
-//        List<Enemy> enemyList = enemies.getEnemies();
-//        for (Enemy enemy : enemyList) {
-//            initiative.put(enemy.getEnemyId(), enemy.getIntelligence());
-//        }
-//
-//        long firstTurn = Collections.max(initiative.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
-//
-//        if (firstTurn == player.getId()) {
-//            return Battlestate.PLAYERTURN;
-//        } else {
-//            return Battlestate.ENEMYTURN;
-//        }
 //    }
+//
+//    public synchronized void playerTurn(){
+//
+//    }
+//    // Метод вычисления инициативы, чтобы понять кто ходит первый
+//
 //}

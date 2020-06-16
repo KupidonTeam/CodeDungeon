@@ -128,11 +128,12 @@ public class Connection {
             case "playerAuthorization":
                 System.out.println("msg = " + msg);
                 logic.loginAnalyze(msg);
-
                 break;
             case "sendChatMessage":
                 addMessageToChat(serverResponse.getJSONObject("data"));
                 break;
+            case "getDungeonSkeleton":
+
             case "connectToServer":
                 if (serverResponse.getInt("code") != 100) {
                     connectionFailedAlert();
@@ -151,8 +152,8 @@ public class Connection {
             properties = new Properties();
             properties.load(new FileInputStream("src/main/resources/connection.properties"));
             host = properties.getProperty("host");
-            System.out.println("Host = " + host);
             port = Integer.parseInt(properties.getProperty("port"));
+            System.out.println("Host = " + host + " : " + port);
         } catch (IOException e) {
             throw new PropertiesException("CantFindPropertiesFile");
         }

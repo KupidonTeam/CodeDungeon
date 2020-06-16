@@ -238,39 +238,23 @@
                 </Label>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="300.0" layoutY="520.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                    minWidth="-Infinity" prefHeight="60.0" prefWidth="425.0"
+        <AnchorPane fx:id="attackButton" layoutX="300.0" layoutY="520.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="425.0"
                     style="-fx-border-color: #8e7c74; -fx-background-color: #201b1b;" AnchorPane.bottomAnchor="135.0"
                     AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
-            <children>
-                <ImageView fx:id="downArrowButton" layoutX="10.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0"
-                           AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="4.0">
-                    <image>
-                        <Image url="@/assets/arrows/down_border.jpg"/>
-                    </image>
-                </ImageView>
-                <ImageView fx:id="upArrowButton" layoutX="358.0" AnchorPane.bottomAnchor="5.0"
-                           AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="4.0">
-                    <image>
-                        <Image url="@/assets/arrows/up_border.jpg"/>
-                    </image>
-                </ImageView>
-                <ImageView fx:id="leftArrowButton" layoutX="108.0" layoutY="14.0" AnchorPane.bottomAnchor="5.0"
-                           AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="4.0">
-                    <image>
-                        <Image url="@/assets/arrows/left_border.jpg"/>
-                    </image>
-                </ImageView>
-                <ImageView fx:id="rightArrowButton" layoutX="248.0" layoutY="9.0" AnchorPane.bottomAnchor="5.0"
-                           AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="4.0">
-                    <image>
-                        <Image url="@/assets/arrows/right_border.jpg"/>
-                    </image>
-                </ImageView>
-            </children>
             <rotationAxis>
                 <Point3D/>
             </rotationAxis>
+            <children>
+                <ImageView fitHeight="48.0" fitWidth="110.0" layoutX="163.0" layoutY="6.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@/assets/GUI_Parts/Gui_parts/button_ready_on.png"/>
+                    </image>
+                </ImageView>
+                <Label layoutX="185.0" layoutY="21.0" prefHeight="18.0" prefWidth="91.0" text="ATTACK "
+                       textAlignment="CENTER" textFill="#fad88f"/>
+            </children>
         </AnchorPane>
         <Pane layoutX="300.0" layoutY="584.0" prefHeight="85.0" prefWidth="425.0"
               style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0"
