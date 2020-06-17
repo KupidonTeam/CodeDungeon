@@ -15,7 +15,10 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
@@ -192,8 +195,7 @@ public class LoginController {
             LoginWrapper.getCurrentStage().setScene(newScene);
             LoginWrapper.getCurrentStage().centerOnScreen();
             LoginWrapper.getCurrentStage().show();
-            MainController controller = (MainController) loader.getController();
-            //controller.messageDialog("Hello Hero!\nLet's start your ADVENTURE!\nAre you ready to kick the monsters?!");
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -2,12 +2,17 @@ package KupidonTeam.utils;
 
 import KupidonTeam.animals.Animal;
 import KupidonTeam.characters.classes.Stats;
+import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.items.Armor;
 import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;
+import KupidonTeam.locations.Dungeon;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,11 +22,12 @@ public class JSON {
         System.out.println("hey" + jsonObject);
         String key = jsonObject.getString("key");
         System.out.println(key);
+
     }
 
     //Send a simple message to chat
     public static String message(String msg) {
-        return (String.format("{\"action\":\"sendChatMessage\",\"data\":{\"message\": \"%s\"}}", msg));
+        return String.format("{\"action\":\"sendChatMessage\",\"data\":{\"message\": \"%s\"}}", msg);
     }
 
     public static String inboxMessage(JSONObject data) {
@@ -139,7 +145,6 @@ public class JSON {
 
     public static Stats stats(JSONObject data) {
         return new Stats(
-                data.getString("race"),
                 data.getInt("armor_class"),
                 data.getInt("hits"),
                 data.getInt("speed"),
@@ -151,8 +156,59 @@ public class JSON {
                 data.getInt("constitution")
         );
     }
-
     //<--!  Конец   --!>
+
+    //<-- Парсинг карты подземелья, создание комнат и мобов -->
+
+    public static String getDungeonSkeleton() {
+        return "{\"action\":\"getDungeonSkeleton\"}";
+    }
+
+    public static Enemy mob(JSONObject jsonMob, int id) {
+        return new Enemy(id,
+                jsonMob.getString("name"),
+                jsonMob.getString("desc"),
+                jsonMob.getInt("mob_level"),
+                JSON.stats(jsonMob.getJSONObject("stats"))
+        );
+    }
+
+    public static List<Dungeon> dungeons(JSONObject data) {
+        List<Dungeon> dungeonList = new ArrayList<>();
+
+        JSONArray roomsIndexes = data.getJSONObject("dungeonSkeleton").getJSONArray("rooms");
+        JSONArray routes = data.getJSONObject("dungeonSkeleton").getJSONArray("routes");
+        roomsIndexes.forEach(el -> {
+            List<Integer> availableDir = new LinkedList<>();
+            for (int i = 0; i < routes.length(); i++) {
+                JSONArray temp = (JSONArray) routes.get(i);
+                if (temp.get(0).equals(el)) {
+                    System.out.println("Room : " + el + " Dir = " + temp.get(1));
+
+                    availableDir.add((Integer) temp.get(1));
+                }
+            }
+            List<Enemy> enemies = new LinkedList<>();
+            JSONObject room = data.getJSONObject("dungeonSkeleton")
+                    .getJSONObject("mobs").getJSONObject(String.valueOf((Integer) roomsIndexes.get((Integer) el)));
+
+            room.keySet().forEach(elem ->
+                    enemies.add(mob(room.getJSONObject(elem), Integer.parseInt(elem))
+                    ));
+            Integer[] tempArr = new Integer[availableDir.size()];
+            availableDir.toArray(tempArr);
+            dungeonList.add(new Dungeon((Integer) el,
+                    tempArr,
+                    "unnamed",
+                    "no desc",
+                    enemies
+            ));
+        });
+
+        return dungeonList;
+    }
+
+
     //удаляем перенос на новую строку и пробелы
     public static String normalize(String json) {
         return json.replaceAll("\n| ", "");

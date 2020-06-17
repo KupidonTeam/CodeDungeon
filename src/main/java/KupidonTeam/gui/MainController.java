@@ -1,10 +1,17 @@
 package KupidonTeam.gui;
 
+import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.characters.classes.skills.Skill;
+import KupidonTeam.controllers.BattleController;
+import KupidonTeam.locations.Dungeon;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
+import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
+import javafx.application.Platform;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,12 +20,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import lombok.SneakyThrows;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -82,18 +94,6 @@ public class MainController {
     private Label locationName;
 
     @FXML
-    private ImageView downArrowButton;
-
-    @FXML
-    private ImageView upArrowButton;
-
-    @FXML
-    private ImageView leftArrowButton;
-
-    @FXML
-    private ImageView rightArrowButton;
-
-    @FXML
     private ImageView skill1;
 
     @FXML
@@ -120,6 +120,15 @@ public class MainController {
     @FXML
     private ProgressBar hpBar;
 
+    @FXML
+    private AnchorPane enemyCard;
+
+    @FXML
+    private FlowPane cardTable;
+
+    @FXML
+    private AnchorPane attackButton;
+
 
     @FXML
     private ProgressBar expBar;
@@ -128,87 +137,56 @@ public class MainController {
     private Player player;
     private Stage dialogStage;
     private List<ImageView> skillImages;
+    private BattleController battleController;
+    private Dungeon currentRoom;
+    private List<EnemyCard> enemyCards;
     private int peekedSkill;
+
 
     @FXML
     void initialize() {
-        assert carriedPane != null : "fx:id=\"carriedPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert wornPane != null : "fx:id=\"wornPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert nearPane != null : "fx:id=\"nearPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert mapPane != null : "fx:id=\"mapPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert chatPane != null : "fx:id=\"chatPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert messageInput != null : "fx:id=\"messageInput\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert sendButton != null : "fx:id=\"sendButton\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert directMessagePane != null : "fx:id=\"directMessagePane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert directMessageInput != null : "fx:id=\"directMessageInput\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert bt1 != null : "fx:id=\"bt1\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert bt2 != null : "fx:id=\"bt2\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert bt3 != null : "fx:id=\"bt3\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert bt4 != null : "fx:id=\"bt4\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert exitButton != null : "fx:id=\"exitButton\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert locationName != null : "fx:id=\"locationName\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert downArrowButton != null : "fx:id=\"downArrowButton\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert upArrowButton != null : "fx:id=\"upArrowButton\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert leftArrowButton != null : "fx:id=\"leftArrowButton\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert rightArrowButton != null : "fx:id=\"rightArrowButton\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert skill1 != null : "fx:id=\"skill1\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert skill2 != null : "fx:id=\"skill2\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert skill3 != null : "fx:id=\"skill3\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert skill4 != null : "fx:id=\"skill4\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert skill5 != null : "fx:id=\"skill5\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert skillGroup != null : "fx:id=\"skillGroup\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert avatarIcon != null : "fx:id=\"avatarIcon\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert nickNameLabel != null : "fx:id=\"nickNameLabel\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert hpBar != null : "fx:id=\"hpBar\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert expBar != null : "fx:id=\"expBar\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert statsTextArea != null : "fx:id=\"statsTextArea\" was not injected: check your FXML file 'main_v2.fxml'.";
-
-        //TODO добавить сохранение прогресса перед закрытием
-        exitButton.setOnMouseClicked(event -> {
-            try {
-                LoginWrapper.getCurrentStage().close();
-                SignLogic.getSignLogic().closeAll();
-            } catch (Exception ex) {
-                System.err.println("Close problem occurred");
-                ex.printStackTrace();
-            } finally {
-                System.exit(0);
-            }
-        });
-
-
-        sendButton.setOnMouseClicked(event -> {
-            if (!messageInput.getText().isEmpty()) {
-                System.out.println(messageInput.getText());
-                String message = JSON.message(messageInput.getText());
-                System.out.println("message = " + message);
-                server.sendMessageToServer(message);
-                messageInput.setText("");
-            }
-        });
-
-        bt2.setOnMouseClicked(event -> defeatDialog("Connecting to server.\nPlease wait..."));
-
+        loadFxmlData();
         setUp();
         loadPlayerInformation();
-        // messageDialog("gello");
+        List<EnemyCard> enemyCards = new LinkedList<>();
+        enemyCards.add(new EnemyCard());
+
+
+        bt3.setOnMouseClicked(event -> getDungeonSkeleton());
+        bt4.setOnMouseClicked(event -> cardTable.getChildren().clear());
+
     }
 
     private void setUp() {
         server = Connection.getConnection();
         dialogStage = new Stage();
         dialogStage.initStyle(StageStyle.UNDECORATED);
-        setUpTextPanes();
+        panesSetUp();
+        buttonsSetUp();
         server.setChatArea(chatPane);
+        server.setCardTable(cardTable);
 
     }
 
-    private void setUpTextPanes() {
+    private void panesSetUp() {
+        chatPane.setText("");
         chatPane.setWrapText(true);
         chatPane.setPrefColumnCount(30);
+        chatPane.setEditable(false);
         statsTextArea.setWrapText(true);
         statsTextArea.setPrefColumnCount(30);
         statsTextArea.setPadding(new Insets(5));
+        cardTable.getChildren().clear();
+        cardTable.setAlignment(Pos.CENTER);
+
+        cardTable.setPadding(new Insets(15));
+        cardTable.setHgap(5);
+        cardTable.setVgap(10);
+        messageInput.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                sendChatMessage();
+            }
+        });
 
     }
 
@@ -236,12 +214,10 @@ public class MainController {
         carriedPane.setStyle("-fx-background-color: red;");
     }
 
-    private void initEnemies() {
-
-    }
 
     //я просто проверял работу
-    private void defeatDialog(String messageText, String... button) {
+    public void messageDialog(String messageText, EventHandler eventHandler) {
+
         Text message = new Text(messageText);
         message.setFill(Color.WHITE);
         message.setStyle(
@@ -250,6 +226,9 @@ public class MainController {
 
         VBox win = new VBox();
         HBox buttons = new HBox();
+        buttons.setSpacing(20);
+        buttons.setPadding(new Insets(10));
+        buttons.setAlignment(Pos.CENTER);
         win.setStyle(
                 "-fx-background-image : url(/assets/GUI_Parts/Gui_parts/barmid_ready.png);" +
                         "-fx-background-size : 600 300;");
@@ -257,51 +236,46 @@ public class MainController {
         win.setPrefSize(600, 300);
         win.setSpacing(20);
         Scene scene = new Scene(win);
-        ImageView closeImage = new ImageView("/assets/GUI_Parts/Gui_parts/button_ready_on.png");
-        closeImage.setFitHeight(40);
-        closeImage.setFitWidth(80);
-        StackPane closeBt = new StackPane();
-        closeBt.getChildren().add(closeImage);
-        Label closeWindow = new Label("Abort");
-        closeWindow.setTextFill(Color.BURLYWOOD);
-        closeBt.getChildren().add(closeWindow);
+        ImageView okImage = new ImageView("/assets/GUI_Parts/Gui_parts/button2.png");
+        ImageView cancelImage = new ImageView("/assets/GUI_Parts/Gui_parts/button_ready_on.png");
+        okImage.setFitHeight(40);
+        cancelImage.setFitHeight(40);
+        okImage.setFitWidth(80);
+        cancelImage.setFitWidth(80);
 
-
+        StackPane okBt = new StackPane();
+        okBt.getChildren().add(okImage);
         StackPane ok = new StackPane();
-        ok.getChildren().add(closeImage);
-        Label okWin = new Label("Aborasdasdasdasdasdasdasdt");
+        ok.getChildren().add(okImage);
+        Label okWin = new Label("Ok");
         okWin.setTextFill(Color.BURLYWOOD);
         ok.getChildren().add(okWin);
 
-        ProgressIndicator progressIndicator = new ProgressIndicator();
-        progressIndicator.setStyle("-fx-progress-color : red;");
+
+        StackPane cancelBt = new StackPane();
+        cancelBt.getChildren().add(cancelImage);
+        StackPane cancel = new StackPane();
+        cancel.getChildren().add(cancelImage);
+        Label cancelWin = new Label("Cancel");
+        cancelWin.setTextFill(Color.BURLYWOOD);
+        cancel.getChildren().add(cancelWin);
+
+        buttons.getChildren().add(ok);
+        buttons.getChildren().add(cancel);
+
         win.getChildren().add(message);
-        win.getChildren().add(progressIndicator);
-        win.getChildren().add(closeBt);
-        win.getChildren().add(ok);
-//        win.getChildren().add(new Button("lol"));
+        win.getChildren().add(buttons);
         win.setAlignment(Pos.CENTER);
         Stage b = new Stage();
         b.initStyle(StageStyle.UNDECORATED);
         b.setScene(scene);
         b.show();
+        cancel.setOnMouseClicked(event -> b.close());
+        ok.setOnMouseClicked(event -> {
+            eventHandler.handle(event);
+            b.close();
+        });
     }
-
-
-//    private void globalChat() {
-//        new Thread(() -> {
-//            Connection server = Connection.getConnection();
-//            while (true) {
-//                System.out.println("work ?");
-//                if (!server.getBuffer().isEmpty()) {
-//                    System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyy = " + server.getBuffer());
-//                    chatPane.appendText(server.getBuffer() + "\n");
-//                    server.cleanBuffer();
-//                }
-//            }
-//        }).start();
-//
-//    }
 
     private void loadPlayerInformation() {
         player = Player.getInstance();
@@ -314,13 +288,14 @@ public class MainController {
     }
 
     private void skillsSetup() {
-        bt1.setTooltip(new Tooltip("adasdasdasdasdasdasd"));
+
         skillImages = new LinkedList<>();
         skillImages.add(skill1);
         skillImages.add(skill2);
         skillImages.add(skill3);
         skillImages.add(skill4);
         skillImages.add(skill5);
+        skillImages.forEach(el -> el.setImage(null));
 
         skillGroup.getChildren()
                 .forEach(el -> el.setOnMouseClicked(event -> chooseSkill(el.getId())));
@@ -332,7 +307,7 @@ public class MainController {
             skillImages.get(i).setImage(new Image("/assets/skills/" + skill.getName() + ".png"));
             skillImages.get(i).setOnMouseClicked(event -> {
                 peekedSkill = skill.getId();
-                System.out.println("peeked skill = " + skill.getName());
+                System.out.println("peeked skill #" + skill.getId() + " = " + skill.getName());
 
             });
             tooltip.setText(skill.toString());
@@ -350,12 +325,91 @@ public class MainController {
         skillGroup.getChildren()
                 .filtered(el -> el.getStyleClass().contains("border"))
                 .filtered(el -> el.getId().equalsIgnoreCase(skillId))
-                .forEach(el -> el.setStyle("-fx-border-color:red;  -fx-border-width : 3;"));
+                .forEach(el -> {
+                    el.setStyle("-fx-border-color:red;  -fx-border-width : 3;");
+
+                });
+
     }
 
-    public void addMessageToChat(String msg) {
-        System.out.println("new MESSSSSSSSSSSSSSSSSSSAGE");
-        chatPane.appendText(msg + "\n");
+
+    private void sendChatMessage() {
+        if (!messageInput.getText().isEmpty()) {
+            System.out.println(messageInput.getText());
+            String message = JSON.message(messageInput.getText());
+            System.out.println("message = " + message);
+            server.sendMessageToServer(message);
+            messageInput.setText("");
+        }
     }
+
+
+    private void loadFxmlData() {
+        assert cardTable != null : "fx:id=\"cardTable\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert enemyCard != null : "fx:id=\"enemyCard\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert carriedPane != null : "fx:id=\"carriedPane\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert wornPane != null : "fx:id=\"wornPane\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert nearPane != null : "fx:id=\"nearPane\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert mapPane != null : "fx:id=\"mapPane\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert chatPane != null : "fx:id=\"chatPane\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert messageInput != null : "fx:id=\"messageInput\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert sendButton != null : "fx:id=\"sendButton\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert directMessagePane != null : "fx:id=\"directMessagePane\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert directMessageInput != null : "fx:id=\"directMessageInput\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert bt1 != null : "fx:id=\"bt1\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert bt2 != null : "fx:id=\"bt2\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert bt3 != null : "fx:id=\"bt3\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert bt4 != null : "fx:id=\"bt4\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert exitButton != null : "fx:id=\"exitButton\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert locationName != null : "fx:id=\"locationName\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert attackButton != null : "fx:id=\"attackButton\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert skill1 != null : "fx:id=\"skill1\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert skill2 != null : "fx:id=\"skill2\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert skill3 != null : "fx:id=\"skill3\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert skill4 != null : "fx:id=\"skill4\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert skill5 != null : "fx:id=\"skill5\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert skillGroup != null : "fx:id=\"skillGroup\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert avatarIcon != null : "fx:id=\"avatarIcon\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert nickNameLabel != null : "fx:id=\"nickNameLabel\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert hpBar != null : "fx:id=\"hpBar\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert expBar != null : "fx:id=\"expBar\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert statsTextArea != null : "fx:id=\"statsTextArea\" was not injected: check your FXML file 'main_v2.fxml'.";
+    }
+
+    private void buttonsSetUp() {
+        exitButton.setOnMouseClicked(event -> {
+            try {
+                LoginWrapper.getCurrentStage().close();
+                SignLogic.getSignLogic().closeAll();
+            } catch (Exception ex) {
+                System.err.println("Close problem occurred");
+                ex.printStackTrace();
+            } finally {
+                System.exit(0);
+            }
+        });
+
+        sendButton.setOnMouseClicked(event -> sendChatMessage());
+    }
+
+
+    @SneakyThrows
+    public synchronized void getDungeonSkeleton() {
+
+        server.sendMessageToServer(JSON.getDungeonSkeleton());
+        wait(500);
+
+        battleController = new BattleController(player, Container.getDungeonList(), cardTable);
+
+    }
+
+    public void attack() {
+        if (peekedSkill < 0) {
+            System.out.println("You have not peeled skill!");
+            return;
+        }
+
+    }
+
 
 }
