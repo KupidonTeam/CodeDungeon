@@ -3,6 +3,7 @@ package KupidonTeam.gui;
 import KupidonTeam.characters.classes.enemies.Enemy;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -37,19 +38,17 @@ public class EnemyCard {
         FXMLLoader loader = new FXMLLoader();
         Parent root = null;
         try {
+            System.out.println("enemy = " + enemy.toString());
             root = loader.load(EnemyCard.class.getResourceAsStream(path));
             enemyCard = new AnchorPane(root);
-            enemyCard.setOnMouseClicked(event -> {
-                enemyCard.setLayoutX(event.getX());
-                enemyCard.setLayoutY(event.getY());
-            });
             enemyCardController = loader.getController();
+            setImage(randomImage());
             setEnemyName(enemy.getName());
             setArmor(enemy.getStats().getArmorClass());
             setDamage(enemy.getStats().getDexterity());
             setDescription(enemy.getDescription());
             setHp(enemy.getStats().getHits());
-//            setImage(randomImage());
+            setImage(randomImage());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,7 +79,7 @@ public class EnemyCard {
         enemyCardController.setArmor(armor);
     }
 
-    public void setImage(ImageView image) {
+    public void setImage(Image image) {
         enemyCardController.setImage(image);
     }
 
@@ -88,17 +87,19 @@ public class EnemyCard {
         enemyCard.getChildren().clear();
     }
 
-    private ImageView randomImage() {
+    private Image randomImage() {
         String path = "src/main/resources/assets/SIMPLEAvatarsIcons/64X64";
         File files = new File(path);
         List<String> images = new LinkedList<>();
         Random random = new Random();
         Stream.of(files.listFiles()).forEach(el -> images.add(el.getName()));
         path = "/assets/SIMPLEAvatarsIcons/64X64/" + images.get(random.nextInt(images.size()));
-        return new ImageView(path);
+        System.out.println("PUT IMAGE  = " + path);
+        return new Image(path);
     }
 
     public Enemy getEnemy() {
         return enemy;
     }
+
 }

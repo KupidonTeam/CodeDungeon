@@ -126,7 +126,9 @@ public class Connection {
         JSONObject serverResponse = new JSONObject(msg);
         String action = serverResponse.getString("action");
         System.out.println("action = " + action);
-        System.out.println("Server response : \n" + msg + "\n=======================================================");
+        System.out.println("Server response : \n" + msg +
+                "\n=======================================================");
+
         switch (action) {
             case "playerAuthorization":
                 logic.loginAnalyze(msg);
@@ -179,31 +181,6 @@ public class Connection {
         }
     }
 
-    public void setTimeOut(int timeOut) {
-        try {
-            clientSocket.setSoTimeout(timeOut);
-        } catch (SocketException e) {
-            e.printStackTrace();
-            System.err.println("Failed add timeOut to socket");
-        }
-    }
-
-    public void disableTimeOut() {
-        try {
-            clientSocket.setSoTimeout(0);
-        } catch (SocketException e) {
-            System.err.println("Failed to disable socket timeOut");
-        }
-    }
-
-    public String inboxMessage() {
-        return "NEW msg";
-    }
-
-
-    private void connectionStatus() {
-
-    }
 
     private void connectionFailedAlert() {
         JOptionPane.showMessageDialog(null,
@@ -235,16 +212,6 @@ public class Connection {
         notify();
     }
 
-    public void createDungeon(String msg, FlowPane cardTable) {
-        this.cardTable = cardTable;
-        if (!msg.isEmpty()) {
-            System.out.println("=========send msg to ser method=======");
-            System.out.println("socket = " + clientSocket.toString());
-
-            outMessage.println(msg);
-            outMessage.flush();
-        }
-    }
 }
 
 

@@ -7,13 +7,15 @@ import KupidonTeam.gui.MainController;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.FlowPane;
+import javafx.util.Duration;
 import lombok.SneakyThrows;
 
-import java.io.IOException;
+
 import java.util.*;
 
 // TODO
@@ -29,7 +31,8 @@ public class BattleController {
     private String actionToServer;
     private MainController mainController;
     private FlowPane cardTable;
-    //private EnemyContainer enemies;     // Класс-обертка над обычными врагами
+    private Enemy chosenEnemy;
+
 
     public BattleController(Player mainPlayer, List<Dungeon> dungeonsList, FlowPane cardTable) {
         this.mainPlayer = mainPlayer;
@@ -113,15 +116,31 @@ public class BattleController {
     }
 
     private void loadEnemyCards() {
-
         initMainController();
         List<EnemyCard> enemyCards = new ArrayList<>();
         currentRoom.getEnemies().forEach(el -> {
             enemyCards.add(new EnemyCard(el));
             System.out.println(el.getName());
         });
-        enemyCards.forEach(enemyCard -> cardTable.getChildren().add(enemyCard.getEnemyCard()));
+        enemyCards.forEach(el -> {
+            el.getEnemyCard().setOnMouseClicked(event -> {
+                //enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle(""));
+                // el.getEnemyCard().setStyle("-fx-border-color : blue; -fx-border-width: 1 ; ");
 
+                chosenEnemy = el.getEnemy();
+                System.out.println("Chosen enemy = " + chosenEnemy.getName());
+            });
+
+
+        });
+        enemyCards.forEach(enemyCard -> {
+            cardTable.getChildren().add(enemyCard.getEnemyCard());
+            FadeTransition ft = new FadeTransition(Duration.millis(800), enemyCard.getEnemyCard());
+            ft.setFromValue(0);
+            ft.setToValue(1);
+            ft.setAutoReverse(false);
+            ft.play();
+        });
     }
 
     @SneakyThrows
@@ -131,5 +150,9 @@ public class BattleController {
         FXMLLoader loader = new FXMLLoader();
         parent = loader.load(getClass().getResourceAsStream(path));
         mainController = loader.getController();
+    }
+
+    public void animation() {
+
     }
 }

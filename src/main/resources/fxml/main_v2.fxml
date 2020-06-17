@@ -19,8 +19,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0"
-            prefWidth="1024.0" style="-fx-border-color: #8e7c74;" xmlns="http://javafx.com/javafx/11.0.1"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0"
+            prefWidth="1124.0" style="-fx-border-color: #8e7c74;" xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.MainController">
     <children>
         <AnchorPane layoutY="6.0" prefHeight="670.0" prefWidth="300.0"
@@ -347,7 +347,7 @@
                 </Label>
             </children>
         </AnchorPane>
-        <FlowPane fx:id="cardTable" layoutX="301.0" layoutY="51.0" prefHeight="473.0" prefWidth="422.0"
+        <FlowPane fx:id="cardTable" layoutX="301.0" layoutY="51.0" prefHeight="534.0" prefWidth="522.0"
                   style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;"/>
     </children>
 </AnchorPane>

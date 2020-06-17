@@ -12,7 +12,8 @@
         4,
         5,
         6,
-        7
+        7,
+        8
       ],
       "routes": [
         [
@@ -21,66 +22,65 @@
         ],
         [
           0,
-          5
+          2
         ],
         [
           0,
           7
         ],
         [
-          1,
-          2
-        ],
-        [
-          1,
-          5
+          0,
+          8
         ],
         [
           1,
           6
         ],
         [
-          2,
-          4
-        ],
-        [
-          2,
-          6
-        ],
-        [
-          3,
-          5
-        ],
-        [
-          3,
+          1,
           7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          8
         ]
       ],
       "mobs": {
         "0": {
           "0": {
-            "name": "Philistin",
-            "desc": "Medium Humanoid",
-            "attacks": {},
-            "stats": {
-              "armor_class": 2,
-              "hits": 3,
-              "speed": 4.0,
-              "strength": 5.0,
-              "dexterity": 8.0,
-              "intelligence": 6.0,
-              "wisdom": 9.0,
-              "chance": 0.0,
-              "constitution": 3.0
-            },
-            "vulnerabilities": {},
-            "inventory": {},
-            "mob_level": 1
-          }
-        },
-        "1": {
-          "0": {
-            "name": "Wolf",
+            "name": "Grick",
             "desc": "Medium Beast",
             "attacks": {},
             "stats": {
@@ -99,8 +99,8 @@
             "mob_level": 1
           },
           "1": {
-            "name": "Spectator",
-            "desc": "Medium Aberration",
+            "name": "Young Green Dragon",
+            "desc": "Big Dragon",
             "attacks": {},
             "stats": {
               "armor_class": 2,
@@ -161,10 +161,50 @@
             "mob_level": 1
           }
         },
+        "1": {
+          "0": {
+            "name": "Notik",
+            "desc": "Medium Aberration",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Notik",
+            "desc": "Medium Aberration",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
         "2": {
           "0": {
-            "name": "Wolf",
-            "desc": "Medium Beast",
+            "name": "Young Green Dragon",
+            "desc": "Big Dragon",
             "attacks": {},
             "stats": {
               "armor_class": 2,
@@ -184,8 +224,225 @@
         },
         "3": {
           "0": {
-            "name": "Bloodsucker",
-            "desc": "Tiny Beast",
+            "name": "Young Green Dragon",
+            "desc": "Big Dragon",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Doppelganger",
+            "desc": "Medium Beast",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "2": {
+            "name": "Philistin",
+            "desc": "Medium Humanoid",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "4": {
+          "0": {
+            "name": "Teddy Bear",
+            "desc": "Medium Humanoid",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Ogre",
+            "desc": "Big Giant",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "5": {
+          "0": {
+            "name": "Cultist",
+            "desc": "Medium Human",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Evil Mage",
+            "desc": "Medium Humanoid",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "2": {
+            "name": "Black Spider",
+            "desc": "Medium Humanoid",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "6": {
+          "0": {
+            "name": "Golden Jelly",
+            "desc": "Big Slime",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Teddy Bear",
+            "desc": "Medium Humanoid",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "2": {
+            "name": "Wolf",
+            "desc": "Medium Beast",
+            "attacks": {},
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "7": {
+          "0": {
+            "name": "Teddy Bear",
+            "desc": "Medium Humanoid",
             "attacks": {},
             "stats": {
               "armor_class": 2,
@@ -222,10 +479,10 @@
             "mob_level": 1
           }
         },
-        "4": {
+        "8": {
           "0": {
-            "name": "Red-Marked Cutthroat",
-            "desc": "Medium Humanoid",
+            "name": "Giant Spider",
+            "desc": "Big Beast",
             "attacks": {},
             "stats": {
               "armor_class": 2,
@@ -243,26 +500,7 @@
             "mob_level": 1
           },
           "1": {
-            "name": "Notik",
-            "desc": "Medium Aberration",
-            "attacks": {},
-            "stats": {
-              "armor_class": 2,
-              "hits": 3,
-              "speed": 4.0,
-              "strength": 5.0,
-              "dexterity": 8.0,
-              "intelligence": 6.0,
-              "wisdom": 9.0,
-              "chance": 0.0,
-              "constitution": 3.0
-            },
-            "vulnerabilities": {},
-            "inventory": {},
-            "mob_level": 1
-          },
-          "2": {
-            "name": "Orc",
+            "name": "Teddy Bear",
             "desc": "Medium Humanoid",
             "attacks": {},
             "stats": {
@@ -279,92 +517,10 @@
             "vulnerabilities": {},
             "inventory": {},
             "mob_level": 1
-          }
-        },
-        "5": {
-          "0": {
-            "name": "Grick",
-            "desc": "Medium Beast",
-            "attacks": {},
-            "stats": {
-              "armor_class": 2,
-              "hits": 3,
-              "speed": 4.0,
-              "strength": 5.0,
-              "dexterity": 8.0,
-              "intelligence": 6.0,
-              "wisdom": 9.0,
-              "chance": 0.0,
-              "constitution": 3.0
-            },
-            "vulnerabilities": {},
-            "inventory": {},
-            "mob_level": 1
-          }
-        },
-        "6": {
-          "0": {
-            "name": "Bloodsucker",
-            "desc": "Tiny Beast",
-            "attacks": {},
-            "stats": {
-              "armor_class": 2,
-              "hits": 3,
-              "speed": 4.0,
-              "strength": 5.0,
-              "dexterity": 8.0,
-              "intelligence": 6.0,
-              "wisdom": 9.0,
-              "chance": 0.0,
-              "constitution": 3.0
-            },
-            "vulnerabilities": {},
-            "inventory": {},
-            "mob_level": 1
-          }
-        },
-        "7": {
-          "0": {
-            "name": "Grick",
-            "desc": "Medium Beast",
-            "attacks": {},
-            "stats": {
-              "armor_class": 2,
-              "hits": 3,
-              "speed": 4.0,
-              "strength": 5.0,
-              "dexterity": 8.0,
-              "intelligence": 6.0,
-              "wisdom": 9.0,
-              "chance": 0.0,
-              "constitution": 3.0
-            },
-            "vulnerabilities": {},
-            "inventory": {},
-            "mob_level": 1
-          },
-          "1": {
-            "name": "Wolf",
-            "desc": "Medium Beast",
-            "attacks": {},
-            "stats": {
-              "armor_class": 2,
-              "hits": 3,
-              "speed": 4.0,
-              "strength": 5.0,
-              "dexterity": 8.0,
-              "intelligence": 6.0,
-              "wisdom": 9.0,
-              "chance": 0.0,
-              "constitution": 3.0
-            },
-            "vulnerabilities": {},
-            "inventory": {},
-            "mob_level": 1
           },
           "2": {
-            "name": "Bloodsucker",
-            "desc": "Tiny Beast",
+            "name": "Black Spider",
+            "desc": "Medium Humanoid",
             "attacks": {},
             "stats": {
               "armor_class": 2,

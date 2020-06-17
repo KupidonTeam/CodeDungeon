@@ -9,6 +9,7 @@ import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -176,6 +177,7 @@ public class MainController {
         statsTextArea.setPrefColumnCount(30);
         statsTextArea.setPadding(new Insets(5));
         cardTable.getChildren().clear();
+        cardTable.setAlignment(Pos.CENTER);
 
         cardTable.setPadding(new Insets(15));
         cardTable.setHgap(5);
@@ -342,7 +344,6 @@ public class MainController {
     }
 
 
-
     private void loadFxmlData() {
         assert cardTable != null : "fx:id=\"cardTable\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert enemyCard != null : "fx:id=\"enemyCard\" was not injected: check your FXML file 'main_v2.fxml'.";
@@ -391,12 +392,15 @@ public class MainController {
         sendButton.setOnMouseClicked(event -> sendChatMessage());
     }
 
+
     @SneakyThrows
     public synchronized void getDungeonSkeleton() {
-        server.createDungeon(JSON.getDungeonSkeleton(), cardTable);
-        wait(1500);
+
+        server.sendMessageToServer(JSON.getDungeonSkeleton());
+        wait(500);
+
         battleController = new BattleController(player, Container.getDungeonList(), cardTable);
-//        spawnEnemyCards(enemyCards);
+
     }
 
     public void attack() {
@@ -407,14 +411,5 @@ public class MainController {
 
     }
 
-    public void spawnEnemyCards(List<EnemyCard> enemyCards) {
-        System.out.println("start spawn!");
-        enemyCards.forEach(el -> System.out.println(el.getEnemy().getName()));
-        for (EnemyCard enemyCard : enemyCards) {
-            System.out.println("table = " + cardTable.getChildren());
-            System.out.println("enemy card = " + enemyCard.getEnemyCard());
-            cardTable.getChildren().add(enemyCard.getEnemyCard());
-        }
-    }
 
 }

@@ -1,12 +1,9 @@
 package KupidonTeam.gui;
 
-import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.player.Player;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -18,7 +15,10 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
@@ -29,8 +29,6 @@ import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoginController {
@@ -197,12 +195,7 @@ public class LoginController {
             LoginWrapper.getCurrentStage().setScene(newScene);
             LoginWrapper.getCurrentStage().centerOnScreen();
             LoginWrapper.getCurrentStage().show();
-            MainController controller = (MainController) loader.getController();
-            List<EnemyCard> enemyCards = new LinkedList<>();
-            enemyCards.add(new EnemyCard());
-            controller.messageDialog(
-                    "Hello Hero!\nLet's start your ADVENTURE!\nAre you ready to kick the monsters?!",
-                    event -> controller.spawnEnemyCards(enemyCards));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
