@@ -27,11 +27,17 @@ public class DialogPaneController {
         assert label != null : "fx:id=\"label\" was not injected: check your FXML file 'dialog_pane.fxml'.";
         assert cancelButton != null : "fx:id=\"cancelButton\" was not injected: check your FXML file 'dialog_pane.fxml'.";
         assert okButton != null : "fx:id=\"okButton\" was not injected: check your FXML file 'dialog_pane.fxml'.";
+
     }
 
     public void load(String message, EventHandler<Event> handler) {
         label.setText(message);
-        cancelButton.setOnMouseClicked(ev -> DialogPaneWrapper.getCurrentStage().close());
+        cancelButton.setOnMouseClicked(ev -> {
+                    System.out.println("Hello!");
+                    DialogPaneWrapper.getCurrentStage().close();
+
+                }
+        );
         okButton.setOnMouseClicked(handler);
     }
 }

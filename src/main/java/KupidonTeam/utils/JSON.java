@@ -156,6 +156,13 @@ public class JSON {
                 data.getInt("constitution")
         );
     }
+    //<--!  Конец   --!>
+
+    //<-- Парсинг карты подземелья, создание комнат и мобов -->
+
+    public static String getDungeonSkeleton() {
+        return "{\"action\":\"getDungeonSkeleton\"}";
+    }
 
     public static Enemy mob(JSONObject jsonMob, int id) {
         return new Enemy(id,
@@ -201,7 +208,7 @@ public class JSON {
         return dungeonList;
     }
 
-    //<--!  Конец   --!>
+
     //удаляем перенос на новую строку и пробелы
     public static String normalize(String json) {
         return json.replaceAll("\n| ", "");

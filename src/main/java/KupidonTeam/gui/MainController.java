@@ -1,10 +1,16 @@
 package KupidonTeam.gui;
 
+import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.characters.classes.skills.Skill;
+import KupidonTeam.controllers.BattleController;
+import KupidonTeam.locations.Dungeon;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
+import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,11 +20,14 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import lombok.SneakyThrows;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
@@ -127,26 +136,34 @@ public class MainController {
     private Player player;
     private Stage dialogStage;
     private List<ImageView> skillImages;
+    private BattleController battleController;
+    private Dungeon currentRoom;
+    private List<EnemyCard> enemyCards;
     private int peekedSkill;
 
 
     @FXML
     void initialize() {
         loadFxmlData();
-        //TODO добавить сохранение прогресса перед закрытием
         setUp();
-//        loadPlayerInformation();
+        loadPlayerInformation();
+        List<EnemyCard> enemyCards = new LinkedList<>();
+        enemyCards.add(new EnemyCard());
 
-        bt1.setOnMouseClicked(event -> messageDialog("Start battle ?"));
+
+        bt3.setOnMouseClicked(event -> getDungeonSkeleton());
+        bt4.setOnMouseClicked(event -> cardTable.getChildren().clear());
+
     }
 
     private void setUp() {
-//        server = Connection.getConnection();
+        server = Connection.getConnection();
         dialogStage = new Stage();
         dialogStage.initStyle(StageStyle.UNDECORATED);
         panesSetUp();
         buttonsSetUp();
-//        server.setChatArea(chatPane);
+        server.setChatArea(chatPane);
+        server.setCardTable(cardTable);
 
     }
 
@@ -197,7 +214,8 @@ public class MainController {
 
 
     //я просто проверял работу
-    private void messageDialog(String messageText) {
+    public void messageDialog(String messageText, EventHandler eventHandler) {
+
         Text message = new Text(messageText);
         message.setFill(Color.WHITE);
         message.setStyle(
@@ -231,6 +249,7 @@ public class MainController {
         okWin.setTextFill(Color.BURLYWOOD);
         ok.getChildren().add(okWin);
 
+
         StackPane cancelBt = new StackPane();
         cancelBt.getChildren().add(cancelImage);
         StackPane cancel = new StackPane();
@@ -250,6 +269,10 @@ public class MainController {
         b.setScene(scene);
         b.show();
         cancel.setOnMouseClicked(event -> b.close());
+        ok.setOnMouseClicked(event -> {
+            eventHandler.handle(event);
+            b.close();
+        });
     }
 
     private void loadPlayerInformation() {
@@ -282,7 +305,7 @@ public class MainController {
             skillImages.get(i).setImage(new Image("/assets/skills/" + skill.getName() + ".png"));
             skillImages.get(i).setOnMouseClicked(event -> {
                 peekedSkill = skill.getId();
-                System.out.println("peeked skill = " + skill.getName());
+                System.out.println("peeked skill #" + skill.getId() + " = " + skill.getName());
 
             });
             tooltip.setText(skill.toString());
@@ -300,7 +323,11 @@ public class MainController {
         skillGroup.getChildren()
                 .filtered(el -> el.getStyleClass().contains("border"))
                 .filtered(el -> el.getId().equalsIgnoreCase(skillId))
-                .forEach(el -> el.setStyle("-fx-border-color:red;  -fx-border-width : 3;"));
+                .forEach(el -> {
+                    el.setStyle("-fx-border-color:red;  -fx-border-width : 3;");
+
+                });
+
     }
 
 
@@ -314,15 +341,6 @@ public class MainController {
         }
     }
 
-    private void spawnEnemy() {
-        try {
-            EnemyCard enemyCard = new EnemyCard();
-            cardTable.getChildren().addAll(enemyCard.getEnemyCard());
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
 
 
     private void loadFxmlData() {
@@ -371,7 +389,32 @@ public class MainController {
         });
 
         sendButton.setOnMouseClicked(event -> sendChatMessage());
-
-        bt2.setOnMouseClicked(event -> spawnEnemy());
     }
+
+    @SneakyThrows
+    public synchronized void getDungeonSkeleton() {
+        server.createDungeon(JSON.getDungeonSkeleton(), cardTable);
+        wait(1500);
+        battleController = new BattleController(player, Container.getDungeonList(), cardTable);
+//        spawnEnemyCards(enemyCards);
+    }
+
+    public void attack() {
+        if (peekedSkill < 0) {
+            System.out.println("You have not peeled skill!");
+            return;
+        }
+
+    }
+
+    public void spawnEnemyCards(List<EnemyCard> enemyCards) {
+        System.out.println("start spawn!");
+        enemyCards.forEach(el -> System.out.println(el.getEnemy().getName()));
+        for (EnemyCard enemyCard : enemyCards) {
+            System.out.println("table = " + cardTable.getChildren());
+            System.out.println("enemy card = " + enemyCard.getEnemyCard());
+            cardTable.getChildren().add(enemyCard.getEnemyCard());
+        }
+    }
+
 }

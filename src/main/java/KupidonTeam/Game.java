@@ -8,20 +8,22 @@ import KupidonTeam.locations.Dungeon;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
 import javafx.application.Application;
+import javafx.scene.image.ImageView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.*;
+import java.util.stream.Stream;
 
 
 //Class starter
 public class Game {
     public static String[] argz;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Connection server = Connection.getConnection();
         Application.launch(LoginWrapper.class, args);

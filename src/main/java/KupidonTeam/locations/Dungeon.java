@@ -28,7 +28,4 @@ public class Dungeon extends Room {
                 '}';
     }
 
-    //public EnemyContainer getEnemyContainer() {
-//        return enemies;
-//    }
 }

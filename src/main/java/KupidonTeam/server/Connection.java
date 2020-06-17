@@ -1,30 +1,33 @@
 package KupidonTeam.server;
 
+import KupidonTeam.controllers.BattleController;
 import KupidonTeam.exceptions.FiledToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
+import KupidonTeam.gui.EnemyCard;
 import KupidonTeam.gui.MainController;
 import KupidonTeam.login.SignLogic;
+import KupidonTeam.player.Player;
+import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-import lombok.Data;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -37,15 +40,14 @@ public class Connection {
     private int port;
     private Scanner inMessage;
     private PrintWriter outMessage;
-    private SignLogic signLogic;
-    private String serverResponse; //переменная отправленя ответа в другие методы
-    private MainController mainController;
 
+    private FlowPane cardTable;
     private TextArea chatArea;
 
     private Connection() {
         setup();
     }
+
 
     public static Connection getConnection() {
         if (connection == null) {
@@ -124,15 +126,18 @@ public class Connection {
         JSONObject serverResponse = new JSONObject(msg);
         String action = serverResponse.getString("action");
         System.out.println("action = " + action);
+        System.out.println("Server response : \n" + msg + "\n=======================================================");
         switch (action) {
             case "playerAuthorization":
-                System.out.println("msg = " + msg);
                 logic.loginAnalyze(msg);
                 break;
             case "sendChatMessage":
                 addMessageToChat(serverResponse.getJSONObject("data"));
                 break;
             case "getDungeonSkeleton":
+
+                createDungeonSkeleton(msg);
+                break;
 
             case "connectToServer":
                 if (serverResponse.getInt("code") != 100) {
@@ -213,11 +218,33 @@ public class Connection {
         this.chatArea = chatArea;
     }
 
+    public void setCardTable(FlowPane cardTable) {
+        this.cardTable = cardTable;
+    }
+
     private void addMessageToChat(JSONObject data) {
         String buffer = JSON.inboxMessage(data);
         chatArea.appendText(buffer);
     }
 
+
+    //create a dungeon skeleton and add it into common object 'Container'
+    public synchronized void createDungeonSkeleton(String dungeonJson) {
+        JSONObject dungeonData = new JSONObject(dungeonJson).getJSONObject("data");
+        Container.setDungeonList(JSON.dungeons(dungeonData));
+        notify();
+    }
+
+    public void createDungeon(String msg, FlowPane cardTable) {
+        this.cardTable = cardTable;
+        if (!msg.isEmpty()) {
+            System.out.println("=========send msg to ser method=======");
+            System.out.println("socket = " + clientSocket.toString());
+
+            outMessage.println(msg);
+            outMessage.flush();
+        }
+    }
 }
 
 

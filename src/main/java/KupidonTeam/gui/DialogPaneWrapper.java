@@ -26,8 +26,4 @@ public class DialogPaneWrapper extends Application {
     public static Stage getCurrentStage() {
         return currentStage;
     }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
 }
