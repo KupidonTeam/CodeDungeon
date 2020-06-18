@@ -58,6 +58,7 @@ public class SignLogic {
         System.out.println("------Set socket timeout 5 sec-------");
         wait(3000);
         System.out.println("after wait");
+        System.out.println("response flag = " + responseFlag);
         if (!responseFlag) {
             connectionFailedAlert();
             closeAll();

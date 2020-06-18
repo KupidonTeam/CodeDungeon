@@ -17,8 +17,10 @@ import java.util.ArrayList;
 public class Graph extends Application {
     private static Stage currentStage;
     private ArrayList<Dot> dots = new ArrayList<>();
+    private AnchorPane pane;
 
-    public Graph() {
+    public Graph(int[] rooms, int[][] routes) {
+        pane = new AnchorPane();
         dots.add(new Dot(1, 20, 140));
         dots.add(new Dot(2, 70, 30));
         dots.add(new Dot(3, 70, 250));
