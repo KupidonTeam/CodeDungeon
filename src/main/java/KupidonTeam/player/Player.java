@@ -35,7 +35,8 @@ public class Player {
     private List<Animal> animals;
 
 
-    private Player(String name, Stats stats, String playerClass, int lvl, int experience, List<Skill> skills, List<Armor> armors, List<Weapon> weapons, List<Animal> animals) {
+    private Player(String name, Stats stats, String playerClass, int lvl, int experience, List<Skill> skills,
+                   List<Armor> armors, List<Weapon> weapons, List<Animal> animals) {
         setName(name);
         setStats(stats);
         setPlayerClass(playerClass);
@@ -49,17 +50,24 @@ public class Player {
         location = new Lobby();
     }
 
-    public static boolean createPlayer(String name, String playerClass, int lvl, int experience, Stats stats, List<Skill> skills, List<Armor> armors, List<Weapon> weapons, List<Animal> animals) {
+    public static boolean createPlayer(String name, String playerClass, int lvl, int experience, Stats stats,
+                                       List<Skill> skills, List<Armor> armors, List<Weapon> weapons,
+                                       List<Animal> animals) {
         if (player == null) {
             player = new Player(name, stats, playerClass, lvl, experience, skills, armors, weapons, animals);
+
             return true;
         }
+
         System.err.println("Player already exists!");
         return false;
     }
 
     public static Player getInstance() {
-        if (player != null) return player;
+        if (player != null) {
+            return player;
+        }
+
         System.err.println("Player is not created yet!");
         return null;
     }

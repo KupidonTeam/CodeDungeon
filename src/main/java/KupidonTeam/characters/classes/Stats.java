@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 public class Stats {
-
 //    private String race;
     private int armorClass;
     private int hits;
@@ -19,7 +18,6 @@ public class Stats {
     private int wisdom;
     private int chance;
     private int constitution;
-
 
     @Override
     public String toString() {

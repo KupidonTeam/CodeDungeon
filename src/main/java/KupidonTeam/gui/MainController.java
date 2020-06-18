@@ -400,8 +400,8 @@ public class MainController {
 
     public void attack() {
         System.out.println("peeked skill =  " + peekedSkill);
-        System.out.println(battleController.getChosenEnemy() == null);
-        if (peekedSkill <= 0 && battleController.getChosenEnemy() == null) {
+        System.out.println(battleController.getChosenEnemyCard() == null);
+        if (peekedSkill <= 0 && battleController.getChosenEnemyCard() == null) {
             System.out.println("You have to peek skill and choose enemy!");
             return;
         }
@@ -411,7 +411,7 @@ public class MainController {
     }
 
     private synchronized void startBattle() {
-        server.sendMessageToServer(JSON.startBattle(peekedSkill, battleController.getChosenEnemy()));
+        server.sendMessageToServer(JSON.startBattle(peekedSkill, battleController.getChosenEnemyCard().getEnemy()));
         notifyAll();
     }
 

@@ -1,6 +1,5 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.enums.Battlestate;
 import KupidonTeam.gui.EnemyCard;
 import KupidonTeam.gui.MainController;
@@ -8,20 +7,14 @@ import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import javafx.animation.*;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
 import javafx.util.Duration;
 import lombok.SneakyThrows;
 
 
 import java.util.*;
-import java.util.stream.Stream;
 
 // TODO
 // Класс-контроллер боя
@@ -37,7 +30,7 @@ public class BattleController {
     private MainController mainController;
     private FlowPane cardTable;
 
-    private Enemy chosenEnemy;
+    private EnemyCard chosenEnemyCard;
 
     public BattleController() {
     }
@@ -49,9 +42,8 @@ public class BattleController {
         initMainController();
         currentRoom = dungeonsList.get(0);
         server = Connection.getConnection();
-        battlestate = Battlestate.PLAYERTURN;
         loadEnemyCards();
-//        battleMode();
+        battleMode();
 
     }
 
@@ -72,6 +64,10 @@ public class BattleController {
                         battlestate = Battlestate.LOSE;
                         break;
                     }
+                    System.out.println("go to sleeeeeeeeeeeeeeeeeeeeeeeep");
+                    wait();
+                    System.out.println("i woke up !!!!!!!!!!!!!!!");
+
                     break;
                 case ENEMYTURN:
 //                    enemies.enemyTurn();
@@ -122,22 +118,43 @@ public class BattleController {
 
     private void loadEnemyCards() {
         initMainController();
+
         List<EnemyCard> enemyCards = new ArrayList<>();
         currentRoom.getEnemies().forEach(el -> {
             enemyCards.add(new EnemyCard(el));
             System.out.println(el.getName());
         });
+
         enemyCards.forEach(el -> {
             el.getEnemyCard().setOnMouseClicked(event -> {
-                enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle("-fx-box-border: transparent;"));
-                setBorder(el.getEnemyCard());
+//                enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle("-fx-box-border: transparent;"));
+//                Timeline timeline = EnemyCardController.setBorder(el.getEnemyCard());
+//
+//                chosenEnemy = el.getEnemy();
+//                System.out.println("Chosen enemy = " + chosenEnemy.getName());
+                if (chosenEnemyCard == null) {
+                    el.setBorder();
 
-                chosenEnemy = el.getEnemy();
-                System.out.println("Chosen enemy #" + chosenEnemy.getEnemyId() + " = " + chosenEnemy.getName());
+                    chosenEnemyCard = el;
+                    System.out.println("Chosen enemy = " + chosenEnemyCard.getEnemy().getName());
+                    System.out.println("Chosen enemy = " + chosenEnemyCard.getEnemy().getEnemyId());
+                } else if (chosenEnemyCard.equals(el)) {
+                    // delete border
+                    el.deleteBorder();
+
+                    chosenEnemyCard = null;
+                } else {
+                    //delete border from chosen enemy
+                    //Timeline timeline = EnemyCardController.setBorder(chosenEnemy);
+                    chosenEnemyCard.deleteBorder();
+                    el.setBorder();
+
+                    chosenEnemyCard = el;
+                    System.out.println("New chosen enemy = " + chosenEnemyCard.getEnemy().getName());
+                }
             });
-
-
         });
+
         enemyCards.forEach(enemyCard -> {
             cardTable.getChildren().add(enemyCard.getEnemyCard());
             FadeTransition ft = new FadeTransition(Duration.millis(800), enemyCard.getEnemyCard());
@@ -161,32 +178,8 @@ public class BattleController {
 
     }
 
-    public Enemy getChosenEnemy() {
-        return chosenEnemy;
+    public EnemyCard getChosenEnemyCard() {
+        return chosenEnemyCard;
     }
 
-
-    private void setBorder(Pane pane) {
-        Color[] colors = Stream.of("tomato", "#961307", "#8e7c74", "#39100f", "#251a1a", "red", "#816d64")
-                .map(Color::web)
-                .toArray(Color[]::new);
-
-        List<Border> list = new ArrayList<>();
-
-        int[] mills = {-200};
-        KeyFrame[] keyFrames = Stream.iterate(0, i -> i + 1)
-                .limit(100)
-                .map(i -> new LinearGradient(0, 0, 1, 1, true, CycleMethod.NO_CYCLE,
-                        new Stop[]{new Stop(0, colors[i % colors.length]),
-                                new Stop(1, colors[(i + 1) % colors.length])}))
-                .map(lg -> new Border(new BorderStroke(lg, BorderStrokeStyle.SOLID,
-                        new CornerRadii(0), new BorderWidths(4))))
-                .map(b -> new KeyFrame(Duration.millis(mills[0] += 200), new KeyValue(pane.borderProperty(),
-                        b, Interpolator.EASE_IN)))
-                .toArray(KeyFrame[]::new);
-
-        Timeline timeline = new Timeline(keyFrames);
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-    }
 }

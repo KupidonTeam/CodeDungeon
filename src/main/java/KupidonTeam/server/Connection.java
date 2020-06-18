@@ -40,6 +40,7 @@ public class Connection {
         if (connection == null) {
             connection = new Connection();
         }
+
         return connection;
     }
 
@@ -49,6 +50,7 @@ public class Connection {
         } catch (PropertiesException e) {
             e.printStackTrace();
         }
+
         try {
             connection();
             serverListener(clientSocket);
@@ -60,6 +62,7 @@ public class Connection {
 
     private void connection() throws IOException {
         System.out.println("Try to connect");
+
         try {
             clientSocket = new Socket(host, port);
             inMessage = new Scanner(clientSocket.getInputStream());
@@ -70,6 +73,7 @@ public class Connection {
             clientSocket.close();
             System.exit(-1);
         }
+
         System.out.println("connected successful");
     }
 
@@ -81,8 +85,6 @@ public class Connection {
             System.out.println("msg = " + msg);
             outMessage.println(msg);
             outMessage.flush();
-
-
         }
     }
 
@@ -141,6 +143,7 @@ public class Connection {
 
     private void setProperties() throws PropertiesException {
         Properties properties;
+
         try {
             String propFile = "src/main/resources/connection.properties";
             properties = new Properties();
