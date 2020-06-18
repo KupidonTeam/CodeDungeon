@@ -14,8 +14,6 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.util.Duration;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.File;
 import java.io.IOException;
@@ -97,10 +95,6 @@ public class EnemyCard {
 
     public void dispose() {
         enemyCard.getChildren().clear();
-    }
-
-    public void setBorder() {
-        enemyCardController.setBorder(enemyCard);
     }
 
     private Image randomImage() {
