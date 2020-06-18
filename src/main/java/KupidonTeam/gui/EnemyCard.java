@@ -86,6 +86,10 @@ public class EnemyCard {
         enemyCard.getChildren().clear();
     }
 
+    public void setBotder() {
+        enemyCardController.setBorder(enemyCard);
+    }
+
     private Image randomImage() {
         String path = "src/main/resources/assets/SIMPLEAvatarsIcons/64X64";
         File files = new File(path);

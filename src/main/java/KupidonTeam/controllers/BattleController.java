@@ -37,7 +37,7 @@ public class BattleController {
     private MainController mainController;
     private FlowPane cardTable;
 
-    private Enemy chosenEnemy;
+    private EnemyCard chosenEnemy;
 
     public BattleController() {
     }
@@ -131,12 +131,13 @@ public class BattleController {
             System.out.println(el.getName());
         });
         enemyCards.forEach(el -> {
-            el.getEnemyCard().setOnMouseClicked(event -> {
-                enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle("-fx-box-border: transparent;"));
-                setBorder(el.getEnemyCard());
 
-                chosenEnemy = el.getEnemy();
-                System.out.println("Chosen enemy = " + chosenEnemy.getName());
+            el.getEnemyCard().setOnMouseClicked(event -> {
+                enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle("-fx-border-color:none;"));
+//                setBorder(el.getEnemyCard());
+                el.getEnemyCard().setStyle("-fx-border-color:red;");
+                chosenEnemy = el;
+                System.out.println("Chosen enemy = " + chosenEnemy.getEnemy().getName());
             });
 
 
@@ -165,7 +166,7 @@ public class BattleController {
     }
 
     public Enemy getChosenEnemy() {
-        return chosenEnemy;
+        return chosenEnemy.getEnemy();
     }
 
 
