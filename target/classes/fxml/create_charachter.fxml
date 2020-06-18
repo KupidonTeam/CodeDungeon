@@ -11,245 +11,303 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="parentPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.CharacterCreationController">
+<AnchorPane fx:id="parentPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="KupidonTeam.gui.CharacterCreationController">
     <children>
         <Pane fx:id="mainPane" prefHeight="457.0" prefWidth="616.0">
             <children>
                 <ImageView fitHeight="457.0" fitWidth="616.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/my_background.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/my_background.png"/>
                     </image>
                 </ImageView>
-                <ImageView fx:id="avatarImage" fitHeight="200.0" fitWidth="200.0" layoutX="208.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="avatarImage" fitHeight="200.0" fitWidth="200.0" layoutX="208.0" layoutY="72.0"
+                           pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@/assets/SIMPLEAvatarsIcons/warrior_with_frame.png" />
+                        <Image url="@/assets/SIMPLEAvatarsIcons/warrior_with_frame.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="208.0" layoutY="16.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar2.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar2.png"/>
                     </image>
                 </ImageView>
-                <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="208.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="200.0" text="Username" textAlignment="CENTER" textFill="#816d64">
+                <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="208.0" layoutY="19.0"
+                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                       prefHeight="45.0" prefWidth="200.0" text="Username" textAlignment="CENTER" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="24.0" />
+                        <Font name="Century" size="24.0"/>
                     </font>
                 </Label>
                 <ImageView fitHeight="303.0" fitWidth="178.0" layoutX="20.0" layoutY="79.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
                     </image>
                 </ImageView>
-                <ImageView fx:id="closeButton" fitHeight="50.0" fitWidth="50.0" layoutX="542.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="closeButton" fitHeight="50.0" fitWidth="50.0" layoutX="542.0" layoutY="22.0"
+                           pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/button_cancel.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/button_cancel.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="26.0" layoutY="340.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="26.0" layoutY="304.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="26.0" layoutY="268.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="26.0" layoutY="232.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="26.0" layoutY="196.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="26.0" layoutY="160.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="26.0" layoutY="124.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="26.0" layoutY="88.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
-            <FlowPane fx:id="skillPane" layoutX="208.0" layoutY="277.0" prefHeight="130.0" prefWidth="200.0" style="-fx-background-color: none;" />
+                <FlowPane fx:id="skillPane" layoutX="208.0" layoutY="277.0" prefHeight="130.0" prefWidth="200.0"
+                          style="-fx-background-color: none;"/>
                 <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="455.0" layoutY="388.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar2.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar2.png"/>
                     </image>
                 </ImageView>
-                <Label alignment="CENTER" layoutX="455.0" layoutY="388.0" prefHeight="40.0" prefWidth="98.0" text="Confirm" textAlignment="CENTER" textFill="#816d64">
+                <Label alignment="CENTER" layoutX="455.0" layoutY="388.0" prefHeight="40.0" prefWidth="98.0"
+                       text="Confirm" textAlignment="CENTER" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="18.0" />
+                        <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Hits" textFill="#816d64">
+                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Hits"
+                       textFill="#816d64">
                     <font>
-                        <Font name="Century" size="14.0" />
+                        <Font name="Century" size="14.0"/>
                     </font>
                 </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="124.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Speed" textFill="#816d64">
+                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="124.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Speed"
+                       textFill="#816d64">
                     <font>
-                        <Font name="Century" size="14.0" />
+                        <Font name="Century" size="14.0"/>
                     </font>
                 </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Strength" textFill="#816d64">
+                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Strength"
+                       textFill="#816d64">
                     <font>
-                        <Font name="Century" size="14.0" />
+                        <Font name="Century" size="14.0"/>
                     </font>
                 </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="198.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Dexterity" textFill="#816d64">
+                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="198.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Dexterity"
+                       textFill="#816d64">
                     <font>
-                        <Font name="Century" size="14.0" />
+                        <Font name="Century" size="14.0"/>
                     </font>
                 </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="232.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Intelligence" textFill="#816d64">
+                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="232.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Intelligence"
+                       textFill="#816d64">
                     <font>
-                        <Font name="Century" size="14.0" />
+                        <Font name="Century" size="14.0"/>
                     </font>
                 </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="267.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Wisdom" textFill="#816d64">
+                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="267.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Wisdom"
+                       textFill="#816d64">
                     <font>
-                        <Font name="Century" size="14.0" />
+                        <Font name="Century" size="14.0"/>
                     </font>
                 </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Chance" textFill="#816d64">
+                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Chance"
+                       textFill="#816d64">
                     <font>
-                        <Font name="Century" size="14.0" />
+                        <Font name="Century" size="14.0"/>
                     </font>
                 </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="340.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="115.0" text="Constitution" textFill="#816d64">
+                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="340.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="115.0"
+                       text="Constitution" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="14.0" />
+                        <Font name="Century" size="14.0"/>
                     </font>
                 </Label>
-                <Label fx:id="hits" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="83.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                <Label fx:id="hits" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="83.0"
+                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                       prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="18.0" />
+                        <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
-                <Label fx:id="speed" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                <Label fx:id="speed" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="119.0"
+                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                       prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="18.0" />
+                        <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
-                <Label fx:id="strength" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                <Label fx:id="strength" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="155.0"
+                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                       prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="18.0" />
+                        <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
-                <Label fx:id="dexterity" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="191.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                <Label fx:id="dexterity" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0"
+                       layoutY="191.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                       minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="18.0" />
+                        <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
-                <Label fx:id="intelligence" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="229.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                <Label fx:id="intelligence" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0"
+                       layoutY="229.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                       minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="18.0" />
+                        <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
-                <Label fx:id="wisdom" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="264.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                <Label fx:id="wisdom" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="264.0"
+                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                       prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="18.0" />
+                        <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
-                <Label fx:id="chance" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="299.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                <Label fx:id="chance" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="299.0"
+                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                       prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="18.0" />
+                        <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
-                <Label fx:id="constitution" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="335.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                <Label fx:id="constitution" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0"
+                       layoutY="335.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                       minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
                     <font>
-                        <Font name="Century" size="18.0" />
+                        <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
                 <ImageView fitHeight="303.0" fitWidth="178.0" layoutX="418.0" layoutY="79.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="423.0" layoutY="88.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
-                <Label fx:id="classLabel" contentDisplay="CENTER" layoutX="433.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="126.0" text="Class : " textFill="#816d64">
+                <Label fx:id="classLabel" contentDisplay="CENTER" layoutX="433.0" layoutY="88.0" maxHeight="-Infinity"
+                       maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0"
+                       prefWidth="126.0" text="Class : " textFill="#816d64">
                     <font>
-                        <Font name="Century" size="14.0" />
+                        <Font name="Century" size="14.0"/>
                     </font>
                 </Label>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="424.0" layoutY="340.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
-                <Button fx:id="confirmButton" layoutX="455.0" layoutY="387.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="98.0" style="-fx-background-color: none;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
+                <Button fx:id="confirmButton" layoutX="455.0" layoutY="387.0" mnemonicParsing="false" prefHeight="40.0"
+                        prefWidth="98.0" style="-fx-background-color: none;">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
                 <ImageView fitHeight="38.0" fitWidth="178.0" layoutX="20.0" layoutY="383.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="26.0" layoutY="385.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="385.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Race" textFill="#816d64">
+                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="385.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Race"
+                       textFill="#816d64">
                     <font>
-                        <Font name="Century" size="14.0" />
+                        <Font name="Century" size="14.0"/>
                     </font>
                 </Label>
-                <ChoiceBox fx:id="raceDropDown" layoutX="77.0" layoutY="388.0" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: none;" />
+                <ChoiceBox fx:id="raceDropDown" layoutX="77.0" layoutY="388.0" prefHeight="25.0" prefWidth="115.0"
+                           style="-fx-background-color: none;"/>
                 <ImageView fitHeight="219.0" fitWidth="166.0" layoutX="423.0" layoutY="121.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="194.0" fitWidth="149.0" layoutX="431.0" layoutY="135.0">
                     <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/classes.png" />
+                        <Image url="@/assets/GUI_Parts/Gui_parts/classes.png"/>
                     </image>
                 </ImageView>
-                <Label id="rogue" fx:id="rogueClass" layoutX="436.0" layoutY="147.0" prefHeight="61.0" prefWidth="73.0" styleClass="classes">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Label>
-                <Label id="ranger" fx:id="rangerClass" layoutX="506.0" layoutY="147.0" prefHeight="61.0" prefWidth="73.0" styleClass="classes">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Label>
-                <Label id="paladin" fx:id="paladinClass" layoutX="436.0" layoutY="206.0" prefHeight="61.0" prefWidth="73.0" styleClass="classes">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Label>
-                <Label id="bard" fx:id="bardClass" layoutX="506.0" layoutY="206.0" prefHeight="61.0" prefWidth="73.0" styleClass="classes">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Label>
-                <Label id="druid" fx:id="druidClass" layoutX="436.0" layoutY="269.0" prefHeight="61.0" prefWidth="73.0" styleClass="classes">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Label>
-                <Label id="mage" fx:id="wizardClass" layoutX="506.0" layoutY="269.0" prefHeight="61.0" prefWidth="73.0" styleClass="classes">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Label>
+                <Label id="rogue" fx:id="rogueClass" layoutX="436.0" layoutY="147.0" prefHeight="61.0" prefWidth="73.0"
+                       styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
+                <Label id="ranger" fx:id="rangerClass" layoutX="506.0" layoutY="147.0" prefHeight="61.0"
+                       prefWidth="73.0" styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
+                <Label id="paladin" fx:id="paladinClass" layoutX="436.0" layoutY="206.0" prefHeight="61.0"
+                       prefWidth="73.0" styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
+                <Label id="bard" fx:id="bardClass" layoutX="506.0" layoutY="206.0" prefHeight="61.0" prefWidth="73.0"
+                       styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
+                <Label id="druid" fx:id="druidClass" layoutX="436.0" layoutY="269.0" prefHeight="61.0" prefWidth="73.0"
+                       styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
+                <Label id="mage" fx:id="wizardClass" layoutX="506.0" layoutY="269.0" prefHeight="61.0" prefWidth="73.0"
+                       styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
             </children>
         </Pane>
     </children>

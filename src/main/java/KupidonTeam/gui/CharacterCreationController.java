@@ -1,10 +1,11 @@
 package KupidonTeam.gui;
 
+
 import KupidonTeam.DB.DBConnection;
 import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.server.Connection;
-import KupidonTeam.utils.Container;
+
 import KupidonTeam.utils.JSON;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
@@ -21,7 +22,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Popup;
 import javafx.util.Duration;
 
-import javax.tools.Tool;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -115,6 +115,7 @@ public class CharacterCreationController {
 
     private List<ImageView> classSkills;
     private Popup popupMessage;
+    private DBConnection db;
 
     @FXML
     void initialize() {
@@ -225,7 +226,7 @@ public class CharacterCreationController {
     private ObservableList<String> loadRaces() {
         List<String> tempRaceList = new LinkedList<>();
         try {
-            DBConnection db = DBConnection.getDbConnection();
+            db = DBConnection.getDbConnection();
             String query = String.format("SELECT name FROM `Races`");
             ResultSet resultSet = db.select(query);
             while (resultSet.next()) {
@@ -270,7 +271,7 @@ public class CharacterCreationController {
         skillPane.getChildren().clear();
         List<Skill> skills;
         try {
-            DBConnection db = DBConnection.getDbConnection();
+            db = DBConnection.getDbConnection();
             String query = String.format("SELECT * FROM `Attacks` NATURAL JOIN Classes_Attacks\n" +
                     "Where class_id = '%d'", chosenClassId);
             ResultSet resultSet = db.select(query);
@@ -306,7 +307,7 @@ public class CharacterCreationController {
 
     private int getRaceId() {
         try {
-            DBConnection db = DBConnection.getDbConnection();
+            db = DBConnection.getDbConnection();
             String query = String.format(
                     "SELECT race_id FROM `Races` where name = '%s'", raceDropDown.getSelectionModel().getSelectedItem());
             ResultSet resultSet = db.select(query);

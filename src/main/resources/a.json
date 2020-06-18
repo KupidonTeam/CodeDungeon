@@ -1,24 +1,71 @@
 {
   "action": "startBattle",
+  "code": 205,
+  "code_desc": "battle successful",
   "data": {
-    "player_attack_id": 4,
+    "attack": {
+      "attack_name": "Thor",
+      "lvl": 1,
+      "type_attack": "Long Range",
+      "count_of_random": 2,
+      "cooldown": 5,
+      "random_diapason": 8,
+      "effect": "embodiment"
+    },
     "mob": {
-      "attacks": {},
-      "desc": "Big Dragon",
+      "attacks": {
+        "100": {
+          "cooldown": 4,
+          "count_of_random": 2,
+          "effect": "Confusion",
+          "lvl": 0,
+          "name": "Punch",
+          "random_diapason": 5,
+          "type_attack": "Melee"
+        }
+      },
+      "desc": "Medium Undead",
       "inventory": {},
-      "name": "Young Green Dragon",
+      "name": "Zombie",
       "stats": {
         "armor_class": 2,
         "chance": 0,
         "constitution": 3,
         "dexterity": 8,
-        "hits": 3,
+        "hits": -2,
         "intelligence": 6,
         "speed": 4,
         "strength": 5,
         "wisdom": 9
       },
-      "vulnerabilities": {
+      "vulnerabilities": {}
+    },
+    "battle_result": {
+      "player_attack": {
+        "attack": {
+          "attack_name": "Thor",
+          "lvl": 1,
+          "type_attack": "Long Range",
+          "count_of_random": 2,
+          "cooldown": 5,
+          "random_diapason": 8,
+          "effect": "embodiment"
+        },
+        "attack_successful": "True",
+        "damage_given": 5
+      },
+      "mob_attack": {
+        "attack": {
+          "cooldown": 4,
+          "count_of_random": 2,
+          "effect": "Confusion",
+          "lvl": 0,
+          "name": "Punch",
+          "random_diapason": 5,
+          "type_attack": "Melee"
+        },
+        "attack_successful": "True",
+        "damage_given": 10
       }
     }
   }

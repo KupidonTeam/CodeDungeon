@@ -121,8 +121,9 @@ public class SingUpController {
                 characterCreation(username, password);
 
             } else {
-                usernameLabel.setText(usernameLabel.getText() + " - no such user");
+                usernameLabel.setText(usernameLabel.getText() + " - ");
                 usernameLabel.setTextFill(Color.RED);
+
             }
         }
     }

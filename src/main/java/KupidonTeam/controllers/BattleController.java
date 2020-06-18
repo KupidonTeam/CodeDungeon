@@ -43,7 +43,7 @@ public class BattleController {
         currentRoom = dungeonsList.get(0);
         server = Connection.getConnection();
         loadEnemyCards();
-        battleMode();
+       // battleMode();
 
     }
 
