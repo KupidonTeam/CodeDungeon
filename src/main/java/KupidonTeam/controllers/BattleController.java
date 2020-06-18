@@ -33,11 +33,14 @@ public class BattleController {
     private FlowPane cardTable;
     private Enemy chosenEnemy;
 
+    public BattleController() {
+    }
 
     public BattleController(Player mainPlayer, List<Dungeon> dungeonsList, FlowPane cardTable) {
         this.mainPlayer = mainPlayer;
         this.dungeonList = dungeonsList;
         this.cardTable = cardTable;
+        initMainController();
         currentRoom = dungeonsList.get(0);
         server = Connection.getConnection();
         loadEnemyCards();
@@ -62,9 +65,7 @@ public class BattleController {
                         battlestate = Battlestate.LOSE;
                         break;
                     }
-                    playerTurn();
 
-                    wait();
                     System.out.println("i woke up !!!!!!!!!!!!!!!");
 
                     break;
@@ -124,8 +125,8 @@ public class BattleController {
         });
         enemyCards.forEach(el -> {
             el.getEnemyCard().setOnMouseClicked(event -> {
-                //enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle(""));
-                // el.getEnemyCard().setStyle("-fx-border-color : blue; -fx-border-width: 1 ; ");
+                enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle(""));
+                el.getEnemyCard().setStyle("-fx-border-color : blue; -fx-border-width: 3 ; ");
 
                 chosenEnemy = el.getEnemy();
                 System.out.println("Chosen enemy = " + chosenEnemy.getName());
@@ -154,5 +155,9 @@ public class BattleController {
 
     public void animation() {
 
+    }
+
+    public Enemy getChosenEnemy() {
+        return chosenEnemy;
     }
 }

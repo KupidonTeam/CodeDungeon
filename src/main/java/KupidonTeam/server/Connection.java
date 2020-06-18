@@ -91,7 +91,7 @@ public class Connection {
         if (!msg.isEmpty()) {
             System.out.println("=========send msg to ser method=======");
             System.out.println("socket = " + clientSocket.toString());
-
+            System.out.println("msg = " + msg);
             outMessage.println(msg);
             outMessage.flush();
 
@@ -207,8 +207,12 @@ public class Connection {
 
     //create a dungeon skeleton and add it into common object 'Container'
     public synchronized void createDungeonSkeleton(String dungeonJson) {
+        System.out.println("Cotainer = " + dungeonJson);
         JSONObject dungeonData = new JSONObject(dungeonJson).getJSONObject("data");
+        System.out.println("dunge data = " + dungeonData);
         Container.setDungeonList(JSON.dungeons(dungeonData));
+        System.out.println("CONNNNNNNNNNNNNNTAiner = " + Container.getDungeonList());
+
         notify();
     }
 

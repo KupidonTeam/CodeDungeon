@@ -57,9 +57,16 @@ public class JSON {
     //<--! Методы для парсинга и содания персонажа --!>
     public static List<Skill> skills(JSONObject data) {
         List<Skill> skills = new LinkedList<>();
+        System.out.println("DATAAAAAAAAAAAAAAAAAAAa : " + data);
         JSONObject jsonObject = data.getJSONObject("attacks");
+        if (jsonObject.toString().equalsIgnoreCase("{}")) {
+            System.out.println("------------------------------------------------->empty attack");
+            return new LinkedList<>();
+        }
         jsonObject.keySet().forEach(el -> {
             JSONObject skill = jsonObject.getJSONObject(el);
+            System.out.println("SKIlllllllll  = " + skill);
+
             skills.add(
                     new Skill(Integer.parseInt(el),
                             skill.getString("attack_name"),
@@ -143,17 +150,17 @@ public class JSON {
         return armors;
     }
 
-    public static Stats stats(JSONObject data) {
+    public static Stats stats(JSONObject stats) {
         return new Stats(
-                data.getInt("armor_class"),
-                data.getInt("hits"),
-                data.getInt("speed"),
-                data.getInt("strength"),
-                data.getInt("dexterity"),
-                data.getInt("intelligence"),
-                data.getInt("wisdom"),
-                data.getInt("chance"),
-                data.getInt("constitution")
+                stats.getInt("armor_class"),
+                stats.getInt("hits"),
+                stats.getInt("speed"),
+                stats.getInt("strength"),
+                stats.getInt("dexterity"),
+                stats.getInt("intelligence"),
+                stats.getInt("wisdom"),
+                stats.getInt("chance"),
+                stats.getInt("constitution")
         );
     }
     //<--!  Конец   --!>
@@ -165,11 +172,15 @@ public class JSON {
     }
 
     public static Enemy mob(JSONObject jsonMob, int id) {
+        System.out.println(" in MOb , jsonMob = " + jsonMob);
+        System.out.println("json attacks = " + jsonMob.getJSONObject("attacks"));
         return new Enemy(id,
                 jsonMob.getString("name"),
                 jsonMob.getString("desc"),
                 jsonMob.getInt("mob_level"),
-                JSON.stats(jsonMob.getJSONObject("stats"))
+                JSON.stats(jsonMob.getJSONObject("stats")),
+                JSON.skills(jsonMob),
+                jsonMob.getJSONObject("vulnerabilities").toString()
         );
     }
 
@@ -206,6 +217,17 @@ public class JSON {
         });
 
         return dungeonList;
+    }
+
+
+    public static String startBattle(int peekedSkillId, Enemy enemy) {
+        return String.format("{\n" +
+                        "  \"action\": \"startBattle\",\n" +
+                        "  \"data\": {\n" +
+                        "    \"player_attack_id\": %d,\n" +
+                        "    \"mob\": {%s}" +
+                        "}}",
+                peekedSkillId, enemy.toString());
     }
 
 
