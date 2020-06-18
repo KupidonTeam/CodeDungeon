@@ -28,8 +28,6 @@ import java.util.stream.Stream;
 public class EnemyCard {
     private AnchorPane enemyCard;
     private Enemy enemy;
-    @Getter
-    @Setter
     private EnemyCardController enemyCardController;
     private Timeline timeline;
 
@@ -50,7 +48,8 @@ public class EnemyCard {
         this.enemy = enemy;
         String path = "/fxml/enemy_card.fxml";
         FXMLLoader loader = new FXMLLoader();
-        Parent root = null;
+        Parent root;
+
         try {
             System.out.println("enemy = " + enemy.toString());
             root = loader.load(EnemyCard.class.getResourceAsStream(path));
@@ -66,7 +65,6 @@ public class EnemyCard {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public AnchorPane getEnemyCard() {
@@ -158,6 +156,7 @@ public class EnemyCard {
         timeline = new Timeline(keyFrames);
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+        timeline.stop();
     }
 
     @Override
