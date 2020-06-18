@@ -1,6 +1,7 @@
 package KupidonTeam.gui;
 
 import KupidonTeam.login.SignLogic;
+import KupidonTeam.utils.Container;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -117,7 +118,7 @@ public class SingUpController {
 
             if (!signLogic.checkUserName(username)) {
                 System.out.println("========== Логин свободен ==============");
-                characterCreation(username);
+                characterCreation(username, password);
 
             } else {
                 usernameLabel.setText(usernameLabel.getText() + " - no such user");
@@ -126,20 +127,22 @@ public class SingUpController {
         }
     }
 
-    private void loadFxml(String path) {
+    private <T> T loadFxml(String path) {
 
         LoginWrapper.getCurrentStage().setScene(SignUpWrapper.getScene());
         Parent parent;
         FXMLLoader loader = new FXMLLoader();
-
+        T controller = null;
         try {
             parent = loader.load(getClass().getResourceAsStream(path));
+            controller = loader.getController();
             Scene newScene = new Scene(parent);
             LoginWrapper.getCurrentStage().setScene(newScene);
             LoginWrapper.getCurrentStage().show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return controller;
     }
 
     private void switchToLogin() {
@@ -153,15 +156,18 @@ public class SingUpController {
         fadeTransition.play();
     }
 
-    private void characterCreation(String username) {
+    private void characterCreation(String username, String password) {
+
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(300));
         fadeTransition.setNode(AnchorPane);
         fadeTransition.setFromValue(1);
         fadeTransition.setToValue(0);
         fadeTransition.setOnFinished((event) -> {
-            loadFxml(characterCreationPath);
+            CharacterCreationController characterController = loadFxml(characterCreationPath);
+            characterController.setUserData(username, password);
         });
         fadeTransition.play();
+
     }
 
 

@@ -8,7 +8,9 @@ import KupidonTeam.items.Armor;
 import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;
 import KupidonTeam.locations.Dungeon;
+import KupidonTeam.login.SignLogic;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -49,10 +51,6 @@ public class JSON {
                 "\"player_password\": \"%s\"}}\n", username, password));
     }
 
-    //TODO json еще не полностью готов
-    public static String registration() {
-        return null;
-    }
 
     //<--! Методы для парсинга и содания персонажа --!>
     public static List<Skill> skills(JSONObject data) {
@@ -151,17 +149,23 @@ public class JSON {
     }
 
     public static Stats stats(JSONObject stats) {
-        return new Stats(
-                stats.getInt("armor_class"),
-                stats.getInt("hits"),
-                stats.getInt("speed"),
-                stats.getInt("strength"),
-                stats.getInt("dexterity"),
-                stats.getInt("intelligence"),
-                stats.getInt("wisdom"),
-                stats.getInt("chance"),
-                stats.getInt("constitution")
-        );
+        try {
+            return new Stats(
+                    stats.getInt("armor_class"),
+                    stats.getInt("hits"),
+                    stats.getInt("speed"),
+                    stats.getInt("strength"),
+                    stats.getInt("dexterity"),
+                    stats.getInt("intelligence"),
+                    stats.getInt("wisdom"),
+                    stats.getInt("chance"),
+                    stats.getInt("constitution")
+            );
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+            SignLogic.getSignLogic().closeAll();
+        }
+        return null;
     }
     //<--!  Конец   --!>
 
@@ -234,6 +238,15 @@ public class JSON {
     //удаляем перенос на новую строку и пробелы
     public static String normalize(String json) {
         return json.replaceAll("\n| ", "");
+    }
+
+    public static String registration(String username, String password, int classId, int raceId) {
+        return String.format("{" +
+                "\"action\":\"playerRegistration\"," +
+                "\"data\":{\"player_name\": \"%s\"," +
+                "\"player_password\": \"%s\"," +
+                "\"class_id\": %d, " +
+                "\"race_id\": %d}}", username, password, classId, raceId);
     }
 
 }

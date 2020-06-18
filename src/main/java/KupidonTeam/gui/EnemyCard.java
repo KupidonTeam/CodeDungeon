@@ -86,7 +86,7 @@ public class EnemyCard {
         enemyCard.getChildren().clear();
     }
 
-    public void setBotder() {
+    public void setBorder() {
         enemyCardController.setBorder(enemyCard);
     }
 

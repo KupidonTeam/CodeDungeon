@@ -37,7 +37,7 @@ public class BattleController {
     private MainController mainController;
     private FlowPane cardTable;
 
-    private EnemyCard chosenEnemy;
+    private Enemy chosenEnemy;
 
     public BattleController() {
     }
@@ -49,8 +49,9 @@ public class BattleController {
         initMainController();
         currentRoom = dungeonsList.get(0);
         server = Connection.getConnection();
+        battlestate = Battlestate.PLAYERTURN;
         loadEnemyCards();
-        battleMode();
+//        battleMode();
 
     }
 
@@ -71,10 +72,6 @@ public class BattleController {
                         battlestate = Battlestate.LOSE;
                         break;
                     }
-                    System.out.println("go to sleeeeeeeeeeeeeeeeeeeeeeeep");
-                    wait();
-                    System.out.println("i woke up !!!!!!!!!!!!!!!");
-
                     break;
                 case ENEMYTURN:
 //                    enemies.enemyTurn();
@@ -131,13 +128,12 @@ public class BattleController {
             System.out.println(el.getName());
         });
         enemyCards.forEach(el -> {
-
             el.getEnemyCard().setOnMouseClicked(event -> {
-                enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle("-fx-border-color:none;"));
-//                setBorder(el.getEnemyCard());
-                el.getEnemyCard().setStyle("-fx-border-color:red;");
-                chosenEnemy = el;
-                System.out.println("Chosen enemy = " + chosenEnemy.getEnemy().getName());
+                enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle("-fx-box-border: transparent;"));
+                setBorder(el.getEnemyCard());
+
+                chosenEnemy = el.getEnemy();
+                System.out.println("Chosen enemy #" + chosenEnemy.getEnemyId() + " = " + chosenEnemy.getName());
             });
 
 
@@ -166,7 +162,7 @@ public class BattleController {
     }
 
     public Enemy getChosenEnemy() {
-        return chosenEnemy.getEnemy();
+        return chosenEnemy;
     }
 
 
