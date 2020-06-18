@@ -1,4 +1,4 @@
-package KupidonTeam.DB;
+package KupidonTeam.db;
 
 import KupidonTeam.exceptions.FailedDBConnection;
 import KupidonTeam.exceptions.PropertiesException;
