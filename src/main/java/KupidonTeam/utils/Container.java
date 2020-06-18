@@ -10,6 +10,7 @@ public class Container {
     private static List<Enemy> enemyList;
     private static List<Dungeon> dungeonList;
 
+
     public static List<Enemy> getEnemyList() {
         return enemyList;
     }
@@ -33,4 +34,5 @@ public class Container {
     public static List<Dungeon> getDungeonList() {
         return dungeonList;
     }
+
 }

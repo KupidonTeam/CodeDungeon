@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane fx:id="parentPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="KupidonTeam.gui.CharacterCreationController">
@@ -90,11 +90,8 @@
                         <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
-                <ImageView fitHeight="131.0" fitWidth="200.0" layoutX="208.0" layoutY="277.0">
-                    <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
-                    </image>
-                </ImageView>
+                <FlowPane fx:id="skillPane" layoutX="208.0" layoutY="277.0" prefHeight="130.0" prefWidth="200.0"
+                          style="-fx-background-color: none;"/>
                 <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="455.0" layoutY="388.0">
                     <image>
                         <Image url="@/assets/GUI_Parts/Gui_parts/name_bar2.png"/>
@@ -218,46 +215,6 @@
                         <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
-                <ImageView fitHeight="55.0" fitWidth="184.0" layoutX="216.0" layoutY="284.0">
-                    <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="55.0" fitWidth="184.0" layoutX="216.0" layoutY="344.0">
-                    <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="221.0" layoutY="286.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsWarrior/IconsWithBorders/SIH_01.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="345.0" layoutY="286.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsWarrior/IconsWithBorders/SIH_03.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="221.0" layoutY="347.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsWarrior/IconsWithBorders/SIR_02.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="345.0" layoutY="348.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsWarrior/IconsWithBorders/SIH_15.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="283.0" layoutY="286.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsWarrior/IconsWithBorders/SIH_02.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="283.0" layoutY="348.0">
-                    <image>
-                        <Image url="@/assets/SkilliconsWarrior/IconsWithBorders/SIR_03.png"/>
-                    </image>
-                </ImageView>
                 <ImageView fitHeight="303.0" fitWidth="178.0" layoutX="418.0" layoutY="79.0">
                     <image>
                         <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
@@ -280,20 +237,12 @@
                         <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
                     </image>
                 </ImageView>
-                <RadioButton fx:id="maleRadioButton" layoutX="436.0" layoutY="348.0" mnemonicParsing="false"
-                             stylesheets="@/assets/css/radio-button.css" text="Male" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="14.0"/>
-                    </font>
-                </RadioButton>
-                <RadioButton fx:id="femaleRadioButton" layoutX="509.0" layoutY="348.0" mnemonicParsing="false"
-                             stylesheets="@/assets/css/radio-button.css" text="Female" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="14.0"/>
-                    </font>
-                </RadioButton>
                 <Button fx:id="confirmButton" layoutX="455.0" layoutY="387.0" mnemonicParsing="false" prefHeight="40.0"
-                        prefWidth="98.0" style="-fx-background-color: none;"/>
+                        prefWidth="98.0" style="-fx-background-color: none;">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
                 <ImageView fitHeight="38.0" fitWidth="178.0" layoutX="20.0" layoutY="383.0">
                     <image>
                         <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
@@ -324,17 +273,41 @@
                     </image>
                 </ImageView>
                 <Label id="rogue" fx:id="rogueClass" layoutX="436.0" layoutY="147.0" prefHeight="61.0" prefWidth="73.0"
-                       styleClass="classes"/>
+                       styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
                 <Label id="ranger" fx:id="rangerClass" layoutX="506.0" layoutY="147.0" prefHeight="61.0"
-                       prefWidth="73.0" styleClass="classes"/>
+                       prefWidth="73.0" styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
                 <Label id="paladin" fx:id="paladinClass" layoutX="436.0" layoutY="206.0" prefHeight="61.0"
-                       prefWidth="73.0" styleClass="classes"/>
+                       prefWidth="73.0" styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
                 <Label id="bard" fx:id="bardClass" layoutX="506.0" layoutY="206.0" prefHeight="61.0" prefWidth="73.0"
-                       styleClass="classes"/>
+                       styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
                 <Label id="druid" fx:id="druidClass" layoutX="436.0" layoutY="269.0" prefHeight="61.0" prefWidth="73.0"
-                       styleClass="classes"/>
-                <Label id="wizard" fx:id="wizardClass" layoutX="506.0" layoutY="269.0" prefHeight="61.0"
-                       prefWidth="73.0" styleClass="classes"/>
+                       styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
+                <Label id="mage" fx:id="wizardClass" layoutX="506.0" layoutY="269.0" prefHeight="61.0" prefWidth="73.0"
+                       styleClass="classes">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Label>
             </children>
         </Pane>
     </children>

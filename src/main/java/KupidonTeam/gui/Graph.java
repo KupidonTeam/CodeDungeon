@@ -14,11 +14,13 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 
-public class Graph extends Application {
+public class Graph extends AnchorPane {
     private static Stage currentStage;
     private ArrayList<Dot> dots = new ArrayList<>();
 
-    public Graph() {
+
+    public Graph(int rooms[], int[][] routes) {
+
         dots.add(new Dot(1, 20, 140));
         dots.add(new Dot(2, 70, 30));
         dots.add(new Dot(3, 70, 250));
@@ -109,22 +111,19 @@ public class Graph extends Application {
         }
     }
 
-    @Override
-    public void start(Stage primaryStage) {
-        AnchorPane pane = new AnchorPane();
+
+    public void updateDungeon() {
 
         int[] rooms = {0, 1, 2, 3, 4, 5, 6};
         int[][] routes = {{0, 1}, {0, 4}, {1, 2}, {1, 5}, {2, 3}, {2, 5}, {2, 6}, {3, 5}, {5, 6}};
 
-        paintRoutes(pane, routes);
-        paintRooms(pane, rooms, new int[]{0, 1, 2}, 3);
-        paintCurrentRoom(pane, 3);
-        paintVisitedRooms(pane, new int[]{0, 1, 2});
+        paintRoutes(this, routes);
+        paintRooms(this, rooms, new int[]{0, 1, 2}, 3);
+        paintCurrentRoom(this, 3);
+        paintVisitedRooms(this, new int[]{0, 1, 2});
+    }
 
-        currentStage = primaryStage;
-        Scene scene = new Scene(pane);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Graph");
-        primaryStage.show();
+    public AnchorPane getPane() {
+        return this;
     }
 }

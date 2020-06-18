@@ -198,6 +198,7 @@ public class LoginController {
 
         } catch (IOException e) {
             e.printStackTrace();
+            SignLogic.getSignLogic().closeAll();
         }
     }
 
