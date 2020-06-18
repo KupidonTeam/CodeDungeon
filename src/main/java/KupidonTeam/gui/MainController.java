@@ -9,8 +9,6 @@ import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
-import javafx.application.Platform;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -21,16 +19,13 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lombok.SneakyThrows;
-import org.json.JSONObject;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -312,8 +307,6 @@ public class MainController {
             });
             tooltip.setText(skill.toString());
             Tooltip.install(skillImages.get(i), tooltip);
-
-
         }
     }
 
@@ -389,6 +382,7 @@ public class MainController {
             }
         });
 
+        attackButton.setOnMouseClicked(event -> attack());
         sendButton.setOnMouseClicked(event -> sendChatMessage());
     }
 
@@ -397,19 +391,28 @@ public class MainController {
     public synchronized void getDungeonSkeleton() {
 
         server.sendMessageToServer(JSON.getDungeonSkeleton());
-        wait(500);
-
+        wait(1500);
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+//        System.out.println("====> "+Container.getDungeonList().toString());
         battleController = new BattleController(player, Container.getDungeonList(), cardTable);
 
     }
 
     public void attack() {
-        if (peekedSkill < 0) {
-            System.out.println("You have not peeled skill!");
+        System.out.println("peeked skill =  " + peekedSkill);
+        System.out.println(battleController.getChosenEnemy() == null);
+        if (peekedSkill <= 0 && battleController.getChosenEnemy() == null) {
+            System.out.println("You have to peek skill and choose enemy!");
             return;
         }
 
+        startBattle();
+
     }
 
+    private synchronized void startBattle() {
+        server.sendMessageToServer(JSON.startBattle(peekedSkill, battleController.getChosenEnemy()));
+        notifyAll();
+    }
 
 }

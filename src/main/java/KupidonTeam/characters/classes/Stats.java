@@ -12,7 +12,7 @@ public class Stats {
 //    private String race;
     private int armorClass;
     private int hits;
-    private double speed;
+    private int speed;
     private int strength;
     private int dexterity;
     private int intelligence;
@@ -23,16 +23,16 @@ public class Stats {
 
     @Override
     public String toString() {
-        return
-                "Hits = " + hits +
-                        "\nArmor class=" + armorClass +
-                        "\nSpeed =" + speed +
-                        "\nStrength =" + strength +
-                        "\nDexterity =" + dexterity +
-                        "\nConstitution =" + constitution +
-                        "\nIntelligence =" + intelligence +
-                        "\nWisdom =" + wisdom +
-                        "\nChance =" + chance
-                ;
+        return String.format("" +
+                        "\"armor_class\" : %d," +
+                        "\"chance\" : %d," +
+                        "\"constitution\" : %d," +
+                        "\"dexterity\" : %d," +
+                        "\"hits\" : %d," +
+                        "\"intelligence\"  : %d," +
+                        "\"speed\" : %d," +
+                        "\"strength\" : %d," +
+                        "\"wisdom\" : %d",
+                armorClass, chance, constitution, dexterity, hits, intelligence, speed, strength, wisdom);
     }
 }

@@ -21,14 +21,15 @@ public class Skill {
 
     public String toString() {
         return String.format("" +
-                        "%s\n" +
-                        "Level : %d\n" +
-                        "Effect : %s\n" +
-                        "Type : %s\n" +
-                        "Chance : %d\n" +
-                        "Cool Down : %d sec\n", name, lvl, effect, type,
-                countOfRandom,
-                coolDown);
+                        "%d : {" +
+                        "cooldown : %d\n," +
+                        "count_of_random : %d\n," +
+                        "effect : %s\n," +
+                        "lvl : %d\n," +
+                        "name : %s \n" +
+                        "random_diapason : %d\n," +
+                        "type_attack : %s}"
+                , id, coolDown, countOfRandom, effect, lvl, name, randomDiapason, type);
 
     }
 
