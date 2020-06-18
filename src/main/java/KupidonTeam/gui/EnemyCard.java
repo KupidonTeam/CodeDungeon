@@ -4,7 +4,6 @@ import KupidonTeam.characters.classes.enemies.Enemy;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
@@ -20,7 +19,7 @@ public class EnemyCard {
     private EnemyCardController enemyCardController;
 
     public EnemyCard() {
-        String path = "/fxml/EnemyCard.fxml";
+        String path = "/fxml/enemy_card.fxml";
         FXMLLoader loader = new FXMLLoader();
         Parent root = null;
         try {
@@ -34,7 +33,7 @@ public class EnemyCard {
 
     public EnemyCard(Enemy enemy) {
         this.enemy = enemy;
-        String path = "/fxml/EnemyCard.fxml";
+        String path = "/fxml/enemy_card.fxml";
         FXMLLoader loader = new FXMLLoader();
         Parent root = null;
         try {

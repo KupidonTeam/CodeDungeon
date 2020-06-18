@@ -22,7 +22,7 @@ public class AvatarController {
 
     @FXML
     void initialize() {
-        assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'avatarPane.fxml'.";
+        assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'avatar_pane.fxml'.";
 
         mainPane.getChildren().
                 filtered(el -> el.getStyleClass().toString().contains("avatar"))
@@ -36,7 +36,7 @@ public class AvatarController {
         try {
             FXMLLoader loader = new FXMLLoader();
 
-            Parent currentContent = loader.load(getClass().getResourceAsStream("/fxml/avatarPane.fxml"));
+            Parent currentContent = loader.load(getClass().getResourceAsStream("/fxml/avatar_pane.fxml"));
 //            System.out.println(CharacterCreationWrapper.getCurrentStage().getScene().
         } catch (IOException e) {
             e.printStackTrace();

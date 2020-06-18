@@ -138,7 +138,7 @@ public class CharacterCreationController {
     }
 
     private void openAvatarWindow() {
-        String path = "/fxml/avatarPane.fxml";
+        String path = "/fxml/avatar_pane.fxml";
         Parent parent;
         FXMLLoader loader = new FXMLLoader();
 
