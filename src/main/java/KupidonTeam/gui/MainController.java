@@ -307,8 +307,6 @@ public class MainController {
             });
             tooltip.setText(skill.toString());
             Tooltip.install(skillImages.get(i), tooltip);
-
-
         }
     }
 
@@ -412,8 +410,9 @@ public class MainController {
 
     }
 
-    private void startBattle() {
+    private synchronized void startBattle() {
         server.sendMessageToServer(JSON.startBattle(peekedSkill, battleController.getChosenEnemy()));
+        notifyAll();
     }
 
 }

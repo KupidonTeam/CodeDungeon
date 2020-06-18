@@ -63,7 +63,7 @@ public class EnemyCardController {
         assert armor != null : "fx:id=\"armor\" was not injected: check your FXML file 'enemy_card.fxml'.";
         assert description != null : "fx:id=\"description\" was not injected: check your FXML file 'enemy_card.fxml'.";
 
-        enemyCard.setOnMouseClicked(ev -> setBorder(enemyCard));
+       // enemyCard.setOnMouseClicked(ev -> setBorder(enemyCard));
 
     }
 

@@ -8,9 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="166.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="KupidonTeam.gui.PrizesPaneController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="166.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.PrizesPaneController">
    <children>
       <ImageView fitHeight="166.0" fitWidth="500.0">
          <image>
@@ -22,7 +20,7 @@
             <Font name="Century" size="14.0" />
          </font>
       </Label>
-      <Button id="okButton" fx:id="okButton" layoutX="210.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-border-color: #8e7c74; -fx-background-color: #961307; -fx-text-fill: #8e7c74;" text="Ok" />
+      <Button id="okButton" fx:id="okButton" layoutX="210.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="89.0" style="-fx-border-color: #8e7c74; -fx-background-color: #961307; -fx-text-fill: #8e7c74;" text="Ok" />
       <FlowPane fx:id="prizesPane" hgap="10.0" layoutX="45.0" layoutY="49.0" prefHeight="60.0" prefWidth="412.0">
          <children>
             <ImageView fitHeight="60.0" fitWidth="60.0">
