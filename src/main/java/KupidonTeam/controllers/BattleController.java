@@ -55,7 +55,7 @@ public class BattleController {
     @SneakyThrows
     public synchronized void battleMode() {
         boolean exitFlag = false;
-
+        battlestate = Battlestate.PLAYERTURN;
         int killedEnemies = 0;
         while (killedEnemies < currentRoom.getEnemies().size()) {
             switch (battlestate) {

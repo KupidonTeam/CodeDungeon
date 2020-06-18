@@ -50,7 +50,7 @@ public class MainController {
     private TextArea nearPane;
 
     @FXML
-    private ImageView mapPane;
+    private FlowPane mapPane;
 
     @FXML
     private TextArea chatPane;

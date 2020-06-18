@@ -19,7 +19,7 @@ public class Graph extends AnchorPane {
     private ArrayList<Dot> dots = new ArrayList<>();
 
 
-    public Graph(int rooms[], int[][] routes) {
+    public Graph() {
 
         dots.add(new Dot(1, 20, 140));
         dots.add(new Dot(2, 70, 30));
@@ -112,10 +112,10 @@ public class Graph extends AnchorPane {
     }
 
 
-    public void updateDungeon() {
+    public void updateDungeon(int[] rooms, int[][] routes, int[] visitedRooms, int currentRoom) {
 
-        int[] rooms = {0, 1, 2, 3, 4, 5, 6};
-        int[][] routes = {{0, 1}, {0, 4}, {1, 2}, {1, 5}, {2, 3}, {2, 5}, {2, 6}, {3, 5}, {5, 6}};
+//        int[] rooms = {0, 1, 2, 3, 4, 5, 6};
+//        int[][] routes = {{0, 1}, {0, 4}, {1, 2}, {1, 5}, {2, 3}, {2, 5}, {2, 6}, {3, 5}, {5, 6}};
 
         paintRoutes(this, routes);
         paintRooms(this, rooms, new int[]{0, 1, 2}, 3);

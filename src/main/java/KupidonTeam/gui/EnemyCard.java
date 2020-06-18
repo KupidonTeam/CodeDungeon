@@ -154,7 +154,6 @@ public class EnemyCard {
         timeline = new Timeline(keyFrames);
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
-        timeline.stop();
     }
 
     @Override

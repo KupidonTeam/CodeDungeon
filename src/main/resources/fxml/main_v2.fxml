@@ -109,12 +109,7 @@
                         </Tab>
                     </tabs>
                 </TabPane>
-                <ImageView fx:id="mapPane" fitHeight="279.0" fitWidth="280.0" layoutX="14.0" layoutY="14.0"
-                           AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
-                    <image>
-                        <Image url="@/assets/GUI_Parts/Gui_parts/bar_ready.png"/>
-                    </image>
-                </ImageView>
+                <FlowPane fx:id="mapPane" layoutX="14.0" layoutY="14.0" prefHeight="268.0" prefWidth="278.0"/>
             </children>
         </AnchorPane>
         <AnchorPane layoutX="723.0" layoutY="3.0" prefHeight="670.0" prefWidth="300.0"
