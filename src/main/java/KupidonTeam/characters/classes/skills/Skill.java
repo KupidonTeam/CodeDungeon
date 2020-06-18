@@ -6,7 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Skill {
-
     private int id;
     private String name;
     private int lvl;
@@ -28,9 +27,8 @@ public class Skill {
                         "lvl : %d\n," +
                         "name : %s \n" +
                         "random_diapason : %d\n," +
-                        "type_attack : %s}"
-                , id, coolDown, countOfRandom, effect, lvl, name, randomDiapason, type);
-
+                        "type_attack : %s}",
+                id, coolDown, countOfRandom, effect, lvl, name, randomDiapason, type);
     }
 
 }

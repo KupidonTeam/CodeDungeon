@@ -1,6 +1,6 @@
 package KupidonTeam.login;
 
-import KupidonTeam.DB.DBConnection;
+import KupidonTeam.db.DBConnection;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
@@ -128,6 +128,4 @@ public class SignLogic {
                 JOptionPane.ERROR_MESSAGE);
         System.exit(-503);
     }
-
-
 }

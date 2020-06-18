@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Objects;
 
 @AllArgsConstructor
 @Getter
@@ -21,13 +22,23 @@ public class Enemy {
     private String vulnerabilities;
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Enemy enemy = (Enemy) o;
+        return enemyId == enemy.enemyId;
+    }
+
+    @Override
     public String toString() {
-
-
         StringBuilder attacks = new StringBuilder();
+
         for (int i = 0; i < skillList.size(); i++) {
-            attacks.append(skillList.get(i).toString());
-            if (i != skillList.size() - 1) attacks.append(",");
+            attacks.append(skillList.get(i));
+
+            if (i != skillList.size() - 1) {
+                attacks.append(",");
+            }
         }
 
         return String.format("" +
@@ -39,12 +50,10 @@ public class Enemy {
                         "\"stats\" : {%s}," +
                         "\"vulnerabilities\" : %s" +
                         "",
-                attacks.toString(),
+                attacks,
                 description,
                 name,
-                stats.toString(),
+                stats,
                 vulnerabilities);
-
-
     }
 }

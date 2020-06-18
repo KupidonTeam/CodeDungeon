@@ -1,28 +1,20 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.enums.Battlestate;
 import KupidonTeam.gui.EnemyCard;
-import KupidonTeam.gui.EnemyCardController;
 import KupidonTeam.gui.MainController;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import javafx.animation.*;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
 import javafx.util.Duration;
 import lombok.SneakyThrows;
 
 
 import java.util.*;
-import java.util.stream.Stream;
 
 // TODO
 // Класс-контроллер боя
@@ -38,7 +30,7 @@ public class BattleController {
     private MainController mainController;
     private FlowPane cardTable;
 
-    private Enemy chosenEnemy;
+    private EnemyCard chosenEnemyCard;
 
     public BattleController() {
     }
@@ -135,14 +127,32 @@ public class BattleController {
 
         enemyCards.forEach(el -> {
             el.getEnemyCard().setOnMouseClicked(event -> {
-                enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle("-fx-box-border: transparent;"));
-                EnemyCardController.setBorder(el.getEnemyCard());
+//                enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle("-fx-box-border: transparent;"));
+//                Timeline timeline = EnemyCardController.setBorder(el.getEnemyCard());
+//
+//                chosenEnemy = el.getEnemy();
+//                System.out.println("Chosen enemy = " + chosenEnemy.getName());
+                if (chosenEnemyCard == null) {
+                    el.setBorder();
 
-                chosenEnemy = el.getEnemy();
-                System.out.println("Chosen enemy = " + chosenEnemy.getName());
+                    chosenEnemyCard = el;
+                    System.out.println("Chosen enemy = " + chosenEnemyCard.getEnemy().getName());
+                    System.out.println("Chosen enemy = " + chosenEnemyCard.getEnemy().getEnemyId());
+                } else if (chosenEnemyCard.equals(el)) {
+                    // delete border
+                    el.deleteBorder();
+
+                    chosenEnemyCard = null;
+                } else {
+                    //delete border from chosen enemy
+                    //Timeline timeline = EnemyCardController.setBorder(chosenEnemy);
+                    chosenEnemyCard.deleteBorder();
+                    el.setBorder();
+
+                    chosenEnemyCard = el;
+                    System.out.println("New chosen enemy = " + chosenEnemyCard.getEnemy().getName());
+                }
             });
-
-
         });
 
         enemyCards.forEach(enemyCard -> {
@@ -168,8 +178,8 @@ public class BattleController {
 
     }
 
-    public Enemy getChosenEnemy() {
-        return chosenEnemy;
+    public EnemyCard getChosenEnemyCard() {
+        return chosenEnemyCard;
     }
 
 }

@@ -13,6 +13,7 @@ public class Food extends Item {
     public Food(int id, String foodName, double foodPrice) {
         setId(id);
         setName(foodName);
+
         try {
             setPrice(foodPrice);
             setWeight(0);

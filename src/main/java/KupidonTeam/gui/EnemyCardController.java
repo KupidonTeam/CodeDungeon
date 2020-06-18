@@ -23,6 +23,8 @@ import javafx.util.Duration;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.swing.*;
+
 
 public class EnemyCardController {
 
@@ -62,34 +64,6 @@ public class EnemyCardController {
         assert damage != null : "fx:id=\"damage\" was not injected: check your FXML file 'enemy_card.fxml'.";
         assert armor != null : "fx:id=\"armor\" was not injected: check your FXML file 'enemy_card.fxml'.";
         assert description != null : "fx:id=\"description\" was not injected: check your FXML file 'enemy_card.fxml'.";
-
-       // enemyCard.setOnMouseClicked(ev -> setBorder(enemyCard));
-
-    }
-
-    public static void setBorder(Pane pane) {
-        Color[] colors = Stream.of("tomato", "#961307", "#8e7c74", "#39100f", "#251a1a", "red", "#816d64")
-                .map(Color::web)
-                .toArray(Color[]::new);
-
-        List<Border> list = new ArrayList<>();
-
-
-        int[] mills = {-200};
-        KeyFrame[] keyFrames = Stream.iterate(0, i -> i + 1)
-                .limit(100)
-                .map(i -> new LinearGradient(0, 0, 1, 1, true, CycleMethod.NO_CYCLE,
-                        new Stop[]{new Stop(0, colors[i % colors.length]),
-                                new Stop(1, colors[(i + 1) % colors.length])}))
-                .map(lg -> new Border(new BorderStroke(lg, BorderStrokeStyle.SOLID,
-                        new CornerRadii(0), new BorderWidths(4))))
-                .map(b -> new KeyFrame(Duration.millis(mills[0] += 200), new KeyValue(pane.borderProperty(),
-                        b, Interpolator.EASE_IN)))
-                .toArray(KeyFrame[]::new);
-
-        Timeline timeline = new Timeline(keyFrames);
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
     }
 
     public void setEnemyName(String name) {

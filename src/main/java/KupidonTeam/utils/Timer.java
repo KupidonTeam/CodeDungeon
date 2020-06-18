@@ -7,6 +7,7 @@ public class Timer {
 
         while (System.currentTimeMillis() < milliseconds) {
         }
+
         return true;
     }
 }
