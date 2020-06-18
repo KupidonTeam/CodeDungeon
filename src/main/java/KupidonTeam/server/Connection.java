@@ -1,23 +1,13 @@
 package KupidonTeam.server;
 
-import KupidonTeam.controllers.BattleController;
-import KupidonTeam.exceptions.FiledToConnectException;
+import KupidonTeam.exceptions.FailedToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
-import KupidonTeam.gui.EnemyCard;
-import KupidonTeam.gui.MainController;
 import KupidonTeam.login.SignLogic;
-import KupidonTeam.player.Player;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
 import lombok.Getter;
-import lombok.SneakyThrows;
 import org.json.JSONObject;
 
 import javax.swing.*;
@@ -25,9 +15,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.SocketException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -78,7 +65,7 @@ public class Connection {
             inMessage = new Scanner(clientSocket.getInputStream());
             outMessage = new PrintWriter(clientSocket.getOutputStream());
 
-        } catch (FiledToConnectException ex) {
+        } catch (FailedToConnectException ex) {
             System.err.println("can not connect to server");
             clientSocket.close();
             System.exit(-1);

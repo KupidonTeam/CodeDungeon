@@ -24,8 +24,8 @@ public class AvatarController {
     void initialize() {
         assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'avatar_pane.fxml'.";
 
-        mainPane.getChildren().
-                filtered(el -> el.getStyleClass().toString().contains("avatar"))
+        mainPane.getChildren()
+                .filtered(el -> el.getStyleClass().toString().contains("avatar"))
                 .forEach(el -> el.setOnMouseClicked(event -> {
                     setAvatarImage(el.getId());
                 }));

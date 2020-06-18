@@ -213,7 +213,7 @@ public class LoginController {
         Text message = new Text("Connecting to server\nPlease wait...");
         message.setFill(Color.WHITE);
         message.setStyle(
-                "-fx-font: 18 arial;" +
+                "-fx-font: 18 century;" +
                         "-fx-text-alignment : center;");
         VBox win = new VBox();
         HBox buttons = new HBox();
