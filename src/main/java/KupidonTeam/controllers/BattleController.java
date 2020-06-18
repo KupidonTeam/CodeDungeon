@@ -3,6 +3,7 @@ package KupidonTeam.controllers;
 import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.enums.Battlestate;
 import KupidonTeam.gui.EnemyCard;
+import KupidonTeam.gui.EnemyCardController;
 import KupidonTeam.gui.MainController;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
@@ -125,15 +126,17 @@ public class BattleController {
 
     private void loadEnemyCards() {
         initMainController();
+
         List<EnemyCard> enemyCards = new ArrayList<>();
         currentRoom.getEnemies().forEach(el -> {
             enemyCards.add(new EnemyCard(el));
             System.out.println(el.getName());
         });
+
         enemyCards.forEach(el -> {
             el.getEnemyCard().setOnMouseClicked(event -> {
                 enemyCards.forEach(enemyCard -> enemyCard.getEnemyCard().setStyle("-fx-box-border: transparent;"));
-                setBorder(el.getEnemyCard());
+                EnemyCardController.setBorder(el.getEnemyCard());
 
                 chosenEnemy = el.getEnemy();
                 System.out.println("Chosen enemy = " + chosenEnemy.getName());
@@ -141,6 +144,7 @@ public class BattleController {
 
 
         });
+
         enemyCards.forEach(enemyCard -> {
             cardTable.getChildren().add(enemyCard.getEnemyCard());
             FadeTransition ft = new FadeTransition(Duration.millis(800), enemyCard.getEnemyCard());
@@ -168,28 +172,4 @@ public class BattleController {
         return chosenEnemy;
     }
 
-
-    private void setBorder(Pane pane) {
-        Color[] colors = Stream.of("tomato", "#961307", "#8e7c74", "#39100f", "#251a1a", "red", "#816d64")
-                .map(Color::web)
-                .toArray(Color[]::new);
-
-        List<Border> list = new ArrayList<>();
-
-        int[] mills = {-200};
-        KeyFrame[] keyFrames = Stream.iterate(0, i -> i + 1)
-                .limit(100)
-                .map(i -> new LinearGradient(0, 0, 1, 1, true, CycleMethod.NO_CYCLE,
-                        new Stop[]{new Stop(0, colors[i % colors.length]),
-                                new Stop(1, colors[(i + 1) % colors.length])}))
-                .map(lg -> new Border(new BorderStroke(lg, BorderStrokeStyle.SOLID,
-                        new CornerRadii(0), new BorderWidths(4))))
-                .map(b -> new KeyFrame(Duration.millis(mills[0] += 200), new KeyValue(pane.borderProperty(),
-                        b, Interpolator.EASE_IN)))
-                .toArray(KeyFrame[]::new);
-
-        Timeline timeline = new Timeline(keyFrames);
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-    }
 }

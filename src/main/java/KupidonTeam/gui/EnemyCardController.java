@@ -67,7 +67,7 @@ public class EnemyCardController {
 
     }
 
-    private void setBorder(Pane pane) {
+    public static void setBorder(Pane pane) {
         Color[] colors = Stream.of("tomato", "#961307", "#8e7c74", "#39100f", "#251a1a", "red", "#816d64")
                 .map(Color::web)
                 .toArray(Color[]::new);
