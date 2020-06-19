@@ -1,7 +1,7 @@
 package KupidonTeam.gui;
 
 
-import KupidonTeam.DB.DBConnection;
+import KupidonTeam.db.DBConnection;
 import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.server.Connection;
@@ -142,7 +142,7 @@ public class CharacterCreationController {
 
 
         raceDropDown.getItems().addAll(loadRaces());
-        raceDropDown.setStyle(".choice-box > .label { -fx-text-fill: white; }");
+        //raceDropDown.setStyle("{.choice-box > .label { -fx-text-fill: white; }");
         avatarImage.setOnMouseClicked(event -> openAvatarWindow());
         confirmButton.setOnMouseClicked(event -> confirmBtSetUp());
 
@@ -369,9 +369,7 @@ public class CharacterCreationController {
         fadeTransition.setNode(parentPane);
         fadeTransition.setFromValue(1);
         fadeTransition.setToValue(0);
-        fadeTransition.setOnFinished((event) -> {
-            loadFxml("/fxml/login.fxml");
-        });
+        fadeTransition.setOnFinished(event -> loadFxml("/fxml/login.fxml"));
         fadeTransition.play();
     }
 }
