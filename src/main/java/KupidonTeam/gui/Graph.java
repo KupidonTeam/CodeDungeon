@@ -1,10 +1,8 @@
 package KupidonTeam.gui;
 
-import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.effect.*;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -31,6 +29,8 @@ public class Graph extends AnchorPane {
         dots.add(new Dot(8, 110, 170));
         dots.add(new Dot(9, 170, 110));
         dots.add(new Dot(10, 170, 170));
+
+
     }
 
     private int getAnotherDot(int[] route, int dot) {
@@ -43,7 +43,7 @@ public class Graph extends AnchorPane {
         return dot;
     }
 
-    private boolean contains(int[] rooms, int room) {
+    private boolean contains(Integer[] rooms, int room) {
         for (int i : rooms) {
             if (i == room) {
                 return true;
@@ -53,21 +53,21 @@ public class Graph extends AnchorPane {
         return false;
     }
 
-    private void paintRooms(AnchorPane pane, int[] rooms, int[] visited, int currentRoom) {
+    private void paintRooms(AnchorPane pane, Integer[] rooms, Integer[] visited, int currentRoom) {
         for (int i = 0; i < rooms.length; i++) {
             if (i != currentRoom && !contains(visited, i)) {
-                Circle circle = new Circle(dots.get(i).getX(), dots.get(i).getY(), 8, Color.rgb(129, 109, 100));
+                dots.get(i).setDot(new Circle(dots.get(i).getX(), dots.get(i).getY(), 8, Color.rgb(129, 109, 100)));
                 DropShadow shadow = new DropShadow();
                 shadow.setColor(Color.rgb(129, 109, 100));
-                circle.setEffect(shadow);
-                pane.getChildren().add(circle);
+                dots.get(i).getDot().setEffect(shadow);
+                pane.getChildren().add(dots.get(i).getDot());
             }
         }
     }
 
     private void paintCurrentRoom(AnchorPane pane, int room) {
-        Circle circle = new Circle(dots.get(room).getX(), dots.get(room).getY(), 10, Color.rgb(142, 124, 116));
-        circle.setEffect(new GaussianBlur());
+        dots.get(room).setDot(new Circle(dots.get(room).getX(), dots.get(room).getY(), 10, Color.RED));
+        dots.get(room).getDot().setEffect(new GaussianBlur());
 
         ScaleTransition scaleTransition = new ScaleTransition();
 
@@ -75,7 +75,7 @@ public class Graph extends AnchorPane {
         scaleTransition.setDuration(Duration.millis(60 * 1000));
 
         //Setting the node for the transition
-        scaleTransition.setNode(circle);
+        scaleTransition.setNode(dots.get(room).getDot());
 
         //Setting the dimensions for scaling
         scaleTransition.setByY(0.3);
@@ -90,14 +90,14 @@ public class Graph extends AnchorPane {
         //Playing the animation
         scaleTransition.play();
 
-        pane.getChildren().add(circle);
+        pane.getChildren().add(dots.get(room).getDot());
     }
 
-    private void paintVisitedRooms(AnchorPane pane, int[] rooms) {
+    private void paintVisitedRooms(AnchorPane pane, Integer[] rooms) {
         for (int i = 0; i < rooms.length; i++) {
-            Circle circle = new Circle(dots.get(i).getX(), dots.get(i).getY(), 10, Color.rgb(129, 109, 100));
-            circle.setEffect(new GaussianBlur());
-            pane.getChildren().add(circle);
+            dots.get(i).setDot(new Circle(dots.get(i).getX(), dots.get(i).getY(), 10, Color.rgb(129, 109, 100)));
+            dots.get(i).getDot().setEffect(new GaussianBlur());
+            pane.getChildren().add(dots.get(i).getDot());
         }
     }
 
@@ -112,18 +112,16 @@ public class Graph extends AnchorPane {
     }
 
 
-    public void updateDungeon(int[] rooms, int[][] routes, int[] visitedRooms, int currentRoom) {
-
-//        int[] rooms = {0, 1, 2, 3, 4, 5, 6};
-//        int[][] routes = {{0, 1}, {0, 4}, {1, 2}, {1, 5}, {2, 3}, {2, 5}, {2, 6}, {3, 5}, {5, 6}};
+    public void updateDungeon(Integer[] rooms, int[][] routes, Integer[] visitedRooms, int currentRoom) {
 
         paintRoutes(this, routes);
-        paintRooms(this, rooms, new int[]{0, 1, 2}, 3);
-        paintCurrentRoom(this, 3);
-        paintVisitedRooms(this, new int[]{0, 1, 2});
+        paintRooms(this, rooms, visitedRooms, currentRoom);
+        paintCurrentRoom(this, currentRoom);
+        paintVisitedRooms(this, visitedRooms);
     }
 
     public AnchorPane getPane() {
         return this;
     }
+
 }

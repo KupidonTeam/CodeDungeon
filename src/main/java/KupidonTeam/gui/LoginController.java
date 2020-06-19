@@ -19,6 +19,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
@@ -27,7 +29,9 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import lombok.SneakyThrows;
 
+import javax.xml.crypto.URIReferenceException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -142,6 +146,21 @@ public class LoginController {
                 if (loginStatus) {
                     loadMainPane();
                     dialogStage.close();
+                    Platform.runLater(() -> {
+                        MediaPlayer mediaPlayer = null;
+                        Media media = null;
+                        try {
+                            media = new Media(getClass().getResource("/assets/sound/music/tavern.mp3").toURI().toString());
+                            mediaPlayer = new MediaPlayer(media);
+                            mediaPlayer.setVolume(0.2);
+                            mediaPlayer.play();
+                            mediaPlayer.setAutoPlay(true);
+                            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    });
 
                 } else {
                     passwordLabel.setText("Password - WRONG");

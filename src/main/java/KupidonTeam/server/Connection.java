@@ -201,6 +201,7 @@ public class Connection {
         JSONObject dungeonData = new JSONObject(dungeonJson).getJSONObject("data");
         System.out.println("dunge data = " + dungeonData);
         Container.setDungeonList(JSON.dungeons(dungeonData));
+
         System.out.println("CONNNNNNNNNNNNNNTAiner = " + Container.getDungeonList());
 
         notify();

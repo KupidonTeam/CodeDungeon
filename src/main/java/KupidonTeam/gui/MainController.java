@@ -9,6 +9,8 @@ import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
+import KupidonTeam.utils.SoundPlayer;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -20,12 +22,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lombok.SneakyThrows;
 
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -74,7 +80,7 @@ public class MainController {
     private Button bt1;
 
     @FXML
-    private Button bt2;
+    private MenuButton settingsBt;
 
     @FXML
     private Button bt3;
@@ -124,6 +130,8 @@ public class MainController {
     @FXML
     private AnchorPane attackButton;
 
+    @FXML
+    private Slider musicVolume;
 
     @FXML
     private ProgressBar expBar;
@@ -148,7 +156,10 @@ public class MainController {
 
 
         bt3.setOnMouseClicked(event -> getDungeonSkeleton());
-        bt4.setOnMouseClicked(event -> cardTable.getChildren().clear());
+        bt4.setOnMouseClicked(event -> {
+            cardTable.getChildren().clear();
+            mapPane.getChildren().clear();
+        });
 
     }
 
@@ -350,7 +361,7 @@ public class MainController {
         assert directMessagePane != null : "fx:id=\"directMessagePane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert directMessageInput != null : "fx:id=\"directMessageInput\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert bt1 != null : "fx:id=\"bt1\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert bt2 != null : "fx:id=\"bt2\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert settingsBt != null : "fx:id=\"settingsBt\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert bt3 != null : "fx:id=\"bt3\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert bt4 != null : "fx:id=\"bt4\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert exitButton != null : "fx:id=\"exitButton\" was not injected: check your FXML file 'main_v2.fxml'.";
@@ -367,6 +378,8 @@ public class MainController {
         assert hpBar != null : "fx:id=\"hpBar\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert expBar != null : "fx:id=\"expBar\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert statsTextArea != null : "fx:id=\"statsTextArea\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert musicVolume != null : "fx:id=\"musicVolume\" was not injected: check your FXML file 'main_v2.fxml'.";
+
     }
 
     private void buttonsSetUp() {
@@ -394,7 +407,7 @@ public class MainController {
         wait(1500);
         System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 //        System.out.println("====> "+Container.getDungeonList().toString());
-        battleController = new BattleController(player, Container.getDungeonList(), cardTable);
+        battleController = new BattleController(player, Container.getDungeonList(), cardTable, mapPane);
 
     }
 

@@ -193,6 +193,17 @@ public class JSON {
 
         JSONArray roomsIndexes = data.getJSONObject("dungeonSkeleton").getJSONArray("rooms");
         JSONArray routes = data.getJSONObject("dungeonSkeleton").getJSONArray("routes");
+        int mas[][] = new int[routes.length()][2];
+        for (int i = 0; i < routes.length(); i++) {
+            JSONArray temp = (JSONArray) routes.get(i);
+            mas[i][0] = (int) temp.get(0);
+            mas[i][1] = (int) temp.get(1);
+        }
+        Container.setRoutes(mas);
+
+        System.out.println("=================================>\n");
+
+
         roomsIndexes.forEach(el -> {
             List<Integer> availableDir = new LinkedList<>();
             for (int i = 0; i < routes.length(); i++) {

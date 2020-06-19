@@ -2,10 +2,13 @@ package KupidonTeam.controllers;
 
 import KupidonTeam.enums.Battlestate;
 import KupidonTeam.gui.EnemyCard;
+import KupidonTeam.gui.Graph;
 import KupidonTeam.gui.MainController;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
+import KupidonTeam.utils.Container;
+import KupidonTeam.utils.SoundPlayer;
 import javafx.animation.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,27 +26,36 @@ public class BattleController {
     private Player mainPlayer;
     private List<Dungeon> dungeonList;
     private Dungeon currentRoom;
-    private int[] passedRooms;
+    private List<Integer> passedRooms;
     private String enemyTurn;
     private Connection server;
     private String actionToServer;
     private MainController mainController;
     private FlowPane cardTable;
+    private FlowPane mapPane;
+    private Graph map;
 
     private EnemyCard chosenEnemyCard;
 
     public BattleController() {
     }
 
-    public BattleController(Player mainPlayer, List<Dungeon> dungeonsList, FlowPane cardTable) {
+    public BattleController(Player mainPlayer, List<Dungeon> dungeonsList, FlowPane cardTable, FlowPane mapPane) {
         this.mainPlayer = mainPlayer;
         this.dungeonList = dungeonsList;
         this.cardTable = cardTable;
+        this.mapPane = mapPane;
+        map = new Graph();
         initMainController();
         currentRoom = dungeonsList.get(0);
+        passedRooms = new ArrayList<>();
+        passedRooms.add(0);
         server = Connection.getConnection();
+        mapPane.getChildren().add(map.getPane());
         loadEnemyCards();
-       // battleMode();
+        drawMap();
+
+        // battleMode();
 
     }
 
@@ -102,11 +114,6 @@ public class BattleController {
 
     }
 
-    private void startBattle() {
-
-    }
-    // Метод вычисления инициативы, чтобы понять кто ходит первый
-
 
     public String getActionToServer() {
         return actionToServer;
@@ -117,6 +124,7 @@ public class BattleController {
     }
 
     private void loadEnemyCards() {
+
         initMainController();
 
         List<EnemyCard> enemyCards = new ArrayList<>();
@@ -162,7 +170,10 @@ public class BattleController {
             ft.setToValue(1);
             ft.setAutoReverse(false);
             ft.play();
+
         });
+        System.out.println("Start music!");
+        new SoundPlayer().spawnEffect();
     }
 
     @SneakyThrows
@@ -174,12 +185,23 @@ public class BattleController {
         mainController = loader.getController();
     }
 
-    public void animation() {
 
+    private void drawMap() {
+        Integer[] rooms = new Integer[dungeonList.size()];
+        Set<Integer> roomSet = new HashSet<>();
+        dungeonList.forEach(el -> roomSet.add(el.getRoomId()));
+        roomSet.toArray(rooms);
+        int[][] routes = Container.getRoutes();
+        Integer[] visitedRooms = new Integer[passedRooms.size()];
+        passedRooms.toArray(visitedRooms);
+        map.updateDungeon(rooms, routes, visitedRooms, currentRoom.getRoomId());
     }
 
     public EnemyCard getChosenEnemyCard() {
         return chosenEnemyCard;
     }
 
+    public void setBattleResults() {
+
+    }
 }

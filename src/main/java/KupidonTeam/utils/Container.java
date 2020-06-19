@@ -9,6 +9,7 @@ public class Container {
     private static String serverAnswer = "empty";
     private static List<Enemy> enemyList;
     private static List<Dungeon> dungeonList;
+    private static int[][] routes;
 
 
     public static List<Enemy> getEnemyList() {
@@ -35,4 +36,11 @@ public class Container {
         return dungeonList;
     }
 
+    public static void setRoutes(int[][] routes) {
+        Container.routes = routes;
+    }
+
+    public static int[][] getRoutes() {
+        return routes;
+    }
 }

@@ -5,7 +5,6 @@ import KupidonTeam.DB.DBConnection;
 import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.server.Connection;
-
 import KupidonTeam.utils.JSON;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
@@ -15,10 +14,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.util.Duration;
 
@@ -322,24 +324,26 @@ public class CharacterCreationController {
     }
 
     private void showError() {
-        Label info = new Label("Please choose : Class and Race");
-
-        popupMessage.getContent().add(info);
-        popupMessage.show(mainPane.getScene().getWindow());
-        popupMessage.setConsumeAutoHidingEvents(true);
-        info.setOnMouseClicked(event -> popupMessage.hide());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("missed choice");
+        alert.setHeaderText("Please choose both : Race and Class");
+        alert.initModality(Modality.NONE);
+        alert.show();
     }
 
     private void confirmBtSetUp() {
-        if (chosenClassId < 0 && getRaceId() < 0) {
+        System.out.println("Choseeeeeeeeen class  = " + chosenClassId);
+        if (chosenClassId <= 0 && getRaceId() <= 0) {
             showError();
+
             return;
+        } else {
+            Connection
+                    .getConnection()
+                    .sendMessageToServer(
+                            JSON.registration(username, password, chosenClassId, getRaceId()));
+            switchToLogin();
         }
-        Connection
-                .getConnection()
-                .sendMessageToServer(
-                        JSON.registration(username, password, chosenClassId, getRaceId()));
-        switchToLogin();
     }
 
     private <T> T loadFxml(String path) {
