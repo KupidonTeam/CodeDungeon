@@ -146,21 +146,6 @@ public class LoginController {
                 if (loginStatus) {
                     loadMainPane();
                     dialogStage.close();
-                    Platform.runLater(() -> {
-                        MediaPlayer mediaPlayer = null;
-                        Media media = null;
-                        try {
-                            media = new Media(getClass().getResource("/assets/sound/music/tavern.mp3").toURI().toString());
-                            mediaPlayer = new MediaPlayer(media);
-                            mediaPlayer.setVolume(0.2);
-                            mediaPlayer.play();
-                            mediaPlayer.setAutoPlay(true);
-                            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
-                    });
 
                 } else {
                     passwordLabel.setText("Password - WRONG");

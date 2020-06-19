@@ -10,6 +10,7 @@ import KupidonTeam.items.Weapon;
 import KupidonTeam.locations.Lobby;
 import KupidonTeam.locations.Room;
 
+import javafx.scene.control.Label;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -9,7 +9,7 @@ public class Lobby extends Room {
         super();
     }
 
-    public Lobby(int roomId, Integer[] availableDirections, String roomName, String roomDescription) {
+    public Lobby(int roomId, List<Integer> availableDirections, String roomName, String roomDescription) {
         super(roomId, availableDirections, roomName, roomDescription);
     }
 }

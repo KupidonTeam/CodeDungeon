@@ -1,10 +1,12 @@
 package KupidonTeam.server;
 
+import KupidonTeam.controllers.BattleController;
 import KupidonTeam.exceptions.FailedToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.FlowPane;
 import lombok.Getter;
@@ -135,6 +137,10 @@ public class Connection {
                     connectionFailedAlert();
                 }
                 break;
+            case "startBattle":
+                Platform.runLater(() -> setBattleResults(msg));
+
+                break;
             default:
                 System.out.println("Invalid response : " + msg);
                 System.err.println("Wrong server response");
@@ -201,12 +207,22 @@ public class Connection {
         JSONObject dungeonData = new JSONObject(dungeonJson).getJSONObject("data");
         System.out.println("dunge data = " + dungeonData);
         Container.setDungeonList(JSON.dungeons(dungeonData));
-
-        System.out.println("CONNNNNNNNNNNNNNTAiner = " + Container.getDungeonList());
-
         notify();
     }
 
+    public void setBattleResults(String msg) {
+        System.out.println("I work");
+        JSONObject battleResult = new JSONObject(msg).getJSONObject("data").getJSONObject("battle_result");
+        JSONObject playerRes = battleResult.getJSONObject("player_attack");
+        JSONObject enemyRes = battleResult.getJSONObject("mob_attack");
+        BattleController.getInstance()
+                .setBattleResults(
+                        playerRes.getInt("damage_given"),
+                        playerRes.getJSONObject("attack").getString("attack_name"),
+                        enemyRes.getInt("damage_given"),
+                        enemyRes.getJSONObject("attack").getString("name")
+                );
+    }
 }
 
 

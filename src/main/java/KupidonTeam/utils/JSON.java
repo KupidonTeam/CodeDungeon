@@ -14,17 +14,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class JSON {
     public static void deserialize(String json) {
         JSONObject jsonObject = new JSONObject(json);
-        System.out.println("hey" + jsonObject);
         String key = jsonObject.getString("key");
-        System.out.println(key);
-
     }
 
     //Send a simple message to chat
@@ -55,15 +50,15 @@ public class JSON {
     //<--! Методы для парсинга и содания персонажа --!>
     public static List<Skill> skills(JSONObject data) {
         List<Skill> skills = new LinkedList<>();
-        System.out.println("DATAAAAAAAAAAAAAAAAAAAa : " + data);
+
         JSONObject jsonObject = data.getJSONObject("attacks");
         if (jsonObject.toString().equalsIgnoreCase("{}")) {
-            System.out.println("------------------------------------------------->empty attack");
+
             return new LinkedList<>();
         }
         jsonObject.keySet().forEach(el -> {
             JSONObject skill = jsonObject.getJSONObject(el);
-            System.out.println("SKIlllllllll  = " + skill);
+
 
             skills.add(
                     new Skill(Integer.parseInt(el),
@@ -176,8 +171,7 @@ public class JSON {
     }
 
     public static Enemy mob(JSONObject jsonMob, int id) {
-        System.out.println(" in MOb , jsonMob = " + jsonMob);
-        System.out.println("json attacks = " + jsonMob.getJSONObject("attacks"));
+
         return new Enemy(id,
                 jsonMob.getString("name"),
                 jsonMob.getString("desc"),
@@ -203,17 +197,18 @@ public class JSON {
 
         System.out.println("=================================>\n");
 
-
+        Map<Integer, Set<Integer>> directions = new HashMap<>();
+        roomsIndexes.forEach(el -> directions.put((Integer) el, new HashSet<>()));
+        for (int i = 0; i < routes.length(); i++) {
+            JSONArray temp = (JSONArray) routes.get(i);
+            directions.get(temp.get(0)).add((Integer) temp.get(1));
+            directions.get(temp.get(1)).add((Integer) temp.get(0));
+        }
+        System.out.println("Map with routes :");
+        directions.keySet().forEach(el -> directions.get(el).forEach(el2 -> System.out.println(el + " = " + el2)));
+        System.out.println("=============================================");
+        System.out.println(directions.get(0));
         roomsIndexes.forEach(el -> {
-            List<Integer> availableDir = new LinkedList<>();
-            for (int i = 0; i < routes.length(); i++) {
-                JSONArray temp = (JSONArray) routes.get(i);
-                if (temp.get(0).equals(el)) {
-                    System.out.println("Room : " + el + " Dir = " + temp.get(1));
-
-                    availableDir.add((Integer) temp.get(1));
-                }
-            }
             List<Enemy> enemies = new LinkedList<>();
             JSONObject room = data.getJSONObject("dungeonSkeleton")
                     .getJSONObject("mobs").getJSONObject(String.valueOf((Integer) roomsIndexes.get((Integer) el)));
@@ -221,10 +216,9 @@ public class JSON {
             room.keySet().forEach(elem ->
                     enemies.add(mob(room.getJSONObject(elem), Integer.parseInt(elem))
                     ));
-            Integer[] tempArr = new Integer[availableDir.size()];
-            availableDir.toArray(tempArr);
+
             dungeonList.add(new Dungeon((Integer) el,
-                    tempArr,
+                    new LinkedList<>(directions.get((Integer) el)),
                     "unnamed",
                     "no desc",
                     enemies

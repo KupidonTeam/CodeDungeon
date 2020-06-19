@@ -1,71 +1,708 @@
 {
-  "action": "startBattle",
-  "code": 205,
-  "code_desc": "battle successful",
+  "action": "getDungeonSkeleton",
+  "code": 201,
+  "code_desc": "dungeon skeleton generated successfully",
   "data": {
-    "attack": {
-      "attack_name": "Thor",
-      "lvl": 1,
-      "type_attack": "Long Range",
-      "count_of_random": 2,
-      "cooldown": 5,
-      "random_diapason": 8,
-      "effect": "embodiment"
-    },
-    "mob": {
-      "attacks": {
-        "100": {
-          "cooldown": 4,
-          "count_of_random": 2,
-          "effect": "Confusion",
-          "lvl": 0,
-          "name": "Punch",
-          "random_diapason": 5,
-          "type_attack": "Melee"
+    "dungeonSkeleton": {
+      "rooms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "routes": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "mobs": {
+        "0": {
+          "0": {
+            "name": "Branchy Infection",
+            "desc": "Small Plant",
+            "attacks": {
+              "2": {
+                "attack_name": "Blessing",
+                "lvl": 1,
+                "type_attack": "Long Range",
+                "count_of_random": 3,
+                "cooldown": 2,
+                "random_diapason": 6,
+                "effect": "charm"
+              },
+              "3": {
+                "attack_name": "Reincarnation",
+                "lvl": 3,
+                "type_attack": "Melee",
+                "count_of_random": 0,
+                "cooldown": 10,
+                "random_diapason": 0,
+                "effect": "necromancy"
+              },
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {
+              "6": {
+                "vulnerability_name": "Fire",
+                "vulnerability_description": "Vulnerability to fire damage."
+              }
+            },
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "1": {
+          "0": {
+            "name": "Bloodsucker",
+            "desc": "Tiny Beast",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Bloodsucker",
+            "desc": "Tiny Beast",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "2": {
+          "0": {
+            "name": "Teddy Bear",
+            "desc": "Medium Humanoid",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Ogre",
+            "desc": "Big Giant",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "2": {
+            "name": "Branchy Infection",
+            "desc": "Small Plant",
+            "attacks": {
+              "2": {
+                "attack_name": "Blessing",
+                "lvl": 1,
+                "type_attack": "Long Range",
+                "count_of_random": 3,
+                "cooldown": 2,
+                "random_diapason": 6,
+                "effect": "charm"
+              },
+              "3": {
+                "attack_name": "Reincarnation",
+                "lvl": 3,
+                "type_attack": "Melee",
+                "count_of_random": 0,
+                "cooldown": 10,
+                "random_diapason": 0,
+                "effect": "necromancy"
+              },
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {
+              "6": {
+                "vulnerability_name": "Fire",
+                "vulnerability_description": "Vulnerability to fire damage."
+              }
+            },
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "3": {
+          "0": {
+            "name": "Doppelganger",
+            "desc": "Medium Beast",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "4": {
+          "0": {
+            "name": "Evil Mage",
+            "desc": "Medium Humanoid",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Goblin",
+            "desc": "Small Humanoid",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "2": {
+            "name": "Philistin",
+            "desc": "Medium Humanoid",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "5": {
+          "0": {
+            "name": "Grick",
+            "desc": "Medium Beast",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Cultist",
+            "desc": "Medium Human",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "2": {
+            "name": "Branchy Infection",
+            "desc": "Small Plant",
+            "attacks": {
+              "2": {
+                "attack_name": "Blessing",
+                "lvl": 1,
+                "type_attack": "Long Range",
+                "count_of_random": 3,
+                "cooldown": 2,
+                "random_diapason": 6,
+                "effect": "charm"
+              },
+              "3": {
+                "attack_name": "Reincarnation",
+                "lvl": 3,
+                "type_attack": "Melee",
+                "count_of_random": 0,
+                "cooldown": 10,
+                "random_diapason": 0,
+                "effect": "necromancy"
+              },
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {
+              "6": {
+                "vulnerability_name": "Fire",
+                "vulnerability_description": "Vulnerability to fire damage."
+              }
+            },
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "6": {
+          "0": {
+            "name": "Spectator",
+            "desc": "Medium Aberration",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Goblin",
+            "desc": "Small Humanoid",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "7": {
+          "0": {
+            "name": "Ogre",
+            "desc": "Big Giant",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          },
+          "1": {
+            "name": "Red-Marked Cutthroat",
+            "desc": "Medium Humanoid",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
+        },
+        "8": {
+          "0": {
+            "name": "Goblin",
+            "desc": "Small Humanoid",
+            "attacks": {
+              "100": {
+                "attack_name": "Punch",
+                "lvl": 0,
+                "type_attack": "Melee",
+                "count_of_random": 2,
+                "cooldown": 4,
+                "random_diapason": 5,
+                "effect": "Confusion"
+              }
+            },
+            "stats": {
+              "armor_class": 2,
+              "hits": 3,
+              "speed": 4.0,
+              "strength": 5.0,
+              "dexterity": 8.0,
+              "intelligence": 6.0,
+              "wisdom": 9.0,
+              "chance": 0.0,
+              "constitution": 3.0
+            },
+            "vulnerabilities": {},
+            "inventory": {},
+            "mob_level": 1
+          }
         }
-      },
-      "desc": "Medium Undead",
-      "inventory": {},
-      "name": "Zombie",
-      "stats": {
-        "armor_class": 2,
-        "chance": 0,
-        "constitution": 3,
-        "dexterity": 8,
-        "hits": -2,
-        "intelligence": 6,
-        "speed": 4,
-        "strength": 5,
-        "wisdom": 9
-      },
-      "vulnerabilities": {}
-    },
-    "battle_result": {
-      "player_attack": {
-        "attack": {
-          "attack_name": "Thor",
-          "lvl": 1,
-          "type_attack": "Long Range",
-          "count_of_random": 2,
-          "cooldown": 5,
-          "random_diapason": 8,
-          "effect": "embodiment"
-        },
-        "attack_successful": "True",
-        "damage_given": 5
-      },
-      "mob_attack": {
-        "attack": {
-          "cooldown": 4,
-          "count_of_random": 2,
-          "effect": "Confusion",
-          "lvl": 0,
-          "name": "Punch",
-          "random_diapason": 5,
-          "type_attack": "Melee"
-        },
-        "attack_successful": "True",
-        "damage_given": 10
       }
     }
   }

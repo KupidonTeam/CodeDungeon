@@ -56,4 +56,5 @@ public class Enemy {
                 stats,
                 vulnerabilities);
     }
+
 }

@@ -31,6 +31,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lombok.SneakyThrows;
 
+import javax.swing.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.LinkedList;
@@ -110,6 +111,9 @@ public class MainController {
     private ImageView skill5;
 
     @FXML
+    private FlowPane hpPane;
+
+    @FXML
     private Group skillGroup;
 
     @FXML
@@ -118,8 +122,7 @@ public class MainController {
     @FXML
     private Label nickNameLabel;
 
-    @FXML
-    private ProgressBar hpBar;
+
 
     @FXML
     private AnchorPane enemyCard;
@@ -171,7 +174,9 @@ public class MainController {
         buttonsSetUp();
         server.setChatArea(chatPane);
         server.setCardTable(cardTable);
-
+        musicVolume.setMin(0);
+        musicVolume.setMax(1);
+        musicVolume.setOnMouseClicked(event -> Container.setSoundVolume(musicVolume.getValue()));
     }
 
     private void panesSetUp() {
@@ -184,7 +189,6 @@ public class MainController {
         statsTextArea.setPadding(new Insets(5));
         cardTable.getChildren().clear();
         cardTable.setAlignment(Pos.CENTER);
-
         cardTable.setPadding(new Insets(15));
         cardTable.setHgap(5);
         cardTable.setVgap(10);
@@ -222,7 +226,7 @@ public class MainController {
 
 
     //я просто проверял работу
-    public void messageDialog(String messageText, EventHandler eventHandler) {
+    public void messageDialog(String messageText) {
 
         Text message = new Text(messageText);
         message.setFill(Color.WHITE);
@@ -278,7 +282,7 @@ public class MainController {
         b.show();
         cancel.setOnMouseClicked(event -> b.close());
         ok.setOnMouseClicked(event -> {
-            eventHandler.handle(event);
+//            eventHandler.handle(event);
             b.close();
         });
     }
@@ -287,14 +291,15 @@ public class MainController {
         player = Player.getInstance();
         nickNameLabel.setText(player.getName());
         expBar.setProgress(player.getExperience());
-        hpBar.setProgress(player.getStats().getHits());
         statsTextArea.setText(player.toString());
+        Label hp = new Label(player.getStats().getHits() + " %");
+        hp.setTextFill(Color.WHITE);
+        hpPane.getChildren().add(hp);
         skillsSetup();
 
     }
 
     private void skillsSetup() {
-
         skillImages = new LinkedList<>();
         skillImages.add(skill1);
         skillImages.add(skill2);
@@ -375,7 +380,7 @@ public class MainController {
         assert skillGroup != null : "fx:id=\"skillGroup\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert avatarIcon != null : "fx:id=\"avatarIcon\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert nickNameLabel != null : "fx:id=\"nickNameLabel\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert hpBar != null : "fx:id=\"hpBar\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert hpPane != null : "fx:id=\"hpPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert expBar != null : "fx:id=\"expBar\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert statsTextArea != null : "fx:id=\"statsTextArea\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert musicVolume != null : "fx:id=\"musicVolume\" was not injected: check your FXML file 'main_v2.fxml'.";
@@ -402,18 +407,18 @@ public class MainController {
 
     @SneakyThrows
     public synchronized void getDungeonSkeleton() {
-
         server.sendMessageToServer(JSON.getDungeonSkeleton());
-        wait(1500);
+        wait(2500);
         System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 //        System.out.println("====> "+Container.getDungeonList().toString());
-        battleController = new BattleController(player, Container.getDungeonList(), cardTable, mapPane);
+        battleController = BattleController.getInstance();
+        battleController.setBattleController(player, Container.getDungeonList(), cardTable, mapPane, hpPane);
+
 
     }
 
     public void attack() {
         System.out.println("peeked skill =  " + peekedSkill);
-        System.out.println(battleController.getChosenEnemyCard() == null);
         if (peekedSkill <= 0 && battleController.getChosenEnemyCard() == null) {
             System.out.println("You have to peek skill and choose enemy!");
             return;
@@ -424,8 +429,15 @@ public class MainController {
     }
 
     private synchronized void startBattle() {
+        battleController = BattleController.getInstance();
         server.sendMessageToServer(JSON.startBattle(peekedSkill, battleController.getChosenEnemyCard().getEnemy()));
         notifyAll();
     }
+
+    public void cleanPeekedSkill() {
+        peekedSkill = -1;
+        skillGroup.getChildren().forEach(el -> el.setStyle(""));
+    }
+
 
 }

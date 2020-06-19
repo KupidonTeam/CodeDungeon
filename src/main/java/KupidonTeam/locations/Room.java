@@ -4,6 +4,7 @@ import KupidonTeam.enums.Direction;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,17 +13,17 @@ import java.util.List;
 @Setter
 public abstract class Room {
     private int roomId;
-    private Integer[] availableDirections;
+    private List<Integer> availableDirections;
     private String roomName;
     private String roomDescription;
 
     public Room() {
         roomId = 0;
-        availableDirections = new Integer[1];
+        availableDirections = new ArrayList<>();
         roomDescription = "Start city";
     }
 
-    public Room(int roomId, Integer[] availableDirections, String roomName, String roomDescription) {
+    public Room(int roomId, List<Integer> availableDirections, String roomName, String roomDescription) {
         this.roomId = roomId;
         this.availableDirections = availableDirections;
         this.roomName = roomName;
@@ -33,7 +34,7 @@ public abstract class Room {
     public String toString() {
         return "Room{" +
                 "roomId=" + roomId +
-                ", availableDirections=" + Arrays.toString(availableDirections) +
+                ", availableDirections=" + availableDirections.toString() +
                 ", roomName='" + roomName + '\'' +
                 ", roomDescription='" + roomDescription + '\'' +
                 '}';

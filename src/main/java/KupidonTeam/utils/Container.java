@@ -10,6 +10,7 @@ public class Container {
     private static List<Enemy> enemyList;
     private static List<Dungeon> dungeonList;
     private static int[][] routes;
+    private static SoundPlayer soundPlayer;
 
 
     public static List<Enemy> getEnemyList() {
@@ -42,5 +43,14 @@ public class Container {
 
     public static int[][] getRoutes() {
         return routes;
+    }
+
+    public static void playSound(String path) {
+        soundPlayer = new SoundPlayer();
+        soundPlayer.playSound(path).play();
+    }
+
+    public static void setSoundVolume(double volume) {
+        soundPlayer.setVolume(volume);
     }
 }

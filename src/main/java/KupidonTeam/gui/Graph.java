@@ -19,16 +19,16 @@ public class Graph extends AnchorPane {
 
     public Graph() {
 
-        dots.add(new Dot(1, 20, 140));
-        dots.add(new Dot(2, 70, 30));
-        dots.add(new Dot(3, 70, 250));
-        dots.add(new Dot(4, 210, 30));
-        dots.add(new Dot(5, 210, 250));
-        dots.add(new Dot(6, 260, 140));
-        dots.add(new Dot(7, 110, 110));
-        dots.add(new Dot(8, 110, 170));
-        dots.add(new Dot(9, 170, 110));
-        dots.add(new Dot(10, 170, 170));
+        dots.add(new Dot(0, 20, 140));
+        dots.add(new Dot(1, 70, 30));
+        dots.add(new Dot(2, 70, 250));
+        dots.add(new Dot(3, 210, 30));
+        dots.add(new Dot(4, 210, 250));
+        dots.add(new Dot(5, 260, 140));
+        dots.add(new Dot(6, 110, 110));
+        dots.add(new Dot(7, 110, 170));
+        dots.add(new Dot(8, 170, 110));
+        dots.add(new Dot(9, 170, 170));
 
 
     }

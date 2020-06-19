@@ -3,7 +3,10 @@ package KupidonTeam.login;
 import KupidonTeam.DB.DBConnection;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
+import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
+import KupidonTeam.utils.SoundPlayer;
+import javafx.application.Platform;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
@@ -20,6 +23,7 @@ public class SignLogic {
     private DBConnection database;
     private Boolean responseFlag;
     private boolean login;
+    private SoundPlayer soundPlayer;
 
     private SignLogic() {
         this.server = Connection.getConnection();
@@ -118,6 +122,9 @@ public class SignLogic {
             login = true;
             createPLayer(msg);
             System.out.println(Player.getInstance().toString());
+//            Platform.runLater(()->{
+//                Container.playSound("/assets/sound/music/tavern.mp3");
+//            });
         } else login = false;
         notifyAll();
     }
@@ -129,4 +136,6 @@ public class SignLogic {
                 JOptionPane.ERROR_MESSAGE);
         System.exit(-503);
     }
+
+
 }
