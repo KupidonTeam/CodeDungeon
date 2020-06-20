@@ -16,6 +16,7 @@ public class MainPane extends Application {
         currentStage = primaryStage;
         String path = "/fxml/main_v2.fxml";
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setResizable(true);
         FXMLLoader loader = new FXMLLoader();
         Parent root = loader.load(getClass().getResourceAsStream(path));
         scene = new Scene(root);

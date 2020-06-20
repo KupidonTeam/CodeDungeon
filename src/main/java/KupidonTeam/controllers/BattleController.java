@@ -59,7 +59,7 @@ public class BattleController {
         passedRooms = new HashSet<>();
         passedRooms.add(0);
         map = new Graph();
-        updatePLayerInfo();
+        updatePlayerInfo();
         updateRoom();
     }
 
@@ -167,7 +167,7 @@ public class BattleController {
         Integer[] visitedRooms = new Integer[passedRooms.size()];
         passedRooms.toArray(visitedRooms);
         //TODO исправить баг с картой
-        map.updateDungeon(rooms, routes, new Integer[]{0}, currentRoom.getRoomId());
+        map.updateDungeon(rooms, routes, visitedRooms, currentRoom.getRoomId());
 
     }
 
@@ -218,7 +218,7 @@ public class BattleController {
 
     }
 
-    private void updatePLayerInfo() {
+    private void updatePlayerInfo() {
         hpPane.getChildren().clear();
         Label playerHp = new Label(mainPlayer.getStats().getHits() + " %");
         playerHp.setTextFill(Color.WHITE);
@@ -261,7 +261,7 @@ public class BattleController {
                 playerDamage,
                 enemySkill).setOnFinished(event -> {
         });
-        updatePLayerInfo();
+        updatePlayerInfo();
         battleStatus();
         chosenEnemyCard = null;
         mainController.cleanPeekedSkill();

@@ -1,6 +1,5 @@
 package KupidonTeam.gui;
 
-import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.controllers.BattleController;
 import KupidonTeam.locations.Dungeon;
@@ -9,9 +8,6 @@ import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
-import KupidonTeam.utils.SoundPlayer;
-import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,17 +18,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lombok.SneakyThrows;
 
-import javax.swing.*;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,6 +37,8 @@ public class MainController {
     @FXML
     private URL location;
 
+    @FXML
+    private AnchorPane mainPane;
 
     @FXML
     private ScrollPane carriedPane;
@@ -123,7 +116,6 @@ public class MainController {
     private Label nickNameLabel;
 
 
-
     @FXML
     private AnchorPane enemyCard;
 
@@ -131,7 +123,7 @@ public class MainController {
     private FlowPane cardTable;
 
     @FXML
-    private AnchorPane attackButton;
+    private Button attackButton;
 
     @FXML
     private Slider musicVolume;
@@ -357,6 +349,7 @@ public class MainController {
 
 
     private void loadFxmlData() {
+        assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert cardTable != null : "fx:id=\"cardTable\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert enemyCard != null : "fx:id=\"enemyCard\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert carriedPane != null : "fx:id=\"carriedPane\" was not injected: check your FXML file 'main_v2.fxml'.";
