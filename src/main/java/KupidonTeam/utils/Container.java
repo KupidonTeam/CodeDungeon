@@ -2,7 +2,9 @@ package KupidonTeam.utils;
 
 import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.locations.Dungeon;
+import javafx.scene.control.TextArea;
 
+import java.awt.*;
 import java.util.List;
 
 public class Container {
@@ -11,6 +13,7 @@ public class Container {
     private static List<Dungeon> dungeonList;
     private static int[][] routes;
     private static SoundPlayer soundPlayer;
+    private static TextArea chatPane;
 
 
     public static List<Enemy> getEnemyList() {
@@ -52,5 +55,15 @@ public class Container {
 
     public static void setSoundVolume(double volume) {
         soundPlayer.setVolume(volume);
+    }
+
+    public static void setChatPane(TextArea chat) {
+        if (chatPane == null) {
+            chatPane = chat;
+        }
+    }
+
+    public static void addMessageToChat(String msg) {
+        chatPane.appendText(msg);
     }
 }

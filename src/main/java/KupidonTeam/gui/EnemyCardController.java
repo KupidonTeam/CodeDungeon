@@ -90,5 +90,8 @@ public class EnemyCardController {
         this.image.setImage(image);
     }
 
+    public Image getImage() {
+        return this.image.getImage();
+    }
 }
 

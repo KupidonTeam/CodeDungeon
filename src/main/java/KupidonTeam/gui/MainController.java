@@ -137,7 +137,7 @@ public class MainController {
     private Slider musicVolume;
 
     @FXML
-    private ProgressBar expBar;
+    private FlowPane exPane;
 
     private Connection server;
     private Player player;
@@ -157,11 +157,11 @@ public class MainController {
         List<EnemyCard> enemyCards = new LinkedList<>();
         enemyCards.add(new EnemyCard());
 
-
         bt3.setOnMouseClicked(event -> getDungeonSkeleton());
         bt4.setOnMouseClicked(event -> {
             cardTable.getChildren().clear();
             mapPane.getChildren().clear();
+            server.sendMessageToServer(JSON.getLoot());
         });
 
     }
@@ -197,6 +197,7 @@ public class MainController {
                 sendChatMessage();
             }
         });
+        Container.setChatPane(chatPane);
 
     }
 
@@ -290,7 +291,9 @@ public class MainController {
     private void loadPlayerInformation() {
         player = Player.getInstance();
         nickNameLabel.setText(player.getName());
-        expBar.setProgress(player.getExperience());
+        Label exp = new Label(player.getExperience() + "");
+        exp.setTextFill(Color.WHITE);
+        exPane.getChildren().add(exp);
         statsTextArea.setText(player.toString());
         Label hp = new Label(player.getStats().getHits() + " %");
         hp.setTextFill(Color.WHITE);
@@ -381,7 +384,7 @@ public class MainController {
         assert avatarIcon != null : "fx:id=\"avatarIcon\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert nickNameLabel != null : "fx:id=\"nickNameLabel\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert hpPane != null : "fx:id=\"hpPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert expBar != null : "fx:id=\"expBar\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert exPane != null : "fx:id=\"exPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert statsTextArea != null : "fx:id=\"statsTextArea\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert musicVolume != null : "fx:id=\"musicVolume\" was not injected: check your FXML file 'main_v2.fxml'.";
 
@@ -408,8 +411,7 @@ public class MainController {
     @SneakyThrows
     public synchronized void getDungeonSkeleton() {
         server.sendMessageToServer(JSON.getDungeonSkeleton());
-        wait(2500);
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        wait(2000);
 //        System.out.println("====> "+Container.getDungeonList().toString());
         battleController = BattleController.getInstance();
         battleController.setBattleController(player, Container.getDungeonList(), cardTable, mapPane, hpPane);

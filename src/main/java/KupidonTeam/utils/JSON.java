@@ -254,4 +254,7 @@ public class JSON {
                 "\"race_id\": %d}}", username, password, classId, raceId);
     }
 
+    public static String getLoot() {
+        return "{\"action\":\"getLoot\"}";
+    }
 }

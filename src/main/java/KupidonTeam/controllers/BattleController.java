@@ -2,19 +2,24 @@ package KupidonTeam.controllers;
 
 import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.gui.EnemyCard;
+import KupidonTeam.gui.FightController;
 import KupidonTeam.gui.Graph;
 import KupidonTeam.gui.MainController;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
+import KupidonTeam.utils.JSON;
 import KupidonTeam.utils.SoundPlayer;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import lombok.SneakyThrows;
 
@@ -27,10 +32,7 @@ public class BattleController {
     private Player mainPlayer;
     private List<Dungeon> dungeonList;
     private Dungeon currentRoom;
-    private List<Integer> passedRooms;
-    private String enemyTurn;
-    private Connection server;
-    private String actionToServer;
+    private Set<Integer> passedRooms;
     private MainController mainController;
     private FlowPane cardTable;
     private FlowPane mapPane;
@@ -52,20 +54,13 @@ public class BattleController {
         this.mapPane = mapPane;
         this.hpPane = hpPane;
         killedEnemies = new ArrayList<>();
-
         initMainController();
         currentRoom = dungeonsList.get(0);
-        passedRooms = new ArrayList<>();
+        passedRooms = new HashSet<>();
         passedRooms.add(0);
-        server = Connection.getConnection();
-
-        updatePLayerInfo();
-        loadEnemyCards();
         map = new Graph();
-
-        drawMap();
-        battleStatus();
-
+        updatePLayerInfo();
+        updateRoom();
     }
 
     public static BattleController getInstance() {
@@ -98,10 +93,11 @@ public class BattleController {
         }
         if (killedEnemies.containsAll(currentRoom.getEnemies())) {
             System.out.println("<--Current room is clear-->");
-
         }
-
-
+        if (isDungeonClear()) {
+            System.out.println("All enemies are killed!");
+            Connection.getConnection().sendMessageToServer(JSON.getLoot());
+        }
     }
 
     private void loadEnemyCards() {
@@ -170,7 +166,8 @@ public class BattleController {
         int[][] routes = Container.getRoutes();
         Integer[] visitedRooms = new Integer[passedRooms.size()];
         passedRooms.toArray(visitedRooms);
-        map.updateDungeon(rooms, routes, visitedRooms, currentRoom.getRoomId());
+        //TODO исправить баг с картой
+        map.updateDungeon(rooms, routes, new Integer[]{0}, currentRoom.getRoomId());
 
     }
 
@@ -178,15 +175,6 @@ public class BattleController {
         return chosenEnemyCard;
     }
 
-    public void setBattleResults(int enemyDamage, String playerSkill, int playerDamage, String enemySkill) {
-        System.out.println("Set battle results");
-        chosenEnemyCard.getEnemy().getStats().setDamage(enemyDamage);
-        mainPlayer.getStats().setDamage(playerDamage);
-        chosenEnemyCard = null;
-        mainController.cleanPeekedSkill();
-        updatePLayerInfo();
-        battleStatus();
-    }
 
     public void changeRoom(int newRoomId) {
         System.out.println("Current room = " + currentRoom.getRoomId());
@@ -198,6 +186,8 @@ public class BattleController {
         if (currentRoom.getAvailableDirections().contains(newRoomId)) {
             System.out.println(currentRoom.getAvailableDirections());
             System.out.println("Available route");
+
+            passedRooms.add(currentRoom.getRoomId());
             dungeonList.forEach(el -> {
                 if (el.getRoomId() == newRoomId) currentRoom = el;
             });
@@ -236,10 +226,63 @@ public class BattleController {
     }
 
     private void updateRoom() {
+        map = new Graph();
         cardTable.getChildren().clear();
         mapPane.getChildren().clear();
         loadEnemyCards();
         drawMap();
         battleStatus();
+    }
+
+    //Check if all enemies in all rooms are killed
+    private boolean isDungeonClear() {
+        System.out.println("Dung size = " + dungeonList.size());
+        System.out.println("passedrooms=" + passedRooms.size());
+        System.out.println(passedRooms.size() == dungeonList.size());
+        if (killedEnemies.containsAll(currentRoom.getEnemies()) && passedRooms.size() - 1 == dungeonList.size() - 1) {
+            return true;
+        }
+        return false;
+    }
+
+    public void setLoot() {
+
+    }
+
+    public void setBattleResults(int enemyDamage, String playerSkill, int playerDamage, String enemySkill) {
+        System.out.println("Set battle results");
+        chosenEnemyCard.getEnemy().getStats().setDamage(enemyDamage);
+        mainPlayer.getStats().setDamage(playerDamage);
+
+        fightPane(mainPlayer,
+                chosenEnemyCard,
+                enemyDamage,
+                playerSkill,
+                playerDamage,
+                enemySkill).setOnFinished(event -> {
+        });
+        updatePLayerInfo();
+        battleStatus();
+        chosenEnemyCard = null;
+        mainController.cleanPeekedSkill();
+
+
+    }
+
+    @SneakyThrows
+    public FadeTransition fightPane(Player player, EnemyCard enemyCard, int enemyDamage, String playerSkill, int playerDamage, String enemySkill) {
+        Stage fightStage = new Stage();
+        String path = "/fxml/fight.fxml";
+        fightStage.initStyle(StageStyle.UNDECORATED);
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = loader.load(getClass().getResourceAsStream(path));
+        FightController fightController = loader.getController();
+
+        Scene scene = new Scene(root);
+        fightStage.setScene(scene);
+        fightStage.toFront();
+        fightController.setData(player, enemyCard, enemyDamage, playerSkill, playerDamage, enemySkill);
+        fightStage.show();
+        return new FadeTransition(new Duration(1000));
     }
 }

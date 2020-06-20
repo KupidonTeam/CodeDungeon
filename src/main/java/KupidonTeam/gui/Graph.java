@@ -56,16 +56,23 @@ public class Graph extends AnchorPane {
     private void paintRooms(AnchorPane pane, Integer[] rooms, Integer[] visited, int currentRoom) {
         for (int i = 0; i < rooms.length; i++) {
             if (i != currentRoom && !contains(visited, i)) {
+                if (pane.getChildren().contains(dots.get(i).getDot())) {
+                    pane.getChildren().remove(dots.get(i).getDot());
+                }
                 dots.get(i).setDot(new Circle(dots.get(i).getX(), dots.get(i).getY(), 8, Color.rgb(129, 109, 100)));
                 DropShadow shadow = new DropShadow();
                 shadow.setColor(Color.rgb(129, 109, 100));
                 dots.get(i).getDot().setEffect(shadow);
                 pane.getChildren().add(dots.get(i).getDot());
+
             }
         }
     }
 
     private void paintCurrentRoom(AnchorPane pane, int room) {
+        if (pane.getChildren().contains(dots.get(room).getDot())) {
+            pane.getChildren().remove(dots.get(room).getDot());
+        }
         dots.get(room).setDot(new Circle(dots.get(room).getX(), dots.get(room).getY(), 10, Color.RED));
         dots.get(room).getDot().setEffect(new GaussianBlur());
 
@@ -89,15 +96,20 @@ public class Graph extends AnchorPane {
 
         //Playing the animation
         scaleTransition.play();
-
         pane.getChildren().add(dots.get(room).getDot());
+
     }
 
     private void paintVisitedRooms(AnchorPane pane, Integer[] rooms) {
         for (int i = 0; i < rooms.length; i++) {
+            if (pane.getChildren().contains(dots.get(i).getDot())) {
+                pane.getChildren().remove(dots.get(i).getDot());
+            }
             dots.get(i).setDot(new Circle(dots.get(i).getX(), dots.get(i).getY(), 10, Color.rgb(129, 109, 100)));
             dots.get(i).getDot().setEffect(new GaussianBlur());
+
             pane.getChildren().add(dots.get(i).getDot());
+
         }
     }
 
@@ -118,6 +130,9 @@ public class Graph extends AnchorPane {
         paintRooms(this, rooms, visitedRooms, currentRoom);
         paintCurrentRoom(this, currentRoom);
         paintVisitedRooms(this, visitedRooms);
+
+        //вход всегда синий
+        dots.get(0).getDot().setFill(Color.BLUE);
     }
 
     public AnchorPane getPane() {

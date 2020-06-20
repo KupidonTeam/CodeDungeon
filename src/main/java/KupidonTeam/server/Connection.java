@@ -83,7 +83,6 @@ public class Connection {
 
         if (!msg.isEmpty()) {
             System.out.println("=========send msg to ser method=======");
-            System.out.println("socket = " + clientSocket.toString());
             System.out.println("msg = " + msg);
             outMessage.println(msg);
             outMessage.flush();
@@ -197,7 +196,7 @@ public class Connection {
 
     private void addMessageToChat(JSONObject data) {
         String buffer = JSON.inboxMessage(data);
-        chatArea.appendText(buffer);
+        Container.addMessageToChat(buffer);
     }
 
 

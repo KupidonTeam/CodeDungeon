@@ -43,4 +43,10 @@ public class SoundPlayer {
     public void setVolume(double volume) {
         audioClip.setVolume(volume);
     }
+
+    public void damaged() {
+        audioClip = playSound("/assets/sound/effects/damaged.wav");
+        audioClip.setVolume(0.45);
+        audioClip.play();
+    }
 }

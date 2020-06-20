@@ -93,17 +93,21 @@ public class EnemyCard {
         enemyCardController.setImage(image);
     }
 
+    public Image getImage() {
+        return enemyCardController.getImage();
+    }
+
     public void dispose() {
         enemyCard.getChildren().clear();
     }
 
     private Image randomImage() {
-        String path = "src/main/resources/assets/SIMPLEAvatarsIcons/64X64";
+        String path = "src/main/resources/assets/SIMPLEAvatarsIcons/512X512/";
         File files = new File(path);
         List<String> images = new LinkedList<>();
         Random random = new Random();
         Stream.of(files.listFiles()).forEach(el -> images.add(el.getName()));
-        path = "/assets/SIMPLEAvatarsIcons/64X64/" + images.get(random.nextInt(images.size()));
+        path = "/assets/SIMPLEAvatarsIcons/512X512/" + images.get(random.nextInt(images.size()));
         System.out.println("PUT IMAGE  = " + path);
         return new Image(path);
     }

@@ -28,7 +28,11 @@ public class Dot {
     }
 
     public void setDot(Circle circle) {
-        this.dot = circle;
+        if (this.dot == null) {
+            this.dot = circle;
+        } else {
+            dot.setFill(circle.getFill());
+        }
         dot.setOnMouseClicked(event -> {
             System.out.println("Clicked on room = " + id);
             battleController = BattleController.getInstance();

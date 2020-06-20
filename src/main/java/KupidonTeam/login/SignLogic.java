@@ -122,9 +122,7 @@ public class SignLogic {
             login = true;
             createPLayer(msg);
             System.out.println(Player.getInstance().toString());
-//            Platform.runLater(()->{
-//                Container.playSound("/assets/sound/music/tavern.mp3");
-//            });
+
         } else login = false;
         notifyAll();
     }
