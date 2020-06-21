@@ -24,7 +24,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -333,11 +337,11 @@ public class MainController {
         player = Player.getInstance();
         nickNameLabel.setText(player.getName());
         Label exp = new Label(player.getExperience() + "");
-        exp.setTextFill(Color.WHITE);
+        exp.setTextFill(Color.rgb(142, 124, 116));
         exPane.getChildren().add(exp);
         statsTextArea.setText(player.toString());
         Label hp = new Label(player.getStats().getHits() + " %");
-        hp.setTextFill(Color.WHITE);
+        hp.setTextFill(Color.rgb(142, 124, 116));
         hpPane.getChildren().add(hp);
         avatarIcon.setImage(player.getAvatarIcon());
         initInventory();
@@ -460,8 +464,6 @@ public class MainController {
 //        System.out.println("====> "+Container.getDungeonList().toString());
         battleController = BattleController.getInstance();
         battleController.setBattleController(player, Container.getDungeonList(), cardTable, mapPane, hpPane);
-
-
     }
 
     public void attack() {
@@ -493,37 +495,51 @@ public class MainController {
 
         FlowPane shopPane = new FlowPane();
         shopPane.setAlignment(Pos.CENTER);
-        shopPane.getChildren().addAll(shopImg);
+        Label shopLabel = new Label("Shop");
+        shopLabel.setStyle("-fx-text-fill: #816d64;");
+        shopLabel.setFont(new Font("Century", 16));
+        shopPane.getChildren().addAll(shopLabel, shopImg);
         shopPane.setStyle("" +
                 "-fx-background-color:  #201b1b;" +
                 "-fx-border-color :  #8e7c74;" +
-                "-fx-border-width : 5;");
+                "-fx-border-width : 2 1 2 2;");
 
 
         FlowPane dungeonPane = new FlowPane();
         dungeonPane.setAlignment(Pos.CENTER);
-        dungeonPane.getChildren().add(new Label("Go to Dungeon"));
-        dungeonPane.getChildren().add(dungeonImg);
+        Label dungeonLabel = new Label("Dungeon");
+        dungeonLabel.setStyle("-fx-text-fill: #816d64;");
+        dungeonLabel.setFont(new Font("Century", 16));
+        dungeonPane.getChildren().addAll(dungeonLabel, dungeonImg);
         dungeonPane.setStyle("" +
                 "-fx-background-color:  #201b1b;" +
                 "-fx-border-color :  #8e7c74;" +
-                "-fx-border-width : 5;");
+                "-fx-border-width : 2 1 2 1;");
 
         FlowPane pvpPane = new FlowPane();
         pvpPane.setAlignment(Pos.CENTER);
-        pvpPane.getChildren().add(pvpImg);
+        Label pvpLabel = new Label("PvP");
+        pvpLabel.setStyle("-fx-text-fill: #816d64;");
+        pvpLabel.setFont(new Font("Century", 16));
+        pvpPane.getChildren().addAll(pvpLabel, pvpImg);
         pvpPane.setStyle("" +
-                "-fx-background-color:  #201b1b" +
+                "-fx-background-color:  #201b1b;" +
                 "-fx-border-color :  #8e7c74;" +
-                "-fx-border-width : 5;");
+                "-fx-border-width : 2 2 2 1;");
 
         Glow glow = new Glow(0.9);
+
+        shopPane.setOnMouseEntered(event -> shopPane.setEffect(glow));
+        shopPane.setOnMouseExited(event -> shopPane.setEffect(null));
+
+        dungeonPane.setOnMouseEntered(event -> dungeonPane.setEffect(glow));
+        dungeonPane.setOnMouseExited(event -> dungeonPane.setEffect(null));
+
         pvpPane.setOnMouseEntered(event -> pvpPane.setEffect(glow));
         pvpPane.setOnMouseExited(event -> pvpPane.setEffect(null));
 
         shopPane.setPrefWidth(220);
         shopPane.setPrefHeight(460);
-
 
         dungeonPane.setPrefWidth(220);
         dungeonPane.setPrefHeight(460);
@@ -537,7 +553,6 @@ public class MainController {
 
         pane.getChildren().addAll(hBox);
         cardTable.getChildren().add(hBox);
-
     }
 
 

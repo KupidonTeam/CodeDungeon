@@ -14,7 +14,7 @@
     <children>
         <AnchorPane fx:id="MainPane">
             <children>
-                <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="616.0">
+                <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="616.0">
                     <children>
                         <ImageView fitHeight="457.0" fitWidth="616.0">
                             <image>
