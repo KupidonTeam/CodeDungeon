@@ -3,6 +3,7 @@ package KupidonTeam.server;
 import KupidonTeam.controllers.BattleController;
 import KupidonTeam.exceptions.FailedToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
+import KupidonTeam.items.Item;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.player.Player;
 import KupidonTeam.utils.Container;
@@ -18,6 +19,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -226,7 +229,7 @@ public class Connection {
                 );
     }
 
-    public void setLoot(String msg) {
+    public synchronized void setLoot(String msg) {
         Player player = Player.getInstance();
         JSONObject data = new JSONObject(msg).getJSONObject("data");
         if (data.getJSONObject("level").getBoolean("gotNewLevel")) {
@@ -235,6 +238,12 @@ public class Connection {
         player.getInventory().addAll(JSON.armor(data));
         player.getInventory().addAll(JSON.weapons(data));
         player.getInventory().addAll(JSON.foods(data));
+        List<Item> prizes = new LinkedList<>();
+        prizes.addAll(JSON.armor(data));
+        prizes.addAll(JSON.weapons(data));
+        prizes.addAll(JSON.foods(data));
+        Container.setPrizes(prizes);
+        notify();
 
     }
 }

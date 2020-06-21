@@ -73,4 +73,10 @@ public class SoundPlayer {
         audioClip.setVolume(0.45);
         audioClip.play();
     }
+
+    public void victory() {
+        audioClip = playSound("/assets/sound/music/victory.wav");
+        audioClip.setVolume(0.45);
+        audioClip.play();
+    }
 }

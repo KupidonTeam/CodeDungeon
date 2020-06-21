@@ -1,10 +1,7 @@
 package KupidonTeam.controllers;
 
 import KupidonTeam.characters.classes.enemies.Enemy;
-import KupidonTeam.gui.EnemyCard;
-import KupidonTeam.gui.FightController;
-import KupidonTeam.gui.Graph;
-import KupidonTeam.gui.MainController;
+import KupidonTeam.gui.*;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
@@ -47,14 +44,15 @@ public class BattleController {
     private BattleController() {
     }
 
-    private BattleController(Player mainPlayer, List<Dungeon> dungeonsList, FlowPane cardTable, FlowPane mapPane, FlowPane hpPane) {
+    private BattleController(MainController mainController, Player mainPlayer, List<Dungeon> dungeonsList, FlowPane cardTable, FlowPane mapPane, FlowPane hpPane) {
+        this.mainController = mainController;
         this.mainPlayer = mainPlayer;
         this.dungeonList = dungeonsList;
         this.cardTable = cardTable;
         this.mapPane = mapPane;
         this.hpPane = hpPane;
         killedEnemies = new ArrayList<>();
-        initMainController();
+//        initMainController();
         currentRoom = dungeonsList.get(0);
         passedRooms = new HashSet<>();
         passedRooms.add(0);
@@ -70,8 +68,8 @@ public class BattleController {
         return battleController;
     }
 
-    public void setBattleController(Player mainPlayer, List<Dungeon> dungeonsList, FlowPane cardTable, FlowPane mapPane, FlowPane hpPane) {
-        battleController = new BattleController(mainPlayer, dungeonsList, cardTable, mapPane, hpPane);
+    public void setBattleController(MainController mainController, Player mainPlayer, List<Dungeon> dungeonsList, FlowPane cardTable, FlowPane mapPane, FlowPane hpPane) {
+        battleController = new BattleController(mainController, mainPlayer, dungeonsList, cardTable, mapPane, hpPane);
 
     }
 
@@ -96,13 +94,13 @@ public class BattleController {
         }
         if (isDungeonClear()) {
             System.out.println("All enemies are killed!");
-            Connection.getConnection().sendMessageToServer(JSON.getLoot());
+            getLoot(mainController);
         }
     }
 
     private void loadEnemyCards() {
 
-        initMainController();
+
 
         enemyCards = new ArrayList<>();
         currentRoom.getEnemies().forEach(el -> {
@@ -245,9 +243,6 @@ public class BattleController {
         return false;
     }
 
-    public void setLoot() {
-
-    }
 
     public void setBattleResults(int enemyDamage, String playerSkill, int playerDamage, String enemySkill) {
         System.out.println("Set battle results");
@@ -259,13 +254,11 @@ public class BattleController {
                 enemyDamage,
                 playerSkill,
                 playerDamage,
-                enemySkill).setOnFinished(event -> {
-        });
+                enemySkill);
         updatePlayerInfo();
         battleStatus();
         chosenEnemyCard = null;
         mainController.cleanPeekedSkill();
-
 
     }
 
@@ -284,5 +277,32 @@ public class BattleController {
         fightController.setData(player, enemyCard, enemyDamage, playerSkill, playerDamage, enemySkill);
         fightStage.show();
         return new FadeTransition(new Duration(1000));
+    }
+
+    @SneakyThrows
+    public synchronized void getLoot(MainController mainController) {
+        Connection.getConnection().sendMessageToServer(JSON.getLoot());
+        wait(1000);
+//        initMainController();
+        prizePane();
+        mainController.update();
+
+    }
+
+    @SneakyThrows
+    private void prizePane() {
+        Stage prizeStage = new Stage();
+        String path = "/fxml/prizes_pane.fxml";
+        prizeStage.initStyle(StageStyle.UNDECORATED);
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = loader.load(getClass().getResourceAsStream(path));
+        PrizesPaneController prizesPaneController = loader.getController();
+
+        Scene scene = new Scene(root);
+        prizeStage.setScene(scene);
+        prizeStage.toFront();
+        prizesPaneController.loadPrizes(Container.getPrizes());
+        prizeStage.show();
+
     }
 }

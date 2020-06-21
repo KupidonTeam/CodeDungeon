@@ -29,7 +29,7 @@
                     AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <TabPane layoutX="14.0" layoutY="291.0" prefHeight="351.0" prefWidth="280.0"
-                         style="-fx-background-color: white;" stylesheets="@/assets/css/tabs.css"
+                         style="-fx-background-color: #251a1a;" stylesheets="@/assets/css/tabs.css"
                          tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
                          AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="295.0">
                     <tabs>
@@ -39,10 +39,11 @@
                                             style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
                                         <ScrollPane fx:id="carriedPane" hbarPolicy="NEVER" layoutX="4.0" layoutY="2.0"
-                                                    prefHeight="329.0" prefWidth="270.0"
+                                                    prefHeight="276.0" prefWidth="270.0"
                                                     style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;">
                                             <content>
-                                                <FlowPane fx:id="inventoryPane" prefHeight="330.0" prefWidth="272.0" style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;" />
+                                                <FlowPane fx:id="inventoryPane" prefHeight="274.0" prefWidth="272.0"
+                                                          style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;"/>
                                             </content>
                                         </ScrollPane>
                                     </children>

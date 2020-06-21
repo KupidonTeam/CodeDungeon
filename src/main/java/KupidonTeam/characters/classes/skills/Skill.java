@@ -27,7 +27,7 @@ public class Skill {
                         "\"lvl\" : %d\n," +
                         "\"name\" : \"%s\", \n" +
                         "\"random_diapason\" : %d\n," +
-                        "\"type_attack\" : \"%s\"}",
+                        "\"attack_type\" : \"%s\"}",
                 id, coolDown, countOfRandom, effect, lvl, name, randomDiapason, type);
     }
 
