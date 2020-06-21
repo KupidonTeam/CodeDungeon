@@ -14,11 +14,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -144,6 +146,7 @@ public class MainController {
     @FXML
     void initialize() {
         loadFxmlData();
+
         setUp();
         loadPlayerInformation();
         List<EnemyCard> enemyCards = new LinkedList<>();
@@ -172,6 +175,7 @@ public class MainController {
     }
 
     private void panesSetUp() {
+
         chatPane.setText("");
         chatPane.setWrapText(true);
         chatPane.setPrefColumnCount(30);
@@ -190,7 +194,7 @@ public class MainController {
             }
         });
         Container.setChatPane(chatPane);
-
+        choosePaneMenu();
     }
 
     //Примерный тест инвенторя
@@ -434,5 +438,57 @@ public class MainController {
         skillGroup.getChildren().forEach(el -> el.setStyle(""));
     }
 
+    public void choosePaneMenu() {
+        ImageView shopImg = new ImageView("/assets/weapons/Export_256/Coin.png");
+        ImageView dungeonImg = new ImageView("/assets/weapons/Export_256/Sword.png");
+        ImageView pvpImg = new ImageView("/assets/weapons/Export_256/BowLoaded.png");
 
+        FlowPane shopPane = new FlowPane();
+        shopPane.setAlignment(Pos.CENTER);
+        shopPane.getChildren().addAll(shopImg);
+        shopPane.setStyle("" +
+                "-fx-background-color:  #201b1b;" +
+                "-fx-border-color :  #8e7c74;" +
+                "-fx-border-width : 5;");
+
+
+        FlowPane dungeonPane = new FlowPane();
+        dungeonPane.setAlignment(Pos.CENTER);
+        dungeonPane.getChildren().add(new Label("Go to Dungeon"));
+        dungeonPane.getChildren().add(dungeonImg);
+        dungeonPane.setStyle("" +
+                "-fx-background-color:  #201b1b;" +
+                "-fx-border-color :  #8e7c74;" +
+                "-fx-border-width : 5;");
+
+        FlowPane pvpPane = new FlowPane();
+        pvpPane.setAlignment(Pos.CENTER);
+        pvpPane.getChildren().add(pvpImg);
+        pvpPane.setStyle("" +
+                "-fx-background-color:  #201b1b" +
+                "-fx-border-color :  #8e7c74;" +
+                "-fx-border-width : 5;");
+
+        Glow glow = new Glow(0.9);
+        pvpPane.setOnMouseEntered(event -> pvpPane.setEffect(glow));
+        pvpPane.setOnMouseExited(event -> pvpPane.setEffect(null));
+
+        shopPane.setPrefWidth(220);
+        shopPane.setPrefHeight(460);
+
+
+        dungeonPane.setPrefWidth(220);
+        dungeonPane.setPrefHeight(460);
+
+        pvpPane.setPrefWidth(220);
+        pvpPane.setPrefHeight(460);
+
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(shopPane, dungeonPane, pvpPane);
+        FlowPane pane = new FlowPane();
+
+        pane.getChildren().addAll(hBox);
+        cardTable.getChildren().add(hBox);
+
+    }
 }

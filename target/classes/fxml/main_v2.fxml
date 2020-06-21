@@ -20,17 +20,27 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-border-color: #8e7c74;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.MainController">
+<AnchorPane fx:id="mainPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-border-color: #8e7c74;"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="KupidonTeam.gui.MainController">
     <children>
-        <AnchorPane layoutY="6.0" prefHeight="670.0" prefWidth="300.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane layoutY="6.0" prefHeight="670.0" prefWidth="300.0"
+                    style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="100.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <TabPane layoutX="14.0" layoutY="291.0" prefHeight="351.0" prefWidth="280.0" style="-fx-background-color: white;" stylesheets="@/assets/css/tabs.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="295.0">
+                <TabPane layoutX="14.0" layoutY="291.0" prefHeight="351.0" prefWidth="280.0"
+                         style="-fx-background-color: white;" stylesheets="@/assets/css/tabs.css"
+                         tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                         AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="295.0">
                     <tabs>
                         <Tab text="Inventory">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
+                                            style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
-                                        <ScrollPane fx:id="carriedPane" hbarPolicy="NEVER" layoutX="4.0" layoutY="2.0" prefHeight="329.0" prefWidth="270.0" style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;">
+                                        <ScrollPane fx:id="carriedPane" hbarPolicy="NEVER" layoutX="4.0" layoutY="2.0"
+                                                    prefHeight="329.0" prefWidth="270.0"
+                                                    style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;">
                                             <content>
                                                 <FlowPane fx:id="inventoryPane" prefHeight="330.0" prefWidth="272.0" style="-fx-background-color: #251a1a; -fx-text-fill: white;" />
                                             </content>
