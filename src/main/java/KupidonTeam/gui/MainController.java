@@ -7,7 +7,6 @@ import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.login.SignLogic;
-import KupidonTeam.player.Inventory;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
@@ -18,16 +17,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.Bloom;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -496,47 +493,94 @@ public class MainController {
         FlowPane shopPane = new FlowPane();
         shopPane.setAlignment(Pos.CENTER);
         Label shopLabel = new Label("Shop");
-        shopLabel.setStyle("-fx-text-fill: #816d64;");
-        shopLabel.setFont(new Font("Century", 16));
-        shopPane.getChildren().addAll(shopLabel, shopImg);
+        shopLabel.setStyle("-fx-text-fill: #816d64");
+        shopLabel.setFont(new Font("Century", 18));
+
+        VBox shopVBox = new VBox();
+        shopVBox.setAlignment(Pos.CENTER);
+        shopVBox.setSpacing(30);
+        shopVBox.getChildren().addAll(shopLabel, shopImg);
+        shopPane.getChildren().add(shopVBox);
         shopPane.setStyle("" +
-                "-fx-background-color:  #201b1b;" +
+                "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
                 "-fx-border-color :  #8e7c74;" +
                 "-fx-border-width : 2 1 2 2;");
+
 
 
         FlowPane dungeonPane = new FlowPane();
         dungeonPane.setAlignment(Pos.CENTER);
         Label dungeonLabel = new Label("Dungeon");
         dungeonLabel.setStyle("-fx-text-fill: #816d64;");
-        dungeonLabel.setFont(new Font("Century", 16));
-        dungeonPane.getChildren().addAll(dungeonLabel, dungeonImg);
+        dungeonLabel.setFont(new Font("Century", 18));
+
+        VBox dungeonVBox = new VBox();
+        dungeonVBox.setAlignment(Pos.CENTER);
+        dungeonVBox.setSpacing(30);
+        dungeonVBox.getChildren().addAll(dungeonLabel, dungeonImg);
+        dungeonPane.getChildren().add(dungeonVBox);
         dungeonPane.setStyle("" +
-                "-fx-background-color:  #201b1b;" +
+                "-fx-background-color:  linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
                 "-fx-border-color :  #8e7c74;" +
                 "-fx-border-width : 2 1 2 1;");
+
+
 
         FlowPane pvpPane = new FlowPane();
         pvpPane.setAlignment(Pos.CENTER);
         Label pvpLabel = new Label("PvP");
         pvpLabel.setStyle("-fx-text-fill: #816d64;");
-        pvpLabel.setFont(new Font("Century", 16));
-        pvpPane.getChildren().addAll(pvpLabel, pvpImg);
+        pvpLabel.setFont(new Font("Century", 18));
+
+        VBox pvpVBox = new VBox();
+        pvpVBox.setAlignment(Pos.CENTER);
+        pvpVBox.setSpacing(30);
+        pvpVBox.getChildren().addAll(pvpLabel, pvpImg);
+        pvpPane.getChildren().add(pvpVBox);
         pvpPane.setStyle("" +
-                "-fx-background-color:  #201b1b;" +
+                "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
                 "-fx-border-color :  #8e7c74;" +
                 "-fx-border-width : 2 2 2 1;");
 
-        Glow glow = new Glow(0.9);
+        // On Mouse Entered Effects
+        shopPane.setOnMouseEntered(event -> {
+            shopPane.setStyle(
+                    "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, yellow, #201b1b);" +
+                            "-fx-border-color :  #8e7c74;" +
+                            "-fx-border-width : 2 1 2 1;");
+            shopLabel.setStyle("-fx-text-fill: #201b1b;");
+        });
+        shopPane.setOnMouseExited(event -> {
+            shopPane.setStyle(
+                    "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
+                            "-fx-border-color :  #8e7c74;" +
+                            "-fx-border-width : 2 1 2 1;");
+            shopLabel.setStyle("-fx-text-fill: #816d64;");
+        });
 
-        shopPane.setOnMouseEntered(event -> shopPane.setEffect(glow));
-        shopPane.setOnMouseExited(event -> shopPane.setEffect(null));
+        dungeonPane.setOnMouseEntered(event -> {
+            dungeonPane.setStyle(
+                    "-fx-background-color:  linear-gradient(from 25% 25% to 100% 100%, #201b1b, #816d64, #201b1b);" +
+                            "-fx-border-color :  #8e7c74;" +
+                            "-fx-border-width : 2 1 2 1;");
+            dungeonLabel.setStyle("-fx-text-fill: #201b1b;");
+        });
+        dungeonPane.setOnMouseExited(event -> {
+            dungeonPane.setStyle(
+                    "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
+                            "-fx-border-color :  #8e7c74;" +
+                            "-fx-border-width : 2 1 2 1;");
+            dungeonLabel.setStyle("-fx-text-fill: #816d64;");
+        });
 
-        dungeonPane.setOnMouseEntered(event -> dungeonPane.setEffect(glow));
-        dungeonPane.setOnMouseExited(event -> dungeonPane.setEffect(null));
-
-        pvpPane.setOnMouseEntered(event -> pvpPane.setEffect(glow));
-        pvpPane.setOnMouseExited(event -> pvpPane.setEffect(null));
+        pvpPane.setOnMouseEntered(event -> pvpPane.setStyle(
+                "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, darkred, #201b1b);" +
+                        "-fx-border-color :  #8e7c74;" +
+                        "-fx-border-width : 2 2 2 1;"));
+        pvpPane.setOnMouseExited(event -> pvpPane.setStyle(
+                "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
+                        "-fx-border-color :  #8e7c74;" +
+                        "-fx-border-width : 2 1 2 1;"));
 
         shopPane.setPrefWidth(220);
         shopPane.setPrefHeight(460);
