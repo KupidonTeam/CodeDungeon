@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -73,6 +74,9 @@
                 <font>
                     <Font name="Century" size="14.0"/>
                 </font>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
             </Label>
             <ImageView fx:id="closeWindowButton" fitHeight="50.0" fitWidth="50.0" layoutX="542.0" layoutY="22.0"
                        pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">

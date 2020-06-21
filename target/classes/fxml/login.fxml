@@ -10,87 +10,75 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="KupidonTeam.gui.LoginController">
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.LoginController">
     <children>
         <AnchorPane fx:id="MainPane">
             <children>
-                <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                      prefHeight="457.0" prefWidth="616.0">
+                <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="616.0">
                     <children>
                         <ImageView fitHeight="457.0" fitWidth="616.0">
                             <image>
-                                <Image url="@/assets/GUI_Parts/Gui_parts/my_background.png"/>
+                                <Image url="@/assets/GUI_Parts/Gui_parts/my_background.png" />
                             </image>
                         </ImageView>
-                        <ImageView fitHeight="79.0" fitWidth="210.0" layoutX="196.0" layoutY="29.0" pickOnBounds="true"
-                                   preserveRatio="true">
+                        <ImageView fitHeight="79.0" fitWidth="210.0" layoutX="196.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@/assets/signup/logo_black_bej.png"/>
+                                <Image url="@/assets/signup/logo_black_bej.png" />
                             </image>
                         </ImageView>
-                        <Label fx:id="usernameLabel" layoutX="361.0" layoutY="141.0" maxHeight="-Infinity"
-                               maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Username"
-                               textFill="#816d64">
+                        <Label fx:id="usernameLabel" layoutX="361.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Username" textFill="#816d64">
                             <font>
-                                <Font name="Century" size="14.0"/>
+                                <Font name="Century" size="14.0" />
                             </font>
                         </Label>
                         <Label fx:id="passwordLabel" layoutX="361.0" layoutY="214.0" text="Password" textFill="#816d64">
                             <font>
-                                <Font name="Century" size="14.0"/>
+                                <Font name="Century" size="14.0" />
                             </font>
                         </Label>
-                        <ImageView id="tip" fitHeight="249.0" fitWidth="234.0" layoutX="67.0" layoutY="106.0"
-                                   pickOnBounds="true" preserveRatio="true" styleClass="tooltip">
+                        <ImageView id="tip" fitHeight="249.0" fitWidth="234.0" layoutX="67.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" styleClass="tooltip">
                             <image>
-                                <Image url="@/images/sword_cd.png"/>
+                                <Image url="@/images/sword_cd.png" />
                             </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="193.0" layoutX="361.0" layoutY="164.0">
                             <image>
-                                <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                                <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
                             </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="193.0" layoutX="361.0" layoutY="237.0">
                             <image>
-                                <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                                <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png" />
                             </image>
                         </ImageView>
-                        <ImageView fx:id="closeButton" fitHeight="50.0" fitWidth="50.0" layoutX="542.0" layoutY="22.0"
-                                   pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="closeButton" fitHeight="50.0" fitWidth="50.0" layoutX="542.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@/assets/GUI_Parts/Gui_parts/button_cancel.png"/>
+                                <Image url="@/assets/GUI_Parts/Gui_parts/button_cancel.png" />
                             </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="98.0" layoutX="409.0" layoutY="323.0">
                             <image>
-                                <Image url="@/assets/GUI_Parts/Gui_parts/name_bar2.png"/>
+                                <Image url="@/assets/GUI_Parts/Gui_parts/name_bar2.png" />
                             </image>
                         </ImageView>
-                        <Label fx:id="loginButton" alignment="CENTER" layoutX="409.0" layoutY="323.0" prefHeight="40.0"
-                               prefWidth="98.0" text="Login" textAlignment="CENTER" textFill="#816d64">
+                        <Label fx:id="loginButton" alignment="CENTER" layoutX="409.0" layoutY="323.0" prefHeight="40.0" prefWidth="98.0" text="Login" textAlignment="CENTER" textFill="#816d64">
                             <font>
-                                <Font name="Century" size="18.0"/>
+                                <Font name="Century" size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="signUpLink" layoutX="217.0" layoutY="413.0" text="Not a member? Sign up now"
-                               textFill="#816d64">
+                        <Label fx:id="signUpLink" layoutX="217.0" layoutY="413.0" text="Not a member? Sign up now" textFill="#816d64">
                             <font>
-                                <Font name="Century" size="14.0"/>
+                                <Font name="Century" size="14.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="usernameField" layoutX="369.0" layoutY="169.0" prefHeight="25.0"
-                                   prefWidth="177.0" promptText="username"
-                                   style="-fx-background-color: none; -fx-text-inner-color: white;">
+                        <TextField fx:id="usernameField" layoutX="369.0" layoutY="169.0" prefHeight="25.0" prefWidth="177.0" promptText="username" style="-fx-background-color: none; -fx-text-inner-color: #816d64; -fx-prompt-text-fill: #8e7c74;">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </TextField>
-                        <PasswordField fx:id="passwordField" layoutX="370.0" layoutY="242.0" promptText="password"
-                                       style="-fx-background-color: none; -fx-text-inner-color: white;">
+                        <PasswordField fx:id="passwordField" layoutX="370.0" layoutY="242.0" promptText="password" style="-fx-background-color: none; -fx-text-inner-color: #816d64; -fx-prompt-text-fill: #8e7c74;">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </PasswordField>
 

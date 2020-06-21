@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -92,6 +93,7 @@ public class LoginController {
         dialogStage.initStyle(StageStyle.UNDECORATED);
         labelColor = usernameLabel.getTextFill();
 
+        loginButton.setCursor(Cursor.HAND);
         loginButton.setOnMouseClicked(ev -> {
             login();
         });
@@ -106,6 +108,7 @@ public class LoginController {
             }
         });
 
+        closeButton.setCursor(Cursor.HAND);
         closeButton.setOnMouseClicked(ev -> {
             try {
                 LoginWrapper.getCurrentStage().close();
@@ -118,7 +121,9 @@ public class LoginController {
             }
         });
 
+        signUpLink.setCursor(Cursor.HAND);
         signUpLink.setOnMouseClicked(ev -> {
+
             switchToSignUp();
 
         });
