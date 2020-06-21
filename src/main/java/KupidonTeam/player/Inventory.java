@@ -4,6 +4,7 @@ import KupidonTeam.items.Item;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Getter
@@ -14,10 +15,15 @@ public class Inventory {
 
 
     public Inventory(Player player) {
+        items = new LinkedList<>();
         maxWheight = player.getStats().getStrength() * 15;
     }
 
-    public void addItem(Item item) {
+    public void add(Item item) {
         items.add(item);
+    }
+
+    public void addAll(List<? extends Item> itemList) {
+        items.addAll(itemList);
     }
 }

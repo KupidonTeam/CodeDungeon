@@ -26,4 +26,5 @@ public class Food extends Item {
     public String toString() {
         return super.toString();
     }
+
 }

@@ -33,12 +33,10 @@ public class Player {
     private int experience;
     private Room location;
     private List<Skill> skills;
-    private List<Food> foods;
-    private List<Armor> armors;
-    private List<Weapon> weapons;
     private List<Animal> animals;
     private Image avatarIcon;
     private Inventory inventory;
+    private int gold;
 
 
     private Player(String name, Stats stats, String playerClass, int lvl, int experience, List<Skill> skills,
@@ -49,13 +47,14 @@ public class Player {
         setSkills(skills);
         setLvl(lvl);
         setExperience(experience);
-        setFoods(foods);
-        setArmors(armors);
-        setWeapons(weapons);
         setAnimals(animals);
         location = new Lobby();
         loadAvatarIcon();
         inventory = new Inventory(this);
+        inventory.addAll(armors);
+        inventory.addAll(weapons);
+        gold = 0;
+//        inventory.addAll(foods);
     }
 
     public static boolean createPlayer(String name, String playerClass, int lvl, int experience, Stats stats,
@@ -80,22 +79,8 @@ public class Player {
         return null;
     }
 
-
-    public void playerDefeat() {
-        // TODO
-    }
-
-    public void playerTurn() {
-        // TODO
-        //userInput();
-    }
-
-    public boolean isAlive() {
-        return stats.getHits() > 0;
-    }
-
-    public void playerRewards(List<Item> rewards) {
-        // TODO
+    public void newLvl() {
+        setLvl(++lvl);
     }
 
     @Override
@@ -126,4 +111,35 @@ public class Player {
         }
 
     }
+
+    public void heal(Item food) {
+
+        switch (food.getName()) {
+            case "begg food":
+                player.getStats().heal(5);
+                break;
+            case "poor food":
+                player.getStats().heal(10);
+                break;
+            case "modest food":
+                player.getStats().heal(15);
+                break;
+            case "comfort food":
+                player.getStats().heal(25);
+                break;
+            case "rich food":
+                player.getStats().heal(50);
+                break;
+            case "aristocratic food":
+                player.getStats().heal(100);
+                break;
+        }
+        drop(food);
+    }
+
+    public void drop(Item item) {
+        System.out.println("drop item = " + item.getName());
+        inventory.getItems().remove(item);
+    }
+
 }

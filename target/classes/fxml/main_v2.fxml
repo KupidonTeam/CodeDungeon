@@ -42,7 +42,8 @@
                                                     prefHeight="329.0" prefWidth="270.0"
                                                     style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;">
                                             <content>
-                                                <FlowPane fx:id="inventoryPane" prefHeight="330.0" prefWidth="272.0" style="-fx-background-color: #251a1a; -fx-text-fill: white;" />
+                                                <FlowPane fx:id="inventoryPane" prefHeight="282.0" prefWidth="272.0"
+                                                          style="-fx-background-color: #251a1a; -fx-text-fill: white;"/>
                                             </content>
                                         </ScrollPane>
                                     </children>
@@ -233,9 +234,9 @@
                         <Font name="Century" size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="96.0" layoutY="57.0" text="EXP" textFill="#8e7c74">
+                <Label layoutX="96.0" layoutY="57.0" text="LvL" textFill="#8e7c74">
                     <font>
-                        <Font name="Century" size="10.0" />
+                        <Font name="Century" size="10.0"/>
                     </font>
                 </Label>
                 <FlowPane fx:id="hpPane" layoutX="124.0" layoutY="38.0" prefHeight="18.0" prefWidth="166.0" />

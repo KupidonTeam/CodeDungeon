@@ -57,4 +57,9 @@ public class Stats {
         hits -= damage;
         hpLabel.setText("" + hits + " %");
     }
+
+    public void heal(int heal) {
+        hits += heal;
+        if (hits > 100) hits = 100;
+    }
 }

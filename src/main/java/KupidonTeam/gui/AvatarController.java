@@ -35,13 +35,9 @@ public class AvatarController {
         System.out.println("pressed = " + avatarId);
         try {
             FXMLLoader loader = new FXMLLoader();
-
             Parent currentContent = loader.load(getClass().getResourceAsStream("/fxml/avatar_pane.fxml"));
-//            System.out.println(CharacterCreationWrapper.getCurrentStage().getScene().
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        CharacterCreationController.setAvatarImage(avatarId);
     }
 }

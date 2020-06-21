@@ -14,14 +14,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import lombok.SneakyThrows;
+import org.w3c.dom.ls.LSOutput;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -112,6 +118,7 @@ public class CharacterCreationController {
 
     private String username;
     private String password;
+    private String avatar = "default";
 
     private List<ImageView> classSkills;
     private Popup popupMessage;
@@ -146,16 +153,7 @@ public class CharacterCreationController {
     }
 
     private void openAvatarWindow() {
-        String path = "/fxml/avatar_pane.fxml";
-        Parent parent;
-        FXMLLoader loader = new FXMLLoader();
-
-        try {
-            parent = loader.load(getClass().getResourceAsStream(path));
-            mainPane.getChildren().addAll(parent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        chooseAvatar();
     }
 
     private void chooseClass(String clazz) {
@@ -169,8 +167,7 @@ public class CharacterCreationController {
                 .filtered(el -> el.getId().equalsIgnoreCase(clazz))
                 .forEach(el -> {
                     el.setStyle("-fx-border-color:red;  -fx-border-width : 3;");
-                    loadClassData(clazz);
-                    loadSkills();
+                    loadSkills(clazz);
                 });
     }
 
@@ -178,43 +175,10 @@ public class CharacterCreationController {
         // TODO
     }
 
-    public static void setAvatarImage(String imageName) {
-        // TODO
+    public void setAvatarImage(String imageName) {
+
     }
 
-    private void loadClassData(String chosenClass) {
-
-        try {
-            DBConnection db = DBConnection.getDbConnection();
-            String query = String.format("Select * from Stats join Classes on Classes.class_id = Stats.hero_id " +
-                    "Where class_name = '%s'", chosenClass);
-            ResultSet resultSet = db.select(query);
-            if (resultSet.next()) {
-                System.out.println("my super query = \n" + resultSet.toString());
-                hits.setText(resultSet.getString("hits"));
-                speed.setText(resultSet.getString("speed"));
-                strength.setText(resultSet.getString("strength"));
-                dexterity.setText(resultSet.getString("dexterity"));
-                intelligence.setText(resultSet.getString("intelligence"));
-                wisdom.setText(resultSet.getString("wisdom"));
-                chance.setText(resultSet.getString("chance"));
-                constitution.setText(resultSet.getString("constitution"));
-                chosenClassId = resultSet.getInt("class_id");
-            } else {
-                hits.setText("null");
-                speed.setText("null");
-                strength.setText("null");
-                dexterity.setText("null");
-                intelligence.setText("null");
-                wisdom.setText("null");
-                chance.setText("null");
-                constitution.setText("null");
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
 
     public void setUserData(String username, String password) {
         this.username = username;
@@ -266,18 +230,19 @@ public class CharacterCreationController {
     }
 
 
-    private void loadSkills() {
+    private void loadSkills(String clazz) {
         skillPane.getChildren().clear();
         List<Skill> skills;
         try {
             db = DBConnection.getDbConnection();
-            String query = String.format("SELECT * FROM `Attacks` NATURAL JOIN Classes_Attacks\n" +
-                    "Where class_id = '%d'", chosenClassId);
+            System.out.println("class = " + clazz);
+            String query = String.format("SELECT * from Attacks NATURAL JOIN Classes_Attacks NATURAL JOIN Classes WHERE class_name = '%s';", clazz);
+            System.out.println(query);
             ResultSet resultSet = db.select(query);
             classSkills = new LinkedList<>();
             skills = new LinkedList<>();
+            if (resultSet.next()) chosenClassId = resultSet.getInt("class_id");
             while (resultSet.next()) {
-                //  System.out.println("res = " + resultSet.getString("name"));
                 skills.add(new Skill(
                         resultSet.getInt("attack_id"),
                         resultSet.getString("attack_name"),
@@ -288,7 +253,9 @@ public class CharacterCreationController {
                         resultSet.getInt("random_diapason"),
                         resultSet.getString("effect")
                 ));
+
             }
+
             skills.forEach(el -> {
                 System.out.println("skill name = " + el.getName());
                 ImageView skillImg = new ImageView("/assets/skills/" + el.getName() + ".png");
@@ -337,7 +304,7 @@ public class CharacterCreationController {
             Connection
                     .getConnection()
                     .sendMessageToServer(
-                            JSON.registration(username, password, chosenClassId, getRaceId()));
+                            JSON.registration(username, password, chosenClassId, getRaceId(), avatar));
             switchToLogin();
         }
     }
@@ -367,5 +334,31 @@ public class CharacterCreationController {
         fadeTransition.setToValue(0);
         fadeTransition.setOnFinished(event -> loadFxml("/fxml/login.fxml"));
         fadeTransition.play();
+    }
+
+    @SneakyThrows
+    private void chooseAvatar() {
+        FlowPane avatarImgPane = new FlowPane();
+        File file = new File(getClass().getResource("/assets/SIMPLEAvatarsIcons/64X64/").toURI());
+        Stage stage = new Stage();
+        for (File f : file.listFiles()) {
+            if (!f.isDirectory()) {
+                ImageView imageView = new ImageView("/assets/SIMPLEAvatarsIcons/64X64/" + f.getName());
+                imageView.setOnMouseClicked(event -> {
+                    avatar = f.getName().substring(0, f.getName().indexOf('.'));
+                    System.out.println("Chosen avatar = " + avatar);
+                    avatarImage.setImage(new Image("/assets/SIMPLEAvatarsIcons/512X512/" + f.getName()));
+                    stage.close();
+                });
+                avatarImgPane.getChildren().add(imageView);
+            }
+        }
+        avatarImgPane.setStyle("-fx-border-color :  #8e7c74; -fx-border-width : 3; ");
+        Scene scene = new Scene(avatarImgPane);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.toFront();
+        stage.show();
+
     }
 }

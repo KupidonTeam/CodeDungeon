@@ -112,7 +112,7 @@ public class FightController {
         skillImage.setFitHeight(100);
         skillImage.setFitWidth(100);
 
-        ImageView playerImg = new ImageView("/assets/SIMPLEAvatarsIcons/512X512/warrior_1.png");
+        ImageView playerImg = new ImageView(Player.getInstance().getAvatarIcon());
         playerImg.setFitWidth(160);
         playerImg.setFitHeight(160);
 

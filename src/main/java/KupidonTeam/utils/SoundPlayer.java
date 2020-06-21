@@ -49,4 +49,28 @@ public class SoundPlayer {
         audioClip.setVolume(0.45);
         audioClip.play();
     }
+
+    public void shop() {
+        audioClip = playSound("/assets/sound/effects/shop.wav");
+        audioClip.setVolume(0.45);
+        audioClip.play();
+    }
+
+    public void pvp() {
+        audioClip = playSound("/assets/sound/effects/pvp.wav");
+        audioClip.setVolume(0.45);
+        audioClip.play();
+    }
+
+    public void soldItem() {
+        audioClip = playSound("/assets/sound/effects/sold_item.wav");
+        audioClip.setVolume(0.45);
+        audioClip.play();
+    }
+
+    public void dungeon() {
+        audioClip = playSound("/assets/sound/effects/dungeon.wav");
+        audioClip.setVolume(0.45);
+        audioClip.play();
+    }
 }

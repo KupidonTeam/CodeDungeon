@@ -81,7 +81,7 @@
                 <ImageView id="warrior1" fitHeight="64.0" fitWidth="64.0" layoutX="426.0" layoutY="25.0"
                            pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" styleClass="avatar">
                     <image>
-                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/Warrior_1.png"/>
+                        <Image url="@/assets/SIMPLEAvatarsIcons/64X64/default.png"/>
                     </image>
                 </ImageView>
                 <ImageView id="warrior1" fitHeight="64.0" fitWidth="64.0" layoutX="426.0" layoutY="25.0"

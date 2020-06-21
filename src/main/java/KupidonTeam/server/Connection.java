@@ -4,6 +4,7 @@ import KupidonTeam.controllers.BattleController;
 import KupidonTeam.exceptions.FailedToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
 import KupidonTeam.login.SignLogic;
+import KupidonTeam.player.Player;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
 import javafx.application.Platform;
@@ -138,7 +139,9 @@ public class Connection {
                 break;
             case "startBattle":
                 Platform.runLater(() -> setBattleResults(msg));
-
+                break;
+            case "getLoot":
+                setLoot(msg);
                 break;
             default:
                 System.out.println("Invalid response : " + msg);
@@ -210,7 +213,7 @@ public class Connection {
     }
 
     public void setBattleResults(String msg) {
-        System.out.println("I work");
+
         JSONObject battleResult = new JSONObject(msg).getJSONObject("data").getJSONObject("battle_result");
         JSONObject playerRes = battleResult.getJSONObject("player_attack");
         JSONObject enemyRes = battleResult.getJSONObject("mob_attack");
@@ -221,6 +224,18 @@ public class Connection {
                         enemyRes.getInt("damage_given"),
                         enemyRes.getJSONObject("attack").getString("name")
                 );
+    }
+
+    public void setLoot(String msg) {
+        Player player = Player.getInstance();
+        JSONObject data = new JSONObject(msg).getJSONObject("data");
+        if (data.getJSONObject("level").getBoolean("gotNewLevel")) {
+            player.newLvl();
+        }
+        player.getInventory().addAll(JSON.armor(data));
+        player.getInventory().addAll(JSON.weapons(data));
+        player.getInventory().addAll(JSON.foods(data));
+
     }
 }
 

@@ -63,12 +63,12 @@ public class JSON {
             skills.add(
                     new Skill(Integer.parseInt(el),
                             skill.getString("attack_name"),
-                            skill.getInt("lvl"),
-                            skill.getString("type_attack"),
+                            skill.getInt("attack_lvl"),
+                            skill.getString("attack_type"),
                             skill.getInt("count_of_random"),
-                            skill.getInt("cooldown"),
+                            skill.getInt("attack_cooldown"),
                             skill.getInt("random_diapason"),
-                            skill.getString("effect")
+                            skill.getString("attack_effect")
                     ));
         });
 
@@ -101,8 +101,8 @@ public class JSON {
             weapons.add(new Weapon(Integer.parseInt(el),
                     weapon.getString("weapon_name"),
                     weapon.getDouble("weapon_price"),
-                    weapon.getInt("damage_min"),
-                    weapon.getInt("damage_max"),
+                    weapon.getInt("weapon_damage_min"),
+                    weapon.getInt("weapon_damage_max"),
                     weapon.getDouble("weapon_weight")
             ));
         });
@@ -138,6 +138,7 @@ public class JSON {
                     armor.getString("armor_name"),
                     armor.getDouble("armor_weight"),
                     armor.getDouble("armor_price")
+//                    armor.getInt("lvl")
             ));
         });
         return armors;
@@ -245,14 +246,14 @@ public class JSON {
         return json.replaceAll("\n| ", "");
     }
 
-    public static String registration(String username, String password, int classId, int raceId) {
+    public static String registration(String username, String password, int classId, int raceId, String avatar) {
         return String.format("{" +
                 "\"action\":\"playerRegistration\"," +
                 "\"data\":{\"player_name\": \"%s\"," +
                 "\"player_password\": \"%s\"," +
                 "\"class_id\": %d, " +
                 "\"race_id\": %d," +
-                "\"avatar\" : \"Elf_1\"}}", username, password, classId, raceId);
+                "\"avatar\" : \"%s\"}}", username, password, classId, raceId, avatar);
     }
 
     public static String getLoot() {

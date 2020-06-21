@@ -2,8 +2,12 @@ package KupidonTeam.gui;
 
 import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.controllers.BattleController;
+import KupidonTeam.items.Armor;
+import KupidonTeam.items.Food;
+import KupidonTeam.items.Weapon;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.login.SignLogic;
+import KupidonTeam.player.Inventory;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
@@ -43,7 +47,7 @@ public class MainController {
     private AnchorPane mainPane;
 
     @FXML
-    private ScrollPane carriedPane;
+    private FlowPane inventoryPane;
 
     @FXML
     private TextArea wornPane;
@@ -199,26 +203,67 @@ public class MainController {
 
     //Примерный тест инвенторя
     private void initInventory() {
+        inventoryPane.getChildren().clear();
         VBox inventory = new VBox();
-        HBox weaponLine1 = new HBox();
-        ImageView weapon = new ImageView("/assets/weapons/Export_64/AxeDouble.png");
-        weapon.setFitHeight(32);
-        weapon.setFitWidth(32);
-        Button dropBt = new Button("Drop");
-        weaponLine1.getChildren().addAll(weapon, dropBt);
-        HBox weaponLine2 = new HBox();
-        ImageView weapon2 = new ImageView("/assets/weapons/Export_64/Arrow.png");
-        weapon2.setFitHeight(32);
-        weapon2.setFitWidth(32);
-        Button sellBt = new Button("Sell");
-        weaponLine2.getChildren().addAll(weapon2, sellBt);
-        weaponLine1.setStyle("-fx-background-color: red;");
-        weaponLine2.setStyle("-fx-background-color: red;");
-        inventory.getChildren().addAll(weaponLine1, weaponLine2);
-        inventory.setSpacing(5);
-        inventory.setStyle("-fx-background-color: red;");
-        carriedPane.setContent(inventory);
-        carriedPane.setStyle("-fx-background-color: red;");
+
+        player.getInventory().getItems().forEach(item -> {
+            HBox itemLine = new HBox();
+            Tooltip tooltip;
+            Button useBt = null;
+            ImageView itemImage = null;
+
+            if (item instanceof Armor) {
+                itemImage = new ImageView("/assets/armor/" + item.getName() + ".png");
+                itemLine.getChildren().add(itemImage);
+                itemImage.setFitHeight(64);
+                itemImage.setFitWidth(64);
+                tooltip = new Tooltip(item.toString());
+                Tooltip.install(itemImage, tooltip);
+                useBt = new Button("Drop");
+                useBt.setOnMouseClicked(event -> {
+                    player.drop(item);
+                    initInventory();
+                });
+                itemLine.getChildren().add(useBt);
+                inventory.getChildren().add(itemLine);
+
+                System.out.println("ARMOR");
+            }
+            if (item instanceof Weapon) {
+                itemImage = new ImageView("/assets/weapons/" + item.getName() + ".png");
+                itemLine.getChildren().add(itemImage);
+                itemImage.setFitHeight(64);
+                itemImage.setFitWidth(64);
+                tooltip = new Tooltip(item.toString());
+                Tooltip.install(itemImage, tooltip);
+                useBt = new Button("Drop");
+                useBt.setOnMouseClicked(event -> {
+                    player.drop(item);
+                    initInventory();
+                });
+                itemLine.getChildren().add(useBt);
+                inventory.getChildren().add(itemLine);
+                System.out.println("WEAPOn");
+            }
+            if (item instanceof Food) {
+                itemImage = new ImageView("/assets/food/" + item.getName() + ".png");
+                itemImage.setFitHeight(64);
+                itemImage.setFitWidth(64);
+                tooltip = new Tooltip(item.toString());
+                Tooltip.install(itemImage, tooltip);
+                useBt = new Button("Use");
+                useBt.setOnMouseClicked(event -> {
+                    player.heal(item);
+                    initInventory();
+                });
+
+                inventory.getChildren().add(itemImage);
+                inventory.getChildren().add(useBt);
+            }
+
+
+        });
+        inventoryPane.getChildren().add(inventory);
     }
 
 
@@ -295,6 +340,7 @@ public class MainController {
         hp.setTextFill(Color.WHITE);
         hpPane.getChildren().add(hp);
         avatarIcon.setImage(player.getAvatarIcon());
+        initInventory();
         skillsSetup();
 
     }
@@ -357,7 +403,7 @@ public class MainController {
         assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert cardTable != null : "fx:id=\"cardTable\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert enemyCard != null : "fx:id=\"enemyCard\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert carriedPane != null : "fx:id=\"carriedPane\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert inventoryPane != null : "fx:id=\"carriedPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert wornPane != null : "fx:id=\"wornPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert nearPane != null : "fx:id=\"nearPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert mapPane != null : "fx:id=\"mapPane\" was not injected: check your FXML file 'main_v2.fxml'.";
@@ -441,9 +487,9 @@ public class MainController {
     }
 
     public void choosePaneMenu() {
-        ImageView shopImg = new ImageView("/assets/weapons/Export_256/Coin.png");
-        ImageView dungeonImg = new ImageView("/assets/weapons/Export_256/Sword.png");
-        ImageView pvpImg = new ImageView("/assets/weapons/Export_256/BowLoaded.png");
+        ImageView shopImg = new ImageView("/assets/weapons/Coin.png");
+        ImageView dungeonImg = new ImageView("/assets/weapons/Sword.png");
+        ImageView pvpImg = new ImageView("/assets/weapons/Short Bow.png");
 
         FlowPane shopPane = new FlowPane();
         shopPane.setAlignment(Pos.CENTER);
