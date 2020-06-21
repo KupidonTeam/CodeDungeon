@@ -39,6 +39,4 @@ public class Dot {
             battleController.changeRoom(id);
         });
     }
-
-
 }

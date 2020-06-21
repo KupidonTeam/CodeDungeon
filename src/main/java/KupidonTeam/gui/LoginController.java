@@ -239,7 +239,6 @@ public class LoginController {
 
         win.setAlignment(Pos.CENTER);
         dialogStage.setScene(scene);
-        dialogStage.setScene(scene);
         dialogStage.show();
     }
 
@@ -247,8 +246,6 @@ public class LoginController {
         loginToServerDialog();
         Platform.runLater(() -> loginCheck());
     }
-
-
 }
 
 

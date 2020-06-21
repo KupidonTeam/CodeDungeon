@@ -138,5 +138,4 @@ public class Graph extends AnchorPane {
     public AnchorPane getPane() {
         return this;
     }
-
 }

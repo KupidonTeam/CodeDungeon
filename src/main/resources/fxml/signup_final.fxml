@@ -96,20 +96,23 @@
                 </font>
             </Label>
             <TextField fx:id="userNameField" layoutX="371.0" layoutY="124.0" prefHeight="30.0" prefWidth="183.0"
-                       promptText="username" style="-fx-background-color: none; -fx-text-inner-color: white;">
+                       promptText="username" style="-fx-background-color: none; -fx-text-inner-color: #816d64;
+                       -fx-prompt-text-fill: #8e7c74;">
                 <font>
                     <Font size="14.0"/>
                 </font>
             </TextField>
             <PasswordField fx:id="passwordField" layoutX="371.0" layoutY="202.0" prefHeight="25.0" prefWidth="174.0"
-                           promptText="password" style="-fx-background-color: none; -fx-text-inner-color: white;">
+                           promptText="password" style="-fx-background-color: none; -fx-text-inner-color: #816d64;
+                            -fx-prompt-text-fill: #8e7c74;">
                 <font>
                     <Font size="14.0"/>
                 </font>
             </PasswordField>
             <PasswordField fx:id="confirmPasswordField" layoutX="371.0" layoutY="278.0" prefHeight="25.0"
                            prefWidth="174.0" promptText="password"
-                           style="-fx-background-color: none; -fx-text-inner-color: white;">
+                           style="-fx-background-color: none; -fx-text-inner-color: #816d64;
+                            -fx-prompt-text-fill: #8e7c74;">
                 <font>
                     <Font size="14.0"/>
                 </font>
