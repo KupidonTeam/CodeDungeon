@@ -20,8 +20,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
@@ -219,7 +217,7 @@ public class LoginController {
 
     private void loginToServerDialog() {
         Text message = new Text("Connecting to server\nPlease wait...");
-        message.setFill(Color.WHITE);
+        message.setFill(Color.rgb(142, 126, 116));
         message.setStyle(
                 "-fx-font: 18 century;" +
                         "-fx-text-alignment : center;");

@@ -292,11 +292,11 @@ public class MainController {
         player = Player.getInstance();
         nickNameLabel.setText(player.getName());
         Label exp = new Label(player.getExperience() + "");
-        exp.setTextFill(Color.WHITE);
+        exp.setTextFill(Color.rgb(142, 124, 116));
         exPane.getChildren().add(exp);
         statsTextArea.setText(player.toString());
         Label hp = new Label(player.getStats().getHits() + " %");
-        hp.setTextFill(Color.WHITE);
+        hp.setTextFill(Color.rgb(142, 124, 116));
         hpPane.getChildren().add(hp);
         avatarIcon.setImage(player.getAvatarIcon());
         skillsSetup();
@@ -472,8 +472,8 @@ public class MainController {
 
         FlowPane pvpPane = new FlowPane();
         pvpPane.setAlignment(Pos.CENTER);
-        Label pvpLabel = new Label("PVP");
-        pvpPane.setStyle("-fx-text-fill: #816d64;");
+        Label pvpLabel = new Label("PvP");
+        pvpLabel.setStyle("-fx-text-fill: #816d64;");
         pvpLabel.setFont(new Font("Century", 16));
         pvpPane.getChildren().addAll(pvpLabel, pvpImg);
         pvpPane.setStyle("" +

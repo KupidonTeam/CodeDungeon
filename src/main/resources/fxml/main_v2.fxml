@@ -42,7 +42,7 @@
                                                     prefHeight="329.0" prefWidth="270.0"
                                                     style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;">
                                             <content>
-                                                <FlowPane fx:id="inventoryPane" prefHeight="330.0" prefWidth="272.0" style="-fx-background-color: #251a1a; -fx-text-fill: white;" />
+                                                <FlowPane fx:id="inventoryPane" prefHeight="330.0" prefWidth="272.0" style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;" />
                                             </content>
                                         </ScrollPane>
                                     </children>
@@ -244,7 +244,7 @@
                         <Image url="@/assets/images_for_main/heart.png" />
                     </image>
                 </ImageView>
-                <FlowPane fx:id="exPane" layoutX="129.0" layoutY="51.0" prefHeight="18.0" prefWidth="166.0" />
+                <FlowPane fx:id="exPane" layoutX="129.0" layoutY="55.0" prefHeight="18.0" prefWidth="166.0" />
             </children>
         </AnchorPane>
         <FlowPane fx:id="cardTable" layoutX="301.0" layoutY="51.0" prefHeight="534.0" prefWidth="522.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" />
