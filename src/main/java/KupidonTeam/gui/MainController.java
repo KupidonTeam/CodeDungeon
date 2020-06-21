@@ -12,7 +12,6 @@ import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
-import KupidonTeam.utils.SoundPlayer;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -165,7 +164,7 @@ public class MainController {
         bt4.setOnMouseClicked(event -> {
             cardTable.getChildren().clear();
             mapPane.getChildren().clear();
-            battleController.getLoot(this);
+            server.sendMessageToServer(JSON.getLoot());
         });
 
     }
@@ -207,71 +206,68 @@ public class MainController {
     }
 
     //Примерный тест инвенторя
-    public void initInventory() {
+    private void initInventory() {
         inventoryPane.getChildren().clear();
-        player.getInventory().getItems().forEach(item -> {
-            VBox itemLine = new VBox();
-            itemLine.setAlignment(Pos.CENTER);
-            Tooltip tooltip;
-            Button useBt = new Button();
-            useBt.setPrefWidth(60);
-            useBt.setStyle("" +
-                    "-fx-background-color :  #961307;" +
-                    "-fx-text-fill : #816d64;" +
-                    "-fx-border-color:  #8e7c74;");
+        VBox inventory = new VBox();
 
-            ImageView itemImage = new ImageView();
-            itemImage.setFitHeight(64);
-            itemImage.setFitWidth(64);
+        player.getInventory().getItems().forEach(item -> {
+            HBox itemLine = new HBox();
+            Tooltip tooltip;
+            Button useBt = null;
+            ImageView itemImage = null;
 
             if (item instanceof Armor) {
-                System.out.println("ARMOR = " + item.getName());
-
-                itemImage.setImage(new Image("/assets/armor/" + item.getName() + ".png"));
+                itemImage = new ImageView("/assets/armor/" + item.getName() + ".png");
                 itemLine.getChildren().add(itemImage);
+                itemImage.setFitHeight(64);
+                itemImage.setFitWidth(64);
                 tooltip = new Tooltip(item.toString());
                 Tooltip.install(itemImage, tooltip);
-                useBt.setText("Drop");
+                useBt = new Button("Drop");
                 useBt.setOnMouseClicked(event -> {
                     player.drop(item);
                     initInventory();
                 });
                 itemLine.getChildren().add(useBt);
-                inventoryPane.getChildren().add(itemLine);
+                inventory.getChildren().add(itemLine);
+
+                System.out.println("ARMOR");
             }
             if (item instanceof Weapon) {
-                itemImage.setImage(new Image("/assets/weapons/" + item.getName() + ".png"));
+                itemImage = new ImageView("/assets/weapons/" + item.getName() + ".png");
                 itemLine.getChildren().add(itemImage);
-                ;
+                itemImage.setFitHeight(64);
+                itemImage.setFitWidth(64);
                 tooltip = new Tooltip(item.toString());
                 Tooltip.install(itemImage, tooltip);
-                useBt.setText("Drop");
+                useBt = new Button("Drop");
                 useBt.setOnMouseClicked(event -> {
                     player.drop(item);
                     initInventory();
                 });
                 itemLine.getChildren().add(useBt);
-                inventoryPane.getChildren().add(itemLine);
+                inventory.getChildren().add(itemLine);
                 System.out.println("WEAPOn");
             }
             if (item instanceof Food) {
-                itemImage.setImage(new Image("/assets/food/" + item.getName() + ".png"));
-                itemLine.getChildren().add(itemImage);
+                itemImage = new ImageView("/assets/food/" + item.getName() + ".png");
+                itemImage.setFitHeight(64);
+                itemImage.setFitWidth(64);
                 tooltip = new Tooltip(item.toString());
                 Tooltip.install(itemImage, tooltip);
-                useBt.setText("Drop");
+                useBt = new Button("Use");
                 useBt.setOnMouseClicked(event -> {
                     player.heal(item);
-                    loadPlayerInformation();
+                    initInventory();
                 });
-                itemLine.getChildren().add(useBt);
-                inventoryPane.getChildren().add(itemLine);
+
+                inventory.getChildren().add(itemImage);
+                inventory.getChildren().add(useBt);
             }
 
 
         });
-
-
+        inventoryPane.getChildren().add(inventory);
     }
 
 
@@ -341,15 +337,11 @@ public class MainController {
         player = Player.getInstance();
         nickNameLabel.setText(player.getName());
         Label exp = new Label(player.getExperience() + "");
-
-        exp.setTextFill(Color.WHITE);
-        exPane.getChildren().clear();
+        exp.setTextFill(Color.rgb(142, 124, 116));
         exPane.getChildren().add(exp);
         statsTextArea.setText(player.toString());
         Label hp = new Label(player.getStats().getHits() + " %");
-        hp.setTextFill(Color.WHITE);
-        hpPane.getChildren().clear();
-
+        hp.setTextFill(Color.rgb(142, 124, 116));
         hpPane.getChildren().add(hp);
         avatarIcon.setImage(player.getAvatarIcon());
         initInventory();
@@ -471,7 +463,7 @@ public class MainController {
         wait(2000);
 //        System.out.println("====> "+Container.getDungeonList().toString());
         battleController = BattleController.getInstance();
-        battleController.setBattleController(this, player, Container.getDungeonList(), cardTable, mapPane, hpPane);
+        battleController.setBattleController(player, Container.getDungeonList(), cardTable, mapPane, hpPane);
     }
 
     public void attack() {
@@ -506,11 +498,7 @@ public class MainController {
         Label shopLabel = new Label("Shop");
         shopLabel.setStyle("-fx-text-fill: #816d64;");
         shopLabel.setFont(new Font("Century", 16));
-        VBox shopBox = new VBox();
-        shopBox.setAlignment(Pos.CENTER);
-        shopBox.getChildren().addAll(shopLabel, shopImg);
-        shopPane.getChildren().add(shopBox);
-//        shopPane.getChildren().addAll(shopLabel, shopImg);
+        shopPane.getChildren().addAll(shopLabel, shopImg);
         shopPane.setStyle("" +
                 "-fx-background-color:  #201b1b;" +
                 "-fx-border-color :  #8e7c74;" +
@@ -540,23 +528,14 @@ public class MainController {
                 "-fx-border-width : 2 2 2 1;");
 
         Glow glow = new Glow(0.9);
-        SoundPlayer soundPlayer = new SoundPlayer();
-        shopPane.setOnMouseEntered(event -> {
-            shopPane.setEffect(glow);
-            soundPlayer.shop();
-        });
+
+        shopPane.setOnMouseEntered(event -> shopPane.setEffect(glow));
         shopPane.setOnMouseExited(event -> shopPane.setEffect(null));
 
-        dungeonPane.setOnMouseEntered(event -> {
-            dungeonPane.setEffect(glow);
-            soundPlayer.dungeon();
-        });
+        dungeonPane.setOnMouseEntered(event -> dungeonPane.setEffect(glow));
         dungeonPane.setOnMouseExited(event -> dungeonPane.setEffect(null));
 
-        pvpPane.setOnMouseEntered(event -> {
-            pvpPane.setEffect(glow);
-            soundPlayer.pvp();
-        });
+        pvpPane.setOnMouseEntered(event -> pvpPane.setEffect(glow));
         pvpPane.setOnMouseExited(event -> pvpPane.setEffect(null));
 
         shopPane.setPrefWidth(220);
@@ -574,11 +553,6 @@ public class MainController {
 
         pane.getChildren().addAll(hBox);
         cardTable.getChildren().add(hBox);
-    }
-
-    public void update() {
-        initInventory();
-        choosePaneMenu();
     }
 
 
