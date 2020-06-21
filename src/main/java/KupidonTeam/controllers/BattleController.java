@@ -10,11 +10,13 @@ import KupidonTeam.utils.JSON;
 import KupidonTeam.utils.SoundPlayer;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -91,6 +93,12 @@ public class BattleController {
         }
         if (killedEnemies.containsAll(currentRoom.getEnemies())) {
             System.out.println("<--Current room is clear-->");
+            Label label = new Label();
+            label.setAlignment(Pos.TOP_LEFT);
+            label.setFont(new Font("Arial", 30));
+            label.setText("Well Done! \nGo to another room! ");
+            label.setTextFill(Color.RED);
+            cardTable.getChildren().add(label);
         }
         if (isDungeonClear()) {
             System.out.println("All enemies are killed!");
@@ -99,9 +107,7 @@ public class BattleController {
     }
 
     private void loadEnemyCards() {
-
-
-
+        //  mainController.cleanPeeked();
         enemyCards = new ArrayList<>();
         currentRoom.getEnemies().forEach(el -> {
             enemyCards.add(new EnemyCard(el));
@@ -248,7 +254,6 @@ public class BattleController {
         System.out.println("Set battle results");
         chosenEnemyCard.getEnemy().getStats().setDamage(enemyDamage);
         mainPlayer.getStats().setDamage(playerDamage);
-
         fightPane(mainPlayer,
                 chosenEnemyCard,
                 enemyDamage,
@@ -258,7 +263,6 @@ public class BattleController {
         updatePlayerInfo();
         battleStatus();
         chosenEnemyCard = null;
-        mainController.cleanPeekedSkill();
 
     }
 
@@ -284,6 +288,7 @@ public class BattleController {
         Connection.getConnection().sendMessageToServer(JSON.getLoot());
         wait(1000);
 //        initMainController();
+        System.out.println("After wait");
         prizePane();
         mainController.update();
 

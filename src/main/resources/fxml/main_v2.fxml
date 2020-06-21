@@ -18,6 +18,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-border-color: #8e7c74;"
@@ -42,7 +43,8 @@
                                                     prefHeight="329.0" prefWidth="270.0"
                                                     style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;">
                                             <content>
-                                                <FlowPane fx:id="inventoryPane" prefHeight="330.0" prefWidth="272.0" style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;" />
+                                                <FlowPane fx:id="inventoryPane" prefHeight="330.0" prefWidth="272.0"
+                                                          style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;"/>
                                             </content>
                                         </ScrollPane>
                                     </children>
@@ -87,7 +89,10 @@
                         </Tab>
                     </tabs>
                 </TabPane>
-                <FlowPane fx:id="mapPane" layoutX="14.0" layoutY="14.0" prefHeight="268.0" prefWidth="278.0" />
+                <FlowPane fx:id="mapPane" layoutX="14.0" layoutY="14.0" prefHeight="268.0" prefWidth="278.0"
+                          style="-fx-border-color: #8e7c74; -fx-background-color: #251a1a;"
+                          AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+                          AnchorPane.topAnchor="10.0"/>
             </children>
         </AnchorPane>
         <AnchorPane layoutX="723.0" layoutY="3.0" prefHeight="670.0" prefWidth="300.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -123,9 +128,133 @@
                         </Tab>
                         <Tab text="Stats">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
+                                            style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
-                                        <TextArea fx:id="statsTextArea" layoutX="9.0" layoutY="14.0" prefHeight="558.0" prefWidth="260.0" promptText="Your future messages will be here." style="-fx-border-color: #8e7c74; -fx-background-color: #251a1a; -fx-text-fill: #8e7c74; -fx-prompt-text-fill: #816d64;" stylesheets="@/assets/css/text-area.css" />
+                                        <AnchorPane prefHeight="298.0" prefWidth="139.0">
+                                            <children>
+                                                <ImageView fitHeight="303.0" fitWidth="178.0">
+                                                    <image>
+                                                        <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="6.0"
+                                                           layoutY="261.0">
+                                                    <image>
+                                                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="6.0"
+                                                           layoutY="225.0">
+                                                    <image>
+                                                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="6.0"
+                                                           layoutY="189.0">
+                                                    <image>
+                                                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="6.0"
+                                                           layoutY="153.0">
+                                                    <image>
+                                                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="6.0"
+                                                           layoutY="117.0">
+                                                    <image>
+                                                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="6.0"
+                                                           layoutY="81.0">
+                                                    <image>
+                                                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="6.0"
+                                                           layoutY="45.0">
+                                                    <image>
+                                                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="34.0" fitWidth="166.0" layoutX="6.0"
+                                                           layoutY="9.0">
+                                                    <image>
+                                                        <Image url="@/assets/GUI_Parts/Gui_parts/name_bar3.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <Label contentDisplay="CENTER" layoutX="14.0" layoutY="9.0"
+                                                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                                       minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                                                       text="Hits" textFill="#816d64">
+                                                    <font>
+                                                        <Font name="Century" size="14.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label contentDisplay="CENTER" layoutX="14.0" layoutY="45.0"
+                                                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                                       minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                                                       text="Speed" textFill="#816d64">
+                                                    <font>
+                                                        <Font name="Century" size="14.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label contentDisplay="CENTER" layoutX="14.0" layoutY="81.0"
+                                                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                                       minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                                                       text="Strength" textFill="#816d64">
+                                                    <font>
+                                                        <Font name="Century" size="14.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label contentDisplay="CENTER" layoutX="14.0" layoutY="119.0"
+                                                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                                       minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                                                       text="Dexterity" textFill="#816d64">
+                                                    <font>
+                                                        <Font name="Century" size="14.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label contentDisplay="CENTER" layoutX="14.0" layoutY="153.0"
+                                                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                                       minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                                                       text="Intelligence" textFill="#816d64">
+                                                    <font>
+                                                        <Font name="Century" size="14.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label contentDisplay="CENTER" layoutX="14.0" layoutY="188.0"
+                                                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                                       minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                                                       text="Wisdom" textFill="#816d64">
+                                                    <font>
+                                                        <Font name="Century" size="14.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label contentDisplay="CENTER" layoutX="14.0" layoutY="225.0"
+                                                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                                       minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                                                       text="Chance" textFill="#816d64">
+                                                    <font>
+                                                        <Font name="Century" size="14.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label contentDisplay="CENTER" layoutX="14.0" layoutY="261.0"
+                                                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                                       minWidth="-Infinity" prefHeight="34.0" prefWidth="115.0"
+                                                       text="Constitution" textFill="#816d64">
+                                                    <font>
+                                                        <Font name="Century" size="14.0"/>
+                                                    </font>
+                                                </Label>
+                                                <VBox fx:id="statsPane" layoutX="129.0" layoutY="14.0"
+                                                      prefHeight="397.0" prefWidth="62.0" spacing="14.0"
+                                                      AnchorPane.leftAnchor="129.0"/>
+                                            </children>
+                                        </AnchorPane>
                                     </children>
                                 </AnchorPane>
                             </content>
@@ -244,7 +373,7 @@
                         <Image url="@/assets/images_for_main/heart.png" />
                     </image>
                 </ImageView>
-                <FlowPane fx:id="exPane" layoutX="129.0" layoutY="55.0" prefHeight="18.0" prefWidth="166.0" />
+                <FlowPane fx:id="exPane" layoutX="129.0" layoutY="54.0" prefHeight="18.0" prefWidth="166.0"/>
             </children>
         </AnchorPane>
         <FlowPane fx:id="cardTable" layoutX="301.0" layoutY="51.0" prefHeight="534.0" prefWidth="522.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" />

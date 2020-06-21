@@ -62,4 +62,8 @@ public class Stats {
         hits += heal;
         if (hits > 100) hits = 100;
     }
+
+    public Integer[] getStatsData() {
+        return new Integer[]{hits, speed, strength, dexterity, intelligence, wisdom, chance, constitution};
+    }
 }

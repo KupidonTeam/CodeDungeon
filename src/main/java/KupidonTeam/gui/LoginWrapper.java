@@ -1,5 +1,6 @@
 package KupidonTeam.gui;
 
+import KupidonTeam.server.Connection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ public class LoginWrapper extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Connection server = Connection.getConnection();
         currentStage = primaryStage;
         String path = "/fxml/login.fxml";
         primaryStage.initStyle(StageStyle.UNDECORATED);

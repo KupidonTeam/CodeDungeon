@@ -230,6 +230,7 @@ public class Connection {
     }
 
     public synchronized void setLoot(String msg) {
+        System.out.println("Set loot");
         Player player = Player.getInstance();
         JSONObject data = new JSONObject(msg).getJSONObject("data");
         if (data.getJSONObject("level").getBoolean("gotNewLevel")) {
@@ -243,6 +244,7 @@ public class Connection {
         prizes.addAll(JSON.weapons(data));
         prizes.addAll(JSON.foods(data));
         Container.setPrizes(prizes);
+        System.out.println("Notifty");
         notify();
 
     }

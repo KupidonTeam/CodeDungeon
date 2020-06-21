@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 public class SoundPlayer {
 
     private AudioClip audioClip;
+    private AudioClip mainTheme;
 
     public SoundPlayer() {
 
@@ -21,10 +22,16 @@ public class SoundPlayer {
         audioClip.play();
     }
 
+    public AudioClip mainTheme() {
+        mainTheme = playSound("/assets/sound/music/tavern.mp3");
+        mainTheme.setVolume(0.25);
+        mainTheme.setCycleCount(AudioClip.INDEFINITE);
+
+        return mainTheme;
+    }
+
 
     public AudioClip playSound(String path) {
-
-
         try {
             audioClip = new AudioClip(getClass().getResource(path).toURI().toString());
         } catch (URISyntaxException e) {
@@ -78,5 +85,9 @@ public class SoundPlayer {
         audioClip = playSound("/assets/sound/music/victory.wav");
         audioClip.setVolume(0.45);
         audioClip.play();
+    }
+
+    public AudioClip getMainTheme() {
+        return mainTheme;
     }
 }
