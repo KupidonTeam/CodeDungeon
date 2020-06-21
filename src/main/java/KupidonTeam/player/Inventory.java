@@ -9,16 +9,13 @@ import java.util.List;
 @Getter
 @Setter
 public class Inventory {
-    private long capacity;
+    private long maxWheight;
     private List<Item> items;
 
-    public Inventory() {
-        capacity = 10;
-    }
 
-//    public Inventory(Player player) {
-//        capacity = player.getStrength() * 15;
-//    }
+    public Inventory(Player player) {
+        maxWheight = player.getStats().getStrength() * 15;
+    }
 
     public void addItem(Item item) {
         items.add(item);

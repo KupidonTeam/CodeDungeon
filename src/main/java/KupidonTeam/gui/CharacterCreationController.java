@@ -1,7 +1,7 @@
 package KupidonTeam.gui;
 
 
-import KupidonTeam.db.DBConnection;
+import KupidonTeam.DB.DBConnection;
 import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.server.Connection;
@@ -14,12 +14,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.ImagePattern;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.util.Duration;
@@ -142,7 +140,6 @@ public class CharacterCreationController {
 
 
         raceDropDown.getItems().addAll(loadRaces());
-        //raceDropDown.setStyle("{.choice-box > .label { -fx-text-fill: white; }");
         avatarImage.setOnMouseClicked(event -> openAvatarWindow());
         confirmButton.setOnMouseClicked(event -> confirmBtSetUp());
 
@@ -332,7 +329,6 @@ public class CharacterCreationController {
     }
 
     private void confirmBtSetUp() {
-        System.out.println("Choseeeeeeeeen class  = " + chosenClassId);
         if (chosenClassId <= 0 && getRaceId() <= 0) {
             showError();
 

@@ -30,9 +30,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import lombok.SneakyThrows;
 
-import javax.xml.crypto.URIReferenceException;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 

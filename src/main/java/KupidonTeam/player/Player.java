@@ -1,5 +1,6 @@
 package KupidonTeam.player;
 
+import KupidonTeam.DB.DBConnection;
 import KupidonTeam.animals.Animal;
 import KupidonTeam.characters.classes.Stats;
 import KupidonTeam.characters.classes.skills.Skill;
@@ -10,10 +11,12 @@ import KupidonTeam.items.Weapon;
 import KupidonTeam.locations.Lobby;
 import KupidonTeam.locations.Room;
 
-import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Getter
@@ -34,6 +37,8 @@ public class Player {
     private List<Armor> armors;
     private List<Weapon> weapons;
     private List<Animal> animals;
+    private Image avatarIcon;
+    private Inventory inventory;
 
 
     private Player(String name, Stats stats, String playerClass, int lvl, int experience, List<Skill> skills,
@@ -49,6 +54,8 @@ public class Player {
         setWeapons(weapons);
         setAnimals(animals);
         location = new Lobby();
+        loadAvatarIcon();
+        inventory = new Inventory(this);
     }
 
     public static boolean createPlayer(String name, String playerClass, int lvl, int experience, Stats stats,
@@ -100,5 +107,23 @@ public class Player {
                         "\nLvl=" + lvl +
                         "\nExperience =" + experience
                 ;
+    }
+
+    public void loadAvatarIcon() {
+
+        DBConnection db = DBConnection.getDbConnection();
+        ResultSet resultSet = db.select("SELECT avatar FROM `Players`\n" +
+                "WHERE player_name = 'tt';");
+        try {
+            if (resultSet.next()) {
+                String avatar = resultSet.getString("avatar");
+                avatarIcon = new Image("/assets/SIMPLEAvatarsIcons/512X512/" + avatar + ".png");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+
     }
 }

@@ -251,7 +251,8 @@ public class JSON {
                 "\"data\":{\"player_name\": \"%s\"," +
                 "\"player_password\": \"%s\"," +
                 "\"class_id\": %d, " +
-                "\"race_id\": %d}}", username, password, classId, raceId);
+                "\"race_id\": %d," +
+                "\"avatar\" : \"Elf_1\"}}", username, password, classId, raceId);
     }
 
     public static String getLoot() {

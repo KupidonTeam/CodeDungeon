@@ -3,15 +3,12 @@ package KupidonTeam.gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.player.Player;
 import KupidonTeam.utils.SoundPlayer;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.effect.Blend;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;

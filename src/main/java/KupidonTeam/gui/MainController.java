@@ -294,6 +294,7 @@ public class MainController {
         Label hp = new Label(player.getStats().getHits() + " %");
         hp.setTextFill(Color.WHITE);
         hpPane.getChildren().add(hp);
+        avatarIcon.setImage(player.getAvatarIcon());
         skillsSetup();
 
     }
@@ -402,6 +403,7 @@ public class MainController {
 
         attackButton.setOnMouseClicked(event -> attack());
         sendButton.setOnMouseClicked(event -> sendChatMessage());
+
     }
 
 
@@ -491,4 +493,6 @@ public class MainController {
         cardTable.getChildren().add(hBox);
 
     }
+
+
 }

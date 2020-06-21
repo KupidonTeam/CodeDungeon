@@ -17,6 +17,7 @@ public class Game {
         Connection server = Connection.getConnection();
         Application.launch(LoginWrapper.class, args);
 
+
     }
 
 }
