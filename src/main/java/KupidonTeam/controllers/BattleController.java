@@ -93,12 +93,6 @@ public class BattleController {
         }
         if (killedEnemies.containsAll(currentRoom.getEnemies())) {
             System.out.println("<--Current room is clear-->");
-            Label label = new Label();
-            label.setAlignment(Pos.TOP_LEFT);
-            label.setFont(new Font("Arial", 30));
-            label.setText("Well Done! \nGo to another room! ");
-            label.setTextFill(Color.RED);
-            cardTable.getChildren().add(label);
         }
         if (isDungeonClear()) {
             System.out.println("All enemies are killed!");
@@ -171,7 +165,7 @@ public class BattleController {
         Integer[] visitedRooms = new Integer[passedRooms.size()];
         passedRooms.toArray(visitedRooms);
         //TODO исправить баг с картой
-        map.updateDungeon(rooms, routes, visitedRooms, currentRoom.getRoomId());
+        map.updateDungeon(rooms, routes, new Integer[]{0}, currentRoom.getRoomId());
 
     }
 

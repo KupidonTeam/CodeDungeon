@@ -7,12 +7,12 @@ import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.login.SignLogic;
-import KupidonTeam.player.Inventory;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
 import KupidonTeam.utils.SoundPlayer;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,17 +20,13 @@ import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -145,6 +141,8 @@ public class MainController {
     @FXML
     private FlowPane exPane;
 
+    private double xOffset = 0;
+    private double yOffset = 0;
     private Connection server;
     private Player player;
     private Stage dialogStage;
@@ -153,13 +151,15 @@ public class MainController {
     private Dungeon currentRoom;
     private List<EnemyCard> enemyCards;
     private int peekedSkill;
-    SoundPlayer soundPlayer;
+    private SoundPlayer soundPlayer;
+    private ChooseMenuController chooseMenuController;
 
 
     @FXML
     void initialize() {
         loadFxmlData();
         setUp();
+        setDraggable();
         loadPlayerInformation();
         List<EnemyCard> enemyCards = new LinkedList<>();
         enemyCards.add(new EnemyCard());
@@ -178,10 +178,11 @@ public class MainController {
         AudioClip audioClip = soundPlayer.mainTheme();
         audioClip.play();
         server = Connection.getConnection();
-        dialogStage = new Stage();
-        dialogStage.initStyle(StageStyle.UNDECORATED);
-        panesSetUp();
+
+
+        chooseMenuController = new ChooseMenuController(this, cardTable);
         buttonsSetUp();
+        panesSetUp();
         server.setChatArea(chatPane);
         server.setCardTable(cardTable);
         musicVolume.setMin(0);
@@ -190,6 +191,7 @@ public class MainController {
             audioClip.setVolume(musicVolume.getValue());
             System.out.println("put volume = " + musicVolume.getValue());
         });
+
     }
 
     private void panesSetUp() {
@@ -210,7 +212,7 @@ public class MainController {
             }
         });
         Container.setChatPane(chatPane);
-        choosePaneMenu();
+        chooseMenuController.choosePaneMenu();
     }
 
     //Примерный тест инвенторя
@@ -266,7 +268,7 @@ public class MainController {
                 itemLine.getChildren().add(itemImage);
                 tooltip = new Tooltip(item.toString());
                 Tooltip.install(itemImage, tooltip);
-                useBt.setText("Drop");
+                useBt.setText("Heal");
                 useBt.setOnMouseClicked(event -> {
                     player.heal(item);
                     loadPlayerInformation();
@@ -345,6 +347,8 @@ public class MainController {
     }
 
     private void loadPlayerInformation() {
+        hpPane.getChildren().clear();
+        exPane.getChildren().clear();
         player = Player.getInstance();
         nickNameLabel.setText(player.getName());
         Label exp = new Label(player.getExperience() + "");
@@ -502,132 +506,10 @@ public class MainController {
         skillGroup.getChildren().forEach(el -> el.setStyle(""));
     }
 
-    public void choosePaneMenu() {
-        SoundPlayer soundPlayer = new SoundPlayer();
-        ImageView shopImg = new ImageView("/assets/weapons/Coin.png");
-        ImageView dungeonImg = new ImageView("/assets/weapons/Sword.png");
-        ImageView pvpImg = new ImageView("/assets/weapons/Short Bow.png");
-
-        FlowPane shopPane = new FlowPane();
-        shopPane.setAlignment(Pos.CENTER);
-        Label shopLabel = new Label("Shop");
-        shopLabel.setStyle("-fx-text-fill: #816d64");
-        shopLabel.setFont(new Font("Century", 18));
-
-        VBox shopVBox = new VBox();
-        shopVBox.setAlignment(Pos.CENTER);
-        shopVBox.setSpacing(30);
-        shopVBox.getChildren().addAll(shopLabel, shopImg);
-        shopPane.getChildren().add(shopVBox);
-        shopPane.setStyle("" +
-                "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
-                "-fx-border-color :  #8e7c74;" +
-                "-fx-border-width : 2 1 2 2;");
-
-
-        FlowPane dungeonPane = new FlowPane();
-        dungeonPane.setAlignment(Pos.CENTER);
-        Label dungeonLabel = new Label("Dungeon");
-        dungeonLabel.setStyle("-fx-text-fill: #816d64;");
-        dungeonLabel.setFont(new Font("Century", 18));
-
-        VBox dungeonVBox = new VBox();
-        dungeonVBox.setAlignment(Pos.CENTER);
-        dungeonVBox.setSpacing(30);
-        dungeonVBox.getChildren().addAll(dungeonLabel, dungeonImg);
-        dungeonPane.getChildren().add(dungeonVBox);
-        dungeonPane.setStyle("" +
-                "-fx-background-color:  linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
-                "-fx-border-color :  #8e7c74;" +
-                "-fx-border-width : 2 1 2 1;");
-
-
-        FlowPane pvpPane = new FlowPane();
-        pvpPane.setAlignment(Pos.CENTER);
-        Label pvpLabel = new Label("PvP");
-        pvpLabel.setStyle("-fx-text-fill: #816d64;");
-        pvpLabel.setFont(new Font("Century", 18));
-
-        VBox pvpVBox = new VBox();
-        pvpVBox.setAlignment(Pos.CENTER);
-        pvpVBox.setSpacing(30);
-        pvpVBox.getChildren().addAll(pvpLabel, pvpImg);
-        pvpPane.getChildren().add(pvpVBox);
-        pvpPane.setStyle("" +
-                "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
-                "-fx-border-color :  #8e7c74;" +
-                "-fx-border-width : 2 2 2 1;");
-
-        // On Mouse Entered Effects
-        shopPane.setCursor(Cursor.HAND);
-        shopPane.setOnMouseEntered(event -> {
-            soundPlayer.shop();
-            shopPane.setStyle(
-                    "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, yellow, #201b1b);" +
-                            "-fx-border-color :  #8e7c74;" +
-                            "-fx-border-width : 2 1 2 1;");
-            shopLabel.setStyle("-fx-text-fill: #201b1b;");
-        });
-        shopPane.setOnMouseExited(event -> {
-            shopPane.setStyle(
-                    "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
-                            "-fx-border-color :  #8e7c74;" +
-                            "-fx-border-width : 2 1 2 1;");
-            shopLabel.setStyle("-fx-text-fill: #816d64;");
-        });
-
-        dungeonPane.setCursor(Cursor.HAND);
-        dungeonPane.setOnMouseClicked(event -> getDungeonSkeleton());
-        dungeonPane.setOnMouseEntered(event -> {
-            soundPlayer.dungeon();
-            dungeonPane.setStyle(
-                    "-fx-background-color:  linear-gradient(from 25% 25% to 100% 100%, #201b1b, #816d64, #201b1b);" +
-                            "-fx-border-color :  #8e7c74;" +
-                            "-fx-border-width : 2 1 2 1;");
-            dungeonLabel.setStyle("-fx-text-fill: #201b1b;");
-        });
-        dungeonPane.setOnMouseExited(event -> {
-            dungeonPane.setStyle(
-                    "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
-                            "-fx-border-color :  #8e7c74;" +
-                            "-fx-border-width : 2 1 2 1;");
-            dungeonLabel.setStyle("-fx-text-fill: #816d64;");
-        });
-
-        pvpPane.setCursor(Cursor.HAND);
-        pvpPane.setOnMouseEntered(event -> {
-            soundPlayer.pvp();
-            pvpPane.setStyle(
-                    "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, darkred, #201b1b);" +
-                            "-fx-border-color :  #8e7c74;" +
-                            "-fx-border-width : 2 2 2 1;");
-        });
-        pvpPane.setOnMouseExited(event -> pvpPane.setStyle(
-                "-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #201b1b, #39100f, #201b1b);" +
-                        "-fx-border-color :  #8e7c74;" +
-                        "-fx-border-width : 2 1 2 1;"));
-
-        shopPane.setPrefWidth(220);
-        shopPane.setPrefHeight(460);
-
-        dungeonPane.setPrefWidth(220);
-        dungeonPane.setPrefHeight(460);
-
-        pvpPane.setPrefWidth(220);
-        pvpPane.setPrefHeight(460);
-
-        HBox hBox = new HBox();
-        hBox.getChildren().addAll(shopPane, dungeonPane, pvpPane);
-        FlowPane pane = new FlowPane();
-
-        pane.getChildren().addAll(hBox);
-        cardTable.getChildren().add(hBox);
-    }
-
 
     public void update() {
         initInventory();
-        choosePaneMenu();
+        chooseMenuController.choosePaneMenu();
     }
 
     private void setPlayerStats() {
@@ -640,5 +522,37 @@ public class MainController {
                 });
     }
 
+    public void openShop() {
+        FlowPane flowPane = new FlowPane();
+        flowPane.setStyle("-fx-background-color : #201b1b;");
+        Button buyButton = new Button();
+        Button sellButton = new Button();
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(flowPane);
+        scrollPane.setMaxHeight(450);
+        scrollPane.setStyle("-fx-background-color : #201b1b");
+        cardTable.getChildren().add(flowPane);
+        ShopController shopController = new ShopController(this, cardTable);
+        shopController.loadGoods();
+    }
+
+    private void setDraggable() {
+        Stage primaryStage = LoginWrapper.getCurrentStage();
+        mainPane.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = primaryStage.getX() - event.getScreenX();
+                yOffset = primaryStage.getY() - event.getScreenY();
+            }
+        });
+
+        mainPane.setOnMouseDragged(event ->
+        {
+            primaryStage.setX(event.getScreenX() + xOffset);
+            primaryStage.setY(event.getScreenY() + yOffset);
+        });
+
+
+    }
 
 }

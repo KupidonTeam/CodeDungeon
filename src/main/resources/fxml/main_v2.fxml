@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-border-color: #8e7c74;"
+<AnchorPane fx:id="mainPane" prefHeight="720.0" prefWidth="1375.0" style="-fx-border-color: #8e7c74;"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="KupidonTeam.gui.MainController">
     <children>
@@ -36,14 +36,14 @@
                     <tabs>
                         <Tab text="Inventory">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="278.0"
                                             style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
                                         <ScrollPane fx:id="carriedPane" hbarPolicy="NEVER" layoutX="4.0" layoutY="2.0"
-                                                    prefHeight="329.0" prefWidth="270.0"
+                                                    prefHeight="264.0" prefWidth="269.0"
                                                     style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;">
                                             <content>
-                                                <FlowPane fx:id="inventoryPane" prefHeight="330.0" prefWidth="272.0"
+                                                <FlowPane fx:id="inventoryPane" prefHeight="261.0" prefWidth="274.0"
                                                           style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;"/>
                                             </content>
                                         </ScrollPane>
@@ -289,13 +289,20 @@
                 </Label>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="300.0" layoutY="520.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="425.0" style="-fx-border-color: #8e7c74; -fx-background-color: #201b1b;" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
-         <children>
-            <Button fx:id="attackButton" layoutX="219.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #39100f;" text="Attack" textFill="#816d64" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-         </children>
+        <AnchorPane layoutX="302.0" layoutY="520.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                    minWidth="-Infinity" prefHeight="64.0" prefWidth="775.0"
+                    style="-fx-border-color: #8e7c74; -fx-background-color: #201b1b;" AnchorPane.bottomAnchor="135.0"
+                    AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
+            <children>
+                <Button fx:id="attackButton" layoutX="219.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0"
+                        prefWidth="110.0" style="-fx-border-color: #8e7c74; -fx-background-color: #39100f;"
+                        text="Attack" textFill="#816d64" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                        AnchorPane.topAnchor="10.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+            </children>
         </AnchorPane>
         <Pane layoutX="300.0" layoutY="584.0" prefHeight="85.0" prefWidth="425.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
             <children>
@@ -367,15 +374,23 @@
                         <Font name="Century" size="10.0" />
                     </font>
                 </Label>
-                <FlowPane fx:id="hpPane" layoutX="124.0" layoutY="38.0" prefHeight="18.0" prefWidth="166.0" />
-                <ImageView fitHeight="20.0" fitWidth="17.0" layoutX="96.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                <FlowPane fx:id="hpPane" layoutX="124.0" layoutY="38.0" prefHeight="18.0" prefWidth="166.0"/>
+                <ImageView fitHeight="20.0" fitWidth="17.0" layoutX="96.0" layoutY="39.0" pickOnBounds="true"
+                           preserveRatio="true">
                     <image>
-                        <Image url="@/assets/images_for_main/heart.png" />
+                        <Image url="@/assets/images_for_main/heart.png"/>
                     </image>
                 </ImageView>
                 <FlowPane fx:id="exPane" layoutX="129.0" layoutY="54.0" prefHeight="18.0" prefWidth="166.0"/>
             </children>
         </AnchorPane>
-        <FlowPane fx:id="cardTable" layoutX="301.0" layoutY="51.0" prefHeight="534.0" prefWidth="522.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" />
+        <ScrollPane hbarPolicy="NEVER" layoutX="301.0" layoutY="51.0"
+                    style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="195.0"
+                    AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0">
+            <content>
+                <FlowPane fx:id="cardTable" prefHeight="469.0" prefWidth="770.0"
+                          style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;"/>
+            </content>
+        </ScrollPane>
     </children>
 </AnchorPane>

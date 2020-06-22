@@ -103,118 +103,122 @@
                         <Font name="Century" size="18.0"/>
                     </font>
                 </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Hits"
-                       textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="14.0"/>
-                    </font>
-                </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="124.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Speed"
-                       textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="14.0"/>
-                    </font>
-                </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Strength"
-                       textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="14.0"/>
-                    </font>
-                </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="198.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Dexterity"
-                       textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="14.0"/>
-                    </font>
-                </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="232.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Intelligence"
-                       textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="14.0"/>
-                    </font>
-                </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="267.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Wisdom"
-                       textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="14.0"/>
-                    </font>
-                </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Chance"
-                       textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="14.0"/>
-                    </font>
-                </Label>
-                <Label contentDisplay="CENTER" layoutX="34.0" layoutY="340.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="115.0"
-                       text="Constitution" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="14.0"/>
-                    </font>
-                </Label>
-                <Label fx:id="hits" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="83.0"
-                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                       prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="18.0"/>
-                    </font>
-                </Label>
-                <Label fx:id="speed" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="119.0"
-                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                       prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="18.0"/>
-                    </font>
-                </Label>
-                <Label fx:id="strength" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="155.0"
-                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                       prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="18.0"/>
-                    </font>
-                </Label>
-                <Label fx:id="dexterity" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0"
-                       layoutY="191.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                       minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="18.0"/>
-                    </font>
-                </Label>
-                <Label fx:id="intelligence" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0"
-                       layoutY="229.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                       minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="18.0"/>
-                    </font>
-                </Label>
-                <Label fx:id="wisdom" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="264.0"
-                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                       prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="18.0"/>
-                    </font>
-                </Label>
-                <Label fx:id="chance" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0" layoutY="299.0"
-                       maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                       prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="18.0"/>
-                    </font>
-                </Label>
-                <Label fx:id="constitution" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="131.0"
-                       layoutY="335.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                       minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
-                    <font>
-                        <Font name="Century" size="18.0"/>
-                    </font>
-                </Label>
+                <AnchorPane layoutX="34.0" layoutY="83.0">
+                    <children>
+                        <Label contentDisplay="CENTER" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                               minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0" text="Hits"
+                               textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                               minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                               text="Speed" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                               minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                               text="Strength" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutY="115.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                               minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                               text="Dexterity" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutY="149.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                               minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                               text="Intelligence" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutY="184.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                               minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                               text="Wisdom" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutY="221.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                               minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="98.0"
+                               text="Chance" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" layoutY="257.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                               minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="115.0"
+                               text="Constitution" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="hits" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="97.0"
+                               maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                               prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="speed" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="97.0"
+                               layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                               minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="strength" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="97.0"
+                               layoutY="72.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                               minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="dexterity" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="97.0"
+                               layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                               minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="intelligence" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="97.0"
+                               layoutY="146.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                               minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="wisdom" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="97.0"
+                               layoutY="181.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                               minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="chance" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="97.0"
+                               layoutY="216.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                               minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="constitution" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="97.0"
+                               layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                               minWidth="-Infinity" prefHeight="45.0" prefWidth="50.0" text="0" textFill="#816d64">
+                            <font>
+                                <Font name="Century" size="18.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
                 <ImageView fitHeight="303.0" fitWidth="178.0" layoutX="418.0" layoutY="79.0">
                     <image>
                         <Image url="@/assets/GUI_Parts/Gui_parts/Mini_frame0.png"/>
