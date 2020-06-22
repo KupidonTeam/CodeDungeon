@@ -219,7 +219,7 @@ public class BattleController {
     private void updatePlayerInfo() {
         hpPane.getChildren().clear();
         Label playerHp = new Label(mainPlayer.getStats().getHits() + " %");
-        playerHp.setTextFill(Color.WHITE);
+        playerHp.setTextFill(Color.rgb(142, 124, 116));
         hpPane.getChildren().add(playerHp);
     }
 
