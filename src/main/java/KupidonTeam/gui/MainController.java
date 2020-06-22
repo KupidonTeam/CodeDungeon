@@ -137,7 +137,7 @@ public class MainController {
     private int peekedSkill;
     private SoundPlayer soundPlayer;
     private ChooseMenuController chooseMenuController;
-
+    public boolean isDungeon;
 
     @FXML
     void initialize() {
@@ -341,7 +341,7 @@ public class MainController {
         skillImages.add(skill4);
 
 
-        for (int i = 0; i < player.getSkills().size(); i++) {
+        for (int i = 0; i < player.getSkills().size() - 1; i++) {
             Tooltip tooltip = new Tooltip();
             tooltip.setPrefSize(200, 150);
             Skill skill = player.getSkills().get(i);
@@ -416,12 +416,12 @@ public class MainController {
         attack.setOnMouseClicked(event -> attack());
         sendButton.setOnMouseClicked(event -> sendChatMessage());
         mainMenuBt.setOnMouseClicked(event -> {
-            update();
-            if (battleController != null) {
+            if (isDungeon) {
                 battleController.getLoot(this);
-                battleController = null;
+                isDungeon = false;
+            } else {
+                update(true);
             }
-            chooseMenuController.choosePaneMenu();
         });
 
     }
@@ -434,15 +434,16 @@ public class MainController {
 //        System.out.println("====> "+Container.getDungeonList().toString());
         battleController = BattleController.getInstance();
         battleController.setBattleController(this, player, Container.getDungeonList(), cardTable, mapPane, hpPane);
+        isDungeon = true;
     }
 
     public void attack() {
         System.out.println("peeked skill =  " + peekedSkill);
-        if (peekedSkill <= 0 && battleController.getChosenEnemyCard() == null) {
+        System.out.println("chosen enemy = " + battleController.getChosenEnemyCard());
+        if (peekedSkill <= 0 || BattleController.getInstance().getChosenEnemyCard() == null) {
             System.out.println("You have to peek skill and choose enemy!");
             return;
         }
-
         startBattle();
 
     }
@@ -460,11 +461,15 @@ public class MainController {
     }
 
 
-    public void update() {
+    public void update(boolean menu) {
         cardTable.getChildren().clear();
         mapPane.getChildren().clear();
         loadPlayerInformation();
         initInventory();
+        if (menu) {
+            chooseMenuController.choosePaneMenu();
+        }
+
     }
 
     private void setPlayerStats() {

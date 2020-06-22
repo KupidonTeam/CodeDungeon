@@ -54,7 +54,6 @@ public class BattleController {
         this.mapPane = mapPane;
         this.hpPane = hpPane;
         killedEnemies = new ArrayList<>();
-//        initMainController();
         currentRoom = dungeonsList.get(0);
         passedRooms = new HashSet<>();
         passedRooms.add(0);
@@ -84,15 +83,18 @@ public class BattleController {
                     if (enemy.getStats().getHits() <= 0) {
                         System.out.println(enemy.getName() + " : is killed");
                         killedEnemies.add(enemy);
-                        deleteCard(enemy);
                     }
                 });
+        killedEnemies.forEach(enemy -> deleteCard(enemy));
+        killedEnemies.clear();
+        updateRoom();
         if (mainPlayer.getStats().getHits() <= 0) {
             mainController.messageDialog("You are dead");
             return;
         }
         if (killedEnemies.containsAll(currentRoom.getEnemies())) {
             System.out.println("<--Current room is clear-->");
+            cardTable.getChildren().clear();
         }
         if (isDungeonClear()) {
             System.out.println("All enemies are killed!");
@@ -124,7 +126,7 @@ public class BattleController {
                 } else {
                     //delete border from chosen enemy
                     //Timeline timeline = EnemyCardController.setBorder(chosenEnemy);
-                    chosenEnemyCard.deleteBorder();
+//                    chosenEnemyCard.deleteBorder();
                     el.setBorder();
 
                     chosenEnemyCard = el;
@@ -190,6 +192,7 @@ public class BattleController {
                 if (el.getRoomId() == newRoomId) currentRoom = el;
             });
             updateRoom();
+            battleStatus();
         } else {
             System.out.println("Can't go to that room");
         }
@@ -213,6 +216,7 @@ public class BattleController {
         ft.setOnFinished(event -> {
             cardTable.getChildren().remove(finalCardToDelete);
         });
+        currentRoom.getEnemies().remove(killedEnemy);
 
     }
 
@@ -229,7 +233,7 @@ public class BattleController {
         mapPane.getChildren().clear();
         loadEnemyCards();
         drawMap();
-        battleStatus();
+
     }
 
     //Check if all enemies in all rooms are killed
@@ -284,7 +288,7 @@ public class BattleController {
 //        initMainController();
         System.out.println("After wait");
         prizePane();
-        mainController.update();
+        mainController.update(true);
 
     }
 
