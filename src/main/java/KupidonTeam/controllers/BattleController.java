@@ -126,7 +126,7 @@ public class BattleController {
                 } else {
                     //delete border from chosen enemy
                     //Timeline timeline = EnemyCardController.setBorder(chosenEnemy);
-//                    chosenEnemyCard.deleteBorder();
+                    chosenEnemyCard.deleteBorder();
                     el.setBorder();
 
                     chosenEnemyCard = el;
