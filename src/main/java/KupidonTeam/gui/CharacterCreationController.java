@@ -284,7 +284,7 @@ public class CharacterCreationController {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return -1;
+        return 1;
     }
 
     private void showError() {
@@ -298,7 +298,6 @@ public class CharacterCreationController {
     private void confirmBtSetUp() {
         if (chosenClassId <= 0 && getRaceId() <= 0) {
             showError();
-
             return;
         } else {
             Connection

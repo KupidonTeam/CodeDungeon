@@ -51,7 +51,7 @@ public class ShopController {
                 useBt.setOnMouseClicked(event -> {
                     player.drop(item);
                     player.setGold((int) (player.getGold() + item.getPrice()));
-                    mainController.update();
+                    mainController.update(false);
                     loadGoods();
                 });
                 itemLine.getChildren().add(useBt);
@@ -69,7 +69,7 @@ public class ShopController {
                 useBt.setOnMouseClicked(event -> {
                     player.drop(item);
                     player.setGold((int) (player.getGold() + item.getPrice()));
-                    mainController.update();
+                    mainController.update(false);
                     loadGoods();
                 });
                 itemLine.getChildren().add(useBt);
@@ -85,7 +85,7 @@ public class ShopController {
                 useBt.setOnMouseClicked(event -> {
                     player.drop(item);
                     player.setGold((int) (player.getGold() + item.getPrice()));
-                    mainController.update();
+                    mainController.update(false);
                     loadGoods();
                 });
                 itemLine.getChildren().add(useBt);

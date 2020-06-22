@@ -1,72 +1,115 @@
 {
-  "action": "startBattle",
-  "code": 205,
-  "code_desc": "battle successful",
+  "action": "playerAuthorization",
+  "code": 203,
+  "code_desc": "successfully authorized",
   "data": {
-    "attack": {
-      "attack_name": "ElectroShock",
-      "attack_lvl": 0,
-      "attack_type": "Melee",
-      "count_of_random": 1,
-      "attack_cooldown": 5,
-      "random_diapason": 8,
-      "attack_effect": "lighting"
-    },
-    "mob": {
-      "attacks": {
-        "100": {
-          "cooldown": 4,
-          "count_of_random": 2,
-          "effect": "Confusion",
-          "lvl": 0,
-          "name": "Punch",
-          "random_diapason": 5,
-          "attack_type": "Melee"
-        }
-      },
-      "desc": "Medium Undead",
-      "inventory": {},
-      "name": "Zombie",
-      "stats": {
-        "armor_class": 2,
-        "chance": 0,
-        "constitution": 3,
-        "dexterity": 8,
-        "hits": -11,
-        "intelligence": 6,
-        "speed": 4,
-        "strength": 5,
-        "wisdom": 9
-      },
-      "vulnerabilities": {}
-    },
-    "battle_result": {
-      "player_attack": {
-        "attack": {
-          "attack_name": "ElectroShock",
-          "attack_lvl": 0,
-          "attack_type": "Melee",
-          "count_of_random": 1,
-          "attack_cooldown": 5,
-          "random_diapason": 8,
-          "attack_effect": "lighting"
-        },
-        "attack_successful": "True",
-        "damage_given": 14
-      },
-      "mob_attack": {
-        "attack": {
-          "cooldown": 4,
-          "count_of_random": 2,
-          "effect": "Confusion",
-          "lvl": 0,
-          "name": "Punch",
-          "random_diapason": 5,
-          "attack_type": "Melee"
-        },
-        "attack_successful": "True",
-        "damage_given": 11
+    "race": "High Elf",
+    "class_name": "Paladin",
+    "armor_class": 1,
+    "hits": 100,
+    "speed": 9.0,
+    "strength": 16.0,
+    "dexterity": 9.0,
+    "intelligence": 12.0,
+    "wisdom": 10.0,
+    "chance": 8.0,
+    "constitution": 8.0,
+    "level": 1,
+    "experience": 0,
+    "player_id": 4,
+    "player_name": "tt",
+    "class_id": 3,
+    "race_id": 4,
+    "food": {
+      "1": {
+        "food_name": "begg food",
+        "food_price": 7.0,
+        "food_lvl": 1
       }
-    }
+    },
+    "armor": {
+      "1": {
+        "armor_name": "Improved Leather",
+        "armor_lvl": 1,
+        "armor_weight": 12,
+        "armor_price": 450.0
+      }
+    },
+    "weapons": {
+      "1": {
+        "weapon_name": "Staff Weapon",
+        "weapon_price": 20.0,
+        "weapon_lvl": 1,
+        "weapon_damage_min": 1,
+        "weapon_damage_max": 6,
+        "weapon_weight": 4.0
+      }
+    },
+    "animals": {
+      "1": {
+        "animal_name": "Riding Horse",
+        "animal_lvl": 1,
+        "animal_price": 7500.0,
+        "animal_speed": 60.0,
+        "animal_capacity": 480
+      }
+    },
+    "vulnerabilities": {
+      "6": {
+        "vulnerability_name": "Fire",
+        "vulnerability_description": "Vulnerability to fire damage."
+      }
+    },
+    "attacks": {
+      "3": {
+        "attack_name": "Reincarnation",
+        "attack_lvl": 3,
+        "attack_type": "Melee",
+        "count_of_random": 0,
+        "attack_cooldown": 10,
+        "random_diapason": 0,
+        "attack_effect": "necromancy"
+      },
+      "7": {
+        "attack_name": "A ray of cold",
+        "attack_lvl": 0,
+        "attack_type": "Long Range",
+        "count_of_random": 1,
+        "attack_cooldown": 5,
+        "random_diapason": 8,
+        "attack_effect": "cold"
+      },
+      "10": {
+        "attack_name": "Sacred Flame",
+        "attack_lvl": 0,
+        "attack_type": "Long Range",
+        "count_of_random": 1,
+        "attack_cooldown": 5,
+        "random_diapason": 8,
+        "attack_effect": "fire"
+      },
+      "103": {
+        "attack_name": "Lulling",
+        "attack_lvl": 1,
+        "attack_type": "Long Range",
+        "count_of_random": 5,
+        "attack_cooldown": 5,
+        "random_diapason": 8,
+        "attack_effect": "Charm"
+      },
+      "104": {
+        "attack_name": "ElectroShock",
+        "attack_lvl": 0,
+        "attack_type": "Melee",
+        "count_of_random": 1,
+        "attack_cooldown": 5,
+        "random_diapason": 8,
+        "attack_effect": "lighting"
+      }
+    },
+    "avatar": "default",
+    "_base_exp_for_level": 300,
+    "_exp_multiplier": 2.35,
+    "exp_for_next_level": 300.0
   }
 }
