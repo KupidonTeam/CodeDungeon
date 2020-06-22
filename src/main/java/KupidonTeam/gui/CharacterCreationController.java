@@ -339,6 +339,7 @@ public class CharacterCreationController {
     @SneakyThrows
     private void chooseAvatar() {
         FlowPane avatarImgPane = new FlowPane();
+        avatarImgPane.setPrefWidth(390);
         File file = new File(getClass().getResource("/assets/SIMPLEAvatarsIcons/64X64/").toURI());
         Stage stage = new Stage();
         for (File f : file.listFiles()) {
