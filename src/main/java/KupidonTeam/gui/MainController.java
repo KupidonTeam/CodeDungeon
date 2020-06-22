@@ -137,7 +137,7 @@ public class MainController {
     private int peekedSkill;
     private SoundPlayer soundPlayer;
     private ChooseMenuController chooseMenuController;
-    public boolean isDungeon;
+    private boolean isDungeon;
 
     @FXML
     void initialize() {
@@ -319,7 +319,7 @@ public class MainController {
         gold.setText("");
         player = Player.getInstance();
         nickNameLabel.setText(player.getName());
-        Label exp = new Label(player.getExperience() + "");
+        Label exp = new Label(player.getLvl() + "");
         exp.setTextFill(Color.rgb(142, 124, 116));
         exPane.getChildren().add(exp);
         gold.setText("" + player.getGold());
@@ -422,6 +422,7 @@ public class MainController {
             } else {
                 update(true);
             }
+
         });
 
     }
@@ -515,4 +516,7 @@ public class MainController {
 
     }
 
+    public void setIsDungeon(boolean value) {
+        isDungeon = value;
+    }
 }
