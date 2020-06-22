@@ -19,6 +19,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -98,13 +99,11 @@ public class MainController {
     private ImageView skill4;
 
     @FXML
-    private ImageView skill5;
+    private Button mainMenuBt;
 
     @FXML
     private FlowPane hpPane;
 
-    @FXML
-    private Group skillGroup;
 
     @FXML
     private ImageView avatarIcon;
@@ -112,6 +111,8 @@ public class MainController {
     @FXML
     private Label nickNameLabel;
 
+    @FXML
+    private Label gold;
 
     @FXML
     private AnchorPane enemyCard;
@@ -120,7 +121,7 @@ public class MainController {
     private FlowPane cardTable;
 
     @FXML
-    private ImageView attack;
+    private AnchorPane attack;
 
 
     @FXML
@@ -144,10 +145,9 @@ public class MainController {
         setUp();
         setDraggable();
         loadPlayerInformation();
+        setPlayerStats();
         List<EnemyCard> enemyCards = new LinkedList<>();
         enemyCards.add(new EnemyCard());
-
-
 
     }
 
@@ -309,7 +309,6 @@ public class MainController {
         b.show();
         cancel.setOnMouseClicked(event -> b.close());
         ok.setOnMouseClicked(event -> {
-//            eventHandler.handle(event);
             b.close();
         });
     }
@@ -317,20 +316,20 @@ public class MainController {
     private void loadPlayerInformation() {
         hpPane.getChildren().clear();
         exPane.getChildren().clear();
+        gold.setText("");
         player = Player.getInstance();
         nickNameLabel.setText(player.getName());
         Label exp = new Label(player.getExperience() + "");
         exp.setTextFill(Color.rgb(142, 124, 116));
         exPane.getChildren().add(exp);
+        gold.setText("" + player.getGold());
 
-//        statsTextArea.setText(player.toString());
-        setPlayerStats();
         Label hp = new Label(player.getStats().getHits() + " %");
         hp.setTextFill(Color.rgb(142, 124, 116));
         hpPane.getChildren().add(hp);
         avatarIcon.setImage(player.getAvatarIcon());
         initInventory();
-        // skillsSetup();
+        skillsSetup();
 
     }
 
@@ -340,40 +339,24 @@ public class MainController {
         skillImages.add(skill2);
         skillImages.add(skill3);
         skillImages.add(skill4);
-        skillImages.add(skill5);
 
-
-        skillGroup.getChildren()
-                .forEach(el -> el.setOnMouseClicked(event -> chooseSkill(el.getId())));
 
         for (int i = 0; i < player.getSkills().size(); i++) {
             Tooltip tooltip = new Tooltip();
             tooltip.setPrefSize(200, 150);
             Skill skill = player.getSkills().get(i);
             skillImages.get(i).setImage(new Image("/assets/skills/" + skill.getName() + ".png"));
+            int finalI = i;
             skillImages.get(i).setOnMouseClicked(event -> {
+                skillImages.forEach(el -> el.setEffect(new Glow(0)));
                 peekedSkill = skill.getId();
+                skillImages.get(finalI).setEffect(new Glow(10));
                 System.out.println("peeked skill #" + skill.getId() + " = " + skill.getName());
 
             });
             tooltip.setText(skill.toString());
             Tooltip.install(skillImages.get(i), tooltip);
         }
-    }
-
-    private void chooseSkill(String skillId) {
-        skillGroup.getChildren()
-                .filtered(el -> el.getStyleClass().contains("border"))
-                .forEach(el -> el.setStyle(""));
-
-        skillGroup.getChildren()
-                .filtered(el -> el.getStyleClass().contains("border"))
-                .filtered(el -> el.getId().equalsIgnoreCase(skillId))
-                .forEach(el -> {
-                    el.setStyle("-fx-border-color:red;  -fx-border-width : 3;");
-
-                });
-
     }
 
 
@@ -398,8 +381,9 @@ public class MainController {
         assert directMessagePane != null : "fx:id=\"directMessagePane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert directMessageInput != null : "fx:id=\"directMessageInput\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert sendButton != null : "fx:id=\"sendButton\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert mainMenuBt != null : "fx:id=\"mainMenuBt\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert statsPane != null : "fx:id=\"statsPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-
+        assert gold != null : "fx:id=\"gold\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert exitButton != null : "fx:id=\"exitButton\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert locationName != null : "fx:id=\"locationName\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert skill1 != null : "fx:id=\"skill1\" was not injected: check your FXML file 'main_v2.fxml'.";
@@ -431,6 +415,14 @@ public class MainController {
 
         attack.setOnMouseClicked(event -> attack());
         sendButton.setOnMouseClicked(event -> sendChatMessage());
+        mainMenuBt.setOnMouseClicked(event -> {
+            update();
+            if (battleController != null) {
+                battleController.getLoot(this);
+                battleController = null;
+            }
+            chooseMenuController.choosePaneMenu();
+        });
 
     }
 
@@ -464,13 +456,15 @@ public class MainController {
     public void cleanPeeked() {
         cardTable.getChildren().clear();
         peekedSkill = -1;
-        skillGroup.getChildren().forEach(el -> el.setStyle(""));
+
     }
 
 
     public void update() {
+        cardTable.getChildren().clear();
+        mapPane.getChildren().clear();
+        loadPlayerInformation();
         initInventory();
-        chooseMenuController.choosePaneMenu();
     }
 
     private void setPlayerStats() {

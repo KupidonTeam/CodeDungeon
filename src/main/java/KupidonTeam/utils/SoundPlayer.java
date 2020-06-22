@@ -87,7 +87,7 @@ public class SoundPlayer {
     public void skill(String effect) {
         System.out.println("effect = " + effect);
         audioClip = playSound("/assets/sound/effects/" + effect + ".wav");
-        audioClip.setVolume(0.45);
+        audioClip.setVolume(0.8);
         audioClip.play();
     }
 
