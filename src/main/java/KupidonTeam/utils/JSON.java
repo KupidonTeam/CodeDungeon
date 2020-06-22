@@ -224,7 +224,22 @@ public class JSON {
                     enemies
             ));
         });
-
+        dungeonList.forEach(el -> {
+            System.out.println(el.getAvailableDirections());
+            if (el.getAvailableDirections().isEmpty()) {
+                System.out.println("room #" + el.getRoomId() + " = Empty");
+                if (el.getRoomId() != 0) {
+                    System.out.println("add 0");
+                    el.getAvailableDirections().add(0);
+                    dungeonList.get(0).getAvailableDirections().add(el.getRoomId());
+                } else {
+                    el.getAvailableDirections().add(1);
+                    dungeonList.get(1).getAvailableDirections().add(el.getRoomId());
+                }
+            }
+        });
+        System.out.println("result = ");
+        dungeonList.forEach(el -> System.out.println(el.getAvailableDirections()));
         return dungeonList;
     }
 

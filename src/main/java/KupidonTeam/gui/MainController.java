@@ -80,18 +80,6 @@ public class MainController {
     private TextField directMessageInput;
 
     @FXML
-    private Button bt1;
-
-    @FXML
-    private MenuButton settingsBt;
-
-    @FXML
-    private Button bt3;
-
-    @FXML
-    private Button bt4;
-
-    @FXML
     private Button exitButton;
 
     @FXML
@@ -132,10 +120,8 @@ public class MainController {
     private FlowPane cardTable;
 
     @FXML
-    private Button attackButton;
+    private ImageView attack;
 
-    @FXML
-    private Slider musicVolume;
 
     @FXML
     private FlowPane exPane;
@@ -161,7 +147,6 @@ public class MainController {
         List<EnemyCard> enemyCards = new LinkedList<>();
         enemyCards.add(new EnemyCard());
 
-        bt3.setOnMouseClicked(event -> getDungeonSkeleton());
 
 
     }
@@ -178,12 +163,6 @@ public class MainController {
         panesSetUp();
         server.setChatArea(chatPane);
         server.setCardTable(cardTable);
-        musicVolume.setMin(0);
-        musicVolume.setMax(1);
-        musicVolume.setOnMouseReleased(event -> {
-            audioClip.setVolume(musicVolume.getValue());
-            System.out.println("put volume = " + musicVolume.getValue());
-        });
 
     }
 
@@ -351,7 +330,7 @@ public class MainController {
         hpPane.getChildren().add(hp);
         avatarIcon.setImage(player.getAvatarIcon());
         initInventory();
-        skillsSetup();
+        // skillsSetup();
 
     }
 
@@ -362,7 +341,7 @@ public class MainController {
         skillImages.add(skill3);
         skillImages.add(skill4);
         skillImages.add(skill5);
-        skillImages.forEach(el -> el.setImage(null));
+
 
         skillGroup.getChildren()
                 .forEach(el -> el.setOnMouseClicked(event -> chooseSkill(el.getId())));
@@ -411,36 +390,29 @@ public class MainController {
 
     private void loadFxmlData() {
         assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert cardTable != null : "fx:id=\"cardTable\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert enemyCard != null : "fx:id=\"enemyCard\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert inventoryPane != null : "fx:id=\"carriedPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert wornPane != null : "fx:id=\"wornPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert nearPane != null : "fx:id=\"nearPane\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert inventoryPane != null : "fx:id=\"inventoryPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert mapPane != null : "fx:id=\"mapPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert chatPane != null : "fx:id=\"chatPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert messageInput != null : "fx:id=\"messageInput\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert sendButton != null : "fx:id=\"sendButton\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert directMessagePane != null : "fx:id=\"directMessagePane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert directMessageInput != null : "fx:id=\"directMessageInput\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert bt1 != null : "fx:id=\"bt1\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert settingsBt != null : "fx:id=\"settingsBt\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert bt3 != null : "fx:id=\"bt3\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert bt4 != null : "fx:id=\"bt4\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert sendButton != null : "fx:id=\"sendButton\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert statsPane != null : "fx:id=\"statsPane\" was not injected: check your FXML file 'main_v2.fxml'.";
+
         assert exitButton != null : "fx:id=\"exitButton\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert locationName != null : "fx:id=\"locationName\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert attackButton != null : "fx:id=\"attackButton\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert skill1 != null : "fx:id=\"skill1\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert skill2 != null : "fx:id=\"skill2\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert skill3 != null : "fx:id=\"skill3\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert skill4 != null : "fx:id=\"skill4\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert skill5 != null : "fx:id=\"skill5\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert skillGroup != null : "fx:id=\"skillGroup\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert skill3 != null : "fx:id=\"skill3\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert attack != null : "fx:id=\"attack\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert avatarIcon != null : "fx:id=\"avatarIcon\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert nickNameLabel != null : "fx:id=\"nickNameLabel\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert hpPane != null : "fx:id=\"hpPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert exPane != null : "fx:id=\"exPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert statsPane != null : "fx:id=\"statsPane\" was not injected: check your FXML file 'main_v2.fxml'.";
-        assert musicVolume != null : "fx:id=\"musicVolume\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert cardTable != null : "fx:id=\"cardTable\" was not injected: check your FXML file 'main_v2.fxml'.";
+
 
     }
 
@@ -457,7 +429,7 @@ public class MainController {
             }
         });
 
-        attackButton.setOnMouseClicked(event -> attack());
+        attack.setOnMouseClicked(event -> attack());
         sendButton.setOnMouseClicked(event -> sendChatMessage());
 
     }

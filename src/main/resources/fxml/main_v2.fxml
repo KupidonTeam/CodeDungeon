@@ -26,9 +26,12 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="278.0" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
-                                        <ScrollPane fx:id="carriedPane" hbarPolicy="NEVER" layoutX="4.0" layoutY="2.0" prefHeight="264.0" prefWidth="269.0" style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;">
+                                        <ScrollPane hbarPolicy="NEVER" layoutX="4.0" layoutY="2.0" prefHeight="264.0"
+                                                    prefWidth="269.0"
+                                                    style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;">
                                             <content>
-                                                <FlowPane fx:id="inventoryPane" prefHeight="261.0" prefWidth="274.0" style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;" />
+                                                <FlowPane fx:id="inventoryPane" prefHeight="261.0" prefWidth="274.0"
+                                                          style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;"/>
                                             </content>
                                         </ScrollPane>
                                     </children>
@@ -228,7 +231,7 @@
          <children>
             <ImageView fx:id="skill1" fitHeight="80.0" fitWidth="80.0" layoutX="61.0" layoutY="22.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="50.0">
                <image>
-                  <Image url="@../assets/skills/Produce%20Flame.png" />
+                   <Image url="@/assets/skills/Produce Flame.png"/>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -236,7 +239,7 @@
             </ImageView>
             <ImageView fx:id="skill2" fitHeight="80.0" fitWidth="80.0" layoutX="179.0" layoutY="22.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="170.0">
                <image>
-                  <Image url="@../assets/skills/Produce%20Flame.png" />
+                   <Image url="@/assets/skills/Produce Flame.png"/>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -244,7 +247,7 @@
             </ImageView>
             <ImageView fx:id="skill4" fitHeight="80.0" fitWidth="80.0" layoutX="621.0" layoutY="22.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="50.0">
                <image>
-                  <Image url="@../assets/skills/Produce%20Flame.png" />
+                   <Image url="@/assets/skills/Produce Flame.png"/>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -252,7 +255,7 @@
             </ImageView>
             <ImageView fx:id="skill3" fitHeight="80.0" fitWidth="80.0" layoutX="503.0" layoutY="22.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="170.0">
                <image>
-                  <Image url="@../assets/skills/Produce%20Flame.png" />
+                   <Image url="@/assets/skills/Produce Flame.png"/>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -260,7 +263,7 @@
             </ImageView>
             <ImageView fx:id="attack" fitHeight="75.0" fitWidth="179.0" layoutX="287.0" layoutY="5.0" AnchorPane.leftAnchor="295.0">
                <image>
-                  <Image url="@../assets/GUI_Parts/Gui_parts/button_ready_on.png" />
+                   <Image url="@/assets/GUI_Parts/Gui_parts/button_ready_on.png"/>
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
