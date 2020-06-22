@@ -1,9 +1,6 @@
 package KupidonTeam.utils;
 
-import javafx.application.Platform;
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 import java.net.URISyntaxException;
 
@@ -52,7 +49,7 @@ public class SoundPlayer {
     }
 
     public void damaged() {
-        audioClip = playSound("/assets/sound/effects/damaged.wav");
+        audioClip = playSound("/assets/sound/effects/confusion.wav");
         audioClip.setVolume(0.45);
         audioClip.play();
     }
@@ -83,6 +80,13 @@ public class SoundPlayer {
 
     public void victory() {
         audioClip = playSound("/assets/sound/music/victory.wav");
+        audioClip.setVolume(0.45);
+        audioClip.play();
+    }
+
+    public void skill(String effect) {
+        System.out.println("effect = " + effect);
+        audioClip = playSound("/assets/sound/effects/" + effect + ".wav");
         audioClip.setVolume(0.45);
         audioClip.play();
     }

@@ -59,7 +59,6 @@ public class JSON {
         jsonObject.keySet().forEach(el -> {
             JSONObject skill = jsonObject.getJSONObject(el);
 
-
             skills.add(
                     new Skill(Integer.parseInt(el),
                             skill.getString("attack_name"),

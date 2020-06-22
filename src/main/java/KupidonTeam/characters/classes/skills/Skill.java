@@ -1,5 +1,6 @@
 package KupidonTeam.characters.classes.skills;
 
+import KupidonTeam.utils.SoundPlayer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -15,8 +16,11 @@ public class Skill {
     private int coolDown;
     private int randomDiapason;
 
-
     private String effect;
+
+    public void skillSound() {
+        new SoundPlayer().skill(effect);
+    }
 
     public String toString() {
         return String.format("" +

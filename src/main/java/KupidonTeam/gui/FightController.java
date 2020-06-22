@@ -3,6 +3,7 @@ package KupidonTeam.gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.player.Player;
 import KupidonTeam.utils.SoundPlayer;
 import javafx.animation.FadeTransition;
@@ -49,11 +50,13 @@ public class FightController {
 
 
     private int enemyDamage;
-    private String playerSkill;
+    private String playerSkillName;
     private int playerDamage;
-    private String enemySkill;
+    private String enemySkillName;
     private ImageView skillImage;
     private ImageView enemyImage;
+    private Skill playerSkill;
+    private Skill enemySkill;
 
     @FXML
     void initialize() {
@@ -61,11 +64,20 @@ public class FightController {
 
     }
 
-    public void setData(Player player, EnemyCard enemyCard, int enemyDamage, String playerSkill, int playerDamage, String enemySkill) {
+    public void setData(Player player, EnemyCard enemyCard, int enemyDamage, String playerSkillName, int playerDamage, String enemySkillName) {
         this.enemyDamage = enemyDamage;
-        this.playerSkill = playerSkill;
+        this.playerSkillName = playerSkillName;
         this.playerDamage = playerDamage;
-        this.enemySkill = enemySkill;
+        this.enemySkillName = enemySkillName;
+        for (Skill skill : player.getSkills()) {
+            if (skill.getName().equalsIgnoreCase(playerSkillName))
+                playerSkill = skill;
+        }
+        for (Skill skill : enemyCard.getEnemy().getSkillList()) {
+            if (skill.getName().equalsIgnoreCase(enemySkillName)) {
+                enemySkill = skill;
+            }
+        }
 
         setUpData(enemyCard);
         show();
@@ -73,6 +85,7 @@ public class FightController {
 
     private void show() {
         attackImageBattle.getChildren().add(skillImage);
+        playerNameBattle.setText(Player.getInstance().getName());
         fight("Player turn", playerSkill, enemyDamage, enemyImageBattle);
         transition(new Pane()).setOnFinished(event -> {
 
@@ -83,12 +96,12 @@ public class FightController {
 
     }
 
-    private void fight(String turn, String skill, int damage, StackPane imageDamaged) {
+    private void fight(String turn, Skill skill, int damage, StackPane imageDamaged) {
         passBattle.setText(turn);
         damageBattle.setText("");
-        skillImage.setImage(loadSkillImage(skill));
+        skillImage.setImage(loadSkillImage(skill.getName()));
         transition(attackImageBattle);
-        new SoundPlayer().damaged();
+        skill.skillSound();
         damageBattle.setText("-" + damage);
         blendEffect(imageDamaged);
     }
@@ -104,7 +117,8 @@ public class FightController {
     }
 
     private Image loadSkillImage(String skillName) {
-        return new Image("/assets/skills/" + skillName + ".png");
+        String imageUri = "/assets/skills/" + skillName + ".png";
+        return new Image(imageUri);
     }
 
     private void setUpData(EnemyCard enemyCard) {
@@ -123,6 +137,9 @@ public class FightController {
 
         enemyImageBattle.getChildren().add(enemyImage);
         playerImageBattle.getChildren().add(playerImg);
+
+        playerNameBattle.setText(Player.getInstance().getName());
+        enemyNameBattle.setText(enemyCard.getEnemy().getName());
     }
 
     private void initFxml() {
