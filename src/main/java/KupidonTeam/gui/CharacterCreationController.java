@@ -246,12 +246,12 @@ public class CharacterCreationController {
                 skills.add(new Skill(
                         resultSet.getInt("attack_id"),
                         resultSet.getString("attack_name"),
-                        resultSet.getInt("lvl"),
-                        resultSet.getString("type_attack"),
+                        resultSet.getInt("attack_lvl"),
+                        resultSet.getString("attack_type"),
                         resultSet.getInt("count_of_random"),
-                        resultSet.getInt("cooldown"),
+                        resultSet.getInt("attack_cooldown"),
                         resultSet.getInt("random_diapason"),
-                        resultSet.getString("effect")
+                        resultSet.getString("attack_effect")
                 ));
 
             }

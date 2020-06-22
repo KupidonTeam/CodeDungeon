@@ -16,7 +16,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -148,8 +147,6 @@ public class MainController {
     private Stage dialogStage;
     private List<ImageView> skillImages;
     private BattleController battleController;
-    private Dungeon currentRoom;
-    private List<EnemyCard> enemyCards;
     private int peekedSkill;
     private SoundPlayer soundPlayer;
     private ChooseMenuController chooseMenuController;
@@ -165,11 +162,7 @@ public class MainController {
         enemyCards.add(new EnemyCard());
 
         bt3.setOnMouseClicked(event -> getDungeonSkeleton());
-        bt4.setOnMouseClicked(event -> {
-            cardTable.getChildren().clear();
-            mapPane.getChildren().clear();
-            battleController.getLoot(this);
-        });
+
 
     }
 
@@ -276,11 +269,7 @@ public class MainController {
                 itemLine.getChildren().add(useBt);
                 inventoryPane.getChildren().add(itemLine);
             }
-
-
         });
-
-
     }
 
 
