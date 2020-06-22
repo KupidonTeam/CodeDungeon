@@ -54,6 +54,7 @@ public class Player {
         inventory.addAll(armors);
         inventory.addAll(weapons);
         gold = 0;
+        lvl = 0;
 //        inventory.addAll(foods);
     }
 
@@ -80,7 +81,7 @@ public class Player {
     }
 
     public void newLvl() {
-        setLvl(++lvl);
+        lvl++;
     }
 
     @Override

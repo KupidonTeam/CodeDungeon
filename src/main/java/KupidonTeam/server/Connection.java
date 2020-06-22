@@ -233,6 +233,8 @@ public class Connection {
         System.out.println("Set loot");
         Player player = Player.getInstance();
         JSONObject data = new JSONObject(msg).getJSONObject("data");
+        System.out.println(data.getJSONObject("level"));
+        System.out.println(data.getJSONObject("level").getBoolean("gotNewLevel"));
         if (data.getJSONObject("level").getBoolean("gotNewLevel")) {
             player.newLvl();
         }

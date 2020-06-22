@@ -288,7 +288,9 @@ public class BattleController {
 //        initMainController();
         System.out.println("After wait");
         prizePane();
+        mainController.setIsDungeon(false);
         mainController.update(true);
+
 
     }
 
