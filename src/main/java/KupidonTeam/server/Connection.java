@@ -41,7 +41,6 @@ public class Connection {
         setup();
     }
 
-
     public static Connection getConnection() {
         if (connection == null) {
             connection = new Connection();
@@ -84,7 +83,6 @@ public class Connection {
     }
 
     public void sendMessageToServer(String msg) {
-
         if (!msg.isEmpty()) {
             System.out.println("=========send msg to ser method=======");
             System.out.println("msg = " + msg);
@@ -126,25 +124,29 @@ public class Connection {
         switch (action) {
             case "playerAuthorization":
                 logic.loginAnalyze(msg);
+
                 break;
             case "sendChatMessage":
                 addMessageToChat(serverResponse.getJSONObject("data"));
+
                 break;
             case "getDungeonSkeleton":
-
                 createDungeonSkeleton(msg);
-                break;
 
+                break;
             case "connectToServer":
                 if (serverResponse.getInt("code") != 100) {
                     connectionFailedAlert();
                 }
+
                 break;
             case "startBattle":
                 Platform.runLater(() -> setBattleResults(msg));
+
                 break;
             case "getLoot":
                 setLoot(msg);
+
                 break;
             default:
                 System.out.println("Invalid response : " + msg);
@@ -184,7 +186,6 @@ public class Connection {
         }
     }
 
-
     private void connectionFailedAlert() {
         JOptionPane.showMessageDialog(null,
                 "Server does not response!\nPlease restart the application.",
@@ -192,7 +193,6 @@ public class Connection {
                 JOptionPane.ERROR_MESSAGE);
         System.exit(-200);
     }
-
 
     public void setChatArea(TextArea chatArea) {
         this.chatArea = chatArea;
@@ -207,7 +207,6 @@ public class Connection {
         Container.addMessageToChat(buffer);
     }
 
-
     //create a dungeon skeleton and add it into common object 'Container'
     public synchronized void createDungeonSkeleton(String dungeonJson) {
         System.out.println("Cotainer = " + dungeonJson);
@@ -218,7 +217,6 @@ public class Connection {
     }
 
     public void setBattleResults(String msg) {
-
         JSONObject battleResult = new JSONObject(msg).getJSONObject("data").getJSONObject("battle_result");
         JSONObject playerRes = battleResult.getJSONObject("player_attack");
         JSONObject enemyRes = battleResult.getJSONObject("mob_attack");
@@ -237,9 +235,11 @@ public class Connection {
         JSONObject data = new JSONObject(msg).getJSONObject("data");
         System.out.println(data.getJSONObject("level"));
         System.out.println(data.getJSONObject("level").getBoolean("gotNewLevel"));
+
         if (data.getJSONObject("level").getBoolean("gotNewLevel")) {
             player.newLvl();
         }
+
         player.getInventory().addAll(JSON.armor(data));
         player.getInventory().addAll(JSON.weapons(data));
         player.getInventory().addAll(JSON.foods(data));
@@ -250,7 +250,6 @@ public class Connection {
         Container.setPrizes(prizes);
         System.out.println("Notifty");
         notify();
-
     }
 }
 

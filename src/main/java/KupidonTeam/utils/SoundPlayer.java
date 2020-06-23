@@ -10,7 +10,6 @@ public class SoundPlayer {
     private AudioClip mainTheme;
 
     public SoundPlayer() {
-
     }
 
     public void spawnEffect() {
@@ -27,14 +26,15 @@ public class SoundPlayer {
         return mainTheme;
     }
 
-
     public AudioClip playSound(String path) {
         try {
             audioClip = new AudioClip(getClass().getResource(path).toURI().toString());
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+
         audioClip.setVolume(0.1);
+
         return audioClip;
     }
 

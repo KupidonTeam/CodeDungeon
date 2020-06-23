@@ -46,7 +46,6 @@ public class JSON {
                 "\"player_password\": \"%s\"}}\n", username, password));
     }
 
-
     //<--! Методы для парсинга и содания персонажа --!>
     public static List<Skill> skills(JSONObject data) {
         List<Skill> skills = new LinkedList<>();
@@ -105,6 +104,7 @@ public class JSON {
                     weapon.getDouble("weapon_weight")
             ));
         });
+
         return weapons;
     }
 
@@ -137,9 +137,9 @@ public class JSON {
                     armor.getString("armor_name"),
                     armor.getDouble("armor_weight"),
                     armor.getDouble("armor_price")
-//                    armor.getInt("lvl")
             ));
         });
+
         return armors;
     }
 
@@ -160,18 +160,15 @@ public class JSON {
             ex.printStackTrace();
             SignLogic.getSignLogic().closeAll();
         }
+
         return null;
     }
-    //<--!  Конец   --!>
-
-    //<-- Парсинг карты подземелья, создание комнат и мобов -->
 
     public static String getDungeonSkeleton() {
         return "{\"action\":\"getDungeonSkeleton\"}";
     }
 
     public static Enemy mob(JSONObject jsonMob, int id) {
-
         return new Enemy(id,
                 jsonMob.getString("name"),
                 jsonMob.getString("desc"),
@@ -199,11 +196,13 @@ public class JSON {
 
         Map<Integer, Set<Integer>> directions = new HashMap<>();
         roomsIndexes.forEach(el -> directions.put((Integer) el, new HashSet<>()));
+
         for (int i = 0; i < routes.length(); i++) {
             JSONArray temp = (JSONArray) routes.get(i);
             directions.get(temp.get(0)).add((Integer) temp.get(1));
             directions.get(temp.get(1)).add((Integer) temp.get(0));
         }
+
         System.out.println("Map with routes :");
         directions.keySet().forEach(el -> directions.get(el).forEach(el2 -> System.out.println(el + " = " + el2)));
         System.out.println("=============================================");
@@ -224,6 +223,7 @@ public class JSON {
                     enemies
             ));
         });
+
         dungeonList.forEach(el -> {
             System.out.println(el.getAvailableDirections());
             if (el.getAvailableDirections().isEmpty()) {
@@ -238,11 +238,12 @@ public class JSON {
                 }
             }
         });
+
         System.out.println("result = ");
         dungeonList.forEach(el -> System.out.println(el.getAvailableDirections()));
+
         return dungeonList;
     }
-
 
     public static String startBattle(int peekedSkillId, Enemy enemy) {
         return String.format("{\n" +
@@ -253,7 +254,6 @@ public class JSON {
                         "}}",
                 peekedSkillId, enemy.toString());
     }
-
 
     //удаляем перенос на новую строку и пробелы
     public static String normalize(String json) {

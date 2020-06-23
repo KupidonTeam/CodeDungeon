@@ -21,7 +21,6 @@ import java.util.List;
 public class Player {
 
     private static Player player;
-
     private String name;
     private Stats stats;
     private String playerClass;
@@ -32,7 +31,6 @@ public class Player {
     private Image avatarIcon;
     private Inventory inventory;
     private int gold;
-
 
     private Player(String name, Stats stats, String playerClass, int lvl, int experience, List<Skill> skills,
                    List<Armor> armors, List<Weapon> weapons, List<Animal> animals, String avatar) {
@@ -133,6 +131,7 @@ public class Player {
                 player.getStats().heal(100);
                 break;
         }
+
         drop(food);
     }
 

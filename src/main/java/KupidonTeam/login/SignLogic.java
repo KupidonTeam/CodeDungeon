@@ -48,6 +48,7 @@ public class SignLogic {
             e.printStackTrace();
             System.err.println("Wrong query");
         }
+
         return false;
     }
 
@@ -61,6 +62,7 @@ public class SignLogic {
         wait(3000);
         System.out.println("after wait");
         System.out.println("response flag = " + responseFlag);
+
         if (!responseFlag) {
             connectionFailedAlert();
             closeAll();
@@ -69,11 +71,8 @@ public class SignLogic {
             System.err.println("=======> response flag = " + responseFlag);
             System.out.println("login status = " + login);
         }
+
         return login;
-    }
-
-    public void serverRegistration(String username, String password) {
-
     }
 
     public synchronized void serverResponse(String msg) {
@@ -81,9 +80,7 @@ public class SignLogic {
         responseFlag = true;
         System.out.println("Я получил вот такой ответ : " + msg);
 
-
         //TODO!!!!!!! после успешного логина открываем основную панель
-
     }
 
     private void createPLayer(String json) {
@@ -111,18 +108,23 @@ public class SignLogic {
         if (signLogic == null) {
             signLogic = new SignLogic();
         }
+
         return signLogic;
     }
 
     public synchronized void loginAnalyze(String msg) {
         responseFlag = true;
         int code = new JSONObject(msg).getInt("code");
+
         if (code == 203) {
             login = true;
             createPLayer(msg);
             System.out.println(Player.getInstance().toString());
 
-        } else login = false;
+        } else {
+            login = false;
+        }
+
         notifyAll();
     }
 
@@ -133,6 +135,4 @@ public class SignLogic {
                 JOptionPane.ERROR_MESSAGE);
         System.exit(-503);
     }
-
-
 }

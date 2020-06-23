@@ -7,12 +7,12 @@ import javafx.scene.control.TextArea;
 import java.util.List;
 
 public class Container {
+
     private static List<Dungeon> dungeonList;
     private static int[][] routes;
     private static SoundPlayer soundPlayer;
     private static TextArea chatPane;
     private static List<? extends Item> prizes;
-
 
     public static void setDungeonList(List<Dungeon> dungeonList) {
         Container.dungeonList = dungeonList;
