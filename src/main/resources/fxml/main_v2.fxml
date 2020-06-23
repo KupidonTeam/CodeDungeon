@@ -16,29 +16,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="720.0" prefWidth="1375.0" style="-fx-border-color: #8e7c74;"
-            xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="KupidonTeam.gui.MainController">
+<AnchorPane fx:id="mainPane" prefHeight="720.0" prefWidth="1375.0" style="-fx-border-color: #8e7c74;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.MainController">
     <children>
-        <AnchorPane layoutY="6.0" prefHeight="670.0" prefWidth="300.0"
-                    style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="100.0"
-                    AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane layoutY="6.0" prefHeight="670.0" prefWidth="300.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <TabPane layoutX="14.0" layoutY="291.0" prefHeight="351.0" prefWidth="280.0"
-                         style="-fx-background-color: white;" stylesheets="@/assets/css/tabs.css"
-                         tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                         AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="295.0">
+                <TabPane layoutX="14.0" layoutY="291.0" prefHeight="351.0" prefWidth="280.0" style="-fx-background-color: white;" stylesheets="@/assets/css/tabs.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="295.0">
                     <tabs>
                         <Tab text="Inventory">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="278.0"
-                                            style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="278.0" style="-fx-background-color: #251a1a; -fx-border-color: #8e7c74;">
                                     <children>
-                                        <ScrollPane hbarPolicy="NEVER" layoutX="4.0" layoutY="2.0" prefHeight="264.0"
-                                                    prefWidth="269.0"
-                                                    style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;">
+                                        <ScrollPane hbarPolicy="NEVER" layoutX="4.0" layoutY="2.0" prefHeight="266.0" prefWidth="269.0" style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;" stylesheets="@/assets/css/scroll-pane.css">
                                             <content>
-                                                <FlowPane fx:id="inventoryPane" prefHeight="261.0" prefWidth="274.0" style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;" />
+                                                <FlowPane fx:id="inventoryPane" prefHeight="267.0" prefWidth="274.0" style="-fx-background-color: #251a1a; -fx-text-fill: #8e7c74;" />
                                             </content>
                                         </ScrollPane>
                                     </children>
@@ -238,7 +228,7 @@
          <children>
             <ImageView fx:id="skill1" fitHeight="80.0" fitWidth="80.0" layoutX="61.0" layoutY="22.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="50.0">
                <image>
-                   <Image url="@/assets/skills/produce flame.png"/>
+                   <Image url="@/assets/skills/produce flame.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -246,7 +236,7 @@
             </ImageView>
             <ImageView fx:id="skill2" fitHeight="80.0" fitWidth="80.0" layoutX="179.0" layoutY="22.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="170.0">
                <image>
-                   <Image url="@/assets/skills/produce flame.png"/>
+                   <Image url="@/assets/skills/produce flame.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -254,7 +244,7 @@
             </ImageView>
             <ImageView fx:id="skill4" fitHeight="80.0" fitWidth="80.0" layoutX="621.0" layoutY="22.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="50.0">
                <image>
-                   <Image url="@/assets/skills/produce flame.png"/>
+                   <Image url="@/assets/skills/produce flame.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -262,7 +252,7 @@
             </ImageView>
              <ImageView fx:id="skill3" fitHeight="80.0" fitWidth="80.0" layoutX="503.0" layoutY="22.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="170.0">
                  <image>
-                     <Image url="@/assets/skills/produce flame.png"/>
+                     <Image url="@/assets/skills/produce flame.png" />
                  </image>
                  <cursor>
                      <Cursor fx:constant="HAND" />
@@ -313,7 +303,7 @@
                         <Image url="@/assets/images_for_main/heart.png" />
                     </image>
                 </ImageView>
-                <FlowPane fx:id="exPane" layoutX="129.0" layoutY="54.0" prefHeight="18.0" prefWidth="30.0" />
+                <FlowPane fx:id="exPane" layoutX="129.0" layoutY="59.0" prefHeight="18.0" prefWidth="30.0" />
                 <FlowPane layoutX="196.0" layoutY="37.0" prefHeight="20.0" prefWidth="94.0">
                     <children>
                         <Label fx:id="gold" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="18.0" prefWidth="74.0" text="100000000" textAlignment="RIGHT" textFill="#ffe310" textOverrun="CLIP" />
@@ -326,7 +316,7 @@
                 </FlowPane>
             </children>
         </AnchorPane>
-        <ScrollPane hbarPolicy="NEVER" layoutX="301.0" layoutY="51.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0">
+        <ScrollPane hbarPolicy="NEVER" layoutX="301.0" layoutY="51.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" stylesheets="@/assets/css/scroll-pane.css">
             <content>
                 <FlowPane fx:id="cardTable" prefHeight="579.0" prefWidth="770.0" style="-fx-background-color: #201b1b;" />
             </content>

@@ -61,7 +61,6 @@ public class ShopController {
             if (item instanceof Weapon) {
                 itemImage.setImage(new Image("/assets/weapons/" + item.getName() + ".png"));
                 itemLine.getChildren().add(itemImage);
-                ;
                 tooltip = new Tooltip(item.toString());
                 Tooltip.install(itemImage, tooltip);
                 useBt.setText("Sell");
