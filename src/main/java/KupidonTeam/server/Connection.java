@@ -5,7 +5,7 @@ import KupidonTeam.exceptions.FailedToConnectException;
 import KupidonTeam.exceptions.PropertiesException;
 import KupidonTeam.items.Item;
 import KupidonTeam.login.SignLogic;
-import KupidonTeam.player.Player;
+import KupidonTeam.characters.player.Player;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
 import javafx.application.Platform;

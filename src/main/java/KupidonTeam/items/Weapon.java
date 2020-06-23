@@ -17,6 +17,7 @@ public class Weapon extends Item {
         setName(name);
         setDamageMax(damageMax);
         setDamageMin(damageMin);
+
         try {
             setPrice(price);
             setWeight(weight);

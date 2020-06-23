@@ -1,10 +1,7 @@
 package KupidonTeam.gui;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import KupidonTeam.characters.player.Player;
 import KupidonTeam.characters.skills.Skill;
-import KupidonTeam.player.Player;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,6 +14,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class FightController {
 
@@ -47,7 +47,6 @@ public class FightController {
     @FXML
     private Label damageBattle;
 
-
     private int enemyDamage;
     private String playerSkillName;
     private int playerDamage;
@@ -68,10 +67,12 @@ public class FightController {
         this.playerSkillName = playerSkillName;
         this.playerDamage = playerDamage;
         this.enemySkillName = enemySkillName;
+
         for (Skill skill : player.getSkills()) {
             if (skill.getName().equalsIgnoreCase(playerSkillName))
                 playerSkill = skill;
         }
+
         for (Skill skill : enemyCard.getEnemy().getSkillList()) {
             if (skill.getName().equalsIgnoreCase(enemySkillName)) {
                 enemySkill = skill;
@@ -86,13 +87,11 @@ public class FightController {
         attackImageBattle.getChildren().add(skillImage);
         playerNameBattle.setText(Player.getInstance().getName());
         fight("Player turn", playerSkill, enemyDamage, enemyImageBattle);
-        transition(new Pane()).setOnFinished(event -> {
 
+        transition(new Pane()).setOnFinished(event -> {
             fight("Enemy turn", enemySkill, playerDamage, playerImageBattle);
             transition(new Pane()).setOnFinished(event2 -> attackImageBattle.getScene().getWindow().hide());
         });
-
-
     }
 
     private void fight(String turn, Skill skill, int damage, StackPane imageDamaged) {
@@ -112,11 +111,13 @@ public class FightController {
         ft.setToValue(1);
         ft.setAutoReverse(false);
         ft.play();
+
         return ft;
     }
 
     private Image loadSkillImage(String skillName) {
         String imageUri = "/assets/skills/" + skillName.toLowerCase() + ".png";
+
         return new Image(imageUri);
     }
 
@@ -149,8 +150,6 @@ public class FightController {
         assert enemyImageBattle != null : "fx:id=\"enemyImageBattle\" was not injected: check your FXML file 'fight.fxml'.";
         assert attackImageBattle != null : "fx:id=\"attackImageBattle\" was not injected: check your FXML file 'fight.fxml'.";
         assert damageBattle != null : "fx:id=\"damageBattle\" was not injected: check your FXML file 'fight.fxml'.";
-
-
     }
 
     private void blendEffect(Pane imagePane) {
@@ -160,9 +159,6 @@ public class FightController {
         rectangle.setWidth(enemyImage.getFitWidth());
         rectangle.setHeight(enemyImage.getFitHeight());
         rectangle.setFill(Color.rgb(250, 0, 0, 0.3));
-
-
-//        rectangle.setStyle("");
         imagePane.getChildren().add(rectangle);
         FadeTransition ft = new FadeTransition(Duration.millis(500));
         ft.setNode(rectangle);

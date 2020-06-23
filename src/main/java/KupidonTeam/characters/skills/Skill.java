@@ -11,7 +11,6 @@ public class Skill {
     private String name;
     private int lvl;
     private String type;
-    //    private int chance;
     private int countOfRandom;
     private int coolDown;
     private int randomDiapason;

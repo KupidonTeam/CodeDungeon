@@ -21,7 +21,6 @@ public class SignUpWrapper extends Application {
         scene = new Scene(root);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
     }
 
     public static Stage getCurrentStage() {

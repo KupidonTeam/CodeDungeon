@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 
 public class Stats {
-    //    private String race;
+
     private int armorClass;
     private int hits;
     private int speed;
@@ -31,10 +31,9 @@ public class Stats {
         this.wisdom = wisdom;
         this.chance = chance;
         this.constitution = constitution;
-        hpLabel = new Label("1111" + hits);
-        hpLabel.setText("111111111111111111111");
+        hpLabel = new Label("" + hits);
+        hpLabel.setText("");
     }
-
 
     @Override
     public String toString() {

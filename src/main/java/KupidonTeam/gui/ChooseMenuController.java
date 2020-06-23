@@ -43,7 +43,6 @@ public class ChooseMenuController {
                 "-fx-border-color :  #8e7c74;" +
                 "-fx-border-width : 2 1 2 2;");
 
-
         FlowPane dungeonPane = new FlowPane();
         dungeonPane.setAlignment(Pos.CENTER);
         Label dungeonLabel = new Label("Dungeon");

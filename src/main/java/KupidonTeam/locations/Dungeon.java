@@ -26,5 +26,4 @@ public class Dungeon extends Room {
                 "\nData : \n" + super.toString() +
                 '}';
     }
-
 }

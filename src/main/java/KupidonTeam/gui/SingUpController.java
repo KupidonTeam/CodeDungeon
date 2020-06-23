@@ -1,21 +1,17 @@
 package KupidonTeam.gui;
 
 import KupidonTeam.login.SignLogic;
-import KupidonTeam.utils.Container;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -97,6 +93,7 @@ public class SingUpController {
         System.out.println("User : " + username);
         System.out.println("Pass : " + password);
         System.out.println(username.isEmpty());
+
         if (username.isEmpty()) {
             usernameLabel.setText("Password - REQUIRED");
             usernameLabel.setTextFill(Color.RED);
@@ -119,21 +116,19 @@ public class SingUpController {
             if (!signLogic.checkUserName(username)) {
                 System.out.println("========== Логин свободен ==============");
                 characterCreation(username, password);
-
             } else {
-                usernameLabel.setText(usernameLabel.getText() + " - ");
+                usernameLabel.setText(usernameLabel.getText() + " - OCCUPIED");
                 usernameLabel.setTextFill(Color.RED);
-
             }
         }
     }
 
     private <T> T loadFxml(String path) {
-
         LoginWrapper.getCurrentStage().setScene(SignUpWrapper.getScene());
         Parent parent;
         FXMLLoader loader = new FXMLLoader();
         T controller = null;
+
         try {
             parent = loader.load(getClass().getResourceAsStream(path));
             controller = loader.getController();
@@ -143,6 +138,7 @@ public class SingUpController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return controller;
     }
 
@@ -158,7 +154,6 @@ public class SingUpController {
     }
 
     private void characterCreation(String username, String password) {
-
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(300));
         fadeTransition.setNode(AnchorPane);
         fadeTransition.setFromValue(1);
@@ -168,8 +163,5 @@ public class SingUpController {
             characterController.setUserData(username, password);
         });
         fadeTransition.play();
-
     }
-
-
 }

@@ -1,29 +1,13 @@
 package KupidonTeam.gui;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.stream.Stream;
-
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
-import javafx.util.Duration;
-import lombok.Getter;
-import lombok.Setter;
+import javafx.scene.layout.AnchorPane;
 
-import javax.swing.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 public class EnemyCardController {

@@ -1,8 +1,7 @@
 package KupidonTeam.login;
 
-
-import KupidonTeam.DB.DBConnection;
-import KupidonTeam.player.Player;
+import KupidonTeam.db.DBConnection;
+import KupidonTeam.characters.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
 import KupidonTeam.utils.SoundPlayer;
@@ -97,7 +96,8 @@ public class SignLogic {
                 JSON.skills(data),
                 JSON.armor(data),
                 JSON.weapons(data),
-                JSON.animals(data)
+                JSON.animals(data),
+                data.getString("avatar")
         );
     }
 

@@ -1,6 +1,6 @@
-package KupidonTeam.player;
+package KupidonTeam.characters.player;
 
-import KupidonTeam.DB.DBConnection;
+import KupidonTeam.db.DBConnection;
 import KupidonTeam.animals.Animal;
 import KupidonTeam.characters.Stats;
 import KupidonTeam.characters.skills.Skill;
@@ -35,7 +35,7 @@ public class Player {
 
 
     private Player(String name, Stats stats, String playerClass, int lvl, int experience, List<Skill> skills,
-                   List<Armor> armors, List<Weapon> weapons, List<Animal> animals) {
+                   List<Armor> armors, List<Weapon> weapons, List<Animal> animals, String avatar) {
         setName(name);
         setStats(stats);
         setPlayerClass(playerClass);
@@ -43,20 +43,24 @@ public class Player {
         setLvl(lvl);
         setExperience(experience);
         setAnimals(animals);
-        loadAvatarIcon();
+        //loadAvatarIcon();
+        setAvatar(avatar);
         inventory = new Inventory(this);
         inventory.addAll(armors);
         inventory.addAll(weapons);
         gold = 0;
         lvl = 0;
-//        inventory.addAll(foods);
+    }
+
+    public void setAvatar(String avatar) {
+        avatarIcon = new Image(getClass().getResourceAsStream("/assets/SIMPLEAvatarsIcons/512X512/" + avatar + ".png"));
     }
 
     public static boolean createPlayer(String name, String playerClass, int lvl, int experience, Stats stats,
                                        List<Skill> skills, List<Armor> armors, List<Weapon> weapons,
-                                       List<Animal> animals) {
+                                       List<Animal> animals, String avatar) {
         if (player == null) {
-            player = new Player(name, stats, playerClass, lvl, experience, skills, armors, weapons, animals);
+            player = new Player(name, stats, playerClass, lvl, experience, skills, armors, weapons, animals, avatar);
 
             return true;
         }

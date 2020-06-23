@@ -22,7 +22,6 @@ public class MainPane extends Application {
         scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 
     public static Stage getCurrentStage() {

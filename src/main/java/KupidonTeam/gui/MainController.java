@@ -1,17 +1,16 @@
 package KupidonTeam.gui;
 
+import KupidonTeam.characters.player.Player;
 import KupidonTeam.characters.skills.Skill;
 import KupidonTeam.controllers.BattleController;
 import KupidonTeam.items.Armor;
 import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;
 import KupidonTeam.login.SignLogic;
-import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
 import KupidonTeam.utils.SoundPlayer;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -21,7 +20,6 @@ import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
@@ -102,7 +100,6 @@ public class MainController {
     @FXML
     private FlowPane hpPane;
 
-
     @FXML
     private ImageView avatarIcon;
 
@@ -120,7 +117,6 @@ public class MainController {
 
     @FXML
     private AnchorPane attack;
-
 
     @FXML
     private FlowPane exPane;
@@ -146,7 +142,6 @@ public class MainController {
         setPlayerStats();
         List<EnemyCard> enemyCards = new LinkedList<>();
         enemyCards.add(new EnemyCard());
-
     }
 
     private void setUp() {
@@ -155,17 +150,14 @@ public class MainController {
         audioClip.play();
         server = Connection.getConnection();
 
-
         chooseMenuController = new ChooseMenuController(this, cardTable);
         buttonsSetUp();
         panesSetUp();
         server.setChatArea(chatPane);
         server.setCardTable(cardTable);
-
     }
 
     private void panesSetUp() {
-
         chatPane.setText("");
         chatPane.setWrapText(true);
         chatPane.setPrefColumnCount(30);
@@ -185,7 +177,6 @@ public class MainController {
         chooseMenuController.choosePaneMenu();
     }
 
-    //Примерный тест инвенторя
     private void initInventory() {
         inventoryPane.getChildren().clear();
         player.getInventory().getItems().forEach(item -> {
@@ -205,7 +196,6 @@ public class MainController {
 
             if (item instanceof Armor) {
                 System.out.println("ARMOR = " + item.getName());
-
                 itemImage.setImage(new Image("/assets/armor/" + item.getName() + ".png"));
                 itemLine.getChildren().add(itemImage);
                 tooltip = new Tooltip(item.toString());
@@ -218,10 +208,10 @@ public class MainController {
                 itemLine.getChildren().add(useBt);
                 inventoryPane.getChildren().add(itemLine);
             }
+
             if (item instanceof Weapon) {
                 itemImage.setImage(new Image("/assets/weapons/" + item.getName() + ".png"));
                 itemLine.getChildren().add(itemImage);
-                ;
                 tooltip = new Tooltip(item.toString());
                 Tooltip.install(itemImage, tooltip);
                 useBt.setText("Drop");
@@ -233,6 +223,7 @@ public class MainController {
                 inventoryPane.getChildren().add(itemLine);
                 System.out.println("WEAPOn");
             }
+
             if (item instanceof Food) {
                 itemImage.setImage(new Image("/assets/food/" + item.getName() + ".png"));
                 itemLine.getChildren().add(itemImage);
@@ -249,10 +240,7 @@ public class MainController {
         });
     }
 
-
-    //я просто проверял работу
     public void messageDialog(String messageText) {
-
         Text message = new Text(messageText);
         message.setFill(Color.WHITE);
         message.setStyle(
@@ -285,7 +273,6 @@ public class MainController {
         Label okWin = new Label("Ok");
         okWin.setTextFill(Color.BURLYWOOD);
         ok.getChildren().add(okWin);
-
 
         StackPane cancelBt = new StackPane();
         cancelBt.getChildren().add(cancelImage);
@@ -423,15 +410,12 @@ public class MainController {
             }
 
         });
-
     }
-
 
     @SneakyThrows
     public synchronized void getDungeonSkeleton() {
         server.sendMessageToServer(JSON.getDungeonSkeleton());
         wait(2000);
-//        System.out.println("====> "+Container.getDungeonList().toString());
         battleController = BattleController.getInstance();
         battleController.setBattleController(this, player, Container.getDungeonList(), cardTable, mapPane, hpPane);
         isDungeon = true;
@@ -440,12 +424,12 @@ public class MainController {
     public void attack() {
         System.out.println("peeked skill =  " + peekedSkill);
         System.out.println("chosen enemy = " + battleController.getChosenEnemyCard());
+
         if (peekedSkill <= 0 || BattleController.getInstance().getChosenEnemyCard() == null) {
             System.out.println("You have to peek skill and choose enemy!");
             return;
         }
         startBattle();
-
     }
 
     private synchronized void startBattle() {
@@ -454,22 +438,15 @@ public class MainController {
         notifyAll();
     }
 
-    public void cleanPeeked() {
-        cardTable.getChildren().clear();
-        peekedSkill = -1;
-
-    }
-
-
     public void update(boolean menu) {
         cardTable.getChildren().clear();
         mapPane.getChildren().clear();
         loadPlayerInformation();
         initInventory();
+
         if (menu) {
             chooseMenuController.choosePaneMenu();
         }
-
     }
 
     private void setPlayerStats() {
@@ -485,8 +462,6 @@ public class MainController {
     public void openShop() {
         FlowPane flowPane = new FlowPane();
         flowPane.setStyle("-fx-background-color : #201b1b;");
-        Button buyButton = new Button();
-        Button sellButton = new Button();
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(flowPane);
         scrollPane.setMaxHeight(450);
@@ -498,21 +473,15 @@ public class MainController {
 
     private void setDraggable() {
         Stage primaryStage = LoginWrapper.getCurrentStage();
-        mainPane.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = primaryStage.getX() - event.getScreenX();
-                yOffset = primaryStage.getY() - event.getScreenY();
-            }
+        mainPane.setOnMousePressed(event -> {
+            xOffset = primaryStage.getX() - event.getScreenX();
+            yOffset = primaryStage.getY() - event.getScreenY();
         });
 
-        mainPane.setOnMouseDragged(event ->
-        {
+        mainPane.setOnMouseDragged(event -> {
             primaryStage.setX(event.getScreenX() + xOffset);
             primaryStage.setY(event.getScreenY() + yOffset);
         });
-
-
     }
 
     public void setIsDungeon(boolean value) {

@@ -3,7 +3,7 @@ package KupidonTeam.controllers;
 import KupidonTeam.characters.enemies.Enemy;
 import KupidonTeam.gui.*;
 import KupidonTeam.locations.Dungeon;
-import KupidonTeam.player.Player;
+import KupidonTeam.characters.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.Container;
 import KupidonTeam.utils.JSON;
@@ -22,7 +22,6 @@ import lombok.SneakyThrows;
 
 import java.util.*;
 
-// TODO
 // Класс-контроллер боя
 public class BattleController {
     private static BattleController battleController;
@@ -37,8 +36,6 @@ public class BattleController {
     private List<Enemy> killedEnemies;
     private FlowPane hpPane;
     private List<EnemyCard> enemyCards;
-
-
     private EnemyCard chosenEnemyCard;
 
     private BattleController() {
@@ -64,16 +61,14 @@ public class BattleController {
         if (battleController == null) {
             battleController = new BattleController();
         }
+
         return battleController;
     }
 
     public void setBattleController(MainController mainController, Player mainPlayer, List<Dungeon> dungeonsList, FlowPane cardTable, FlowPane mapPane, FlowPane hpPane) {
         battleController = new BattleController(mainController, mainPlayer, dungeonsList, cardTable, mapPane, hpPane);
-
     }
 
-
-    @SneakyThrows
     public void battleStatus() {
         System.out.println("player hp = " + mainPlayer.getStats().getHits());
         currentRoom.getEnemies()
@@ -86,14 +81,19 @@ public class BattleController {
         killedEnemies.forEach(enemy -> deleteCard(enemy));
         killedEnemies.clear();
         updateRoom();
+
         if (mainPlayer.getStats().getHits() <= 0) {
             mainController.messageDialog("You are dead");
+            getLoot(mainController);
+
             return;
         }
+
         if (killedEnemies.containsAll(currentRoom.getEnemies())) {
             System.out.println("<--Current room is clear-->");
             cardTable.getChildren().clear();
         }
+
         if (isDungeonClear()) {
             System.out.println("All enemies are killed!");
             getLoot(mainController);
@@ -101,7 +101,6 @@ public class BattleController {
     }
 
     private void loadEnemyCards() {
-        //  mainController.cleanPeeked();
         enemyCards = new ArrayList<>();
         currentRoom.getEnemies().forEach(el -> {
             enemyCards.add(new EnemyCard(el));
@@ -123,7 +122,6 @@ public class BattleController {
                     chosenEnemyCard = null;
                 } else {
                     //delete border from chosen enemy
-                    //Timeline timeline = EnemyCardController.setBorder(chosenEnemy);
                     chosenEnemyCard.deleteBorder();
                     el.setBorder();
 
@@ -145,16 +143,6 @@ public class BattleController {
         new SoundPlayer().spawnEffect();
     }
 
-    @SneakyThrows
-    private void initMainController() {
-        String path = "/fxml/main_v2.fxml";
-        Parent parent;
-        FXMLLoader loader = new FXMLLoader();
-        parent = loader.load(getClass().getResourceAsStream(path));
-        mainController = loader.getController();
-    }
-
-
     private void drawMap() {
         mapPane.getChildren().add(map.getPane());
         Integer[] rooms = new Integer[dungeonList.size()];
@@ -166,21 +154,22 @@ public class BattleController {
         passedRooms.toArray(visitedRooms);
         //TODO исправить баг с картой
         map.updateDungeon(rooms, routes, new Integer[]{0}, currentRoom.getRoomId());
-
     }
 
     public EnemyCard getChosenEnemyCard() {
         return chosenEnemyCard;
     }
 
-
     public void changeRoom(int newRoomId) {
         System.out.println("Current room = " + currentRoom.getRoomId());
         System.out.println("routes = " + currentRoom.getAvailableDirections());
+
         if (!killedEnemies.containsAll(currentRoom.getEnemies())) {
             System.out.println("Kill all enemies ! ");
+
             return;
         }
+
         if (currentRoom.getAvailableDirections().contains(newRoomId)) {
             System.out.println(currentRoom.getAvailableDirections());
             System.out.println("Available route");
@@ -198,11 +187,13 @@ public class BattleController {
 
     private void deleteCard(Enemy killedEnemy) {
         EnemyCard cardToDelete = null;
+
         for (EnemyCard enemyCard : enemyCards) {
             if (enemyCard.getEnemy().getName().equalsIgnoreCase(killedEnemy.getName())) {
                 cardToDelete = enemyCard;
             }
         }
+
         SoundPlayer soundPlayer = new SoundPlayer();
         FadeTransition ft = new FadeTransition(Duration.millis(500), cardToDelete.getEnemyCard());
         ft.setFromValue(1);
@@ -231,7 +222,6 @@ public class BattleController {
         mapPane.getChildren().clear();
         loadEnemyCards();
         drawMap();
-
     }
 
     //Check if all enemies in all rooms are killed
@@ -239,9 +229,11 @@ public class BattleController {
         System.out.println("Dung size = " + dungeonList.size());
         System.out.println("passedrooms=" + passedRooms.size());
         System.out.println(passedRooms.size() == dungeonList.size());
-        if (killedEnemies.containsAll(currentRoom.getEnemies()) && passedRooms.size() - 1 == dungeonList.size() - 1) {
+
+        if (killedEnemies.containsAll(currentRoom.getEnemies()) && passedRooms.size() == dungeonList.size()) {
             return true;
         }
+
         return false;
     }
 
@@ -259,7 +251,6 @@ public class BattleController {
         updatePlayerInfo();
         battleStatus();
         chosenEnemyCard = null;
-
     }
 
     @SneakyThrows
@@ -276,6 +267,7 @@ public class BattleController {
         fightStage.toFront();
         fightController.setData(player, enemyCard, enemyDamage, playerSkill, playerDamage, enemySkill);
         fightStage.show();
+
         return new FadeTransition(new Duration(1000));
     }
 
@@ -283,13 +275,10 @@ public class BattleController {
     public synchronized void getLoot(MainController mainController) {
         Connection.getConnection().sendMessageToServer(JSON.getLoot());
         wait(1000);
-//        initMainController();
         System.out.println("After wait");
         prizePane();
         mainController.setIsDungeon(false);
         mainController.update(true);
-
-
     }
 
     @SneakyThrows
@@ -306,6 +295,5 @@ public class BattleController {
         prizeStage.toFront();
         prizesPaneController.loadPrizes(Container.getPrizes());
         prizeStage.show();
-
     }
 }

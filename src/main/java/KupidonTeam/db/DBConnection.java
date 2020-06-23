@@ -1,4 +1,4 @@
-package KupidonTeam.DB;
+package KupidonTeam.db;
 
 import KupidonTeam.exceptions.FailedDBConnection;
 import KupidonTeam.exceptions.PropertiesException;
@@ -26,7 +26,6 @@ public class DBConnection {
     private String db;
     private String dbUser;
     private String dbPassword;
-
 
     private DBConnection() throws FailedDBConnection {
         try {
@@ -59,7 +58,6 @@ public class DBConnection {
             ex.printStackTrace();
         }
 
-        System.out.println("An example for updating a Row from Mysql Database!");
         con = null;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://" + rhost + ":" + lport + "/";
@@ -70,22 +68,17 @@ public class DBConnection {
         } catch (Exception e) {
             e.printStackTrace();
             con.close();
-            // System.exit(0);
         }
     }
 
     public ResultSet select(String sql) {
         try {
             Statement st = con.createStatement();
-            //String sql = "UPDATE Players SET race_id = 3 WHERE player_name = 'test'";
-            return st.executeQuery(sql);
-            // while(resultSet.)
 
+            return st.executeQuery(sql);
         } catch (SQLException s) {
             System.out.println(s.getMessage());
             System.out.println("SQL statement is not executed!");
-            //con.close();
-            // System.exit(0);
         }
 
         return null;

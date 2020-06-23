@@ -1,4 +1,4 @@
-package KupidonTeam.player;
+package KupidonTeam.characters.player;
 
 import KupidonTeam.items.Item;
 import lombok.Getter;
@@ -12,7 +12,6 @@ import java.util.List;
 public class Inventory {
     private long maxWeight;
     private List<Item> items;
-
 
     public Inventory(Player player) {
         items = new LinkedList<>();

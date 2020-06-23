@@ -1,7 +1,7 @@
 package KupidonTeam.gui;
 
+import KupidonTeam.characters.player.Player;
 import KupidonTeam.login.SignLogic;
-import KupidonTeam.player.Player;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -119,12 +119,9 @@ public class LoginController {
 
         signUpLink.setCursor(Cursor.HAND);
         signUpLink.setOnMouseClicked(ev -> {
-
             switchToSignUp();
-
         });
     }
-
 
     @SneakyThrows
     private void loginCheck() {
@@ -133,7 +130,6 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        //System.out.println(username.isEmpty());
         if (username.isEmpty()) {
             usernameLabel.setText("Username - REQUIRED");
             usernameLabel.setTextFill(Color.RED);
@@ -159,7 +155,6 @@ public class LoginController {
 
         }
         dialogStage.close();
-
     }
 
     private void loadSignUp() {

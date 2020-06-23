@@ -97,7 +97,6 @@ public class EnemyCard {
         enemyCard.getChildren().clear();
     }
 
-
     public Enemy getEnemy() {
         return enemy;
     }

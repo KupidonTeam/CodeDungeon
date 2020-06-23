@@ -1,11 +1,7 @@
 package KupidonTeam.gui;
 
 import KupidonTeam.controllers.BattleController;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

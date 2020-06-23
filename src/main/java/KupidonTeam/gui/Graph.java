@@ -16,9 +16,7 @@ public class Graph extends AnchorPane {
     private static Stage currentStage;
     private ArrayList<Dot> dots = new ArrayList<>();
 
-
     public Graph() {
-
         dots.add(new Dot(0, 20, 140));
         dots.add(new Dot(1, 70, 30));
         dots.add(new Dot(2, 70, 250));
@@ -29,8 +27,6 @@ public class Graph extends AnchorPane {
         dots.add(new Dot(7, 110, 170));
         dots.add(new Dot(8, 170, 110));
         dots.add(new Dot(9, 170, 170));
-
-
     }
 
     private int getAnotherDot(int[] route, int dot) {
@@ -97,7 +93,6 @@ public class Graph extends AnchorPane {
         //Playing the animation
         scaleTransition.play();
         pane.getChildren().add(dots.get(room).getDot());
-
     }
 
     private void paintVisitedRooms(AnchorPane pane, Integer[] rooms) {
@@ -109,7 +104,6 @@ public class Graph extends AnchorPane {
             dots.get(i).getDot().setEffect(new GaussianBlur());
 
             pane.getChildren().add(dots.get(i).getDot());
-
         }
     }
 
@@ -125,14 +119,13 @@ public class Graph extends AnchorPane {
 
 
     public void updateDungeon(Integer[] rooms, int[][] routes, Integer[] visitedRooms, int currentRoom) {
-
         paintRoutes(this, routes);
         paintRooms(this, rooms, visitedRooms, currentRoom);
         paintCurrentRoom(this, currentRoom);
         paintVisitedRooms(this, visitedRooms);
 
         //вход всегда синий
-        dots.get(0).getDot().setFill(Color.BLUE);
+        dots.get(0).getDot().setFill(Color.YELLOW);
     }
 
     public AnchorPane getPane() {

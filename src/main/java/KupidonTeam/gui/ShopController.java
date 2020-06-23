@@ -1,9 +1,9 @@
 package KupidonTeam.gui;
 
+import KupidonTeam.characters.player.Player;
 import KupidonTeam.items.Armor;
 import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;
-import KupidonTeam.player.Player;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -43,52 +43,25 @@ public class ShopController {
             if (item instanceof Armor) {
                 System.out.println("ARMOR = " + item.getName());
                 itemImage.setImage(new Image("/assets/armor/" + item.getName() + ".png"));
-                itemLine.getChildren().add(itemImage);
-                tooltip = new Tooltip(item.toString());
-                Tooltip.install(itemImage, tooltip);
-                useBt.setText("Sell");
-                useBt.setOnMouseClicked(event -> {
-                    player.drop(item);
-                    player.setGold((int) (player.getGold() + item.getPrice()));
-                    mainController.update(false);
-                    loadGoods();
-                });
-                itemLine.getChildren().add(useBt);
-                shopPane.getChildren().add(itemLine);
-            }
-
-
-            if (item instanceof Weapon) {
+            } else if (item instanceof Weapon) {
+                System.out.println("WEAPON");
                 itemImage.setImage(new Image("/assets/weapons/" + item.getName() + ".png"));
-                itemLine.getChildren().add(itemImage);
-                tooltip = new Tooltip(item.toString());
-                Tooltip.install(itemImage, tooltip);
-                useBt.setText("Sell");
-                useBt.setOnMouseClicked(event -> {
-                    player.drop(item);
-                    player.setGold((int) (player.getGold() + item.getPrice()));
-                    mainController.update(false);
-                    loadGoods();
-                });
-                itemLine.getChildren().add(useBt);
-                shopPane.getChildren().add(itemLine);
-                System.out.println("WEAPOn");
-            }
-            if (item instanceof Food) {
+            } else {
                 itemImage.setImage(new Image("/assets/food/" + item.getName() + ".png"));
-                itemLine.getChildren().add(itemImage);
-                tooltip = new Tooltip(item.toString());
-                Tooltip.install(itemImage, tooltip);
-                useBt.setText("Sell");
-                useBt.setOnMouseClicked(event -> {
-                    player.drop(item);
-                    player.setGold((int) (player.getGold() + item.getPrice()));
-                    mainController.update(false);
-                    loadGoods();
-                });
-                itemLine.getChildren().add(useBt);
-                shopPane.getChildren().add(itemLine);
             }
+
+            itemLine.getChildren().add(itemImage);
+            tooltip = new Tooltip(item.toString());
+            Tooltip.install(itemImage, tooltip);
+            useBt.setText("Sell");
+            useBt.setOnMouseClicked(event -> {
+                player.drop(item);
+                player.setGold((int) (player.getGold() + item.getPrice()));
+                mainController.update(false);
+                loadGoods();
+            });
+            itemLine.getChildren().add(useBt);
+            shopPane.getChildren().add(itemLine);
         });
     }
 }

@@ -1,8 +1,7 @@
 package KupidonTeam.gui;
 
-
-import KupidonTeam.DB.DBConnection;
 import KupidonTeam.characters.skills.Skill;
+import KupidonTeam.db.DBConnection;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
@@ -20,7 +19,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -36,7 +34,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CharacterCreationController {
-
 
     @FXML
     private AnchorPane parentPane;
@@ -120,14 +117,12 @@ public class CharacterCreationController {
     private String avatar = "default";
 
     private List<ImageView> classSkills;
-    private Popup popupMessage;
     private DBConnection db;
 
     @FXML
     void initialize() {
         initFxml();
 
-//TODO добавть armor_class
         mainPane.getChildren()
                 .filtered(el -> el.getStyleClass().toString().contains("classes"))
                 .forEach(el -> el.setOnMouseClicked(event -> chooseClass(el.getId())));
@@ -144,11 +139,9 @@ public class CharacterCreationController {
             }
         });
 
-
         raceDropDown.getItems().addAll(loadRaces());
         avatarImage.setOnMouseClicked(event -> openAvatarWindow());
         confirmButton.setOnMouseClicked(event -> confirmBtSetUp());
-
     }
 
     private void openAvatarWindow() {
@@ -169,15 +162,6 @@ public class CharacterCreationController {
                     loadSkills(clazz);
                 });
     }
-
-    private void createCharacter() {
-        // TODO
-    }
-
-    public void setAvatarImage(String imageName) {
-
-    }
-
 
     public void setUserData(String username, String password) {
         this.username = username;
@@ -341,6 +325,7 @@ public class CharacterCreationController {
         avatarImgPane.setPrefWidth(390);
         File file = new File(getClass().getResource("/assets/SIMPLEAvatarsIcons/512X512/").toURI());
         Stage stage = new Stage();
+
         for (File f : file.listFiles()) {
             if (!f.isDirectory()) {
                 System.out.println("file = " + f.getName());
@@ -362,6 +347,5 @@ public class CharacterCreationController {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.toFront();
         stage.show();
-
     }
 }

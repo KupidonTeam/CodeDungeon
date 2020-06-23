@@ -1,12 +1,9 @@
 package KupidonTeam.gui;
 
 import KupidonTeam.items.Armor;
-import KupidonTeam.items.Food;
 import KupidonTeam.items.Item;
 import KupidonTeam.items.Weapon;
 import KupidonTeam.utils.SoundPlayer;
-import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,9 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class PrizesPaneController {
@@ -42,12 +37,10 @@ public class PrizesPaneController {
         assert prizesPane != null : "fx:id=\"prizesPane\" was not injected: check your FXML file 'prizes_pane.fxml'.";
 
         okButton.setOnMouseClicked(event -> okButton.getScene().getWindow().hide());
-
     }
 
     public void loadPrizes(List<? extends Item> prizes) {
         new SoundPlayer().victory();
-
 
         prizes.forEach(el -> {
             ImageView imageView = new ImageView();
@@ -55,28 +48,19 @@ public class PrizesPaneController {
             imageView.setFitHeight(64);
             System.out.println(el.getName());
 
+            Tooltip tooltip;
+
             if (el instanceof Armor) {
                 imageView.setImage(new Image(getClass().getResourceAsStream("/assets/armor/" + el.getName() + ".png")));
-                Tooltip tooltip = new Tooltip(((Armor) el).toString());
-                Tooltip.install(imageView, tooltip);
-                prizesPane.getChildren().add(imageView);
-
-            }
-            if (el instanceof Weapon) {
+            } else if (el instanceof Weapon) {
                 imageView.setImage(new Image(getClass().getResourceAsStream("/assets/weapons/" + el.getName() + ".png")));
-                Tooltip tooltip = new Tooltip(el.toString());
-                Tooltip.install(imageView, tooltip);
-                prizesPane.getChildren().add(imageView);
-            }
-
-            if (el instanceof Food) {
+            } else {
                 imageView.setImage(new Image(getClass().getResourceAsStream("/assets/food/" + el.getName() + ".png")));
-                Tooltip tooltip = new Tooltip(((Food) el).toString());
-                Tooltip.install(imageView, tooltip);
-                prizesPane.getChildren().add(imageView);
             }
 
+            tooltip = new Tooltip(el.toString());
+            Tooltip.install(imageView, tooltip);
+            prizesPane.getChildren().add(imageView);
         });
     }
-
 }

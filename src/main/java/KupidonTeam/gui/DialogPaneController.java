@@ -35,7 +35,6 @@ public class DialogPaneController {
         cancelButton.setOnMouseClicked(ev -> {
                     System.out.println("Hello!");
                     DialogPaneWrapper.getCurrentStage().close();
-
                 }
         );
         okButton.setOnMouseClicked(handler);
