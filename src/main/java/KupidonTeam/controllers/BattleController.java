@@ -1,6 +1,6 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.characters.classes.enemies.Enemy;
+import KupidonTeam.characters.enemies.Enemy;
 import KupidonTeam.gui.*;
 import KupidonTeam.locations.Dungeon;
 import KupidonTeam.player.Player;
@@ -10,13 +10,11 @@ import KupidonTeam.utils.JSON;
 import KupidonTeam.utils.SoundPlayer;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;

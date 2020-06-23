@@ -1,11 +1,9 @@
 package KupidonTeam.utils;
 
-import KupidonTeam.characters.classes.enemies.Enemy;
 import KupidonTeam.items.Item;
 import KupidonTeam.locations.Dungeon;
 import javafx.scene.control.TextArea;
 
-import java.awt.*;
 import java.util.List;
 
 public class Container {

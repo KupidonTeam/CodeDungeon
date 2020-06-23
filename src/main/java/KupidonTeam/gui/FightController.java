@@ -3,9 +3,8 @@ package KupidonTeam.gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import KupidonTeam.characters.classes.skills.Skill;
+import KupidonTeam.characters.skills.Skill;
 import KupidonTeam.player.Player;
-import KupidonTeam.utils.SoundPlayer;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

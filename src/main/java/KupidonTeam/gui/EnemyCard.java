@@ -1,6 +1,6 @@
 package KupidonTeam.gui;
 
-import KupidonTeam.characters.classes.enemies.Enemy;
+import KupidonTeam.characters.enemies.Enemy;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -15,12 +15,8 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class EnemyCard {

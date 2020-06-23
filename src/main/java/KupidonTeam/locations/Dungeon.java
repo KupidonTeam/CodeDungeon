@@ -1,8 +1,7 @@
 package KupidonTeam.locations;
 
 
-import KupidonTeam.characters.classes.enemies.Enemy;
-import KupidonTeam.enums.Direction;
+import KupidonTeam.characters.enemies.Enemy;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

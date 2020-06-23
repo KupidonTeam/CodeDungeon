@@ -1,6 +1,6 @@
 package KupidonTeam.gui;
 
-import KupidonTeam.characters.classes.skills.Skill;
+import KupidonTeam.characters.skills.Skill;
 import KupidonTeam.controllers.BattleController;
 import KupidonTeam.items.Armor;
 import KupidonTeam.items.Food;
@@ -31,10 +31,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lombok.SneakyThrows;
 
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;

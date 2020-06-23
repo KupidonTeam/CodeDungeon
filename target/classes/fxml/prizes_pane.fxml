@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="294.0" prefWidth="442.0"
             style="-fx-border-color: #8e7c74; -fx-border-width: 4; -fx-background-color: #201b1b;"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="KupidonTeam.gui.PrizesPaneController">
     <children>
         <Button id="okButton" fx:id="okButton" layoutX="204.0" layoutY="255.0" maxHeight="-Infinity"

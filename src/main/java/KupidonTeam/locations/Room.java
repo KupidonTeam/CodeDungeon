@@ -1,12 +1,9 @@
 package KupidonTeam.locations;
 
-import KupidonTeam.enums.Direction;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 @Getter

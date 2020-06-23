@@ -1,4 +1,4 @@
-package KupidonTeam.characters.classes.skills;
+package KupidonTeam.characters.skills;
 
 import KupidonTeam.utils.SoundPlayer;
 import lombok.AllArgsConstructor;
