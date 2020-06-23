@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="CodeDungeon" />
+        <module name="CodeDungeon_draft" />
         <module name="CodeDungeon_kpTeam" />
       </profile>
     </annotationProcessing>
