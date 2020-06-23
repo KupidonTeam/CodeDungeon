@@ -11,7 +11,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import sun.applet.Main;
 
 public class ShopController {
     private Pane shopPane;
