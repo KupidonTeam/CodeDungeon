@@ -5,7 +5,6 @@ import javafx.scene.media.AudioClip;
 import java.net.URISyntaxException;
 
 public class SoundPlayer {
-
     private AudioClip audioClip;
     private AudioClip mainTheme;
 

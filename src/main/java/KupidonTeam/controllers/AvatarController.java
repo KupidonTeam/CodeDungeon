@@ -1,4 +1,4 @@
-package KupidonTeam.gui;
+package KupidonTeam.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,6 +1,5 @@
 package KupidonTeam.locations;
 
-
 import KupidonTeam.characters.enemies.Enemy;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

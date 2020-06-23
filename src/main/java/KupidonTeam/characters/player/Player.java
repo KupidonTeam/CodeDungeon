@@ -19,7 +19,6 @@ import java.util.List;
 @Getter
 @Setter
 public class Player {
-
     private static Player player;
     private String name;
     private Stats stats;
@@ -41,7 +40,6 @@ public class Player {
         setLvl(lvl);
         setExperience(experience);
         setAnimals(animals);
-        //loadAvatarIcon();
         setAvatar(avatar);
         inventory = new Inventory(this);
         inventory.addAll(armors);
@@ -64,15 +62,18 @@ public class Player {
         }
 
         System.err.println("Player already exists!");
+
         return false;
     }
 
     public static Player getInstance() {
         if (player != null) {
+
             return player;
         }
 
         System.err.println("Player is not created yet!");
+
         return null;
     }
 
@@ -104,9 +105,7 @@ public class Player {
 
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
-
     }
 
     public void heal(Item food) {
@@ -139,5 +138,4 @@ public class Player {
         System.out.println("drop item = " + item.getName());
         inventory.getItems().remove(item);
     }
-
 }

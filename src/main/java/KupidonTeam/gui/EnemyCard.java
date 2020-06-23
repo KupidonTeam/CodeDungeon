@@ -1,6 +1,7 @@
 package KupidonTeam.gui;
 
 import KupidonTeam.characters.enemies.Enemy;
+import KupidonTeam.controllers.EnemyCardController;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;

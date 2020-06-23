@@ -1,7 +1,9 @@
-package KupidonTeam.gui;
+package KupidonTeam.controllers;
 
 import KupidonTeam.characters.skills.Skill;
 import KupidonTeam.db.DBConnection;
+import KupidonTeam.gui.LoginWrapper;
+import KupidonTeam.gui.SignUpWrapper;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;

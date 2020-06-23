@@ -1,8 +1,7 @@
-package KupidonTeam.gui;
+package KupidonTeam.controllers;
 
 import KupidonTeam.characters.player.Player;
 import KupidonTeam.items.Armor;
-import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

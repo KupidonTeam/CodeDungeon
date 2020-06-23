@@ -33,5 +33,4 @@ public class Skill {
                         "\"attack_type\" : \"%s\"}",
                 id, coolDown, countOfRandom, effect, lvl, name, randomDiapason, type);
     }
-
 }

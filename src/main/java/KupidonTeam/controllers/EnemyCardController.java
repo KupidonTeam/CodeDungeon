@@ -1,4 +1,4 @@
-package KupidonTeam.gui;
+package KupidonTeam.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -8,7 +8,6 @@ import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 
 public class EnemyCardController {
 

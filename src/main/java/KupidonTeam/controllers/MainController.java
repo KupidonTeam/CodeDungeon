@@ -1,8 +1,9 @@
-package KupidonTeam.gui;
+package KupidonTeam.controllers;
 
 import KupidonTeam.characters.player.Player;
 import KupidonTeam.characters.skills.Skill;
-import KupidonTeam.controllers.BattleController;
+import KupidonTeam.gui.EnemyCard;
+import KupidonTeam.gui.LoginWrapper;
 import KupidonTeam.items.Armor;
 import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;

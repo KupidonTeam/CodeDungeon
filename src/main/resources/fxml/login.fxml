@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="KupidonTeam.gui.LoginController">
+           fx:controller="KupidonTeam.controllers.LoginController">
     <children>
         <AnchorPane fx:id="MainPane">
             <children>

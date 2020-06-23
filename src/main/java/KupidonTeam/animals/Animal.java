@@ -18,6 +18,7 @@ public class Animal extends Item {
         setName(name);
         setSpeed(speed);
         setCapacity(capacity);
+
         try {
             setPrice(price);
         } catch (LessThanZeroException ex) {

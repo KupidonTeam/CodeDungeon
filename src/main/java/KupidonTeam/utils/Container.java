@@ -7,7 +7,6 @@ import javafx.scene.control.TextArea;
 import java.util.List;
 
 public class Container {
-
     private static List<Dungeon> dungeonList;
     private static int[][] routes;
     private static SoundPlayer soundPlayer;
@@ -56,6 +55,7 @@ public class Container {
     public static List<? extends Item> getPrizes() {
         List<? extends Item> temp = prizes;
         prizes = null;
+
         return temp;
     }
 }

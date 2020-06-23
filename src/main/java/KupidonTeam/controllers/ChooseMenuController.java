@@ -1,4 +1,4 @@
-package KupidonTeam.gui;
+package KupidonTeam.controllers;
 
 import KupidonTeam.utils.SoundPlayer;
 import javafx.geometry.Pos;

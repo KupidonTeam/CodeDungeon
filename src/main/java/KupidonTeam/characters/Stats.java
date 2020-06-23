@@ -7,7 +7,6 @@ import lombok.Getter;
 @Getter
 
 public class Stats {
-
     private int armorClass;
     private int hits;
     private int speed;
@@ -18,7 +17,6 @@ public class Stats {
     private int chance;
     private int constitution;
     private Label hpLabel;
-
 
     public Stats(int armorClass, int hits, int speed, int strength, int dexterity,
                  int intelligence, int wisdom, int chance, int constitution) {
@@ -35,6 +33,20 @@ public class Stats {
         hpLabel.setText("");
     }
 
+    public void setDamage(int damage) {
+        hits -= damage;
+        hpLabel.setText("" + hits + " %");
+    }
+
+    public void heal(int heal) {
+        hits += heal;
+        if (hits > 100) hits = 100;
+    }
+
+    public Integer[] getStatsData() {
+        return new Integer[]{hits, speed, strength, dexterity, intelligence, wisdom, chance, constitution};
+    }
+
     @Override
     public String toString() {
         return String.format("" +
@@ -48,19 +60,5 @@ public class Stats {
                         "\"strength\" : %d," +
                         "\"wisdom\" : %d",
                 armorClass, chance, constitution, dexterity, hits, intelligence, speed, strength, wisdom);
-    }
-
-    public void setDamage(int damage) {
-        hits -= damage;
-        hpLabel.setText("" + hits + " %");
-    }
-
-    public void heal(int heal) {
-        hits += heal;
-        if (hits > 100) hits = 100;
-    }
-
-    public Integer[] getStatsData() {
-        return new Integer[]{hits, speed, strength, dexterity, intelligence, wisdom, chance, constitution};
     }
 }
