@@ -1,7 +1,7 @@
 package KupidonTeam.model.characters.enemies;
 
 import KupidonTeam.model.characters.Stats;
-import KupidonTeam.model.characters.skills.Skill;
+import KupidonTeam.model.characters.Skill;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

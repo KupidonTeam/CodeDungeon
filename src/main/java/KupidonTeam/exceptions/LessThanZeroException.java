@@ -1,4 +1,4 @@
-package KupidonTeam.model.exceptions;
+package KupidonTeam.exceptions;
 
 public class LessThanZeroException extends Exception {
     public LessThanZeroException(Object element) {

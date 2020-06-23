@@ -1,4 +1,4 @@
-package KupidonTeam.model.utils;
+package KupidonTeam.utils;
 
 import javafx.scene.media.AudioClip;
 

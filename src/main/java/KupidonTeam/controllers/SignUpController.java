@@ -2,7 +2,6 @@ package KupidonTeam.controllers;
 
 import KupidonTeam.view.LoginWrapper;
 import KupidonTeam.view.SignUpWrapper;
-import KupidonTeam.model.login.SignLogic;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,11 +15,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SingUpController {
+public class SignUpController {
 
     private final String loginPath = "/fxml/login.fxml";
 
@@ -63,6 +64,9 @@ public class SingUpController {
     private Button signUpButton;
 
     @FXML
+    private ImageView github;
+
+    @FXML
     void initialize() {
         assert usernameLabel != null : "fx:id=\"usernameLabel\" was not injected: check your FXML file 'signup_final.fxml'.";
         assert passwordLabel != null : "fx:id=\"passwordLabel\" was not injected: check your FXML file 'signup_final.fxml'.";
@@ -73,7 +77,17 @@ public class SingUpController {
         assert passwordField != null : "fx:id=\"passwordField\" was not injected: check your FXML file 'signup_final.fxml'.";
         assert confirmPasswordField != null : "fx:id=\"confirmPasswordField\" was not injected: check your FXML file 'signup_final.fxml'.";
         assert signUpButton != null : "fx:id=\"signUpButton\" was not injected: check your FXML file 'signup_final.fxml'.";
+        assert github != null : "fx:id=\"github\" was not injected: check your FXML file 'login.fxml'.";
 
+        github.setOnMouseClicked(event -> {
+            try {
+                Desktop.getDesktop().browse(new URL("https://github.com/KupidonTeam/CodeDungeon").toURI());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        });
 
         signUpButton.setOnAction((ev) -> {
             loginCheck();
@@ -82,7 +96,7 @@ public class SingUpController {
 
         closeWindowButton.setOnMouseClicked(event -> {
             LoginWrapper.getCurrentStage().close();
-            SignLogic.getSignLogic().closeAll();
+            SignInController.getSignInController().closeAll();
         });
 
         loginLink.setOnMouseClicked(ev -> switchToLogin());
@@ -109,13 +123,13 @@ public class SingUpController {
             confirmPasswordLabel.setText("Confirm password - NOT EQUAL");
             confirmPasswordLabel.setTextFill(Color.RED);
         } else {
-            SignLogic signLogic = SignLogic.getSignLogic();
+            SignInController signInController = SignInController.getSignInController();
             System.out.println("before check");
             System.out.println("user name = " + username);
             System.out.println("pass = " + password);
-            System.out.println(signLogic.checkUserName(username));
+            System.out.println(signInController.checkUserName(username));
 
-            if (!signLogic.checkUserName(username)) {
+            if (!signInController.checkUserName(username)) {
                 System.out.println("========== Логин свободен ==============");
                 characterCreation(username, password);
             } else {

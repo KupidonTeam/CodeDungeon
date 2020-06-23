@@ -1,12 +1,11 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.model.characters.skills.Skill;
-import KupidonTeam.model.db.DBConnection;
+import KupidonTeam.model.characters.Skill;
+import KupidonTeam.utils.DBConnection;
 import KupidonTeam.view.LoginWrapper;
 import KupidonTeam.view.SignUpWrapper;
-import KupidonTeam.model.login.SignLogic;
-import KupidonTeam.model.server.Connection;
-import KupidonTeam.model.utils.JSON;
+import KupidonTeam.server.Connection;
+import KupidonTeam.utils.JSON;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -132,7 +131,7 @@ public class CharacterCreationController {
         closeButton.setOnMouseClicked(ev -> {
             try {
                 LoginWrapper.getCurrentStage().close();
-                SignLogic.getSignLogic().closeAll();
+                SignInController.getSignInController().closeAll();
             } catch (Exception ex) {
                 System.err.println("<!--------Close problem occurred---------!>");
                 ex.printStackTrace();

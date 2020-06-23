@@ -1,5 +1,6 @@
 package KupidonTeam.view;
 
+import KupidonTeam.utils.Dot;
 import javafx.animation.ScaleTransition;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.GaussianBlur;

@@ -2,7 +2,7 @@ package KupidonTeam.model.items;
 
 // Класс-родитель для всех предметов в игре
 
-import KupidonTeam.model.exceptions.LessThanZeroException;
+import KupidonTeam.exceptions.LessThanZeroException;
 import lombok.Getter;
 import lombok.Setter;
 

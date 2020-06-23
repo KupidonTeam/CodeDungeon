@@ -1,4 +1,4 @@
-package KupidonTeam.model.exceptions;
+package KupidonTeam.exceptions;
 
 import java.io.IOException;
 

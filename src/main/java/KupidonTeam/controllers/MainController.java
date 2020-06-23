@@ -1,22 +1,26 @@
 package KupidonTeam.controllers;
 
 import KupidonTeam.model.characters.player.Player;
-import KupidonTeam.model.characters.skills.Skill;
+import KupidonTeam.model.characters.Skill;
 import KupidonTeam.view.EnemyCard;
 import KupidonTeam.view.LoginWrapper;
 import KupidonTeam.model.items.Armor;
 import KupidonTeam.model.items.Food;
 import KupidonTeam.model.items.Weapon;
-import KupidonTeam.model.login.SignLogic;
-import KupidonTeam.model.server.Connection;
-import KupidonTeam.model.utils.Container;
-import KupidonTeam.model.utils.JSON;
-import KupidonTeam.model.utils.SoundPlayer;
+import KupidonTeam.server.Connection;
+import KupidonTeam.utils.Container;
+import KupidonTeam.utils.JSON;
+import KupidonTeam.utils.SoundPlayer;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +34,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lombok.SneakyThrows;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -122,6 +129,9 @@ public class MainController {
     @FXML
     private FlowPane exPane;
 
+    @FXML
+    private ImageView github;
+
     private double xOffset = 0;
     private double yOffset = 0;
     private Connection server;
@@ -154,8 +164,8 @@ public class MainController {
         chooseMenuController = new ChooseMenuController(this, cardTable);
         buttonsSetUp();
         panesSetUp();
-        server.setChatArea(chatPane);
-        server.setCardTable(cardTable);
+//        server.setChatArea(chatPane);
+//        server.setCardTable(cardTable);
     }
 
     private void panesSetUp() {
@@ -383,15 +393,25 @@ public class MainController {
         assert hpPane != null : "fx:id=\"hpPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert exPane != null : "fx:id=\"exPane\" was not injected: check your FXML file 'main_v2.fxml'.";
         assert cardTable != null : "fx:id=\"cardTable\" was not injected: check your FXML file 'main_v2.fxml'.";
+        assert github != null : "fx:id=\"github\" was not injected: check your FXML file 'login.fxml'.";
 
 
+        github.setOnMouseClicked(event -> {
+            try {
+                Desktop.getDesktop().browse(new URL("https://github.com/KupidonTeam/CodeDungeon").toURI());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void buttonsSetUp() {
         exitButton.setOnMouseClicked(event -> {
             try {
                 LoginWrapper.getCurrentStage().close();
-                SignLogic.getSignLogic().closeAll();
+                SignInController.getSignInController().closeAll();
             } catch (Exception ex) {
                 System.err.println("Close problem occurred");
                 ex.printStackTrace();

@@ -3,7 +3,6 @@ package KupidonTeam.controllers;
 import KupidonTeam.model.characters.player.Player;
 import KupidonTeam.view.LoginWrapper;
 import KupidonTeam.view.SignUpWrapper;
-import KupidonTeam.model.login.SignLogic;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -30,7 +29,10 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import lombok.SneakyThrows;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -69,6 +71,9 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+    @FXML
+    private ImageView github;
+
     private Paint labelColor;
 
     public Stage dialogStage;
@@ -86,6 +91,18 @@ public class LoginController {
         assert signUpLink != null : "fx:id=\"signUpLink\" was not injected: check your FXML file 'login.fxml'.";
         assert usernameField != null : "fx:id=\"usernameField\" was not injected: check your FXML file 'login.fxml'.";
         assert passwordField != null : "fx:id=\"passwordField\" was not injected: check your FXML file 'login.fxml'.";
+        assert github != null : "fx:id=\"github\" was not injected: check your FXML file 'login.fxml'.";
+
+
+        github.setOnMouseClicked(event -> {
+            try {
+                Desktop.getDesktop().browse(new URL("https://github.com/KupidonTeam/CodeDungeon").toURI());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        });
 
         dialogStage = new Stage();
         dialogStage.initStyle(StageStyle.UNDECORATED);
@@ -110,7 +127,7 @@ public class LoginController {
         closeButton.setOnMouseClicked(ev -> {
             try {
                 LoginWrapper.getCurrentStage().close();
-                SignLogic.getSignLogic().closeAll();
+                SignInController.getSignInController().closeAll();
             } catch (Exception ex) {
                 System.err.println("Close problem occurred");
                 ex.printStackTrace();
@@ -139,9 +156,9 @@ public class LoginController {
             passwordLabel.setText("Password - REQUIRED");
             passwordLabel.setTextFill(Color.RED);
         } else {
-            SignLogic signLogic = SignLogic.getSignLogic();
-            if (signLogic.checkUserName(username)) {
-                boolean loginStatus = signLogic.serverAuthorization(username, password);
+            SignInController signInController = SignInController.getSignInController();
+            if (signInController.checkUserName(username)) {
+                boolean loginStatus = signInController.serverAuthorization(username, password);
                 if (loginStatus) {
                     loadMainPane();
                     dialogStage.close();
@@ -200,7 +217,7 @@ public class LoginController {
 
         } catch (IOException e) {
             e.printStackTrace();
-            SignLogic.getSignLogic().closeAll();
+            SignInController.getSignInController().closeAll();
         }
     }
 
@@ -241,6 +258,8 @@ public class LoginController {
         loginToServerDialog();
         Platform.runLater(() -> loginCheck());
     }
+
+
 }
 
 

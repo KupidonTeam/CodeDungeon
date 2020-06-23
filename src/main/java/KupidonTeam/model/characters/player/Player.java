@@ -1,9 +1,9 @@
 package KupidonTeam.model.characters.player;
 
-import KupidonTeam.model.db.DBConnection;
+import KupidonTeam.utils.DBConnection;
 import KupidonTeam.model.animals.Animal;
 import KupidonTeam.model.characters.Stats;
-import KupidonTeam.model.characters.skills.Skill;
+import KupidonTeam.model.characters.Skill;
 import KupidonTeam.model.items.Armor;
 import KupidonTeam.model.items.Item;
 import KupidonTeam.model.items.Weapon;

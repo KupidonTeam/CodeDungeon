@@ -1,6 +1,6 @@
 package KupidonTeam.model.animals;
 
-import KupidonTeam.model.exceptions.LessThanZeroException;
+import KupidonTeam.exceptions.LessThanZeroException;
 import KupidonTeam.model.items.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package KupidonTeam.view;
+package KupidonTeam.utils;
 
 import KupidonTeam.controllers.BattleController;
 import javafx.scene.shape.Circle;

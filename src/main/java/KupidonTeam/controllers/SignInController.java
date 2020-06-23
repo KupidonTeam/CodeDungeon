@@ -1,10 +1,10 @@
-package KupidonTeam.model.login;
+package KupidonTeam.controllers;
 
-import KupidonTeam.model.db.DBConnection;
+import KupidonTeam.utils.DBConnection;
 import KupidonTeam.model.characters.player.Player;
-import KupidonTeam.model.server.Connection;
-import KupidonTeam.model.utils.JSON;
-import KupidonTeam.model.utils.SoundPlayer;
+import KupidonTeam.server.Connection;
+import KupidonTeam.utils.JSON;
+import KupidonTeam.utils.SoundPlayer;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
@@ -15,15 +15,14 @@ import java.sql.SQLException;
 
 //Авторизация игрока и подключения модуля баз данных
 @Getter
-public class SignLogic {
-    private static SignLogic signLogic;
+public class SignInController {
+    private static SignInController signInController;
     private Connection server;
     private DBConnection database;
     private Boolean responseFlag;
     private boolean login;
-    private SoundPlayer soundPlayer;
 
-    private SignLogic() {
+    private SignInController() {
         this.server = Connection.getConnection();
         database = DBConnection.getDbConnection();
         responseFlag = false;
@@ -75,14 +74,6 @@ public class SignLogic {
         return login;
     }
 
-    public synchronized void serverResponse(String msg) {
-        //подтверждаем ответ
-        responseFlag = true;
-        System.out.println("Я получил вот такой ответ : " + msg);
-
-        //TODO!!!!!!! после успешного логина открываем основную панель
-    }
-
     private void createPLayer(String json) {
         JSONObject data = new JSONObject(json).getJSONObject("data");
         Player.createPlayer(data.getString("player_name"),
@@ -104,12 +95,12 @@ public class SignLogic {
         System.exit(0);
     }
 
-    public static SignLogic getSignLogic() {
-        if (signLogic == null) {
-            signLogic = new SignLogic();
+    public static SignInController getSignInController() {
+        if (signInController == null) {
+            signInController = new SignInController();
         }
 
-        return signLogic;
+        return signInController;
     }
 
     public synchronized void loginAnalyze(String msg) {

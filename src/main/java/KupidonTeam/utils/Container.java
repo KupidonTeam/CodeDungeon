@@ -1,4 +1,4 @@
-package KupidonTeam.model.utils;
+package KupidonTeam.utils;
 
 import KupidonTeam.model.items.Item;
 import KupidonTeam.model.locations.Dungeon;

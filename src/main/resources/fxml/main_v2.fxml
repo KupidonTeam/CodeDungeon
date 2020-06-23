@@ -222,6 +222,14 @@
                         <Font name="Century" size="24.0" />
                     </font>
                 </Label>
+            <ImageView fx:id="github" fitHeight="38.0" fitWidth="74.0" layoutX="26.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/GitHub.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
             </children>
         </AnchorPane>
       <AnchorPane layoutX="301.0" layoutY="633.6666870117188" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="85.0" style="-fx-border-color: #8e7c74; -fx-background-color: #201b1b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
@@ -316,7 +324,7 @@
                 </FlowPane>
             </children>
         </AnchorPane>
-        <ScrollPane hbarPolicy="NEVER" layoutX="301.0" layoutY="51.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" stylesheets="@/assets/css/scroll-pane.css">
+        <ScrollPane hbarPolicy="NEVER" layoutX="301.0" layoutY="51.0" style="-fx-background-color: #201b1b; -fx-border-color: #8e7c74;" stylesheets="@/assets/css/scroll-pane.css" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0">
             <content>
                 <FlowPane fx:id="cardTable" prefHeight="579.0" prefWidth="770.0" style="-fx-background-color: #201b1b;" />
             </content>

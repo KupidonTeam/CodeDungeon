@@ -1,14 +1,14 @@
-package KupidonTeam.model.utils;
+package KupidonTeam.utils;
 
 import KupidonTeam.model.animals.Animal;
 import KupidonTeam.model.characters.Stats;
 import KupidonTeam.model.characters.enemies.Enemy;
-import KupidonTeam.model.characters.skills.Skill;
+import KupidonTeam.model.characters.Skill;
 import KupidonTeam.model.items.Armor;
 import KupidonTeam.model.items.Food;
 import KupidonTeam.model.items.Weapon;
 import KupidonTeam.model.locations.Dungeon;
-import KupidonTeam.model.login.SignLogic;
+import KupidonTeam.controllers.SignInController;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -157,7 +157,7 @@ public class JSON {
             );
         } catch (JSONException ex) {
             ex.printStackTrace();
-            SignLogic.getSignLogic().closeAll();
+            SignInController.getSignInController().closeAll();
         }
 
         return null;

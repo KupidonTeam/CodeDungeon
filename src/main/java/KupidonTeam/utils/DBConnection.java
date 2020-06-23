@@ -1,7 +1,7 @@
-package KupidonTeam.model.db;
+package KupidonTeam.utils;
 
-import KupidonTeam.model.exceptions.FailedDBConnection;
-import KupidonTeam.model.exceptions.PropertiesException;
+import KupidonTeam.exceptions.FailedDBConnection;
+import KupidonTeam.exceptions.PropertiesException;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
@@ -21,7 +21,7 @@ public class DBConnection {
     private String user;
     private String password;
     private String host;
-    private int port;        //локальный порт клиента
+    private int port;
     private String url;
     private String db;
     private String dbUser;
@@ -87,7 +87,7 @@ public class DBConnection {
     private void setProperties() throws PropertiesException {
         try {
             Properties properties = new Properties();
-            properties.load(new FileInputStream("src/main/resources/DB.properties"));
+            properties.load(new FileInputStream("src/main/resources/properties/DB.properties"));
             lport = Integer.parseInt(properties.getProperty("lport"));
             rhost = properties.getProperty("rhost");
             rport = Integer.parseInt(properties.getProperty("rport"));
@@ -102,16 +102,6 @@ public class DBConnection {
         } catch (IOException e) {
             throw new PropertiesException("CantLoadProperties");
         }
-//        user = "codedungeon";
-//        password = "kqKVZS6M";
-//        host = "178.132.156.98";
-//        port = 22458;
-//        lport = 4321;
-//        rhost = "localhost";
-//        rport = 3306;
-//        db = "CodeDungeon";
-//        dbUser = "CodeDungeon";
-//        dbPassword = "CodeDungeon";
     }
 
     public static DBConnection getDbConnection() {

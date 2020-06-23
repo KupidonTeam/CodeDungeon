@@ -1,6 +1,6 @@
 package KupidonTeam.view;
 
-import KupidonTeam.model.server.Connection;
+import KupidonTeam.server.Connection;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
