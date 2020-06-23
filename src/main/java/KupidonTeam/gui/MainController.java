@@ -5,7 +5,6 @@ import KupidonTeam.controllers.BattleController;
 import KupidonTeam.items.Armor;
 import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;
-import KupidonTeam.locations.Dungeon;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.player.Player;
 import KupidonTeam.server.Connection;
@@ -16,7 +15,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.Glow;
@@ -33,6 +31,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lombok.SneakyThrows;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -273,8 +275,8 @@ public class MainController {
         win.setPrefSize(600, 300);
         win.setSpacing(20);
         Scene scene = new Scene(win);
-        ImageView okImage = new ImageView("/assets/GUI_Parts/Gui_parts/button2.png");
-        ImageView cancelImage = new ImageView("/assets/GUI_Parts/Gui_parts/button_ready_on.png");
+        ImageView okImage = new ImageView(new Image(getClass().getResourceAsStream("/assets/GUI_Parts/Gui_parts/button2.png")));
+        ImageView cancelImage = new ImageView(new Image(getClass().getResourceAsStream("/assets/GUI_Parts/Gui_parts/button_ready_on.png")));
         okImage.setFitHeight(40);
         cancelImage.setFitHeight(40);
         okImage.setFitWidth(80);
@@ -330,9 +332,9 @@ public class MainController {
         avatarIcon.setImage(player.getAvatarIcon());
         initInventory();
         skillsSetup();
-
     }
 
+    @SneakyThrows
     private void skillsSetup() {
         skillImages = new LinkedList<>();
         skillImages.add(skill1);
@@ -345,7 +347,8 @@ public class MainController {
             Tooltip tooltip = new Tooltip();
             tooltip.setPrefSize(200, 150);
             Skill skill = player.getSkills().get(i);
-            skillImages.get(i).setImage(new Image("/assets/skills/" + skill.getName() + ".png"));
+            System.out.println(skill.getName());
+            skillImages.get(i).setImage(new Image(MainController.class.getResourceAsStream("/assets/skills/" + skill.getName().toLowerCase() + ".png")));
             int finalI = i;
             skillImages.get(i).setOnMouseClicked(event -> {
                 skillImages.forEach(el -> el.setEffect(new Glow(0)));

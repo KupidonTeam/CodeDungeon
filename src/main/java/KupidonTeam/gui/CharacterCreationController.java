@@ -258,7 +258,7 @@ public class CharacterCreationController {
 
             skills.forEach(el -> {
                 System.out.println("skill name = " + el.getName());
-                ImageView skillImg = new ImageView("/assets/skills/" + el.getName() + ".png");
+                ImageView skillImg = new ImageView(new Image(getClass().getResourceAsStream("/assets/skills/" + el.getName().toLowerCase() + ".png")));
                 skillImg.setFitWidth(64);
                 skillImg.setFitHeight(64);
                 Tooltip.install(skillImg, new Tooltip(el.toString()));
@@ -335,19 +335,23 @@ public class CharacterCreationController {
         fadeTransition.play();
     }
 
+
     @SneakyThrows
     private void chooseAvatar() {
         FlowPane avatarImgPane = new FlowPane();
         avatarImgPane.setPrefWidth(390);
-        File file = new File(getClass().getResource("/assets/SIMPLEAvatarsIcons/64X64/").toURI());
+        File file = new File(getClass().getResource("/assets/SIMPLEAvatarsIcons/512X512/").toURI());
         Stage stage = new Stage();
         for (File f : file.listFiles()) {
             if (!f.isDirectory()) {
-                ImageView imageView = new ImageView("/assets/SIMPLEAvatarsIcons/64X64/" + f.getName());
+                System.out.println("file = " + f.getName());
+                ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("/assets/SIMPLEAvatarsIcons/512X512/" + f.getName())));
+                imageView.setFitHeight(64);
+                imageView.setFitWidth(64);
                 imageView.setOnMouseClicked(event -> {
                     avatar = f.getName().substring(0, f.getName().indexOf('.'));
                     System.out.println("Chosen avatar = " + avatar);
-                    avatarImage.setImage(new Image("/assets/SIMPLEAvatarsIcons/512X512/" + f.getName()));
+                    avatarImage.setImage(new Image(getClass().getResourceAsStream("/assets/SIMPLEAvatarsIcons/512X512/" + f.getName())));
                     stage.close();
                 });
                 avatarImgPane.getChildren().add(imageView);

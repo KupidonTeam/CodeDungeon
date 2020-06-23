@@ -53,23 +53,24 @@ public class PrizesPaneController {
             ImageView imageView = new ImageView();
             imageView.setFitWidth(64);
             imageView.setFitHeight(64);
+            System.out.println(el.getName());
 
             if (el instanceof Armor) {
-                imageView.setImage(new Image("/assets/armor/" + el.getName() + ".png"));
+                imageView.setImage(new Image(getClass().getResourceAsStream("/assets/armor/" + el.getName() + ".png")));
                 Tooltip tooltip = new Tooltip(((Armor) el).toString());
                 Tooltip.install(imageView, tooltip);
                 prizesPane.getChildren().add(imageView);
 
             }
             if (el instanceof Weapon) {
-                imageView.setImage(new Image("/assets/weapons/" + el.getName() + ".png"));
+                imageView.setImage(new Image(getClass().getResourceAsStream("/assets/weapons/" + el.getName() + ".png")));
                 Tooltip tooltip = new Tooltip(el.toString());
                 Tooltip.install(imageView, tooltip);
                 prizesPane.getChildren().add(imageView);
             }
 
             if (el instanceof Food) {
-                imageView.setImage(new Image("/assets/food/" + el.getName() + ".png"));
+                imageView.setImage(new Image(getClass().getResourceAsStream("/assets/food/" + el.getName() + ".png")));
                 Tooltip tooltip = new Tooltip(((Food) el).toString());
                 Tooltip.install(imageView, tooltip);
                 prizesPane.getChildren().add(imageView);

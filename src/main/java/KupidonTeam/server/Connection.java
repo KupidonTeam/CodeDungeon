@@ -15,13 +15,11 @@ import lombok.Getter;
 import org.json.JSONObject;
 
 import javax.swing.*;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 import java.util.Scanner;
 
 //Singleton
@@ -153,18 +151,20 @@ public class Connection {
     }
 
     private void setProperties() throws PropertiesException {
-        Properties properties;
-
-        try {
-            String propFile = "src/main/resources/connection.properties";
-            properties = new Properties();
-            properties.load(new FileInputStream("src/main/resources/connection.properties"));
-            host = properties.getProperty("host");
-            port = Integer.parseInt(properties.getProperty("port"));
-            System.out.println("Host = " + host + " : " + port);
-        } catch (IOException e) {
-            throw new PropertiesException("CantFindPropertiesFile");
-        }
+//        Properties properties;
+//
+//        try {
+//            String propFile = "src/main/resources/connection.properties";
+//            properties = new Properties();
+//            properties.load(new FileInputStream("src/main/resources/connection.properties"));
+//            host = properties.getProperty("host");
+//            port = Integer.parseInt(properties.getProperty("port"));
+//            System.out.println("Host = " + host + " : " + port);
+//        } catch (IOException e) {
+//            throw new PropertiesException("CantFindPropertiesFile");
+//        }
+        host = "178.132.156.98";
+        port = 1308;
     }
 
     public void closeConnection() {

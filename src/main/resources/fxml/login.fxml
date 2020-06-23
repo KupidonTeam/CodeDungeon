@@ -10,15 +10,17 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.LoginController">
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="KupidonTeam.gui.LoginController">
     <children>
         <AnchorPane fx:id="MainPane">
             <children>
-                <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="616.0">
+                <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                      prefHeight="456.0" prefWidth="616.0">
                     <children>
                         <ImageView fitHeight="457.0" fitWidth="616.0">
                             <image>
-                                <Image url="@/assets/GUI_Parts/Gui_parts/my_background.png" />
+                                <Image url="@/assets/GUI_Parts/Gui_parts/my_background.png"/>
                             </image>
                         </ImageView>
                         <ImageView fitHeight="79.0" fitWidth="210.0" layoutX="196.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">

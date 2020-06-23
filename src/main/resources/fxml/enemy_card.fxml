@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="box" fx:id="enemyCard" styleClass="gradient-border" xmlns="http://javafx.com/javafx/11.0.1"
+<AnchorPane id="box" fx:id="enemyCard" styleClass="gradient-border" xmlns="http://javafx.com/javafx/8.0.251"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="KupidonTeam.gui.EnemyCardController">
     <children>
         <AnchorPane layoutX="8.0" layoutY="8.0" prefHeight="221.0" prefWidth="208.0"

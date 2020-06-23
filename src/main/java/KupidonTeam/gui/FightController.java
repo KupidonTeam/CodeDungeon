@@ -117,7 +117,7 @@ public class FightController {
     }
 
     private Image loadSkillImage(String skillName) {
-        String imageUri = "/assets/skills/" + skillName + ".png";
+        String imageUri = "/assets/skills/" + skillName.toLowerCase() + ".png";
         return new Image(imageUri);
     }
 
@@ -145,7 +145,7 @@ public class FightController {
     private void initFxml() {
         assert passBattle != null : "fx:id=\"passBattle\" was not injected: check your FXML file 'fight.fxml'.";
         assert playerNameBattle != null : "fx:id=\"playerNameBattle\" was not injected: check your FXML file 'fight.fxml'.";
-        assert enemyNameBattle != null : "fx:id=\"enemyNameBattle\" was not injected: check your FXML file 'fight.fxml'.";
+        assert enemyNameBattle != null : "fx:id=\"enemyNameBattle\" was not     injected: check your FXML file 'fight.fxml'.";
         assert playerImageBattle != null : "fx:id=\"playerImageBattle\" was not injected: check your FXML file 'fight.fxml'.";
         assert enemyImageBattle != null : "fx:id=\"enemyImageBattle\" was not injected: check your FXML file 'fight.fxml'.";
         assert attackImageBattle != null : "fx:id=\"attackImageBattle\" was not injected: check your FXML file 'fight.fxml'.";

@@ -4,6 +4,7 @@ import KupidonTeam.utils.SoundPlayer;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -22,9 +23,9 @@ public class ChooseMenuController {
 
     public void choosePaneMenu() {
         SoundPlayer soundPlayer = new SoundPlayer();
-        ImageView shopImg = new ImageView("/assets/weapons/Coin.png");
-        ImageView dungeonImg = new ImageView("/assets/weapons/Sword.png");
-        ImageView pvpImg = new ImageView("/assets/weapons/Short Bow.png");
+        ImageView shopImg = new ImageView(new Image(getClass().getResourceAsStream("/assets/weapons/Coin.png")));
+        ImageView dungeonImg = new ImageView(new Image(getClass().getResourceAsStream("/assets/weapons/sword.png")));
+        ImageView pvpImg = new ImageView(new Image(getClass().getResourceAsStream("/assets/weapons/Short Bow.png")));
 
         FlowPane shopPane = new FlowPane();
         shopPane.setAlignment(Pos.CENTER);

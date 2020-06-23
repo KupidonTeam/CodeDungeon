@@ -5,7 +5,6 @@ import KupidonTeam.animals.Animal;
 import KupidonTeam.characters.classes.Stats;
 import KupidonTeam.characters.classes.skills.Skill;
 import KupidonTeam.items.Armor;
-import KupidonTeam.items.Food;
 import KupidonTeam.items.Item;
 import KupidonTeam.items.Weapon;
 import KupidonTeam.locations.Lobby;
@@ -21,7 +20,6 @@ import java.util.List;
 
 @Getter
 @Setter
-
 public class Player {
 
     private static Player player;

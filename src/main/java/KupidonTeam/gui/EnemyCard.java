@@ -53,13 +53,13 @@ public class EnemyCard {
             root = loader.load(EnemyCard.class.getResourceAsStream(path));
             enemyCard = new AnchorPane(root);
             enemyCardController = loader.getController();
-            setImage(randomImage());
+            setImage(new Image(getClass().getResourceAsStream("/assets/SIMPLEAvatarsIcons/512X512/" + enemy.getName() + ".png")));
             setEnemyName(enemy.getName());
             setArmor(enemy.getStats().getArmorClass());
             setDamage(enemy.getStats().getDexterity());
             setDescription(enemy.getDescription());
             setHp(enemy.getStats().getHits());
-            setImage(randomImage());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -101,16 +101,6 @@ public class EnemyCard {
         enemyCard.getChildren().clear();
     }
 
-    private Image randomImage() {
-        String path = "src/main/resources/assets/SIMPLEAvatarsIcons/512X512/";
-        File files = new File(path);
-        List<String> images = new LinkedList<>();
-        Random random = new Random();
-        Stream.of(files.listFiles()).forEach(el -> images.add(el.getName()));
-        path = "/assets/SIMPLEAvatarsIcons/512X512/" + images.get(random.nextInt(images.size()));
-        System.out.println("PUT IMAGE  = " + path);
-        return new Image(path);
-    }
 
     public Enemy getEnemy() {
         return enemy;
