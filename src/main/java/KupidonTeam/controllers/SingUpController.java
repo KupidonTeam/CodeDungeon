@@ -1,8 +1,8 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.gui.LoginWrapper;
-import KupidonTeam.gui.SignUpWrapper;
-import KupidonTeam.login.SignLogic;
+import KupidonTeam.view.LoginWrapper;
+import KupidonTeam.view.SignUpWrapper;
+import KupidonTeam.model.login.SignLogic;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

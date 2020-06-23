@@ -1,8 +1,8 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.characters.player.Player;
-import KupidonTeam.characters.skills.Skill;
-import KupidonTeam.gui.EnemyCard;
+import KupidonTeam.model.characters.player.Player;
+import KupidonTeam.model.characters.skills.Skill;
+import KupidonTeam.view.EnemyCard;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

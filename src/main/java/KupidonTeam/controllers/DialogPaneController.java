@@ -1,6 +1,6 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.gui.DialogPaneWrapper;
+import KupidonTeam.view.DialogPaneWrapper;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

@@ -1,9 +1,9 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.items.Armor;
-import KupidonTeam.items.Item;
-import KupidonTeam.items.Weapon;
-import KupidonTeam.utils.SoundPlayer;
+import KupidonTeam.model.items.Armor;
+import KupidonTeam.model.items.Item;
+import KupidonTeam.model.items.Weapon;
+import KupidonTeam.model.utils.SoundPlayer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

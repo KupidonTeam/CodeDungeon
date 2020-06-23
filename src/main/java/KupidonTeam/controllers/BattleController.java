@@ -1,13 +1,13 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.characters.enemies.Enemy;
-import KupidonTeam.gui.*;
-import KupidonTeam.locations.Dungeon;
-import KupidonTeam.characters.player.Player;
-import KupidonTeam.server.Connection;
-import KupidonTeam.utils.Container;
-import KupidonTeam.utils.JSON;
-import KupidonTeam.utils.SoundPlayer;
+import KupidonTeam.model.characters.enemies.Enemy;
+import KupidonTeam.view.*;
+import KupidonTeam.model.locations.Dungeon;
+import KupidonTeam.model.characters.player.Player;
+import KupidonTeam.model.server.Connection;
+import KupidonTeam.model.utils.Container;
+import KupidonTeam.model.utils.JSON;
+import KupidonTeam.model.utils.SoundPlayer;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

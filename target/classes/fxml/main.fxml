@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0"
-            prefWidth="1024.0" style="-fx-border-color: #8e7c74;" fx:controller="KupidonTeam.gui.MainController"
+            prefWidth="1024.0" style="-fx-border-color: #8e7c74;" fx:controller="KupidonTeam.control.controllers.MainController"
             xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <AnchorPane layoutX="300.0" layoutY="50.0" style="-fx-border-color: #8e7c74; -fx-background-color: #251a1a;"

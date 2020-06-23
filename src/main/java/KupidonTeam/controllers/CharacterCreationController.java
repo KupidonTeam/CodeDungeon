@@ -1,12 +1,12 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.characters.skills.Skill;
-import KupidonTeam.db.DBConnection;
-import KupidonTeam.gui.LoginWrapper;
-import KupidonTeam.gui.SignUpWrapper;
-import KupidonTeam.login.SignLogic;
-import KupidonTeam.server.Connection;
-import KupidonTeam.utils.JSON;
+import KupidonTeam.model.characters.skills.Skill;
+import KupidonTeam.model.db.DBConnection;
+import KupidonTeam.view.LoginWrapper;
+import KupidonTeam.view.SignUpWrapper;
+import KupidonTeam.model.login.SignLogic;
+import KupidonTeam.model.server.Connection;
+import KupidonTeam.model.utils.JSON;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

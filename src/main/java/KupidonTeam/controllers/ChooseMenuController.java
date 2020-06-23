@@ -1,6 +1,6 @@
 package KupidonTeam.controllers;
 
-import KupidonTeam.utils.SoundPlayer;
+import KupidonTeam.model.utils.SoundPlayer;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;

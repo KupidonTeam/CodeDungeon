@@ -1,6 +1,6 @@
 package KupidonTeam;
 
-import KupidonTeam.gui.LoginWrapper;
+import KupidonTeam.view.LoginWrapper;
 import javafx.application.Application;
 
 public class Game {

@@ -10,6 +10,7 @@
         <module name="CodeDungeon" />
         <module name="CodeDungeon_draft" />
         <module name="CodeDungeon_kpTeam" />
+        <module name="CodeDungeon_lastVers" />
       </profile>
     </annotationProcessing>
   </component>

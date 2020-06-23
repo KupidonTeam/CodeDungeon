@@ -166,7 +166,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>KupidonTeam.gui.LoginWrapper</mainClass>
+                            <mainClass>KupidonTeam.view.LoginWrapper</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
