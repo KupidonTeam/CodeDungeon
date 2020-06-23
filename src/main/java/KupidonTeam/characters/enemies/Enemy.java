@@ -1,13 +1,12 @@
-package KupidonTeam.characters.classes.enemies;
+package KupidonTeam.characters.enemies;
 
-import KupidonTeam.characters.classes.Stats;
-import KupidonTeam.characters.classes.skills.Skill;
+import KupidonTeam.characters.Stats;
+import KupidonTeam.characters.skills.Skill;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Objects;
 
 @AllArgsConstructor
 @Getter

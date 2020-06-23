@@ -1,9 +1,9 @@
 package KupidonTeam.utils;
 
 import KupidonTeam.animals.Animal;
-import KupidonTeam.characters.classes.Stats;
-import KupidonTeam.characters.classes.enemies.Enemy;
-import KupidonTeam.characters.classes.skills.Skill;
+import KupidonTeam.characters.Stats;
+import KupidonTeam.characters.enemies.Enemy;
+import KupidonTeam.characters.skills.Skill;
 import KupidonTeam.items.Armor;
 import KupidonTeam.items.Food;
 import KupidonTeam.items.Weapon;

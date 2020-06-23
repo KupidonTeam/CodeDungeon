@@ -1,9 +1,7 @@
-package KupidonTeam.characters.classes;
+package KupidonTeam.characters;
 
 import javafx.scene.control.Label;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 
 @Getter

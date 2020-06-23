@@ -92,33 +92,33 @@ public class DBConnection {
     }
 
     private void setProperties() throws PropertiesException {
-//        try {
-//            Properties properties = new Properties();
-//            properties.load(new FileInputStream("src/main/resources/DB.properties"));
-//            lport = Integer.parseInt(properties.getProperty("lport"));
-//            rhost = properties.getProperty("rhost");
-//            rport = Integer.parseInt(properties.getProperty("rport"));
-//            user = properties.getProperty("user");
-//            password = properties.getProperty("password");
-//            host = properties.getProperty("host");
-//            port = Integer.parseInt(properties.getProperty("port"));        //локальный порт клиента
-//            url = properties.getProperty("url");
-//            db = properties.getProperty("db");
-//            dbUser = properties.getProperty("dbUser");
-//            dbPassword = properties.getProperty("dbPassword");
-//        } catch (IOException e) {
-//            throw new PropertiesException("CantLoadProperties");
-//        }
-        user = "codedungeon";
-        password = "kqKVZS6M";
-        host = "178.132.156.98";
-        port = 22458;
-        lport = 4321;
-        rhost = "localhost";
-        rport = 3306;
-        db = "CodeDungeon";
-        dbUser = "CodeDungeon";
-        dbPassword = "CodeDungeon";
+        try {
+            Properties properties = new Properties();
+            properties.load(new FileInputStream("src/main/resources/DB.properties"));
+            lport = Integer.parseInt(properties.getProperty("lport"));
+            rhost = properties.getProperty("rhost");
+            rport = Integer.parseInt(properties.getProperty("rport"));
+            user = properties.getProperty("user");
+            password = properties.getProperty("password");
+            host = properties.getProperty("host");
+            port = Integer.parseInt(properties.getProperty("port"));        //локальный порт клиента
+            url = properties.getProperty("url");
+            db = properties.getProperty("db");
+            dbUser = properties.getProperty("dbUser");
+            dbPassword = properties.getProperty("dbPassword");
+        } catch (IOException e) {
+            throw new PropertiesException("CantLoadProperties");
+        }
+//        user = "codedungeon";
+//        password = "kqKVZS6M";
+//        host = "178.132.156.98";
+//        port = 22458;
+//        lport = 4321;
+//        rhost = "localhost";
+//        rport = 3306;
+//        db = "CodeDungeon";
+//        dbUser = "CodeDungeon";
+//        dbPassword = "CodeDungeon";
     }
 
     public static DBConnection getDbConnection() {

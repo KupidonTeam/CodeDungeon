@@ -2,13 +2,11 @@ package KupidonTeam.player;
 
 import KupidonTeam.DB.DBConnection;
 import KupidonTeam.animals.Animal;
-import KupidonTeam.characters.classes.Stats;
-import KupidonTeam.characters.classes.skills.Skill;
+import KupidonTeam.characters.Stats;
+import KupidonTeam.characters.skills.Skill;
 import KupidonTeam.items.Armor;
 import KupidonTeam.items.Item;
 import KupidonTeam.items.Weapon;
-import KupidonTeam.locations.Lobby;
-import KupidonTeam.locations.Room;
 
 import javafx.scene.image.Image;
 import lombok.Getter;
@@ -29,7 +27,6 @@ public class Player {
     private String playerClass;
     private int lvl;
     private int experience;
-    private Room location;
     private List<Skill> skills;
     private List<Animal> animals;
     private Image avatarIcon;
@@ -46,7 +43,6 @@ public class Player {
         setLvl(lvl);
         setExperience(experience);
         setAnimals(animals);
-        location = new Lobby();
         loadAvatarIcon();
         inventory = new Inventory(this);
         inventory.addAll(armors);

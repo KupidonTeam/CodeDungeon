@@ -2,7 +2,7 @@ package KupidonTeam.gui;
 
 
 import KupidonTeam.DB.DBConnection;
-import KupidonTeam.characters.classes.skills.Skill;
+import KupidonTeam.characters.skills.Skill;
 import KupidonTeam.login.SignLogic;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
@@ -25,7 +25,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import lombok.SneakyThrows;
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.File;
 import java.io.IOException;

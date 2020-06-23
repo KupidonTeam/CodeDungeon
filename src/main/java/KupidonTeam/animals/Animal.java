@@ -2,7 +2,6 @@ package KupidonTeam.animals;
 
 import KupidonTeam.exceptions.LessThanZeroException;
 import KupidonTeam.items.Item;
-import javafx.animation.Animation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
