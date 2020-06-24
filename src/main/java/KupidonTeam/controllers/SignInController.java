@@ -5,6 +5,7 @@ import KupidonTeam.model.characters.player.Player;
 import KupidonTeam.server.Connection;
 import KupidonTeam.utils.JSON;
 import KupidonTeam.utils.SoundPlayer;
+import javafx.application.Platform;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
@@ -110,7 +111,7 @@ public class SignInController {
         if (code == 203) {
             login = true;
             createPLayer(msg);
-            System.out.println(Player.getInstance().toString());
+            Platform.runLater(()->new SoundPlayer().mainTheme());
 
         } else {
             login = false;

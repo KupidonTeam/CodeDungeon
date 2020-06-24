@@ -3,6 +3,7 @@ package KupidonTeam.controllers;
 import KupidonTeam.model.characters.player.Player;
 import KupidonTeam.model.items.Armor;
 import KupidonTeam.model.items.Weapon;
+import KupidonTeam.utils.SoundPlayer;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -57,6 +58,7 @@ public class ShopController {
                 player.drop(item);
                 player.setGold((int) (player.getGold() + item.getPrice()));
                 mainController.update(false);
+                new SoundPlayer().soldItem();
                 loadGoods();
             });
             itemLine.getChildren().add(useBt);

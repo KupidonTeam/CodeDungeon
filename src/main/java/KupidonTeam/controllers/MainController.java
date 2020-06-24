@@ -164,8 +164,6 @@ public class MainController {
         chooseMenuController = new ChooseMenuController(this, cardTable);
         buttonsSetUp();
         panesSetUp();
-//        server.setChatArea(chatPane);
-//        server.setCardTable(cardTable);
     }
 
     private void panesSetUp() {
